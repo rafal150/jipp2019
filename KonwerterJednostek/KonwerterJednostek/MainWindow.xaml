@@ -1,0 +1,19 @@
+﻿<Window x:Class="KonwerterJednostek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonwerterJednostek"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Przelicz" HorizontalAlignment="Left" Margin="601,55,0,0" VerticalAlignment="Top" Width="125" Height="49" Click="Button_Click"/>
+        <ComboBox x:Name="FromCombox" HorizontalAlignment="Left" Margin="93,71,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox HorizontalAlignment="Left" Margin="459,71,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InputTextbox" HorizontalAlignment="Left" Height="23" Margin="279,71,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="237,129,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="61" Width="210"/>
+        <ComboBox HorizontalAlignment="Left" Margin="108,10,0,0" VerticalAlignment="Top" Width="435"/>
+        <DataGrid x:Name="StatisticsDataGrid" HorizontalAlignment="Left" Height="184" Margin="82,195,0,0" VerticalAlignment="Top" Width="644"/>
+
+    </Grid>
+</Window>
