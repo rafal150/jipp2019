@@ -1,0 +1,47 @@
+﻿<Window x:Class="UnitConversion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnitConversion"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Rodzaj konwersji" VerticalAlignment="Center"/>
+        <ComboBox Name="cbConversionType" Grid.Row="0" Grid.Column="1" Margin="5,5,5,5" Height="25" SelectedItem="{Binding Mode=OneWayToSource, Path=SelectedUnitConverter}" ItemsSource="{Binding Converter.UnitConverters}"/>
+        <Label Content="Jednostka początkowa" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label Content="Wartość początkowa" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label Content="Jednostka końcowa" Grid.Row="2" VerticalAlignment="Center"/>
+        <ComboBox Name="cbUnitFrom" Grid.Row="1" Grid.Column="1" Height="25" Margin="5,5,5,5" SelectedItem="{Binding Mode=OneWayToSource, Path=BaseUnit}" DataContext="{Binding ElementName=cbConversionType, Path=SelectedItem}" ItemsSource="{Binding Units}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Height="20" Margin="5,5,5,5" Text="{Binding Mode=OneWayToSource, Path=InputValue}"/>
+        <ComboBox Name="cbUnitTo" Grid.Row="2" Grid.Column="1" Height="25" Margin="5,5,5,5" SelectedItem="{Binding Mode=OneWayToSource, Path=TargetUnit}" DataContext="{Binding ElementName=cbConversionType, Path=SelectedItem}" ItemsSource="{Binding Units}"/>
+        <StackPanel Grid.Column="2" Grid.Row="4" Orientation="Horizontal">
+            <Label Content="Wynik" VerticalAlignment="Center"/>
+            <TextBlock x:Name="tbResult" Height="20" Margin="5,5,5,5" Text="{Binding Mode=OneWay, Path=Result}"/>
+        </StackPanel>
+        <DataGrid x:Name="dgConversionHistory" Grid.ColumnSpan="2" Grid.Row="5" ItemsSource="{Binding ConversionHistory}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Rodzaj konwersji" Binding="{Binding ConversionType}" Width="*"/>
+                <DataGridTextColumn Header="Data konwersji" Binding="{Binding Created}" Width="*"/>
+                <DataGridTextColumn Header="Jednostka bazowa" Binding="{Binding BaseUnit}" Width="0.8*"/>
+                <DataGridTextColumn Header="Wartość bazowa" Binding="{Binding BaseValue}" Width="0.7*"/>
+                <DataGridTextColumn Header="Jednostka docelowa" Binding="{Binding TargetUnit}" Width="0.8*"/>
+                <DataGridTextColumn Header="Wartość docelowa" Binding="{Binding TargetValue}" Width="0.7*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding ConvertCommand}" Content="Przelicz" Grid.Row="4" Margin="10,5,10,5"/>
+    </Grid>
+</Window>
