@@ -1,0 +1,21 @@
+﻿<Window x:Class="Unitconverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Unitconverter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="InputCombobox" HorizontalAlignment="Left" Margin="83,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InputtextBox" HorizontalAlignment="Left" Height="23" Margin="258,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="OutputcomboBox" HorizontalAlignment="Left" Margin="445,60,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="OutputtextBlock" HorizontalAlignment="Left" Margin="607,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="CalculateButton" Content="Oblicz" HorizontalAlignment="Left" Margin="83,100,0,0" VerticalAlignment="Top" Width="75" Click="CalculateButton_Click"/>
+        <ComboBox x:Name="ChoosecomboBox" HorizontalAlignment="Left" Margin="85,16,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ChoosecomboBox_SelectionChanged"/>
+        <DataGrid x:Name="ConverterdataGrid" HorizontalAlignment="Left" Height="100" Margin="85,147,0,0" VerticalAlignment="Top" Width="546"/>
+        <Button x:Name="ChangeBaza" Content="Zmien Azure/SQL" HorizontalAlignment="Left" Margin="445,356,0,0" VerticalAlignment="Top" Width="153" Click="ChangeBaza_Click"/>
+        <Label x:Name="RodzajBazylabel" Content="Azure/SQL" HorizontalAlignment="Left" Margin="54,358,0,0" VerticalAlignment="Top" Width="224"/>
+
+    </Grid>
+</Window>
