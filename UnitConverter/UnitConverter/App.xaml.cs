@@ -37,6 +37,7 @@ namespace UnitConversion
             {
                 containerBuilder.RegisterType<SqlServiceRepository>().As<IServiceRepository>();
             }
+
             containerBuilder.RegisterType<MainWindow>();
             return containerBuilder.Build();
         }
