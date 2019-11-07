@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace UnitCoverterPart2
+{
+    public class StatisticDTO
+    {
+        public int Id { get; set; }
+
+        public string RowKey { get; set; }
+        public DateTime? DateTime { get; set; }
+        public string UnitFrom { get; set; }
+        public string UnitTo { get; set; }
+
+        public int? RawValue { get; set; }
+
+        public double? ConvertedValue { get; set; }
+        public string Type { get; set; }
+    }
+}
