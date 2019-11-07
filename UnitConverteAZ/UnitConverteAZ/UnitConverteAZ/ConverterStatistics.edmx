@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UnitsConverterModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UnitConverterAZ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Calculation_Time" Type="datetime" />
+          <Property Name="UnitFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value_From" Type="float" />
+          <Property Name="Unit_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="Converted_Value" Type="float" />
+        </EntityType>
+        <EntityContainer Name="UnitsConverterModel1StoreContainer">
+          <EntitySet Name="UnitConverterAZ" EntityType="Self.UnitConverterAZ" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnitsConverterModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UnitConverterAZ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Calculation_Time" Type="DateTime" Precision="3" />
+          <Property Name="UnitFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value_From" Type="Double" />
+          <Property Name="Unit_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Converted_Value" Type="Double" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Statistics" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UnitConverterAZ" EntityType="Self.UnitConverterAZ" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnitsConverterModel1StoreContainer" CdmEntityContainer="Statistics">
+          <EntitySetMapping Name="UnitConverterAZ">
+            <EntityTypeMapping TypeName="UnitsConverterModel1.UnitConverterAZ">
+              <MappingFragment StoreEntitySet="UnitConverterAZ">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Calculation_Time" ColumnName="Calculation_Time" />
+                <ScalarProperty Name="UnitFrom" ColumnName="UnitFrom" />
+                <ScalarProperty Name="Value_From" ColumnName="Value_From" />
+                <ScalarProperty Name="Unit_To" ColumnName="Unit_To" />
+                <ScalarProperty Name="Converted_Value" ColumnName="Converted_Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
