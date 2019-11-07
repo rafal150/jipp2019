@@ -1,0 +1,23 @@
+﻿<Window x:Class="konwenter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:konwenter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:KonwenterDataSet x:Key="konwenterDataSet"/>
+        <CollectionViewSource x:Key="kalkulatorViewSource" Source="{Binding Kalkulator, Source={StaticResource konwenterDataSet}}"/>
+    </Window.Resources>
+    <Grid Background="#FF70C6EB" DataContext="{StaticResource kalkulatorViewSource}">
+        <TextBlock HorizontalAlignment="Left" Margin="289,-2,0,0" TextWrapping="Wrap" Text="KONWENTER JEDNOSTEK" VerticalAlignment="Top" Width="230" FontSize="20" Height="27"/>
+        <ComboBox x:Name="ListaG" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="375" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBox x:Name="Wartosc1" HorizontalAlignment="Left" Height="23" Margin="183,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <ComboBox x:Name="Pole1" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="168" Height="23"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="507,67,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="Button_Click"/>
+        <TextBox x:Name="Wartosc2" HorizontalAlignment="Left" Height="23" Margin="604,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167"/>
+        <ComboBox x:Name="Pole2" HorizontalAlignment="Left" Margin="346,68,0,0" VerticalAlignment="Top" Width="140"/>
+        <DataGrid x:Name="statystykaDataGrid" HorizontalAlignment="Left" Height="203" Margin="127,150,0,0" VerticalAlignment="Top" Width="499" ItemsSource="{Binding}"/>
+    </Grid>
+</Window>
