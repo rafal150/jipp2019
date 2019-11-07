@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0252: Możliwe niezamierzone porównanie odwołań; lewa strona wymaga rzutowania
+dotnet_diagnostic.CS0252.severity = none
