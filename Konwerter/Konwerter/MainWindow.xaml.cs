@@ -26,7 +26,7 @@ namespace Konwerter
         string[] temperatury = new string[] { "C", "F", "K", "R" };
         string[] dlugosci = new string[] { "mm", "cm", "dcm", "m", "km", "cal", "stopa", "jard", "mila", "kabel", "mila morska" };
         string[] masy = new string[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" };
-
+        double value, converted;
         private IRepo repository;
         public MainWindow(IRepo repo)
         {
@@ -61,21 +61,21 @@ namespace Konwerter
             switch (typeComboBox.SelectedIndex)
             {
                 case 0:
-                    double.TryParse(Temperatura.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out double convertedt);
-                    resultLabel.Content = "= " + convertedt;
-                    rekord.ConvertedValue = convertedt.ToString();
+                    double.TryParse(Temperatura.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out converted);
+                    resultLabel.Content = "= " + converted;
+                    rekord.ConvertedValue = converted.ToString();
                     repository.dodajRekord(rekord);
                     break;
                 case 1:
-                    double.TryParse(Dlugosc.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out double convertedd);
-                    resultLabel.Content = "= " + convertedd;
-                    rekord.ConvertedValue = convertedd.ToString();
+                    double.TryParse(Dlugosc.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out converted);
+                    resultLabel.Content = "= " + converted;
+                    rekord.ConvertedValue = converted.ToString();
                     repository.dodajRekord(rekord);
                     break;
                 case 2:
-                    double.TryParse(Masa.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out double convertedm);
-                    resultLabel.Content = "= " + convertedm;
-                    rekord.ConvertedValue = convertedm.ToString();
+                    double.TryParse(Masa.przelicz(fromComboBox.SelectedValue.ToString(), toComboBox.SelectedValue.ToString(), value).ToString(), out converted);
+                    resultLabel.Content = "= " + converted;
+                    rekord.ConvertedValue = converted.ToString();
                     repository.dodajRekord(rekord);
                     break;
                 default:
