@@ -7,7 +7,7 @@ using Konwerter.Model;
 
 namespace Konwerter
 {
-    public class StatystykiSqlRepo:IStatystykiRepo //dodawanie i odczyt z bazy sql
+    public class StatystykiSqlRepo:IStatystykiRepo //dodawanie i odczyt z bazy SQL
     {
         public void Dodaj_do_bazy(StatystykiObiekt stats)
         {
