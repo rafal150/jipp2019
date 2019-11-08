@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfAppJIPP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppJIPP"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="ZCombobox" HorizontalAlignment="Left" Margin="101,100,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}" VerticalAlignment="Center" Margin="5"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="NACombobox" HorizontalAlignment="Left" Margin="469,100,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}" VerticalAlignment="Center" Margin="5"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="ZTextBox" HorizontalAlignment="Left" Height="23" Margin="101,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.015,1.797"/>
+        <TextBox x:Name="NATextBox" HorizontalAlignment="Left" Height="23" Margin="469,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.008,0.089"/>
+        <ComboBox x:Name= "Wybor_typuCombobox"  HorizontalAlignment="Left" Margin="297,45,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.078,0.329" SelectionChanged="TypCombobox_SelectionChanged">
+            <ComboBoxItem Name="Temp">temeratura</ComboBoxItem>
+            <ComboBoxItem Name="masa">masa</ComboBoxItem>
+            <ComboBoxItem Name="dlugosc">dlugosc</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Konwertuj z: " HorizontalAlignment="Left" Margin="101,75,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="podaj wartosc" HorizontalAlignment="Left" Margin="101,150,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Wynik" HorizontalAlignment="Left" Margin="469,150,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="typ miary" HorizontalAlignment="Left" Margin="297,19,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Konwertuj na:" HorizontalAlignment="Left" Margin="469,75,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.328,0.081" Width="120" Height="25"/>
+        <Button x:Name="Przelicz" Content="Przelicz" HorizontalAlignment="Left" Margin="318,112,0,0" VerticalAlignment="Top" Width="75" Height="38" Click="CalcButton_click"/>
+        <DataGrid x:Name="StatisticDataGrid" HorizontalAlignment="Left" Height="129" Margin="35,256,0,0" VerticalAlignment="Top" Width="725"/>
+
+    </Grid>
+</Window>
