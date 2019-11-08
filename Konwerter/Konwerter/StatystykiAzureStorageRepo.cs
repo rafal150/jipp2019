@@ -43,7 +43,8 @@ namespace Konwerter
         {
             TableQuery<Staty2> query = new TableQuery<Staty2>();
 
-            return tabela.ExecuteQuery(query).Select(obj => new StatystykiObiekt() { DateTime = obj.DateTime, UnitFrom=obj.UnitFrom, UnitTo=obj.UnitTo, RawValue=obj.RawValue, ConvertedValue=obj.ConvertedValue ,Type = obj.Type}).ToList();
+            return tabela.ExecuteQuery(query).Select(obj => new StatystykiObiekt() { DateTime = obj.DateTime, UnitFrom=obj.UnitFrom, 
+                UnitTo=obj.UnitTo, RawValue=obj.RawValue, ConvertedValue=obj.ConvertedValue ,Type = obj.Type}).ToList();
         }
     }
 }

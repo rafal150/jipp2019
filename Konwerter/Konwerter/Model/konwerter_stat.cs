@@ -12,11 +12,11 @@ namespace Konwerter.Model
 
         public DateTime DateTime { get; set; }
 
-        //[Required]
+        [Required]
         [StringLength(50)]
         public string UnitFrom { get; set; }
 
-        //[Required]
+        [Required]
         [StringLength(50)]
         public string UnitTo { get; set; }
 
@@ -24,7 +24,7 @@ namespace Konwerter.Model
 
         public decimal ConvertedValue { get; set; }
 
-        //[Required]
+        [Required]
         [StringLength(50)]
         public string Type { get; set; }
     }

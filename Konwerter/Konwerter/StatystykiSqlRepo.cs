@@ -13,7 +13,7 @@ namespace Konwerter
         {
             using (KonwContext kontext = new KonwContext())
             {
-                    kontext.Konwerter_stats.Add(new Konwerter_stat()
+                    kontext.Konwerter_stat.Add(new Konwerter_stat()
                     { 
                         DateTime= stats.DateTime, 
                         UnitFrom= stats.UnitFrom,
@@ -29,7 +29,7 @@ namespace Konwerter
         {
             using (KonwContext kontext = new KonwContext())
             {
-                return kontext.Konwerter_stats.
+                return kontext.Konwerter_stat.
                     Select(obj => new StatystykiObiekt() { DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
                     ToList();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Konwerter.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -44,27 +45,27 @@ namespace Konwerter
             List<Konwerter_stat> statystyki = null;
             using (KonwContext kontext1 = new KonwContext())
             {
-                statystyki = kontext1.Konwerter_stats.ToList();
+                statystyki = kontext1.Konwerter_stat.ToList();
             }
             this.StatystykiDataGrid.ItemsSource = statystyki;
         }
-        private void Dodaj_do_statystyk()   //poprzednie do dodawania do SQL
-        {
-            using (KonwContext kontext2 = new KonwContext())
-            {
-                Konwerter_stat statystyki = new Konwerter_stat()
-                {
-                    DateTime = DateTime.Now,
-                    UnitFrom = this.FromComboBox.SelectedItem.ToString(),
-                    UnitTo = this.ToComboBox.SelectedItem.ToString(),
-                    RawValue = decimal.Parse(this.WejscieTextBox.Text),
-                    ConvertedValue=decimal.Parse(this.WynikTextBlock.Text),
-                    Type = this.TypComboBox.SelectedItem.ToString(),
-                };
-                kontext2.Konwerter_stats.Add(statystyki);
-                kontext2.SaveChanges();
-            }
-        }
+        //private void Dodaj_do_statystyk()   //poprzednie do dodawania do SQL
+        //{
+        //    using (KonwContext kontext2 = new KonwContext())
+        //    {
+        //        Konwerter_stat statystyki = new Konwerter_stat()
+        //        {
+        //            DateTime = DateTime.Now,
+        //            UnitFrom = this.FromComboBox.SelectedItem.ToString(),
+        //            UnitTo = this.ToComboBox.SelectedItem.ToString(),
+        //            RawValue = decimal.Parse(this.WejscieTextBox.Text),
+        //            ConvertedValue=decimal.Parse(this.WynikTextBlock.Text),
+        //            Type = this.TypComboBox.SelectedItem.ToString(),
+        //        };
+        //        kontext2.Konwerter_stats.Add(statystyki);
+        //        kontext2.SaveChanges();
+        //    }
+        //}
 
         private void TypComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
