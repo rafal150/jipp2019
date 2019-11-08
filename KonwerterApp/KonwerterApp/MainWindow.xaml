@@ -1,0 +1,30 @@
+﻿<Window x:Class="KonwerterApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonwerterApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="274" Width="655.6">
+    <Grid Margin="0,0,0.333,-0.333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TextBlock_Kategoria" HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Kategoria" Height="22" Width="55"/>
+        <ComboBox x:Name="ComboBox_Kategoria" HorizontalAlignment="Left" Margin="89,10,0,0" VerticalAlignment="Top" Width="139" Height="22" SelectionChanged="ComboBox_Kategoria_SelectionChanged"/>
+        <TextBlock x:Name="TextBlock_WartoscDoKonwersji" HorizontalAlignment="Left" Margin="17,61,0,0" TextWrapping="Wrap" Text="Wartość do konwersji:" VerticalAlignment="Top" Height="16" Width="116"/>
+        <TextBox x:Name="TextBox_WartoscDoKonwersji" HorizontalAlignment="Left" Height="23" Margin="138,61,0,0" TextWrapping="Wrap" Text="Wpisz wartosc" VerticalAlignment="Top" Width="90"/>
+        <TextBlock x:Name="TextBlock_Jednostka" HorizontalAlignment="Left" Margin="17,97,0,0" TextWrapping="Wrap" Text="Jednostka:" VerticalAlignment="Top" Height="16" Width="55"/>
+        <ComboBox x:Name="ComboBox_Jednostka" HorizontalAlignment="Left" Margin="89,97,0,0" VerticalAlignment="Top" Width="139" Height="22"/>
+        <TextBlock x:Name="TextBlock_JednostkaDocelowa" HorizontalAlignment="Left" Margin="17,124,0,0" TextWrapping="Wrap" Text="Jednostka docelowa:" VerticalAlignment="Top" RenderTransformOrigin="0.463,-0.125" Height="22" Width="137"/>
+        <ComboBox x:Name="ComboBox_JednostkaDocelowa" HorizontalAlignment="Left" Margin="159,124,0,0" VerticalAlignment="Top" Width="69" Height="22"/>
+        <TextBlock x:Name="TextBlock_WartoscPoKonwersji" HorizontalAlignment="Left" Margin="17,182,0,0" TextWrapping="Wrap" Text="Wartość po konwersji:" VerticalAlignment="Top" Height="16" Width="116"/>
+        <TextBlock x:Name="TextBlock_WartoscPoKonwersji_Wynik" HorizontalAlignment="Left" Margin="154,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" Height="16" Width="79"/>
+        <Button x:Name="Button_Zamien" Content="Konwertuj" HorizontalAlignment="Left" Margin="89,203,0,0" VerticalAlignment="Top" Width="75" Click="Button_Zamien_Click"/>
+        <TextBlock x:Name="TextBlock_WartoscPrzedKonwersja" HorizontalAlignment="Left" Margin="17,161,0,0" TextWrapping="Wrap" Text="Wartość przed konwersją:" VerticalAlignment="Top" Height="16" Width="147"/>
+        <TextBlock x:Name="TextBlock_WartoscPrzedKonwersjaWynik" HorizontalAlignment="Left" Margin="154,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" Height="16" Width="79"/>
+        <DataGrid x:Name="DataGridWynikowy" HorizontalAlignment="Left" Height="212" Margin="233,10,0,0" VerticalAlignment="Top" Width="406"/>
+
+    </Grid>
+</Window>
