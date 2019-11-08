@@ -1,0 +1,83 @@
+﻿<Window x:Class="WPFConverterv2.InsertPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFConverterv2"
+        mc:Ignorable="d"
+        Title="InsertPage" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="RawValueBox" HorizontalAlignment="Left" Height="23" Margin="188,92,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,93,0,0" TextWrapping="Wrap" Text="RawValue" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,56,0,0" TextWrapping="Wrap" Text="UnitFrom" VerticalAlignment="Top"/>
+        <ComboBox x:Name="UnitFromBox" HorizontalAlignment="Left" Margin="188,56,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.Items>
+                <ComboBoxItem>C</ComboBoxItem>
+                <ComboBoxItem>K</ComboBoxItem>
+                <ComboBoxItem>F</ComboBoxItem>
+                <ComboBoxItem>R</ComboBoxItem>
+                <ComboBoxItem>mm</ComboBoxItem>
+                <ComboBoxItem>cm</ComboBoxItem>
+                <ComboBoxItem>dcm</ComboBoxItem>
+                <ComboBoxItem>m</ComboBoxItem>
+                <ComboBoxItem>km</ComboBoxItem>
+                <ComboBoxItem>cal</ComboBoxItem>
+                <ComboBoxItem>stopy</ComboBoxItem>
+                <ComboBoxItem>jard</ComboBoxItem>
+                <ComboBoxItem>mila</ComboBoxItem>
+                <ComboBoxItem>kabel</ComboBoxItem>
+                <ComboBoxItem>mila morska</ComboBoxItem>
+                <ComboBoxItem>mg</ComboBoxItem>
+                <ComboBoxItem>g</ComboBoxItem>
+                <ComboBoxItem>dkg</ComboBoxItem>
+                <ComboBoxItem>kg</ComboBoxItem>
+                <ComboBoxItem>T</ComboBoxItem>
+                <ComboBoxItem>uncja</ComboBoxItem>
+                <ComboBoxItem>funt</ComboBoxItem>
+                <ComboBoxItem>karat</ComboBoxItem>
+                <ComboBoxItem>kwintal</ComboBoxItem>
+
+            </ComboBox.Items>
+
+        </ComboBox>
+        <Button x:Name="insertBtn"  Content="Przelicz" HorizontalAlignment="Left" Margin="168,278,0,0" VerticalAlignment="Top" Width="75" Click="InsertBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,133,0,0" TextWrapping="Wrap" Text="UnitTo" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="82,168,0,0" TextWrapping="Wrap" Text="ConvertedValue" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,201,0,0" TextWrapping="Wrap" Text="DateTime" VerticalAlignment="Top"/>
+        <TextBox x:Name="ConvertedValueBox" HorizontalAlignment="Left" Height="23" Margin="188,168,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <DatePicker x:Name="DateTimeBox" HorizontalAlignment="Left" Margin="188,201,0,0" VerticalAlignment="Top" Width="295" SelectedDateFormat="Long" IsTodayHighlighted="False" IsDropDownOpen="True"/>
+        <ComboBox x:Name="UnitToBox" HorizontalAlignment="Left" Margin="188,127,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox.Items>
+            <ComboBoxItem>C</ComboBoxItem>
+            <ComboBoxItem>K</ComboBoxItem>
+            <ComboBoxItem>F</ComboBoxItem>
+            <ComboBoxItem>R</ComboBoxItem>
+                <ComboBoxItem>C</ComboBoxItem>
+                <ComboBoxItem>K</ComboBoxItem>
+                <ComboBoxItem>F</ComboBoxItem>
+                <ComboBoxItem>R</ComboBoxItem>
+                <ComboBoxItem>mm</ComboBoxItem>
+                <ComboBoxItem>cm</ComboBoxItem>
+                <ComboBoxItem>dcm</ComboBoxItem>
+                <ComboBoxItem>m</ComboBoxItem>
+                <ComboBoxItem>km</ComboBoxItem>
+                <ComboBoxItem>cal</ComboBoxItem>
+                <ComboBoxItem>stopy</ComboBoxItem>
+                <ComboBoxItem>jard</ComboBoxItem>
+                <ComboBoxItem>mila</ComboBoxItem>
+                <ComboBoxItem>kabel</ComboBoxItem>
+                <ComboBoxItem>mila morska</ComboBoxItem>
+                <ComboBoxItem>mg</ComboBoxItem>
+                <ComboBoxItem>g</ComboBoxItem>
+                <ComboBoxItem>dkg</ComboBoxItem>
+                <ComboBoxItem>kg</ComboBoxItem>
+                <ComboBoxItem>T</ComboBoxItem>
+                <ComboBoxItem>uncja</ComboBoxItem>
+                <ComboBoxItem>funt</ComboBoxItem>
+                <ComboBoxItem>karat</ComboBoxItem>
+                <ComboBoxItem>kwintal</ComboBoxItem>
+            </ComboBox.Items>
+        </ComboBox>
+
+    </Grid>
+</Window>
