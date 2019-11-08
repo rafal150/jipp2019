@@ -1,0 +1,48 @@
+﻿<Window x:Class="konwerter.ConverterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:konwerter"
+        mc:Ignorable="d"
+        Title="Converter" Height="450" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+            <TabItem x:Name="TemperatureTabButton" Header="Temperature" Margin="-2,-1,-138,-1">
+                <Grid x:Name="TemperatureTabField" Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="669*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ConvertTemperatureButton" Content="Convert" HorizontalAlignment="Left" Margin="375.364,127,0,0" VerticalAlignment="Top" Width="75" Height="69" Click="ConvertTemperatureButton_Click" Grid.Column="1"/>
+                    <TextBox x:Name="InputTemperatureTextBox" HorizontalAlignment="Left" Height="69" Margin="52,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="20" TextAlignment="Center" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="InputTemperatureComboBox" HorizontalAlignment="Left" Margin="90.364,152,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <ComboBox x:Name="OutputTemperatureComboBox" HorizontalAlignment="Left" Margin="228.364,152,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <TextBlock x:Name="OutputTemperatureTextBlock" HorizontalAlignment="Left" Margin="486,140,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="LenghtTabButton" Header="Lenght" Margin="138,-1,-212,-1">
+                <Grid x:Name="LenghtTabField" Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ConvertLenghtButton" Content="Convert" HorizontalAlignment="Left" Margin="477,127,0,0" VerticalAlignment="Top" Width="75" Height="69" Click="ConvertLenghtButton_Click"/>
+                    <TextBox x:Name="InputLenghtTextBox" HorizontalAlignment="Left" Height="69" Margin="52,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="20" TextAlignment="Center"/>
+                    <ComboBox x:Name="InputLenghtComboBox" HorizontalAlignment="Left" Margin="187,152,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+                    <ComboBox x:Name="OutputLenghtComboBox" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+                    <TextBlock x:Name="OutputLenghtTextBlock" HorizontalAlignment="Left" Margin="588,140,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="WeightTabButton" Header="Weight" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="266" Margin="213,0,-213,0">
+                <Grid x:Name="WeightTabField" Background="#FFE5E5E5">
+                    <Button x:Name="ConvertWeightButton" Content="Convert" HorizontalAlignment="Left" Margin="472.364,127,0,0" VerticalAlignment="Top" Width="75" Height="69" Click="ConvertWeightButton_Click"/>
+                    <TextBox x:Name="InputWeightTextBox" HorizontalAlignment="Left" Height="69" Margin="52,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="20" TextAlignment="Center"/>
+                    <ComboBox x:Name="InputWeightComboBox" HorizontalAlignment="Left" Margin="187.364,152,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="OutputWeightComboBox" HorizontalAlignment="Left" Margin="325.364,152,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock x:Name="OutputWeightTextBlock" HorizontalAlignment="Left" Margin="583,140,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
