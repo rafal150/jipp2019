@@ -18,7 +18,7 @@ namespace Konwerter
         {
             CloudStorageAccount storageAccount = new CloudStorageAccount(new StorageCredentials(ConfigurationManager.AppSettings["StorageName"], ConfigurationManager.AppSettings["StorageKey"]), true);
             CloudTableClient client = storageAccount.CreateCloudTableClient();
-            this.tabela = client.GetTableReference("StatisticsMarcinIwanowski");
+            this.tabela = client.GetTableReference("StatystykiPiotr");
             this.tabela.CreateIfNotExists();
         }
 
