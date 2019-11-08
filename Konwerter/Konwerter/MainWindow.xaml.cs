@@ -28,20 +28,20 @@ namespace Konwerter
         string[] masy = new string[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" };
 
         private IRepo repository;
-        public MainWindow()//(IRepo repo)
+        public MainWindow(IRepo repo)
         {
             InitializeComponent();
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
-                repository = new AzureStorageRepo();
+                //repository = new AzureStorageRepo();
                 repositoryComboBox.SelectedIndex = 0;
             }
             else
             {
-                repository = new SqlRepo();
+                //repository = new SqlRepo();
                 repositoryComboBox.SelectedIndex = 1;
             }
-            //this.repository = repo;
+            this.repository = repo;
         }
 
         private void pokazZapisy()
