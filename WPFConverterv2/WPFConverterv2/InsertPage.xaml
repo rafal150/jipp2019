@@ -78,6 +78,8 @@
                 <ComboBoxItem>kwintal</ComboBoxItem>
             </ComboBox.Items>
         </ComboBox>
+        <TextBox x:Name="TypeBox" HorizontalAlignment="Left" Height="23" Margin="188,236,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Margin="94,237,0,0" RenderTransformOrigin="0.525,1.003"/>
 
     </Grid>
 </Window>

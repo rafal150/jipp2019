@@ -34,26 +34,8 @@ namespace WPFConverterv2
             throw new NotImplementedException();
         }
 
-        public StatisticsEntity(int Id, DateTime dateTime, string unitFrom, string unitTo, double rawValue, double convertedValue, string type)
-        {
-            id = Id;
-            DateTime = dateTime;
-            UnitFrom = unitFrom;
-            UnitTo = unitTo;
-            RawValue = rawValue;
-            ConvertedValue = convertedValue;
-            Type = type;
-            PartitionKey = "ThanksApp";
-            RowKey = type;
-            
+     
 
-
-        }
-
-        public StatisticsEntity()
-        {
-
-        }
-
+      
     }
 }

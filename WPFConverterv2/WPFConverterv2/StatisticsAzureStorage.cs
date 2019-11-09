@@ -27,6 +27,7 @@ namespace WPFConverterv2
             StatisticsEntity entity = new StatisticsEntity();
             entity.PartitionKey = string.Empty;
             entity.RowKey = Guid.NewGuid().ToString();
+            entity.id = statistic.id;
             entity.DateTime = statistic.DateTime;
             entity.UnitFrom = statistic.UnitFrom;
             entity.UnitTo = statistic.UnitTo;
@@ -42,7 +43,7 @@ namespace WPFConverterv2
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new Statistic() { DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new Statistic() {id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).ToList();
         }
 
         

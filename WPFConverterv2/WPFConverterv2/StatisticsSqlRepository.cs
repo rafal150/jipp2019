@@ -15,6 +15,7 @@ namespace WPFConverterv2
             {
                 context.MyStatistics2.Add(new MyStatistics2()
                 {
+                    id = statistic.id,
                     DateTime = statistic.DateTime,
                     UnitFrom = statistic.UnitFrom,
                     UnitTo = statistic.UnitTo,
@@ -32,7 +33,7 @@ namespace WPFConverterv2
             using (StatisticsModel context = new StatisticsModel())
             {
                 return context.MyStatistics2.
-                    Select(obj => new Statistic() { DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
+                    Select(obj => new Statistic() { id = obj.id , DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
                     ToList();
             }
         }
