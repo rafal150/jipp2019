@@ -28,8 +28,14 @@ namespace Converter.Model
             StatisticsEntity entity = new StatisticsEntity();
             entity.PartitionKey = string.Empty; // computer name;
             entity.RowKey = Guid.NewGuid().ToString();
+            entity.Id = converter.Id;
             entity.PhysicalProperty = converter.PhysicalProperty;
             entity.ConvertingTime = converter.ConvertingTime;
+            entity.Result = converter.Result;
+            entity.Value = converter.Value;
+            entity.FromUnit = converter.FromUnit;
+            entity.ToUnit = converter.ToUnit;
+
 
             TableOperation insertOperation = TableOperation.Insert(entity);
             table.Execute(insertOperation);
@@ -39,7 +45,14 @@ namespace Converter.Model
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { ConvertingTime = obj.ConvertingTime, PhysicalProperty = obj.PhysicalProperty }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { ConvertingTime = obj.ConvertingTime,
+                                                                                PhysicalProperty = obj.PhysicalProperty,
+                                                                                FromUnit = obj.FromUnit,
+                                                                                ToUnit = obj.ToUnit,
+                                                                                Value = obj.Value,
+                                                                                Result = obj.Result,
+                                                                                Id = obj.Id
+                                                                               }).ToList();
         }
     }
 }

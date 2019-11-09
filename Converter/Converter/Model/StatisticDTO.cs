@@ -14,9 +14,9 @@ namespace Converter.Model
         public string FromUnit { get; set; }
         public string ToUnit { get; set; }
 
-        public int Result { get; set; }
+        public double Result { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
         public string PhysicalProperty { get; set; }
     }
 }
