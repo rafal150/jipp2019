@@ -88,8 +88,6 @@
     <Compile Include="ConverterClasses\WeightConverter.cs" />
     <Compile Include="ConverterClasses\LengthConverter.cs" />
     <Compile Include="ConverterClasses\TemperatureConverter.cs" />
-    <Compile Include="ConverterClasses\Unit.cs" />
-    <Compile Include="ConverterClasses\UnitConverter.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,6 +133,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{b0b00151-7dff-46f2-83f1-fc3f255ddbbd}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

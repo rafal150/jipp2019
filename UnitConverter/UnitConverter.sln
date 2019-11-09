@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29409.12
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitConverter", "UnitConverter\UnitConverter.csproj", "{3D8B43B6-9003-4B06-90C2-08840E7BDF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.SDK", "Converter.SDK\Converter.SDK.csproj", "{B0B00151-7DFF-46F2-83F1-FC3F255DDBBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerConverter", "PowerConverter\PowerConverter.csproj", "{19E3FA30-8250-4F8C-9D51-B9D6716E880E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{3D8B43B6-9003-4B06-90C2-08840E7BDF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D8B43B6-9003-4B06-90C2-08840E7BDF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D8B43B6-9003-4B06-90C2-08840E7BDF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B00151-7DFF-46F2-83F1-FC3F255DDBBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B00151-7DFF-46F2-83F1-FC3F255DDBBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B00151-7DFF-46F2-83F1-FC3F255DDBBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B00151-7DFF-46F2-83F1-FC3F255DDBBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E3FA30-8250-4F8C-9D51-B9D6716E880E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E3FA30-8250-4F8C-9D51-B9D6716E880E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E3FA30-8250-4F8C-9D51-B9D6716E880E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E3FA30-8250-4F8C-9D51-B9D6716E880E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,8 +14,8 @@ namespace UnitConversion
     {
         private readonly IServiceRepository serviceRepository;
 
-        private Converter converter;
-        public Converter Converter
+        private ConverterService converter;
+        public ConverterService Converter
         {
             get
             {
@@ -83,10 +83,10 @@ namespace UnitConversion
             }
         }
 
-        public MainWindowViewModel(IServiceRepository serviceRepository)
+        public MainWindowViewModel(IServiceRepository serviceRepository, ConverterService service)
         {
             this.serviceRepository = serviceRepository;
-            Converter = new Converter(serviceRepository);
+            Converter = service;
             ConversionHistory = new ObservableCollection<ConversionHistoryDTO>();
             ReloadHistory();
         }

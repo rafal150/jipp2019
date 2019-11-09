@@ -1,23 +1,29 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnitConversion;
 
 namespace UnitConversion
 {
-    public class Converter
+    public class ConverterService
     {
         private readonly IServiceRepository serviceRepository;
+        private readonly ILifetimeScope scope;
         List<UnitConverter> unitConverters;
 
         public List<UnitConverter> UnitConverters => unitConverters;
 
-        public Converter(IServiceRepository serviceRepository)
+        public ConverterService(IServiceRepository serviceRepository, ILifetimeScope scope)
         {
+            this.scope = scope;
             this.serviceRepository = serviceRepository;
-            unitConverters = new List<UnitConverter>();
-            unitConverters.Add(new TemperatureConverter());
-            unitConverters.Add(new LengthConverter());
-            unitConverters.Add(new WeightConverter());
+            GetConverters();
+        }
+
+        private void GetConverters()
+        {
+            unitConverters = scope.Resolve<IEnumerable<UnitConverter>>().ToList();
         }
 
         public bool Convert(UnitConverter selectedConverter, decimal value, out decimal convertedValue)
