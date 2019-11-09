@@ -20,10 +20,9 @@ namespace UnitConverteAZ
             this.tounitValue = tounitValue;
             this.value = value;
 
-
-
         }
 
+//COnvertuje
         public double convert(string from, string to)
         {
             double calcuatedValue = 0;
