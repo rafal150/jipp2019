@@ -5,16 +5,16 @@ namespace Converter.DataBaseConnection
     using System.Data.Entity;
     using System.Linq;
 
-    public class Connection : DbContext
+    public class DataBaseConnection : DbContext
     {
-        // Your context has been configured to use a 'Connection' connection string from your application's 
+        // Your context has been configured to use a 'DataBaseConnection' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'Converter.Connection.Connection' database on your LocalDb instance. 
+        // 'Converter.DataBaseConnection.DataBaseConnection' database on your LocalDb instance. 
         // 
-        // If you wish to target a different database and/or database provider, modify the 'Connection' 
+        // If you wish to target a different database and/or database provider, modify the 'DataBaseConnection' 
         // connection string in the application configuration file.
-        public Connection()
-            : base("name=Connection")
+        public DataBaseConnection()
+            : base("name=DataBaseConnection")
         {
         }
         public DbSet<BaseConverter> Converters { get; set; }

@@ -21,7 +21,7 @@ namespace Converter.Model
                     statisticsAzureStorageRepository.AddStatistic(converter);
                     break;
                 default:
-                    DataBaseConnection.Connection connection = new DataBaseConnection.Connection();
+                    DataBaseConnection.DataBaseConnection connection = new DataBaseConnection.DataBaseConnection();
                     connection.Converters.Add(converter);
                     connection.SaveChanges();
                     break;

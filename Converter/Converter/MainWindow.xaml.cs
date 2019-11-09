@@ -25,7 +25,7 @@ namespace Converter
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataBaseConnection.Connection connection;
+        //DataBaseConnection.DataBaseConnection connection;
         public MainWindow()
         {
             InitializeComponent();            
@@ -36,7 +36,7 @@ namespace Converter
         private void ButtonConvert_Click(object sender, RoutedEventArgs e)
         {
             MasterConnection masterConnection = new MasterConnection();
-            //connection = new DataBaseConnection.Connection();
+            //connection = new DataBaseConnection.DataBaseConnection();
             BaseConverter converter;
             if(ComboBoxProperty.Text.Equals(General.distance))
             {
@@ -67,9 +67,9 @@ namespace Converter
             }
             //connection.SaveChanges();
             
-            var allRows = connection.Converters;
+            //var allRows = connection.Converters;
             
-            DataBaseOutput.ItemsSource = connection.Converters.ToList<BaseConverter>();
+            //DataBaseOutput.ItemsSource = connection.Converters.ToList<BaseConverter>();
 
 
 

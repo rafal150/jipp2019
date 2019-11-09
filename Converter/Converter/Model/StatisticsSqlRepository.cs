@@ -13,7 +13,7 @@ namespace Converter.Model
     {
         public void AddStatistic(BaseConverter converter)
         {
-            using (Connection context = new Connection())
+            using (DataBaseConnection.DataBaseConnection context = new DataBaseConnection.DataBaseConnection())
             {
                 context.Converters.Add(converter);
                 context.SaveChanges();
@@ -22,7 +22,7 @@ namespace Converter.Model
 
         public IEnumerable<StatisticDTO> GetStatistics()
         {
-            using (Connection context = new Connection())
+            using (DataBaseConnection.DataBaseConnection context = new DataBaseConnection.DataBaseConnection())
             {
                 return context.Converters.
                     Select(obj => new StatisticDTO() { ConvertingTime = obj.ConvertingTime, PhysicalProperty = obj.PhysicalProperty }).
