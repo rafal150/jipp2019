@@ -1,0 +1,19 @@
+﻿<Window x:Class="Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Converter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox x:Name="ComboBoxProperty" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="245" LayoutUpdated="ComboBoxProperty_LayoutUpdated"/>
+        <ComboBox x:Name="ComboBoxFromUnit" HorizontalAlignment="Left" Height="35" Margin="260,10,0,0" VerticalAlignment="Top" Width="245"/>
+        <ComboBox x:Name="ComboBoxToUnit" HorizontalAlignment="Left" Height="35" Margin="510,10,0,0" VerticalAlignment="Top" Width="245"/>
+        <Button x:Name="ButtonConvert" Content="przelicz" HorizontalAlignment="Left" Height="35" Margin="260,50,0,0" VerticalAlignment="Top" Width="245" Click="ButtonConvert_Click"/>
+        <TextBox x:Name="TextBoxInput" HorizontalAlignment="Left" Height="35" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245"/>
+        <TextBox x:Name="TextBoxOutput" HorizontalAlignment="Left" Height="35" Margin="510,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" IsEnabled="False"/>
+        <DataGrid x:Name="DataBaseOutput" HorizontalAlignment="Left" Height="160" Margin="84,152,0,0" VerticalAlignment="Top" Width="556"/>
+
+    </Grid>
+</Window>
