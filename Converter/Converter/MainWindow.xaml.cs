@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,9 +68,16 @@ namespace Converter
             }
             //connection.SaveChanges();
             
-            //var allRows = connection.Converters;
+            //var allRows = masterConnection.GetLocal()// connection.Converters;
+            if(ConfigurationManager.AppSettings["StatisticsRepository"].Equals("AzureStorage"))
+            {
+                DataBaseOutput.ItemsSource = masterConnection.GetAzure();
+            }
+            else
+            {
+                DataBaseOutput.ItemsSource = masterConnection.GetLocal().Converters.ToList<BaseConverter>();
+            }
             
-            //DataBaseOutput.ItemsSource = connection.Converters.ToList<BaseConverter>();
 
 
 

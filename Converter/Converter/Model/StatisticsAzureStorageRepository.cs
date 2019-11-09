@@ -32,7 +32,6 @@ namespace Converter.Model
             entity.ConvertingTime = converter.ConvertingTime;
 
             TableOperation insertOperation = TableOperation.Insert(entity);
-
             table.Execute(insertOperation);
         }
 
