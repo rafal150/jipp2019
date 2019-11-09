@@ -13,7 +13,7 @@
         <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" Height="23" Margin="135,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="169"/>
         <Button Content="Przelicz" HorizontalAlignment="Left" Margin="434,37,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBlock x:Name="ResultTextblock" HorizontalAlignment="Left" Margin="514,40,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="19" Width="192"/>
-        <DataGrid x:Name="statisticsDataGrid" HorizontalAlignment="Left" Height="346" Margin="10,64,0,0" VerticalAlignment="Top" Width="772" />
+        <DataGrid x:Name="statisticsDataGrid" HorizontalAlignment="Left" Height="346" Margin="10,64,0,0" VerticalAlignment="Top" Width="772"/>
 
     </Grid>
 </Window>
