@@ -94,16 +94,18 @@
       <DependentUpon>ConverterStatistics.edmx</DependentUpon>
     </Compile>
     <Compile Include="IStatisticRepository.cs" />
-    <Compile Include="MetricConverter.cs" />
+    <Compile Include="Services\MetricConverter.cs" />
+    <Compile Include="Services\ConverterService.cs" />
+    <Compile Include="Services\OldTempratureConventer — Kopia.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="Model\StatisticsEntity.cs" />
     <Compile Include="StatisticSqlRepository.cs" />
     <Compile Include="StatisticStorageAzureRepository.cs" />
-    <Compile Include="TempratureConventer.cs" />
+    <Compile Include="Services\TempratureConventer.cs" />
     <Compile Include="UnitConverterAZ.cs">
       <DependentUpon>ConverterStatistics.tt</DependentUpon>
     </Compile>
-    <Compile Include="WeightConverter.cs" />
+    <Compile Include="Services\WeightConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,6 +167,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{74BD9CC9-4920-49A4-A3A1-DB4435F65D5C}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

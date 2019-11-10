@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Converter.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UnitConverteAZ.Services;
 
 namespace UnitConverteAZ
 {
@@ -22,15 +24,15 @@ namespace UnitConverteAZ
     {
         private IStatisticRepository repository;    
     
-        public MainWindow(IStatisticRepository repo)
+        public MainWindow(IStatisticRepository repo, ConverterService converters)
         {
             InitializeComponent();
             LoadConverterStatistics();
             this.repository = repo;
             this.converterStatisticsDataGrid.ItemsSource = repository.GetStatistic();
-            this.MetricSystemCombobox.ItemsSource = new List<string>(new[] { "Miara", "Temperatura", "Waga" });
+            // this.MetricSystemCombobox.ItemsSource = new List<string>(new[] { "Miara", "Temperatura", "Waga" });
 
-
+            this.MetricSystemCombobox.ItemsSource = converters.GetConverters();
             //this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "MM", "CM", "DCM", "M"  });
         }
 
@@ -43,54 +45,65 @@ namespace UnitConverteAZ
         }
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
-
-
         {
-
-            var a = FromUnitCombobox.SelectedValue.ToString();
-            var b = ToUnitCombobox.SelectedValue.ToString();
-            double c = (double.Parse(this.FromValueTextBox.Text));
-            double d = 0;
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Temperatura")
+            if (this.MetricSystemCombobox.SelectedItem != null)
             {
-                TempratureConventer temp = new TempratureConventer(a, b, c);
-                d = temp.convertTemprature(a, b);
-                this.ToUnitTextBlock.Text = d.ToString();
+                IConverter converter = (IConverter)this.MetricSystemCombobox.SelectedItem;
+                double result = converter.Convert(
+                    this.FromUnitCombobox.SelectedItem.ToString(),
+                    this.ToUnitCombobox.SelectedItem.ToString(),
+                    double.Parse(this.FromValueTextBox.Text));
 
+                this.ToUnitTextBlock.Text = result.ToString();
+
+
+                StatisticDTO st = new StatisticDTO()
+                {
+                    Type = converter.Name,
+                    Calculation_Time = DateTime.Now,
+                    UnitFrom = this.FromUnitCombobox.SelectedItem.ToString(),
+                    Unit_To = this.ToUnitCombobox.SelectedItem.ToString(),
+                    Value_From = double.Parse(this.FromValueTextBox.Text),
+                    Converted_Value = result
+                };
+
+                repository.AddStatistic(st);
+                this.converterStatisticsDataGrid.ItemsSource = repository.GetStatistic();
             }
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Miara")
-            {
-                MetricConverter temp = new MetricConverter(a, b, c);
-                d = temp.convert(a, b);
-                this.ToUnitTextBlock.Text = d.ToString();
 
-            }
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Waga")
-            {
-                WeightConverter temp = new WeightConverter(a, b, c);
-                d = temp.convert(a, b);
-                this.ToUnitTextBlock.Text = d.ToString();
-            }
 
-            StatisticDTO st = new StatisticDTO()
-            {
-                Type = MetricSystemCombobox.SelectedValue.ToString(),
-                Calculation_Time = DateTime.Now,
-                UnitFrom = a,
-                Unit_To = b,
-                Value_From = c,
-                Converted_Value = d
-            };
+            //var a = FromUnitCombobox.SelectedValue.ToString();
+            //var b = ToUnitCombobox.SelectedValue.ToString();
+            //double c = (double.Parse(this.FromValueTextBox.Text));
+            //double d = 0;
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Temperatura")
+            //{
+            //    TempratureConventer temp = new TempratureConventer(a, b, c);
+            //    d = temp.convertTemprature(a, b);
+            //    this.ToUnitTextBlock.Text = d.ToString();
 
-            repository.AddStatistic(st);
-            this.converterStatisticsDataGrid.ItemsSource = repository.GetStatistic();
+            //}
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Miara")
+            //{
+            //    MetricConverter temp = new MetricConverter(a, b, c);
+            //    d = temp.convert(a, b);
+            //    this.ToUnitTextBlock.Text = d.ToString();
+
+            //}
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Waga")
+            //{
+            //    WeightConverter temp = new WeightConverter(a, b, c);
+            //    d = temp.convert(a, b);
+            //    this.ToUnitTextBlock.Text = d.ToString();
+            //}
+
 
             //StatisticStorageAzureRepository rep = new StatisticStorageAzureRepository();
             //rep.AddStatistic(st);
 
             //StatisticSqlRepository rep = new StatisticSqlRepository();
             //rep.AddStatistic(st);
-            
+
             //using ( Statistics context = new Statistics() )
             //{
             //UnitConverterAZ st = new UnitConverterAZ();
@@ -109,33 +122,40 @@ namespace UnitConverteAZ
 
 
             //LoadConverterStatistics();
-            
-            
+
+
             //this.ToUnitTextBlock.Text = (double.Parse(this.FromValueTextBox.Text) * 2).ToString();
 
         }
 
         public void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Miara")
+            if(this.MetricSystemCombobox.SelectedItem != null)
             {
-                //this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "MM", "CM", "DCM", "M" });
-                this.FromUnitCombobox.ItemsSource = MetricConverter.getUnitsNames();
-                this.ToUnitCombobox.ItemsSource = MetricConverter.getUnitsNames();
+                this.FromUnitCombobox.ItemsSource = ((IConverter)this.MetricSystemCombobox.SelectedItem).Units;
+                this.ToUnitCombobox.ItemsSource = ((IConverter)this.MetricSystemCombobox.SelectedItem).Units;
+            }
 
-            }
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Temperatura")
-            {
-                this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit", "Rankine" });
-                this.ToUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit", "Rankine" });
-            }
-            if (MetricSystemCombobox.SelectedValue.ToString() == "Waga")
-            {
-                //var units = WeightConverter.getUnitsNames(); 
-                //this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit" });
-                this.FromUnitCombobox.ItemsSource = WeightConverter.getUnitsNames();
-                this.ToUnitCombobox.ItemsSource = WeightConverter.getUnitsNames();
-            }
+
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Miara")
+            //{
+            //    //this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "MM", "CM", "DCM", "M" });
+            //    this.FromUnitCombobox.ItemsSource = MetricConverter.getUnitsNames();
+            //    this.ToUnitCombobox.ItemsSource = MetricConverter.getUnitsNames();
+
+            //}
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Temperatura")
+            //{
+            //    this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit", "Rankine" });
+            //    this.ToUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit", "Rankine" });
+            //}
+            //if (MetricSystemCombobox.SelectedValue.ToString() == "Waga")
+            //{
+            //    //var units = WeightConverter.getUnitsNames(); 
+            //    //this.FromUnitCombobox.ItemsSource = new List<string>(new[] { "Celcius", "Kalvin", "Fahrenheit" });
+            //    this.FromUnitCombobox.ItemsSource = WeightConverter.getUnitsNames();
+            //    this.ToUnitCombobox.ItemsSource = WeightConverter.getUnitsNames();
+            //}
         }
 
 

@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="MetricSystemCombobox" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:Name="MetricSystemCombobox" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="772" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox x:Name="FromUnitCombobox" HorizontalAlignment="Left" Margin="108,103,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="FromUnit_SelectionChanged"/>
         <TextBox x:Name="FromValueTextBox" HorizontalAlignment="Left" Height="23" Margin="248,102,0,0" TextWrapping="Wrap" Text="Wartość" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="ToUnitCombobox" HorizontalAlignment="Left" Margin="457,103,0,0" VerticalAlignment="Top" Width="120"/>

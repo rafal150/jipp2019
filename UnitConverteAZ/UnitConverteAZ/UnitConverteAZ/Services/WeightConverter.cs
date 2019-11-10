@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Converter.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,25 @@ using System.Threading.Tasks;
 namespace UnitConverteAZ
 {
 
-    public class WeightConverter
+    public class WeightConverter : IConverter
     {
-        private string fromValue;
-        private string tounitValue;
-        private double value;
+
+        public string Name => "Masy";
+
+  
+        List<string> IConverter.Units => getUnitsNames();
    
 
-        public WeightConverter(string fromValue, string tounitValue, double value)
-        {
-            this.fromValue = fromValue;
-            this.tounitValue = tounitValue;
-            this.value = value;
+        //public WeightConverter(string fromValue, string tounitValue, double value)
+        //{
+        //    this.fromValue = fromValue;
+        //    this.tounitValue = tounitValue;
+        //    this.value = value;
 
-        }
+        //}
 
-//COnvertuje
-        public double convert(string from, string to)
+        //COnvertuje
+        public double Convert(string unitFrom, string unitTo, double value)
         {
             double calcuatedValue = 0;
             var units = getUnits();
@@ -31,32 +34,33 @@ namespace UnitConverteAZ
 
             foreach (var k in units)
             {
-                if (k.Key == from)
+                if (k.Key == unitFrom)
                 {
                     indicator = k.Value;
                 }
 
             }
-            calcuatedValue = (this.value * indicator);
+            calcuatedValue = (value * indicator);
 
             foreach (var k in units)
             {
-                if (k.Key == to)
+                if (k.Key == unitTo)
                 {
                     indicator = k.Value;
                 }
 
             }
             calcuatedValue = calcuatedValue / indicator;
+
             return calcuatedValue;
         }
      
 
-        private static  Dictionary<string,double> getUnits()
+        private static Dictionary<string,double> getUnits()
         {
             var units = new Dictionary<string, double>();
             //metric
-            units.Add("Kilogram", 1);
+            units.Add("Kilo", 1);
             units.Add("Miligram", 0.000001);
             units.Add("Gram", 0.001);
             units.Add("Dekagram", 0.01);
@@ -84,6 +88,6 @@ namespace UnitConverteAZ
 
         }
 
-
+ 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Converter.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,24 +7,27 @@ using System.Threading.Tasks;
 
 namespace UnitConverteAZ
 {
-    public class MetricConverter
+    public class MetricConverter : IConverter
     {
 
-        private string fromValue;
-        private string tounitValue;
-        private double value;
+        //private string fromValue;
+        //private string tounitValue;
+        //private double value;
 
+        public string Name => "Miary";
 
-        public MetricConverter(string fromValue, string tounitValue, double value)
-        {
-            this.fromValue = fromValue;
-            this.tounitValue = tounitValue;
-            this.value = value;
+        public List<string> Units => getUnitsNames();
+
+        //public MetricConverter(string fromValue, string tounitValue, double value)
+        //{
+        //    this.fromValue = fromValue;
+        //    this.tounitValue = tounitValue;
+        //    this.value = value;
                       
-        }
+        //}
 
 
-        public double convert(string from, string to)
+        public double Convert(string unitFrom, string unitTo, double value)
         {
             double calcuatedValue = 0;
             var units = getUnits();
@@ -31,17 +35,17 @@ namespace UnitConverteAZ
 
             foreach (var k in units)
             {
-                if (k.Key == from)
+                if (k.Key == unitFrom)
                 {
                     indicator = k.Value;
                 }
 
             }
-            calcuatedValue = (this.value * indicator);
+            calcuatedValue = (value * indicator);
 
             foreach (var k in units)
             {
-                if (k.Key == to)
+                if (k.Key == unitTo)
                 {
                     indicator = k.Value;
                 }
@@ -87,5 +91,6 @@ namespace UnitConverteAZ
 
         }
 
+  
     }
 }
