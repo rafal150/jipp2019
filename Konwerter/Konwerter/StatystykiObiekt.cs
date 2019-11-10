@@ -10,15 +10,15 @@ namespace Konwerter
     {
         public int Id { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public DateTime? DateTime { get; set; }
 
         public string UnitFrom { get; set; }
 
         public string UnitTo { get; set; }
 
-        public decimal RawValue { get; set; }
+        public double? RawValue { get; set; }
 
-        public decimal ConvertedValue { get; set; }
+        public double? ConvertedValue { get; set; }
 
         public string Type { get; set; }
     }

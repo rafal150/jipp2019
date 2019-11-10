@@ -26,13 +26,12 @@ namespace Konwerter
         obliczTemp licz = new obliczTemp();
         obliczDlugosc licz2 = new obliczDlugosc();
         obliczMase licz3 = new obliczMase();
-
-        //public MainWindow()
+        
         public MainWindow(IStatystykiRepo repo)
         {
             InitializeComponent();
             this.TypComboBox.ItemsSource = new List<string>(new[]
-{
+            {
                 "Temperatura", "Długość", "Masa"
             });
 
@@ -40,7 +39,7 @@ namespace Konwerter
             this.StatystykiDataGrid.ItemsSource = repozytorium.GetStatistics();
 
         }
-        private void Load()
+        private void Load() //wyswietlenie statystyk z SQL
         {
             List<Konwerter_stat> statystyki = null;
             using (KonwContext kontext1 = new KonwContext())
@@ -66,6 +65,21 @@ namespace Konwerter
         //        kontext2.SaveChanges();
         //    }
         //}
+        private void Dodaj_do_statystyk()
+        {
+            StatystykiObiekt sts = new StatystykiObiekt()
+            {
+                DateTime = DateTime.Now,
+                UnitFrom = this.FromComboBox.SelectedItem.ToString(),
+                UnitTo = this.ToComboBox.SelectedItem.ToString(),
+                RawValue = double.Parse(this.WejscieTextBox.Text),
+                ConvertedValue = double.Parse(this.WynikTextBlock.Text),
+                Type = this.TypComboBox.SelectedItem.ToString()
+            };
+            this.repozytorium.Dodaj_do_bazy(sts);
+            this.StatystykiDataGrid.ItemsSource = repozytorium.GetStatistics(); //załadowanie statystyk
+            
+        }
 
         private void TypComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -135,8 +149,8 @@ namespace Konwerter
             }
             else { }
 
-            //Dodaj_do_statystyk();
-            //MessageBox.Show("Dodano do bazy");
+            Dodaj_do_statystyk();
+            MessageBox.Show("Dodano do bazy");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -149,23 +163,7 @@ namespace Konwerter
             this.WejscieTextBox.Clear();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            StatystykiObiekt sts = new StatystykiObiekt()
-            {
-                DateTime = DateTime.Now,
-                UnitFrom = this.FromComboBox.SelectedItem.ToString(),
-                UnitTo = this.ToComboBox.SelectedItem.ToString(),
-                RawValue = decimal.Parse(this.WejscieTextBox.Text),
-                ConvertedValue = decimal.Parse(this.WynikTextBlock.Text),
-                Type = this.TypComboBox.SelectedItem.ToString()
-            };
-            this.repozytorium.Dodaj_do_bazy(sts);
-            this.StatystykiDataGrid.ItemsSource = repozytorium.GetStatistics();
-            // 
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)   //wyswietlanie statystyk
         {
             this.StatystykiDataGrid.ItemsSource = repozytorium.GetStatistics();
 
