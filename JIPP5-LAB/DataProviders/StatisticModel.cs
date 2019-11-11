@@ -1,10 +1,8 @@
-namespace JIPP5_LAB.Database
+namespace JIPP5_LAB.DataProviders
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Z502_21.Statistics")]
     public class StatisticModel

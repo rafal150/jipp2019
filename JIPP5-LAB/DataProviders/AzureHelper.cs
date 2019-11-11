@@ -1,19 +1,13 @@
-﻿using JIPP5_LAB.Database;
-using JIPP5_LAB.Interfaces;
-using JIPP5_LAB.Models;
-using JIPP5_LAB.Resources;
+﻿using JIPP5_LAB.Interfaces;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JIPP5_LAB.Helpers
+namespace JIPP5_LAB.DataProviders
 {
     public class AzureHelper : IDataHelper
     {

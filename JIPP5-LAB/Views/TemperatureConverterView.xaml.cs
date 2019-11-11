@@ -1,21 +1,7 @@
 ﻿using JIPP5_LAB.Constants;
-using JIPP5_LAB.Helpers;
 using JIPP5_LAB.Interfaces;
-using JIPP5_LAB.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Unity;
 
 namespace JIPP5_LAB.Views
@@ -23,33 +9,28 @@ namespace JIPP5_LAB.Views
     /// <summary>
     /// Interaction logic for TemperatureConverter.xaml
     /// </summary>
-    public partial class TemperatureConverterView : UserControl, ITemperatureConverterView
+    public partial class TemperatureConverterView : UserControl, IView
     {
-        IDataHelper DataHelper { get; }
-        IUnityContainer Container { get; }
-        IConverterHelper ConverterHelper { get; }
-        public TemperatureConverterView(IDataHelper dataHelper, IConverterHelper converterHelper, IUnityContainer unityContainer)
+        private IDataHelper DataHelper { get; }
+        private IUnityContainer Container { get; }
+        private IConverterHelper ConverterHelper { get; }
+
+        public string Header => UIElements.TemperatureConverter;
+
+        public TemperatureConverterView(IDataHelper dataHelper, IUnityContainer unityContainer)
         {
             InitializeComponent();
             DataHelper = dataHelper;
-            ConverterHelper = converterHelper;
             Container = unityContainer;
-            var units = new List<Unit>() {
-                ItemRepository.Celsius,
-                ItemRepository.Fahrenheit,
-                ItemRepository.Kelvin,
-                ItemRepository.Rankine
-            };
-            FromUnit.ItemsSource = units;
-            ToUnit.ItemsSource = units;
+            ConverterHelper = Container.Resolve<IConverterHelper>("TemperatureConverterHelper");
+            FromUnit.ItemsSource = ConverterHelper.UnitTypes;
+            ToUnit.ItemsSource = ConverterHelper.UnitTypes;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var fromUnit = FromUnit.SelectedItem as Unit;
-            var toUnit = ToUnit.SelectedItem as Unit;
             decimal.TryParse(FromInput.Text, out decimal result);
-            ToResult.Text = ConverterHelper.Convert(fromUnit, result, toUnit);
+            ToResult.Text = ConverterHelper.Convert(FromUnit.SelectedValue.ToString(), result, ToUnit.SelectedValue.ToString());
         }
     }
 }

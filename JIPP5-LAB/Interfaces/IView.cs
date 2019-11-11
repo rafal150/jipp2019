@@ -2,5 +2,6 @@
 {
     public interface IView
     {
+        string Header { get; }
     }
 }

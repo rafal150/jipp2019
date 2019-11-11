@@ -1,12 +1,10 @@
-﻿using JIPP5_LAB.Helpers;
+﻿using JIPP5_LAB.DataProviders;
 using JIPP5_LAB.Interfaces;
-using JIPP5_LAB.Views;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using Unity;
 
@@ -20,23 +18,53 @@ namespace JIPP5_LAB
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            IUnityContainer Container = new UnityContainer();
+            IUnityContainer Container = BuildContainer();
+
+            this.MainWindow = Container.Resolve<MainWindow>();
+            this.MainWindow.Show();
+        }
+
+        private IUnityContainer BuildContainer()
+        {
+            var container = new UnityContainer();
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
-                Container.RegisterType(typeof(IDataHelper), typeof(AzureHelper));
+                container.RegisterType(typeof(IDataHelper), typeof(AzureHelper));
             }
             else
             {
-                Container.RegisterType(typeof(IDataHelper), typeof(DatabaseHelper));
+                container.RegisterType(typeof(IDataHelper), typeof(DatabaseHelper));
             }
-            Container.RegisterType<IConversionHistoryView, ConversionHistoryView>();
-            Container.RegisterType<ITemperatureConverterView, TemperatureConverterView>();
-            Container.RegisterType<IWeightConverterView, WeightConverterView>();
-            Container.RegisterType<ILengthConverterView, LengthConverterView>();
-            Container.RegisterType<IConverterHelper, ConverterHelper>();
-            this.MainWindow = Container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+            RegisterTypes(Assembly.GetExecutingAssembly(), container);
+            RegisterPlugins(container);
+            return container;
+        }
+
+        private void RegisterPlugins(IUnityContainer container)
+        {
+            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            Directory.CreateDirectory(pluginDirectory);
+            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+            foreach (var assembly in assemblies)
+            {
+                RegisterTypes(assembly, container);
+            }
+        }
+
+        private void RegisterTypes(Assembly assembly, IUnityContainer container)
+        {
+            var listOfConverters = assembly.GetTypes().Where(x => x.Name.EndsWith("ConverterHelper") && x.IsClass).ToList();
+            var listOfViews = assembly.GetTypes().Where(x => x.Name.EndsWith("View") && x.IsClass).ToList();
+            foreach (var item in listOfConverters)
+            {
+                container.RegisterType(typeof(IConverterHelper), item, item.Name);
+            }
+            foreach (var item in listOfViews)
+            {
+                container.RegisterType(typeof(IView), item, item.Name);
+            }
         }
     }
 }

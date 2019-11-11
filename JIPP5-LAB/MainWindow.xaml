@@ -10,10 +10,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TabControl x:Name="TabControl" Grid.Column="0" />
-
-
     </Grid>
 </Window>

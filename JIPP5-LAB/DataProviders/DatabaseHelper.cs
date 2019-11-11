@@ -1,13 +1,8 @@
-﻿using JIPP5_LAB.Database;
-using JIPP5_LAB.Interfaces;
-using System;
+﻿using JIPP5_LAB.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JIPP5_LAB.Helpers
+namespace JIPP5_LAB.DataProviders
 {
     public class DatabaseHelper : IDataHelper
     {
