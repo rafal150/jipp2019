@@ -23,7 +23,7 @@ namespace applicationWpf
         {
             StatisticsEntity entity = new StatisticsEntity
             {
-                PartitionKey = string.Empty, 
+                PartitionKey = string.Empty, // computer name;
                 RowKey = Guid.NewGuid().ToString(),
                 Type = statistic.Type,
                 Date = statistic.Date,

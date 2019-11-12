@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace applicationWpf
 {
-    class DistanceConverter : BasicConverter
+    public class DistanceConverter : ConverterBase
     {
-        public DistanceConverter(double value, int fromIndex, int toIndex)
-        {
-            this.value = value;
-            this.fromIndex = fromIndex;
-            this.toIndex = toIndex;
-
-            this.suffix = new string[]
+        public double convertedValue = double.NaN, value;
+        public int fromIndex, toIndex;
+        public string[] suffix => new string[]
             {
             "mm",
             "cm",
@@ -29,9 +25,8 @@ namespace applicationWpf
             "nmi"
             };
 
-            this.converterName = "distance";
-            this.indexes = new string[]
-            {
+        public string[] indexes => new string[]
+    {
                 "Milimeter",
                 "Centimeter",
                 "Decimeter",
@@ -43,11 +38,22 @@ namespace applicationWpf
                 "Mile",
                 "Cable length",
                 "Nautical mile"
-            };
+    };
+
+        public string converterName => "distance";
+
+        public string GetConvertedString()
+        {
+            if (convertedValue != double.NaN)
+                return $"{convertedValue} {suffix[toIndex]}";
+            else return "NaN";
         }
 
-        public override void Convert()
+        public double Convert(double value, int fromIndex, int toIndex)
         {
+            this.value = value;
+            this.fromIndex = fromIndex;
+            this.toIndex = toIndex;
             switch(indexes[fromIndex])
             {
                 case "Milimeter":
@@ -106,9 +112,18 @@ namespace applicationWpf
                         break;
                     }
                 default:
-                    return;
+                    return convertedValue;
             }
-            base.AddDbEntry();
+            return convertedValue;
+            //MainWindow.repo.AddStatistic(new StatisticsDTO()
+            //{
+            //    Date = DateTime.Now,
+            //    SourceUnit = suffix[fromIndex],
+            //    SourceValue = value,
+            //    ConvertedUnit = suffix[toIndex],
+            //    ConvertedValue = convertedValue,
+            //    Type = converterName
+            //});
         }
 
         private void MilimeterConvert()

@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace applicationWpf
 {
-    class TemperatureConverter : BasicConverter
+    class TemperatureConverter : ConverterBase
     {
-        public TemperatureConverter(double value, int fromIndex, int toIndex)
-        {
-            this.value = value;
-            this.fromIndex = fromIndex;
-            this.toIndex = toIndex;
+        double value, convertedValue = double.NaN;
+        int fromIndex, toIndex;
 
-            this.suffix = new string[]
+        public string[] suffix => new string[]
             {
             "°C",
             "F",
@@ -22,19 +19,22 @@ namespace applicationWpf
             "°R"
             };
 
-            this.converterName = "temperature";
-            this.indexes = new string[]
-            {
+        public string[] indexes => new string[]
+    {
                 "Celsius",
                 "Farenheit",
                 "Kelvin",
                 "Rankine"
-            };
-        }
+    };
 
-        public override void Convert()
+        public string converterName => "temperature";
+
+        public double Convert(double value, int fromIndex, int toIndex)
         {
-            switch(indexes[fromIndex])
+            this.value = value;
+            this.fromIndex = fromIndex;
+            this.toIndex = toIndex;
+            switch (indexes[fromIndex])
             {
                 case "Celsius":
                     {
@@ -57,10 +57,12 @@ namespace applicationWpf
                         break;
                     }
                 default:
-                    return;
+                    return convertedValue;
             }
-            base.AddDbEntry();
+            return convertedValue;
         }
+
+
 
         private void CelsiusConvert()
         {

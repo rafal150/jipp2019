@@ -30,7 +30,7 @@ namespace applicationWpf
 
             using (UnitConvertContext context = new UnitConvertContext())
             {
-                if (context.statistics.Count() == 0) 
+                if (context.statistics.Count() == 0)
                     return null;
 
                 var query = context.statistics.Select(dupa => new StatisticsDTO()
@@ -42,7 +42,7 @@ namespace applicationWpf
                     SourceUnit = dupa.SourceUnit,
                     SourceValue = dupa.SourceValue,
                     Type = dupa.Type
-                }).ToList();//  from stat in context.statistics select new { stat.Id, stat.Date, stat.Type, stat.SourceUnit, stat.SourceValue, stat.ConvertedUnit, stat.ConvertedValue };
+                }).ToList();
                 return query;
             }
         }

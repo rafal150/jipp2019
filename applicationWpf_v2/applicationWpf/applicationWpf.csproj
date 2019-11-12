@@ -77,7 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BasicConverter.cs" />
+    <Compile Include="ConverterService.cs" />
+    <Compile Include="ConvSupply.cs" />
     <Compile Include="IStatisticsRepository.cs" />
     <Compile Include="MassConverter.cs" />
     <Compile Include="DistanceConverter.cs" />
@@ -139,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugins\Plugins.csproj">
+      <Project>{8f08ff5e-96db-4798-80f8-01cdc1057908}</Project>
+      <Name>Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

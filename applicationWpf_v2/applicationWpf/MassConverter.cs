@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace applicationWpf
 {
-    class MassConverter : BasicConverter
+    class MassConverter : ConverterBase
     {
-        public MassConverter(double value, int fromIndex, int toIndex)
-        {
-            this.value = value;
-            this.fromIndex = fromIndex;
-            this.toIndex = toIndex;
+        double value=0, convertedValue = double.NaN;
+        int fromIndex=0, toIndex=0;
 
-            this.suffix = new string[]
+        public string[] suffix => new string[]
             {
             "mg",
             "g",
@@ -27,9 +24,8 @@ namespace applicationWpf
             "cwt"
             };
 
-            this.converterName = "mass";
-            this.indexes = new string[]
-            {
+        public string[] indexes => new string[]
+    {
                 "Miligram",
                 "Gram",
                 "Decagram",
@@ -39,12 +35,23 @@ namespace applicationWpf
                 "Pound",
                 "Carat",
                 "Quintal"
-            };
+    };
+
+        public string converterName => "mass";
+
+        public string GetConvertedString()
+        {
+            if (convertedValue != double.NaN)
+                return $"{convertedValue} {suffix[toIndex]}";
+            else return "NaN";
         }
 
-        public override void Convert()
+        public double Convert(double value, int fromIndex, int toIndex)
         {
-            switch(indexes[fromIndex])
+            this.value = value;
+            this.fromIndex = fromIndex;
+            this.toIndex = toIndex;
+            switch (indexes[fromIndex])
             {
                 case "Miligram":
                     {
@@ -92,9 +99,18 @@ namespace applicationWpf
                         break;
                     }
                 default:
-                    return;
+                    return convertedValue;
             }
-            base.AddDbEntry();
+                    return convertedValue;
+            //MainWindow.repo.AddStatistic(new StatisticsDTO()
+            //{
+            //    Date = DateTime.Now,
+            //    SourceUnit = suffix[fromIndex],
+            //    SourceValue = value,
+            //    ConvertedUnit = suffix[toIndex],
+            //    ConvertedValue = convertedValue,
+            //    Type = converterName
+            //});
         }
 
         private void MiligramConvert()
