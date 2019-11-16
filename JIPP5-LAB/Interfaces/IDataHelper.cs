@@ -1,12 +1,13 @@
 ﻿using JIPP5_LAB.DataProviders;
+using JIPP5_LAB.SDK;
 using System.Collections.Generic;
 
 namespace JIPP5_LAB.Interfaces
 {
     public interface IDataHelper
     {
-        void AddRecord(StatisticModel modelToSave);
+        void AddRecord(StatisticsDTO modelToSave);
 
-        IEnumerable<StatisticModel> GetRecords();
+        IEnumerable<StatisticsDTO> GetRecords();
     }
 }

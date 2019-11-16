@@ -1,5 +1,6 @@
 namespace JIPP5_LAB.DataProviders
 {
+    using JIPP5_LAB.SDK;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -23,5 +24,14 @@ namespace JIPP5_LAB.DataProviders
         public decimal RawData { get; set; }
 
         public decimal Converted { get; set; }
+
+        public StatisticModel(StatisticsDTO dto)
+        {
+            Date = dto.Date;
+            FromUnit = dto.FromUnit;
+            ToUnit = dto.ToUnit;
+            RawData = dto.RawData;
+            Converted = dto.Converted;
+        }
     }
 }

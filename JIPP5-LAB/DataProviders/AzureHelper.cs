@@ -1,4 +1,5 @@
 ﻿using JIPP5_LAB.Interfaces;
+using JIPP5_LAB.SDK;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -21,7 +22,7 @@ namespace JIPP5_LAB.DataProviders
             this.table.CreateIfNotExists();
         }
 
-        public void AddRecord(StatisticModel modelToSave)
+        public void AddRecord(StatisticsDTO modelToSave)
         {
             StatisticsEntity entity = new StatisticsEntity
             {
@@ -36,11 +37,11 @@ namespace JIPP5_LAB.DataProviders
             table.Execute(insertOperation);
         }
 
-        public IEnumerable<StatisticModel> GetRecords()
+        public IEnumerable<StatisticsDTO> GetRecords()
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new StatisticModel() { Date = obj.DateTime, FromUnit = obj.Type }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new StatisticsDTO() { Date = obj.DateTime, FromUnit = obj.Type }).ToList();
         }
     }
 }

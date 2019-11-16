@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <TextBox x:Name="FromInput" HorizontalAlignment="Left" Height="23" Margin="171,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
-        <ComboBox x:Name="FromUnit" DisplayMemberPath="DisplayUnit" SelectedIndex="0" HorizontalAlignment="Left" Margin="35,96,0,0" VerticalAlignment="Top" Width="120" />
-        <ComboBox x:Name="ToUnit" DisplayMemberPath="DisplayUnit" SelectedIndex="0" HorizontalAlignment="Left" Margin="323,96,0,0" VerticalAlignment="Top" Width="120" />
+        <ComboBox x:Name="FromUnit" SelectedIndex="0" HorizontalAlignment="Left" Margin="35,96,0,0" VerticalAlignment="Top" Width="120" />
+        <ComboBox x:Name="ToUnit" SelectedIndex="0" HorizontalAlignment="Left" Margin="323,96,0,0" VerticalAlignment="Top" Width="120" />
         <TextBlock x:Name="ToResult" HorizontalAlignment="Left" Margin="493,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Background="#FF00FFAE" MinWidth="50" Panel.ZIndex="-1" Padding="5" />
         <Button x:Name="ConvertButton" Content="{x:Static constants:UIElements.ConvertButton}" HorizontalAlignment="Left" Margin="610,99,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
         <TextBlock HorizontalAlignment="Left" Margin="42,71,0,0" TextWrapping="Wrap" Text="{x:Static constants:UIElements.FromUnit}" VerticalAlignment="Top" />

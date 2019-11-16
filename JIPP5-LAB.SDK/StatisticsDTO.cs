@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JIPP5_LAB.DataProviders
+namespace JIPP5_LAB.SDK
 {
     public class StatisticsDTO
     {

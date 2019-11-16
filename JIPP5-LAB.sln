@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29306.81
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JIPP5-LAB", "JIPP5-LAB\JIPP5-LAB.csproj", "{11A6FB25-D816-42CE-8F5C-77AA23466F25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JIPP5-LAB.SDK", "JIPP5-LAB.SDK\JIPP5-LAB.SDK.csproj", "{0C551C98-70B5-4162-B829-0C06FD56D6B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{11A6FB25-D816-42CE-8F5C-77AA23466F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11A6FB25-D816-42CE-8F5C-77AA23466F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11A6FB25-D816-42CE-8F5C-77AA23466F25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C551C98-70B5-4162-B829-0C06FD56D6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C551C98-70B5-4162-B829-0C06FD56D6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C551C98-70B5-4162-B829-0C06FD56D6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C551C98-70B5-4162-B829-0C06FD56D6B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

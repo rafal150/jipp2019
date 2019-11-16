@@ -1,5 +1,7 @@
 ﻿using JIPP5_LAB.Constants;
 using JIPP5_LAB.Interfaces;
+using JIPP5_LAB.SDK;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using Unity;
@@ -23,6 +25,8 @@ namespace JIPP5_LAB.Views
             Container = unityContainer;
             this.StatisticsDataGrid.ItemsSource = DataHelper.GetRecords();
         }
+
+        public event EventHandler<StatisticsDTO> ConvertedValueCompleted;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

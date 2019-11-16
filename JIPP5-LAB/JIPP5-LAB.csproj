@@ -113,17 +113,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Constants\ItemRepository.cs" />
     <Compile Include="Constants\UIElements.cs" />
     <Compile Include="DataProviders\AzureHelper.cs" />
     <Compile Include="ConverterHelpers\WeightConverterHelper.cs" />
     <Compile Include="ConverterHelpers\TemperatureConverterHelper.cs" />
     <Compile Include="DataProviders\DatabaseHelper.cs" />
     <Compile Include="ConverterHelpers\LengthConverterHelper.cs" />
-    <Compile Include="Interfaces\IConverterHelper.cs" />
-    <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Interfaces\IDataHelper.cs" />
-    <Compile Include="DataProviders\StatisticsDTO.cs" />
     <Compile Include="DataProviders\StatisticsEntity.cs" />
     <Compile Include="Views\ConversionHistoryView.xaml.cs">
       <DependentUpon>ConversionHistoryView.xaml</DependentUpon>
@@ -198,7 +194,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\JIPP5-LAB.SDK\JIPP5-LAB.SDK.csproj">
+      <Project>{0c551c98-70b5-4162-b829-0c06fd56d6b2}</Project>
+      <Name>JIPP5-LAB.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
