@@ -11,7 +11,7 @@ using Konwerter_Azure.Model;
 
 namespace Konwerter_Azure
 {
-    public class StatisticsAzureStorageRepository : IStatisticsRepository
+    public class StatisticsAzureStorageRepository : IStatisticsRepository // do zapisu na azure
     {
         private CloudTable table;
 
@@ -33,6 +33,7 @@ namespace Konwerter_Azure
             entity.grupa = statistic.grupa;
             entity.przeliczZ = statistic.przeliczZ;
             entity.dane = statistic.dane;
+            //entity.dane = statistic.dane.ToString();
             entity.przeliczNa = statistic.przeliczNa;
             entity.wynik = statistic.wynik;
 

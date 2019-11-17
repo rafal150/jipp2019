@@ -21,7 +21,13 @@
         <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="3" Background="Azure">KONWERTER JEDNOSTEK</Label>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">Wybierz rodzaj miar</Label>
         <ComboBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="ComboBoxRodzajMiary" Padding="6" Width="200" 
-                  SelectionChanged="ComboBoxRodzajMiary_SelectionChanged"/>
+                  SelectionChanged="ComboBoxRodzajMiary_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Z jakiej jednostki</Label>
 
         <ComboBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ComboBoxZCzego" Padding="6" Width="200"

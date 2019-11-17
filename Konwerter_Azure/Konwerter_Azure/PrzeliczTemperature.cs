@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Konwerter_Azure
 {
+
     public class PrzeliczTemperature// : MainWindow
     {
         private string wynikT;

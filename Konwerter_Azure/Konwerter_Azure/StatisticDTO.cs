@@ -11,6 +11,7 @@ namespace Konwerter_Azure
         public decimal? dane { get; set; }
         public string przeliczNa { get; set; }
         public decimal? wynik { get; set; }
+        //public string wynik { get; set; }
     }
 
 }
