@@ -4,19 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
     public class ConverterD: IConverting
     {
         public ConverterD() { }
-        public List<string> listaJednostek
-        {
-            get
-            {
-                return new List<String>(new[] { "mm", "cm", "dm", "m", "km", "cal", "stop", "jard", "mila", "kabel", "mila morska" });
-            }
-        }
-
+        public string Nazwa => "Długość";
+        public List<string> ListaJednostek => new List<String>(new[] { "mm", "cm", "dm", "m", "km", "cal",
+            "stop", "jard", "mila", "kabel", "mila morska" });
         public float Convert(string from, string to, double amount)
         {
             // To m

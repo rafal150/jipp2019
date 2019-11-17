@@ -4,18 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
     public class ConverterM: IConverting
     {
         public ConverterM() { }
-        public List<string> listaJednostek
-        {
-            get
-            {
-                return new List<String>(new[] { "mg", "g", "dkg", "kg", "T", "uncja", "funt", "karat", "kwintal" });
-            }
-        }
+
+        public string Nazwa => "Masa";
+
+        public List<string> ListaJednostek =>  new List<String>(new[] { "mg", "g", "dkg", "kg", "T", "uncja", "funt", "karat", "kwintal" });
 
         public float Convert(string from, string to, double amount)
         {
