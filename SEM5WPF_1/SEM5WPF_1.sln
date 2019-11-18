@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEM5WPF_1", "SEM5WPF_1\SEM5WPF_1.csproj", "{F6191E90-C0FA-446B-8465-89EE28B6B825}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.SDK", "Konwerter.SDK\Konwerter.SDK.csproj", "{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

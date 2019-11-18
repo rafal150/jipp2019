@@ -108,6 +108,10 @@
     <Compile Include="Model\ModelStatystyki.cs" />
     <Compile Include="Model\Statystyki.cs" />
     <Compile Include="Model\StatystykiEntities.cs" />
+    <Compile Include="Services\DlugosciKonwerter.cs" />
+    <Compile Include="Services\KonwerterServices.cs" />
+    <Compile Include="Services\MasyKonwerter.cs" />
+    <Compile Include="Services\TemperaturyKonwerter.cs" />
     <Compile Include="StatystykiAzureRepozytorium.cs" />
     <Compile Include="StatystykiDTO.cs" />
     <Compile Include="StatystykiSqlRepozytorium.cs" />
@@ -153,9 +157,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 i x64%29</ProductName>
@@ -166,6 +167,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Konwerter.SDK\Konwerter.SDK.csproj">
+      <Project>{154dceda-31d8-49e4-b964-30f89aaecb9e}</Project>
+      <Name>Konwerter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,39 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SEM5WPF_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="317" Width="1007">
+    <Grid HorizontalAlignment="Left" Width="818">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="71*"/>
             <ColumnDefinition Width="678*"/>
             <ColumnDefinition Width="43*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TextValue" HorizontalAlignment="Left" Height="23" Margin="36,83,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.696" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextScore" HorizontalAlignment="Left" Height="23" Margin="36,232,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.508,1.217" Grid.ColumnSpan="2"/>
-        <Button x:Name="ButtonCount" Content="Przelicz" HorizontalAlignment="Left" Margin="36,181,0,0" VerticalAlignment="Top" Width="120" Height="32" Click="ButtonCount_Click" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="CboxListA" HorizontalAlignment="Left" Margin="36,47,0,0" VerticalAlignment="Top" Width="120" Height="22" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="CboxListB" HorizontalAlignment="Left" Margin="36,142,0,0" VerticalAlignment="Top" Width="120" Height="22" Grid.ColumnSpan="2"/>
-        <Label x:Name="Tekst" Content="konwersja na:" HorizontalAlignment="Left" Margin="36,111,0,0" VerticalAlignment="Top" Width="120" FontSize="14" FontWeight="Bold" Height="29" Grid.ColumnSpan="2"/>
-        <Label x:Name="LabelTemperature" Content="Temperatury" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.982,1" Margin="36,10,0,0" FontSize="14" FontWeight="Bold" Height="29" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TextValue2" HorizontalAlignment="Left" Height="23" Margin="131,83,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.696" Grid.Column="1"/>
-        <TextBox x:Name="TextScoreUnits" HorizontalAlignment="Left" Height="23" Margin="131,232,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.508,1.217" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListMeasureB" HorizontalAlignment="Left" Margin="131,142,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboxListMeasureB_SelectionChanged" Height="22" Grid.Column="1"/>
-        <Label x:Name="Tekst1" Content="konwersja na:" HorizontalAlignment="Left" Margin="131,111,0,0" VerticalAlignment="Top" Width="120" FontSize="14" FontWeight="Bold" Height="29" Grid.Column="1"/>
-        <Label x:Name="LabelMeasure" Content="Długości" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.982,1" Margin="131,10,0,0" FontSize="14" FontWeight="Bold" Height="29" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListMeasureA" HorizontalAlignment="Left" Margin="131,47,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboxListMeasureA_SelectionChanged" Height="22" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListUnits" HorizontalAlignment="Left" Margin="278,83,0,0" VerticalAlignment="Top" Width="77" SelectionChanged="CboxListUnits_SelectionChanged" Height="22" Grid.Column="1"/>
-        <Button x:Name="ButtonCount2" Content="Przelicz" HorizontalAlignment="Left" Margin="131,181,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Height="34" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListUnitsB" HorizontalAlignment="Left" Margin="278,142,0,0" VerticalAlignment="Top" Width="77" SelectionChanged="CboxListUnitsB_SelectionChanged" Height="22" Grid.Column="1"/>
-        <Label x:Name="LabelMass" Content="Masy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.982,1" Margin="391,10,0,0" FontSize="14" FontWeight="Bold" Height="29" Grid.Column="1"/>
-        <DataGrid x:Name="DataGrid1" HorizontalAlignment="Left" Height="149" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.74,3.29" Margin="10,260,0,0" SelectionChanged="DataGrid_SelectionChanged" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="TextValue3" HorizontalAlignment="Left" Height="23" Margin="380,83,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.167,0.696" Grid.Column="1"/>
-        <TextBox x:Name="TextScoreUnitsMass" HorizontalAlignment="Left" Height="23" Margin="380,232,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.508,1.217" Grid.Column="1"/>
-        <Label x:Name="Tekst1_Copy" Content="konwersja na:" HorizontalAlignment="Left" Margin="380,111,0,0" VerticalAlignment="Top" Width="120" FontSize="14" FontWeight="Bold" Height="29" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListUnitsMass" HorizontalAlignment="Left" Margin="527,83,0,0" VerticalAlignment="Top" Width="77" SelectionChanged="CboxListUnits_SelectionChanged" Height="22" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListUnitsMassB" HorizontalAlignment="Left" Margin="527,142,0,0" VerticalAlignment="Top" Width="77" SelectionChanged="CboxListUnitsB_SelectionChanged" Height="22" Grid.Column="1"/>
-        <Button x:Name="ButtonCount3" Content="Przelicz" HorizontalAlignment="Left" Margin="391,181,0,0" VerticalAlignment="Top" Width="99" Height="40" Click="ButtonCount3_Click" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListMassA" HorizontalAlignment="Left" Margin="380,44,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboxListMassA_SelectionChanged" Height="22" Grid.Column="1"/>
-        <ComboBox x:Name="CboxListMassB" HorizontalAlignment="Left" Margin="380,145,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboxListMassB_SelectionChanged" Height="22" Grid.Column="1"/>
+        <DataGrid x:Name="DataGrid1" HorizontalAlignment="Left" Height="186" VerticalAlignment="Top" Width="813" RenderTransformOrigin="0.74,3.29" Margin="88,42,-156,0"  Grid.ColumnSpan="2" Grid.Column="1"/>
+        <ComboBox x:Name="CboxListMiary" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="27,42,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="CboxListMiary_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="CboxListJednowstkaA" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="27,79,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CboxListJednostkaB" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="27,134,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TboxDokonwersji" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="27,106,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TboxWynik" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="27,162,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Bkonwertuj" Content="POLICZ" HorizontalAlignment="Left" Margin="27,190,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Height="38" Click="Bkonwertuj_Click" AutomationProperties.IsRowHeader="True"/>
 
     </Grid>
 </Window>
