@@ -103,6 +103,7 @@
     <Compile Include="Model\KonwContext.cs" />
     <Compile Include="Model\Konwerter_stat.cs" />
     <Compile Include="Model\Staty2.cs" />
+    <Compile Include="Services\ConvertersService.cs" />
     <Compile Include="StatystykiAzureStorageRepo.cs" />
     <Compile Include="StatystykiObiekt.cs" />
     <Compile Include="IStatystykiRepo.cs" />
@@ -121,9 +122,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="obliczDlugosc.cs" />
-    <Compile Include="obliczMase.cs" />
-    <Compile Include="obliczTemp.cs" />
+    <Compile Include="Services\DlugoscConverter.cs" />
+    <Compile Include="Services\MasaConverter.cs" />
+    <Compile Include="Services\TempConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{97c12d78-e58c-42a1-8e14-e639053f8c02}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

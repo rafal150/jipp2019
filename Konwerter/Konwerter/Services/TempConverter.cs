@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
-    class obliczTemp
+    public class TempConverter : IConverter
     {
-        string wyjscie = "";
-        public void liczenieTemp(string z, string na, double wartosc)
+        public string Name=> "Temperatura";
+        public List<string> Units => new List<string>(new[] {"C", "F", "K","R" });
+
+        double wyjscie =0;
+        public double Liczenie(string z, string na, double wartosc)
         {
             double wartosc_pocz = wartosc;
             if (z == "C")     //przeliczenie wszystkiego najpierw na K 
@@ -33,36 +36,37 @@ namespace Konwerter
                     case "C":   //°C = K − 273.15
                         wartosc = (wartosc - 273.15);
                         wartosc = Math.Round(wartosc, 2);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
 
                     case "F":   //°F = (K × 1.8) - 459.67
                         wartosc = (wartosc * 1.8) - 459.67;
                         wartosc = Math.Round(wartosc, 2);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
 
                     case "K": //bez zmian 
                         wartosc = Math.Round(wartosc, 2);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
 
                     case "R":   //R=(K-273.15)* 1.8+ 491.67
                         wartosc = ((wartosc - 273.15) * 1.8) + 491.67;
                         wartosc = Math.Round(wartosc, 2);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                 }
             }
             else
             {
-                wyjscie = wartosc_pocz.ToString();
+                wyjscie = wartosc_pocz;
             }
 
-        }
-        public string wynik()
-        {
             return wyjscie;
         }
+        //public string wynik()
+        //{
+            //return wyjscie;
+        //}
     }
 }

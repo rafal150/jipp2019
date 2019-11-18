@@ -1,15 +1,18 @@
-﻿using System;
+﻿//using Konwerter.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
-    class obliczMase
+    public class MasaConverter:IConverter
     {
-        string wyjscie = "";
-        public void liczenieMasy(string z, string na, double wartosc)   //"mg", "g", "dkg","kg", "T","uncja","funt","karat","kwintal"
+        public string Name => "Masa";
+        public List<string> Units => new List<string>(new[] { "mg", "g", "dkg", "kg", "T", "uncja", "funt", "karat", "kwintal"});
+        double wyjscie =0;
+        public double Liczenie(string z, string na, double wartosc)   //"mg", "g", "dkg","kg", "T","uncja","funt","karat","kwintal"
         {
             double wartosc_pocz = wartosc;
             if (z == "mg")  //przeliczenie wszystkiego na kg
@@ -54,57 +57,58 @@ namespace Konwerter
                     case "mg":
                         wartosc = wartosc * 1000000;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "g":
                         wartosc = wartosc * 1000;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "dkg":
                         wartosc = wartosc * 100;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "kg": //brak zmian
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "T":
                         wartosc = wartosc * 0.001;
                         wartosc = Math.Round(wartosc, 10);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "uncja":
                         wartosc = wartosc * 35.2739621;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "funt":
                         wartosc = wartosc * 2.20462262;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "karat":
                         wartosc = wartosc * 5000;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                     case "kwintal":
                         wartosc = wartosc * 0.01;
                         wartosc = Math.Round(wartosc, 6);
-                        wyjscie = wartosc.ToString();
+                        wyjscie = wartosc;
                         break;
                 }
             }
             else
             {
-                wyjscie = wartosc_pocz.ToString();
+                wyjscie = wartosc_pocz;
             }
-        }
-        public string wynik()
-        {
             return wyjscie;
         }
+        //public string wynik()
+        //{
+        //    return wyjscie;
+        //}
     }
 }

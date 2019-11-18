@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FF5DB158">
-        <ComboBox x:Name="TypComboBox" HorizontalAlignment="Left" Margin="9,57,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="TypComboBox_SelectionChanged" SelectedIndex="0"/>
+        <ComboBox x:Name="TypComboBox" HorizontalAlignment="Left" Margin="9,57,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="TypComboBox_SelectionChanged">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Name}"/>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox x:Name="FromComboBox" HorizontalAlignment="Left" Margin="93,108,0,0" VerticalAlignment="Top" Width="126" SelectedIndex="0"/>
         <ComboBox x:Name="ToComboBox" HorizontalAlignment="Left" Margin="93,144,0,0" VerticalAlignment="Top" Width="126" SelectedIndex="1"/>
         <TextBox x:Name="WejscieTextBox" HorizontalAlignment="Left" Height="22" Margin="93,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" MouseDoubleClick="WejscieTextBox_MouseDoubleClick"/>
