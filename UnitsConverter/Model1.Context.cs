@@ -12,11 +12,11 @@ namespace UnitsConverter
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class masterEntities : DbContext
+    using UnitsConverter.Model;
+    public partial class masterEntities1 : DbContext
     {
-        public masterEntities()
-            : base("name=masterEntities")
+        public masterEntities1()
+            : base("name=masterEntities1")
         {
         }
     
@@ -25,6 +25,6 @@ namespace UnitsConverter
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Statistics> Statistics { get; set; }
+        public virtual DbSet<Statistic> Statistic { get; set; }
     }
 }

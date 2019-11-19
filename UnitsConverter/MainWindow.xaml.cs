@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UnitsConverter.Services;
 
 namespace UnitsConverter
 {
@@ -20,63 +24,59 @@ namespace UnitsConverter
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        //private int value;
+        private IStatisticsRepository repository;
+
+
+
+        public MainWindow(IStatisticsRepository repo, ConverterService converters)
         {
+
             InitializeComponent();
-            this.converterMain.ItemsSource = Listy.TypeList;
-        
 
-            this.LoadStatistics();
+            this.repository = repo;
+            this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
+            this.converterMain.ItemsSource = converters.GetConverters();
         }
 
-        private void LoadStatistics()
-        {
-            List<masterEntities> masterEntities = null;
 
-            using (ConverterContext context = new ConverterContext())
-            {
-               masterEntities = context.masterEntities.ToList();
-            }
 
-            this.statisticsDataGrid.ItemsSource = masterEntities;
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.ResultTextblock.Text =  ((int.Parse(this.InputTextBox.Text)) * 20).
-              ToString();
-
-            using(ConverterContext context = new ConverterContext())
+            if (this.converterMain.SelectedItem != null)
             {
-                masterEntities st = new masterEntities()
+                IConverter converter = (IConverter)this.converterMain.SelectedItem;
+                decimal result = converter.Convert(
+                    this.FromCombobox.SelectedItem.ToString(),
+                    this.ToCombobox.SelectedItem.ToString(),
+                    decimal.Parse(this.InputTextBox.Text));
+
+                this.ResultTextblock.Text = result.ToString();
+                StatisticDTO st = new StatisticDTO()
                 {
                     DateTime = DateTime.Now,
-                    UnitFrom = this.FromCombobox.SelectedItem.ToString(),
-                    Type = "Temperatura"
+                    FromUnit = this.FromCombobox.SelectedItem.ToString(),
+                    Type = this.converterMain.SelectedItem.ToString(),
+                    FromTo = this.ToCombobox.SelectedItem.ToString(),
+                    ConvertedValue = this.ResultTextblock.Text
                 };
+                this.repository.AddStatistic(st);
+                this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
 
-                context.masterEntities.Add(st);
-                context.SaveChanges();
             }
+
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.converterMain.SelectedItem == "temperatura")
+            private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
-                this.FromCombobox.ItemsSource = Listy.TypeList;
-                this.ToCombobox.ItemsSource = Listy.TypeList;
+                if (this.converterMain.SelectedItem != null)
+                {
+                    this.FromCombobox.ItemsSource = ((IConverter)this.converterMain.SelectedItem).Units;
+                    this.ToCombobox.ItemsSource = ((IConverter)this.converterMain.SelectedItem).Units;
+                }
             }
-            else if (this.converterMain.SelectedItem == "długość")
-            {
-                this.FromCombobox.ItemsSource = Listy.Longlist;
-                this.ToCombobox.ItemsSource = Listy.Longlist;
-            }
-            else if (this.converterMain.SelectedItem == "masa")
-            {
-                this.FromCombobox.ItemsSource = Listy.WageList;
-                this.ToCombobox.ItemsSource = Listy.WageList;
-            };
-        }
     }
 }
+
+

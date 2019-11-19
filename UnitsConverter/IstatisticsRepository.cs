@@ -7,8 +7,8 @@ namespace UnitsConverter
     {
 
 
-
+ void AddStatistic(StatisticDTO st);
         IEnumerable<StatisticDTO> GetStatistics();
-        void AddStatistic(StatisticDTO st);
+       
     }
 }

@@ -13,10 +13,10 @@ namespace UnitsConverter.Model
             public string Type { get; set; }
 
             public DateTime? DateTime { get; set; }
-        public string FromUnit { get;  set; }
-        public string FromTo { get;  set; }
-        public string RawValue { get;  set; }
-        public string ConvertedValue { get;  set; }
-    }
+            public string FromUnit { get;  set; }
+            public string FromTo { get;  set; }
+            public string RawValue { get;  set; }
+            public string ConvertedValue { get;  set; }
+        }
     
 }

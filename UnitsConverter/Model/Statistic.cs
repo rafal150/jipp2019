@@ -1,4 +1,4 @@
-namespace UnitsConverter
+namespace UnitsConverter.Model
 {
     using System;
     using System.Collections.Generic;

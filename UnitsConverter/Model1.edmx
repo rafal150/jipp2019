@@ -4,56 +4,55 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Statistics">
+    <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Statistic">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="DateTime" Type="nchar" MaxLength="10" />
-          <Property Name="UnitFrom" Type="nchar" MaxLength="10" />
-          <Property Name="UnitTo" Type="nchar" MaxLength="10" />
-          <Property Name="Type" Type="nchar" MaxLength="10" />
-          <Property Name="RawValue" Type="nchar" MaxLength="10" />
-          <Property Name="ConvertedValue" Type="nchar" MaxLength="10" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="FromUnit" Type="nvarchar(max)" />
+          <Property Name="FromTo" Type="nvarchar(max)" />
+          <Property Name="RawValue" Type="nvarchar(max)" />
+          <Property Name="ConvertedValue" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="masterModelStoreContainer">
-          <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statistic" EntityType="Self.Statistic" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Statistics">
+        <EntityType Name="Statistic">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="DateTime" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitFrom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="UnitTo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="RawValue" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ConvertedValue" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FromUnit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FromTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RawValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConvertedValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Statistics" EntityType="Self.Statistics" />
+        <EntityContainer Name="masterEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Statistic" EntityType="Self.Statistic" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities">
-          <EntitySetMapping Name="Statistics">
-            <EntityTypeMapping TypeName="masterModel.Statistics">
-              <MappingFragment StoreEntitySet="Statistics">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="masterEntities1">
+          <EntitySetMapping Name="Statistic">
+            <EntityTypeMapping TypeName="masterModel.Statistic">
+              <MappingFragment StoreEntitySet="Statistic">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="UnitFrom" ColumnName="UnitFrom" />
-                <ScalarProperty Name="UnitTo" ColumnName="UnitTo" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FromUnit" ColumnName="FromUnit" />
+                <ScalarProperty Name="FromTo" ColumnName="FromTo" />
                 <ScalarProperty Name="RawValue" ColumnName="RawValue" />
                 <ScalarProperty Name="ConvertedValue" ColumnName="ConvertedValue" />
               </MappingFragment>
