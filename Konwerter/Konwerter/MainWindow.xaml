@@ -7,12 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="convenrsionTypeCombo" HorizontalAlignment="Left" Margin="186,14,0,0" VerticalAlignment="Top" Width="596" SelectionChanged="ConvenrsionTypeCombo_SelectionChanged"/>
+        <ComboBox x:Name="convenrsionTypeCombo" HorizontalAlignment="Left" Margin="186,14,0,0" VerticalAlignment="Top" Width="596" SelectionChanged="ConvenrsionTypeCombo_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label Content="Choose the type of conversion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="From:" HorizontalAlignment="Left" Margin="9,52,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="fromCombo" HorizontalAlignment="Left" Margin="60,56,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="FromCombo_SelectionChanged"/>
+        <ComboBox x:Name="fromCombo" HorizontalAlignment="Left" Margin="60,56,0,0" VerticalAlignment="Top" Width="300"/>
         <Label Content="To:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="toCombo" HorizontalAlignment="Left" Margin="60,105,0,0" VerticalAlignment="Top" Width="300" SelectionChanged="ToCombo_SelectionChanged"/>
+        <ComboBox x:Name="toCombo" HorizontalAlignment="Left" Margin="60,105,0,0" VerticalAlignment="Top" Width="300"/>
         <Label Content="Input the value:" HorizontalAlignment="Left" Margin="413,52,0,0" VerticalAlignment="Top"/>
         <Label Content="Converted value:" HorizontalAlignment="Left" Margin="413,101,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="valueToConvert" HorizontalAlignment="Left" Height="23" Margin="532,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>

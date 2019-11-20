@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace Konwerter
 {
-    public class AzureStorageRepository : InterfaceStatisticsRepository
+    public class AzureStorageRepository : IStatisticsRepository
     {
         private CloudTable table;
 

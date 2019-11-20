@@ -81,14 +81,15 @@
     </ApplicationDefinition>
     <Compile Include="AzureStorageRepository.cs" />
     <Compile Include="Model\Db.cs" />
-    <Compile Include="InterfaceStatisticsRepository.cs" />
-    <Compile Include="LengthConversion.cs" />
+    <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="Services\ConvertersService.cs" />
+    <Compile Include="Services\LengthConversion.cs" />
     <Compile Include="Model\DbAzure.cs" />
     <Compile Include="Model\DbSql.cs" />
     <Compile Include="SqlRepository.cs" />
     <Compile Include="StatisticsDTO.cs" />
-    <Compile Include="TemperatureConversion.cs" />
-    <Compile Include="WeightConversion.cs" />
+    <Compile Include="Services\TemperatureConversion.cs" />
+    <Compile Include="Services\WeightConversion.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +130,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{5617518c-4d68-44c3-a08d-88c83c5a077b}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

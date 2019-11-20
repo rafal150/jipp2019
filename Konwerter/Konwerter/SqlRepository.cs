@@ -7,7 +7,7 @@ using Konwerter.Model;
 
 namespace Konwerter
 {
-    public class SqlRepository: InterfaceStatisticsRepository
+    public class SqlRepository: IStatisticsRepository
     {
         public void AddStatistics(StatisticsDTO statistics)
         {

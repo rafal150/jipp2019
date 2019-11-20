@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Konwerter
 {
-    public interface InterfaceStatisticsRepository
+    public interface IStatisticsRepository
     {
         void AddStatistics(StatisticsDTO statistics);
         IEnumerable<StatisticsDTO> GetStatistics();

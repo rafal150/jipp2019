@@ -8,7 +8,7 @@ namespace Konwerter
 {
     public class StatisticsDTO
     {
-        public int id { get; set; }
+        //public int id { get; set; }
         public string conversionType { get; set; }
         public string fromUnit { get; set; }
         public string valueToConvert { get; set; }
