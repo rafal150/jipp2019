@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
     using System.Linq;
+using System.Collections.Generic;
 
 namespace converter
 {
@@ -10,22 +11,22 @@ namespace converter
     /// </summary>
     public partial class MainWindow : Window 
     {
-        UnitConverter converter = new UnitConverter();
+        List<IConverter> converters;
         ITelemetryRepository repository;
 
-        public float From { set; get; }
-        public float To { set; get; }
+        public double From { set; get; }
+        public double To { set; get; }
 
 
-        public MainWindow(ITelemetryRepository repository)
+        public MainWindow(ITelemetryRepository repository, ConvertersService convertersService)
         {
             InitializeComponent();
             DataContext = this;
 
             this.repository = repository;
+            this.converters = convertersService.GetConverters();
 
-            UnitsTypeComboBox.ItemsSource = Enum.GetNames(typeof(UnitsType));
-            UnitsTypeComboBox.SelectedItem = converter.unitsType.ToString();
+            UnitsTypeComboBox.ItemsSource = this.converters;
 
             LoadTelemetry();
         }
@@ -40,53 +41,31 @@ namespace converter
 
         private void UnitsTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            converter.unitsType = (UnitsType)Enum.Parse(typeof(UnitsType), UnitsTypeComboBox.SelectedItem.ToString());
-            var unitList = converter.GetUnits();
+            var unitList = ((IConverter)UnitsTypeComboBox.SelectedItem).Units;
             FromUnitComboBox.ItemsSource = unitList;
             ToUnitComboBox.ItemsSource = unitList;
         }
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-                To = converter.Convert(From);
-                Result.Text = To.ToString();
-
-
-                var telemetry = new TelemetryDTO()
-                {
-                    Date = DateTime.Now,
-                    Type = converter.unitsType.ToString(),
-                    UnitFrom = converter.fromUnit,
-                    UnitTo = converter.toUnit,
-                    ValueFrom = From,
-                    ValueTo = To
-                };
-                repository.AddTelemetry(telemetry);
-                TelemetryGrid.ItemsSource = repository.GetTelemetries();
-        }
-
-        private void FromUnitComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
+            To = ((IConverter)UnitsTypeComboBox.SelectedItem).Convert(
+                FromUnitComboBox.SelectedItem.ToString(),
+                ToUnitComboBox.SelectedItem.ToString(),
+                From
+            );
+            Result.Text = To.ToString();
+            
+            var telemetry = new TelemetryDTO()
             {
-                converter.fromUnit = FromUnitComboBox.SelectedItem.ToString();
-            }
-            catch
-            {
-                converter.fromUnit = "";
-            }
-        }
-
-        private void ToUnitComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                converter.toUnit = ToUnitComboBox.SelectedItem.ToString();
-            }
-            catch
-            {
-                converter.toUnit = "";
-            }
+                Date = DateTime.Now,
+                Type = ((IConverter)UnitsTypeComboBox.SelectedItem).Name,
+                UnitFrom = FromUnitComboBox.SelectedItem.ToString(),
+                UnitTo = ToUnitComboBox.SelectedItem.ToString(),
+                ValueFrom = From,
+                ValueTo = To
+            };
+            repository.AddTelemetry(telemetry);
+            TelemetryGrid.ItemsSource = repository.GetTelemetries();
         }
     }
 }

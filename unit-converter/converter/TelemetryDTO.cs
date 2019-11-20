@@ -12,7 +12,7 @@ namespace converter
         public DateTime Date { get; set; }
         public string UnitFrom { get; set; }
         public string UnitTo { get; set; }
-        public float ValueFrom { get; set; }
-        public float ValueTo { get; set; }
+        public double ValueFrom { get; set; }
+        public double ValueTo { get; set; }
     }
 }

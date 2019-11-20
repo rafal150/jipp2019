@@ -1,10 +1,9 @@
 ﻿using Autofac;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 
 namespace converter
@@ -40,8 +39,25 @@ namespace converter
             }
 
             builder.RegisterType<MainWindow>();
+            builder.RegisterType<ConvertersService>();
+            
+            var assembly = Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
+
+            RegisterPlugins(builder);
 
             return builder.Build();
         }
+
+        private static void RegisterPlugins(ContainerBuilder builder)
+        {
+            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");            
+            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();            
+            foreach (Assembly assembly in assemblies)
+            {
+                builder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
+            }        }
     }
 }

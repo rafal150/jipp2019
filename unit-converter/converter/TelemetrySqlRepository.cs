@@ -20,8 +20,8 @@ namespace converter
                     Type = telemetry.Type,
                     UnitFrom = telemetry.UnitFrom,
                     UnitTo = telemetry.UnitTo,
-                    ValueFrom = telemetry.ValueFrom,
-                    ValueTo = telemetry.ValueTo
+                    ValueFrom = (float)telemetry.ValueFrom,
+                    ValueTo = (float)telemetry.ValueTo
                 };
 
                 ctx.Telemetry.Add(t);
