@@ -1,0 +1,11 @@
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\bin\Debug\netstandard2.0\SpeedConvPlugin.deps.json
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\bin\Debug\netstandard2.0\SpeedConvPlugin.dll
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\bin\Debug\netstandard2.0\SpeedConvPlugin.pdb
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\bin\Debug\netstandard2.0\LabsSDK.dll
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\bin\Debug\netstandard2.0\LabsSDK.pdb
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.csprojAssemblyReference.cache
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.AssemblyInfoInputs.cache
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.AssemblyInfo.cs
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.csproj.CopyComplete
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.dll
+C:\Users\Kosiara\Desktop\new\SpeedConvPlugin\obj\Debug\netstandard2.0\SpeedConvPlugin.pdb
