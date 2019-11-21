@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter_jednostek", "Konwerter_jednostek\Konwerter_jednostek.csproj", "{63997DEF-5038-412A-B358-7FBEBE7EFBE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Konwerter_jednostek", "Konwerter_jednostek\Konwerter_jednostek.csproj", "{63997DEF-5038-412A-B358-7FBEBE7EFBE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK", "SDK\SDK.csproj", "{CCC066D8-00F4-4906-8933-65B0E950B0FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{63997DEF-5038-412A-B358-7FBEBE7EFBE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63997DEF-5038-412A-B358-7FBEBE7EFBE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63997DEF-5038-412A-B358-7FBEBE7EFBE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC066D8-00F4-4906-8933-65B0E950B0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC066D8-00F4-4906-8933-65B0E950B0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC066D8-00F4-4906-8933-65B0E950B0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC066D8-00F4-4906-8933-65B0E950B0FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

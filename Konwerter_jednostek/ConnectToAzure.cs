@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Konwerter_jednostek
 {
-    public class ConnectToAzure
+    public class ConnectToAzure : IPolaczenie
     {
         private CloudTable table;
 
@@ -20,7 +20,7 @@ namespace Konwerter_jednostek
             this.table = client.GetTableReference("StatystykiTable");
         }
 
-        public void DodajStatystyke(Statystyka statystyka)
+        public void Dodaj_statystyke(Statystyka statystyka)
         {
             var entity = new EntityStatystyka();
             entity.PartitionKey = "user";

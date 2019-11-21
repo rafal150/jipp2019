@@ -6,16 +6,9 @@ using System.Text;
 
 namespace Konwerter_jednostek
 {
-    public static class PolaczenieDb
+    public class PolaczenieDb :IPolaczenie
     {
-        public const string ConnectionString1 = @"Data Source=VM-KAROL\NOWABAZA;Initial Catalog=Konwerter;User ID=VM-KAROL\Karol;Password=Milanista90#";
         public const string ConnectionString = "Data Source=VM-KAROL\\NowaBaza;Initial Catalog=Konwerter;Integrated Security=True";
-        //private static SqlConnection _connection;
-
-        public static void Inicjalizuj()
-        {
-            //_connection = new SqlConnection(ConnectionString);
-        }
 
         public static IEnumerable<Miara> PobierzListeMiar(int? typ_ID) //interfejs do zwracania zbiorów
         {
@@ -67,24 +60,24 @@ namespace Konwerter_jednostek
 
             return new Wspolczynniki(0, 0, false);
         }
-        public static void Dodaj_statystyke (string nazwa_typu, string nazwa_miary_wejscie, double wartosc_do_konwersji, string nazwa_miary_wyjscia, double rezultat_konwersji)
+        public void Dodaj_statystyke (Statystyka statystyka)
         {
             var connection = new SqlConnection(ConnectionString);
             connection.Open();
 
             var cmd = new SqlCommand("dbo.sp_dodaj_statystyka", connection); //stored procedure
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@nazwa_typu", nazwa_typu));
-            cmd.Parameters.Add(new SqlParameter("@nazwa_miary_wejscie", nazwa_miary_wejscie));
-            cmd.Parameters.Add(new SqlParameter("@wartosc_do_konwersji", wartosc_do_konwersji));
-            cmd.Parameters.Add(new SqlParameter("@nazwa_miary_wyjscia", nazwa_miary_wyjscia));
-            cmd.Parameters.Add(new SqlParameter("@rezultat_konwersji", rezultat_konwersji));
+            cmd.Parameters.Add(new SqlParameter("@nazwa_typu", statystyka.Nazwa_typu));
+            cmd.Parameters.Add(new SqlParameter("@nazwa_miary_wejscie", statystyka.Nazwa_miary_wejscie));
+            cmd.Parameters.Add(new SqlParameter("@wartosc_do_konwersji", statystyka.Wartosc_do_konwersji));
+            cmd.Parameters.Add(new SqlParameter("@nazwa_miary_wyjscia", statystyka.Nazwa_miary_wyjscia));
+            cmd.Parameters.Add(new SqlParameter("@rezultat_konwersji", statystyka.Rezultat_konwersji));
 
             cmd.ExecuteNonQuery();
             connection.Close();
         }
 
-        public static IEnumerable<Statystyka> PobierzStatystyki()
+        public IEnumerable<Statystyka> PobierzStatystyki()
         {
             var lista_statystyk = new ObservableCollection<Statystyka>();
             var connection = new SqlConnection(ConnectionString);
