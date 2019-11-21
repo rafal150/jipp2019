@@ -6,108 +6,111 @@ using System.Threading.Tasks;
 
 namespace KonwerterJedn
 {
-    class Temp
+    class Temp : IConverter
     {
-        public string TempFrom;
-        public string TempTo;
-        public double Wartosc;
-        public double Wynik;
+       // public string valueFrom;
+       // public string valueTo;
+       // public double Wartosc; //value
+        //public string WartoscString;
         public string Type = "Temp";
-        public string WynikString;
 
-        public Temp(string TempFrom, string TempTo, double Wartosc)
+
+        public string Nazwa => "Temp";
+
+        public List<string> Jednostki => new List<string>(new[] { "Celciusz", "Kelvin", "Ferenheit", "Rankin" } );
+
+        public double Convert(string unitFrom, string unitTo, double Wartosc)
         {
-            if (TempFrom == "Celciusz" && TempTo == "Ferenheit")
+            if (unitFrom == "Celciusz" && unitTo == "Ferenheit")
             {
-                Wynik = (Wartosc * 1.8 + 32);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.8 + 32);
+                return Wartosc;
 
             }
-            if (TempFrom == "Celciusz" && TempTo == "Celciusz")
+            else if (unitFrom == "Celciusz" && unitTo == "Celciusz")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
 
             }
-            if (TempFrom == "Celciusz" && TempTo == "Kelvin")
+            else if (unitFrom == "Celciusz" && unitTo == "Kelvin")
             {
-                Wynik = (Wartosc + 273.15);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc + 273.15);
+                return Wartosc;
 
             }
-            if (TempFrom == "Celciusz" && TempTo == "Rankin")
+            else if (unitFrom == "Celciusz" && unitTo == "Rankin")
             {
-                Wynik = ((Wartosc + 273.15) * 1.8);
-                WynikString = Wynik.ToString();
+                Wartosc = ((Wartosc + 273.15) * 1.8);
+                return Wartosc;
 
             }
             ////F////
-            if (TempFrom == "Ferenheit" && TempTo == "Ferenheit")
+            else if (unitFrom == "Ferenheit" && unitTo == "Ferenheit")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (TempFrom == "Ferenheit" && TempTo == "Celciusz")
+            else if (unitFrom == "Ferenheit" && unitTo == "Celciusz")
             {
-                Wynik = ((Wartosc - 32) / 1.8);
-                WynikString = Wynik.ToString();
+                Wartosc = ((Wartosc - 32) / 1.8);
+                return Wartosc;
             }
-            if (TempFrom == "Ferenheit" && TempTo == "Kelvin")
+            else if (unitFrom == "Ferenheit" && unitTo == "Kelvin")
             {
-                Wynik = ((5 / 9) * (Wartosc - 32) + 273.15);
-                WynikString = Wynik.ToString();
+                Wartosc = ((5 / 9) * (Wartosc - 32) + 273.15);
+                return Wartosc;
             }
-            if (TempFrom == "Ferenheit" && TempTo == "Rankin")
+            else if (unitFrom == "Ferenheit" && unitTo == "Rankin")
             {
-                Wynik = (Wartosc + 459.67);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc + 459.67);
+                return Wartosc;
             }
             /////K/////
-            if (TempFrom == "Kelvin" && TempTo == "Kelvin")
+            else if (unitFrom == "Kelvin" && unitTo == "Kelvin")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (TempFrom == "Kelvin" && TempTo == "Ferenheit")
+            else if (unitFrom == "Kelvin" && unitTo == "Ferenheit")
             {
-                Wynik = ((9 / 5) * (Wartosc - 273.15) + 32);
-                WynikString = Wynik.ToString();
+                Wartosc = ((9 / 5) * (Wartosc - 273.15) + 32);
+                return Wartosc;
             }
-            if (TempFrom == "Kelvin" && TempTo == "Celciusz")
+            else if (unitFrom == "Kelvin" && unitTo == "Celciusz")
             {
-                Wynik = (Wartosc - 273.15);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc - 273.15);
+                return Wartosc;
             }
-            if (TempFrom == "Kelvin" && TempTo == "Rankin")
+            else if (unitFrom == "Kelvin" && unitTo == "Rankin")
             {
-                Wynik = (Wartosc * 9 / 5);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 9 / 5);
+                return Wartosc;
             }
             /////R/////
-            if (TempFrom == "Rankin" && TempTo == "Rankin")
+            else if (unitFrom == "Rankin" && unitTo == "Rankin")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (TempFrom == "Rankin" && TempTo == "Ferenheit")
+            else if (unitFrom == "Rankin" && unitTo == "Ferenheit")
             {
-                Wynik = (Wartosc - 459.67);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc - 459.67);
+                return Wartosc;
             }
-            if (TempFrom == "Rankin" && TempTo == "Celciusz")
+            else if (unitFrom == "Rankin" && unitTo == "Celciusz")
             {
-                Wynik = ((Wartosc - 491.7) * 5 / 9);
-                WynikString = Wynik.ToString();
+                Wartosc = ((Wartosc - 491.7) * 5 / 9);
+                return Wartosc;
             }
-            if (TempFrom == "Rankin" && TempTo == "Kelvin")
+            else if (unitFrom == "Rankin" && unitTo == "Kelvin")
             {
-                Wynik = (Wartosc * 5 / 9);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5 / 9);
+                //WartoscString = Wartosc.ToString();
+                return Wartosc;
             }
+            else
+                return 0;
         }
 
-        public string PodajWynik()
-        { return this.WynikString; }
+        //public string PodajWartosc()
+        //{ return this.WartoscString; }
 
     }
 }

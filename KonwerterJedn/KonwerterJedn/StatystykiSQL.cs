@@ -12,27 +12,27 @@ namespace KonwerterJedn
         {
         }
 
-        public virtual DbSet<StatsBaza> StatsBaza { get; set; }
+        public virtual DbSet<StatsBaza3> StatsBaza3 { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<StatsBaza>()
+            modelBuilder.Entity<StatsBaza3>()
                 .Property(e => e.UnitFrom)
                 .IsFixedLength();
 
-            modelBuilder.Entity<StatsBaza>()
+            modelBuilder.Entity<StatsBaza3>()
                 .Property(e => e.UnitTo)
                 .IsFixedLength();
 
-            modelBuilder.Entity<StatsBaza>()
+            modelBuilder.Entity<StatsBaza3>()
                 .Property(e => e.ValueFrom)
                 .IsFixedLength();
 
-            modelBuilder.Entity<StatsBaza>()
+            modelBuilder.Entity<StatsBaza3>()
                 .Property(e => e.ValueTo)
                 .IsFixedLength();
 
-            modelBuilder.Entity<StatsBaza>()
+            modelBuilder.Entity<StatsBaza3>()
                 .Property(e => e.Type)
                 .IsFixedLength();
         }

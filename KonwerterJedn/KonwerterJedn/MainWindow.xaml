@@ -7,25 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <RadioButton x:Name="TempRB" Content="Temperatura" HorizontalAlignment="Left" Margin="33,54,0,0" VerticalAlignment="Top" Checked="TempRB_Checked_1"/>
-        <RadioButton x:Name="OdlRB" Content="Odleglosc" HorizontalAlignment="Left" Margin="276,51,0,0" VerticalAlignment="Top" Checked="OdlRB_Checked_1"/>
-        <RadioButton x:Name="MasaRB" Content="Masa" HorizontalAlignment="Left" Margin="527,51,0,0" VerticalAlignment="Top" Checked="MasaRB_Checked_1"/>
-        <Button x:Name="Button1" Content="Przelicz" HorizontalAlignment="Left" Margin="53,247,0,0" VerticalAlignment="Top" Width="75" Click="Button1_Click"/>
-        <ComboBox x:Name="TemperaturaFrom" HorizontalAlignment="Left" Margin="33,92,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WartoscTemp" HorizontalAlignment="Left" Height="23" Margin="33,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WynikTemp" HorizontalAlignment="Left" Height="23" Margin="33,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="TemperaturaTo" HorizontalAlignment="Left" Margin="33,176,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="OdlegloscFrom" HorizontalAlignment="Left" Margin="254,92,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WartoscOdl" HorizontalAlignment="Left" Height="23" Margin="254,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WynikOdl" HorizontalAlignment="Left" Height="23" Margin="254,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="OdlegloscTo" HorizontalAlignment="Left" Margin="254,176,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="MasaFrom" HorizontalAlignment="Left" Margin="478,92,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WartoscMasa" HorizontalAlignment="Left" Height="23" Margin="478,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="WynikMasa" HorizontalAlignment="Left" Height="23" Margin="478,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="MasaTo" HorizontalAlignment="Left" Margin="478,176,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Button2" Content="Przelicz" HorizontalAlignment="Left" Margin="276,252,0,0" VerticalAlignment="Top" Width="75" Click="Button2_Click"/>
-        <Button x:Name="Button3" Content="Przelicz" HorizontalAlignment="Left" Margin="499,252,0,0" VerticalAlignment="Top" Width="75" Click="Button3_Click"/>
-        <DataGrid x:Name="StatsSQL" HorizontalAlignment="Left" Height="100" Margin="33,293,0,0" VerticalAlignment="Top" Width="707"/>
+        <DataGrid x:Name="StatsSQL" HorizontalAlignment="Left" Height="159" Margin="33,234,0,0" VerticalAlignment="Top" Width="707"/>
+        <ComboBox x:Name="ChooseUnitKind" HorizontalAlignment="Left" Margin="315,50,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="catergoriesCombobox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nazwa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="ChosenUnitsFrom" HorizontalAlignment="Left" Margin="100,79,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ChosenUnitsTo" HorizontalAlignment="Left" Margin="523,80,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InputUnit" HorizontalAlignment="Left" Height="23" Margin="100,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="OutputUnit" HorizontalAlignment="Left" Height="23" Margin="523,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Button" Content="Przelicz" HorizontalAlignment="Left" Margin="335,107,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>

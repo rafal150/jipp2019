@@ -23,14 +23,16 @@ namespace KonwerterJedn
     {
         private IStatisticsRepository repository;
 
-        public MainWindow(IStatisticsRepository repo)
+        public MainWindow(IStatisticsRepository repo, KonwerterJednostek konwertery)
         {
             InitializeComponent();
 
             this.repository = repo;
             this.StatsSQL.ItemsSource = repository.GetStatistics();
-        }
 
+            this.ChooseUnitKind.ItemsSource = konwertery.GetConverters();
+        }
+/*
         private void TempRB_Checked_1(object sender, RoutedEventArgs e)
         {
             TemperaturaFrom.ItemsSource = new List<string>(new[] { "Celciusz", "Kelvin", "Ferenheit", "Rankin" });
@@ -52,30 +54,31 @@ namespace KonwerterJedn
             MasaTo.ItemsSource = new List<string>(new[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" });
 
         }
-
+*/
+/*
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
            
             double Wartosc;
-            Wartosc = double.Parse(WartoscTemp.Text);
+            Wartosc = double.Parse(InputUnit.Text);
 
-            Temp Temp1 = new Temp(TemperaturaFrom.Text, TemperaturaTo.Text, Wartosc);
-            WynikTemp.Text = Temp1.PodajWynik();
-            
-
+           // Temp Temp1 = new Temp(ChosenUnitsFrom.Text, ChosenUnitsTo.Text, Wartosc);
+            OutputUnit.Text = OutputUnit.ToString();
+         
                 StatisticDTO St = new StatisticDTO()
                 {
-                    UnitFrom = TemperaturaFrom.Text,
-                    UnitTo = TemperaturaTo.Text,
-                    ValueFrom = this.WartoscTemp.Text,
-                    ValueTo = this.WynikTemp.Text,
-                    Type = Temp1.Type,
+                    UnitFrom = ChosenUnitsFrom.Text,
+                    UnitTo = ChosenUnitsTo.Text,
+                    ValueFrom = this.InputUnit.Text,
+                    ValueTo = this.OutputUnit.Text,
+                    Type = this.Nazwa,
                     DateTime = DateTime.Now
                 };
                 this.repository.AddStatistic(St);
                 this.StatsSQL.ItemsSource = repository.GetStatistics();
         }
-
+        */
+        /*
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
           
@@ -124,7 +127,44 @@ namespace KonwerterJedn
             this.repository.AddStatistic(St);
             this.StatsSQL.ItemsSource = repository.GetStatistics();
         }
+        */
+        private void catergoriesCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.ChooseUnitKind.SelectedItem != null)
+            {
+                this.ChosenUnitsFrom.ItemsSource = ((IConverter)this.ChooseUnitKind.SelectedItem).Jednostki;
+                this.ChosenUnitsTo.ItemsSource = ((IConverter)this.ChooseUnitKind.SelectedItem).Jednostki;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //double Wartosc;
+           // Wartosc = double.Parse(InputUnit.Text);
+
+            IConverter converter = (IConverter)this.ChooseUnitKind.SelectedItem;
+            double result = converter.Convert(
+                this.ChosenUnitsFrom.SelectedItem.ToString(),
+                this.ChosenUnitsTo.SelectedItem.ToString(),
+                double.Parse(this.InputUnit.Text));
+
+            // Temp Temp1 = new Temp(ChosenUnitsFrom.Text, ChosenUnitsTo.Text, Wartosc);
+            this.OutputUnit.Text = result.ToString();
+
+            StatisticDTO St = new StatisticDTO()
+            {
+                UnitFrom = this.ChosenUnitsFrom.Text,
+                UnitTo = this.ChosenUnitsTo.Text,
+                ValueFrom = this.InputUnit.Text,
+                ValueTo = this.OutputUnit.Text,
+                Type = this.Name,
+                DateTime = DateTime.Now
+            };
+            this.repository.AddStatistic(St);
+            this.StatsSQL.ItemsSource = repository.GetStatistics();
+        }
     }
+    
 }
 
 

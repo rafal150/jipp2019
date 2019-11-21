@@ -6,452 +6,449 @@ using System.Threading.Tasks;
 
 namespace KonwerterJedn
 {
-    class Mas
+    class Mas : IConverter
     {
-        public string MasFrom;
-        public string MasTo;
-        public double Wartosc;
-        public double Wynik;
+       // public string valueFrom;
+       // public string valueTo;
+        // public double myValue;
+      //  public double Wartosc; //value
         public string Type = "Masa";
-        public string WynikString;
 
-        public Mas(string MasFrom, string MasTo, double Wartosc)
+
+        public string Nazwa => "Masa";
+
+        public List<string> Jednostki => new List<string>(new[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" });
+
+        public double Convert(string unitFrom, string unitTo, double Wartosc)
         {
-            if (MasFrom == "mg" && MasTo == "mg")
+            if (unitFrom == "mg" && unitTo == "mg")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "g")
+            else if (unitFrom == "mg" && unitTo == "g")
             {
-                Wynik = (Wartosc * 0.001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.001);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "dkg")
+            else if (unitFrom == "mg" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 0.0001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0001);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "kg")
+            else if (unitFrom == "mg" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.000001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000001);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "t")
+            else if (unitFrom == "mg" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.000000001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000000001);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "uncja")
+            else if (unitFrom == "mg" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 0.000035274);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000035274);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "funt")
+            else if (unitFrom == "mg" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 0.0000022046);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0000022046);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "karat")
+            else if (unitFrom == "mg" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 0.005);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.005);
+                return Wartosc;
             }
-            if (MasFrom == "mg" && MasTo == "kwintal")
+            else if (unitFrom == "mg" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.00000001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00000001);
+                return Wartosc;
             }
 
             ///////////g////////////
-            if (MasFrom == "g" && MasTo == "g")
+            else if (unitFrom == "g" && unitTo == "g")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "mg")
+            else if (unitFrom == "g" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "dkg")
+            else if (unitFrom == "g" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 0.1);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.1);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "kg")
+            else if (unitFrom == "g" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.001);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "t")
+            else if (unitFrom == "g" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.000001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000001);
+                return Wartosc;
             }
 
-            if (MasFrom == "g" && MasTo == "uncja")
+            else if (unitFrom == "g" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 0.0353);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0353);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "funt")
+            else if (unitFrom == "g" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 0.0022);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0022);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "karat")
+            else if (unitFrom == "g" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 5);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5);
+                return Wartosc;
             }
-            if (MasFrom == "g" && MasTo == "kwintal")
+            else if (unitFrom == "g" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.00001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00001);
+                return Wartosc;
             }
 
 
 
             ////dkg/////
-            if (MasFrom == "dkg" && MasTo == "dkg")
+            else if (unitFrom == "dkg" && unitTo == "dkg")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "g")
+            else if (unitFrom == "dkg" && unitTo == "g")
             {
-                Wynik = (Wartosc * 10000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10000);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "mg")
+            else if (unitFrom == "dkg" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "kg")
+            else if (unitFrom == "dkg" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.01);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.01);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "t")
+            else if (unitFrom == "dkg" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.00001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00001);
+                return Wartosc;
             }
 
-            if (MasFrom == "dkg" && MasTo == "uncja")
+            else if (unitFrom == "dkg" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 0.3527);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.3527);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "funt")
+            else if (unitFrom == "dkg" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 0.022);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.022);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "karat")
+            else if (unitFrom == "dkg" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 50);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 50);
+                return Wartosc;
             }
-            if (MasFrom == "dkg" && MasTo == "kwintal")
+            else if (unitFrom == "dkg" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.0001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0001);
+                return Wartosc;
             }
 
 
 
             ////kg/////
-            if (MasFrom == "kg" && MasTo == "kg")
+            else if (unitFrom == "kg" && unitTo == "kg")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "g")
+            else if (unitFrom == "kg" && unitTo == "g")
             {
-                Wynik = (Wartosc * 1000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000000);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "mg")
+            else if (unitFrom == "kg" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "dkg")
+            else if (unitFrom == "kg" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 100);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "t")
+            else if (unitFrom == "kg" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.001);
+                return Wartosc;
             }
 
-            if (MasFrom == "kg" && MasTo == "uncja")
+            else if (unitFrom == "kg" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 35.274);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 35.274);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "funt")
+            else if (unitFrom == "kg" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 2.2046);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2.2046);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "karat")
+            else if (unitFrom == "kg" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 5000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5000);
+                return Wartosc;
             }
-            if (MasFrom == "kg" && MasTo == "kwintal")
+            else if (unitFrom == "kg" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.01);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.01);
+                return Wartosc;
             }
 
 
 
 
             ////t/////
-            if (MasFrom == "t" && MasTo == "t")
+            else if (unitFrom == "t" && unitTo == "t")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "g")
+            else if (unitFrom == "t" && unitTo == "g")
             {
-                Wynik = (Wartosc * 1.000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.000000);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "mg")
+            else if (unitFrom == "t" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 1.000000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.000000000);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "dkg")
+            else if (unitFrom == "t" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 100000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100000);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "kg")
+            else if (unitFrom == "t" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "uncja")
+            else if (unitFrom == "t" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 35273.9621);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 35273.9621);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "funt")
+            else if (unitFrom == "t" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 2204.6226);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2204.6226);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "karat")
+            else if (unitFrom == "t" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 5.000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5.000000);
+                return Wartosc;
             }
-            if (MasFrom == "t" && MasTo == "kwintal")
+            else if (unitFrom == "t" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10);
+                return Wartosc;
             }
 
 
 
             /////uncja//////
-            if (MasFrom == "uncja" && MasTo == "uncja")
+            else if (unitFrom == "uncja" && unitTo == "uncja")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "mg")
+            else if (unitFrom == "uncja" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 28349.523);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 28349.523);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "g")
+            else if (unitFrom == "uncja" && unitTo == "g")
             {
-                Wynik = (Wartosc * 28.3495);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 28.3495);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "dkg")
+            else if (unitFrom == "uncja" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 2.835);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2.835);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "kg")
+            else if (unitFrom == "uncja" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.0283);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0283);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "t")
+            else if (unitFrom == "uncja" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.00000283);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00000283);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "funt")
+            else if (unitFrom == "uncja" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 0.0625);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0625);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "karat")
+            else if (unitFrom == "uncja" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 141.75);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 141.75);
+                return Wartosc;
             }
-            if (MasFrom == "uncja" && MasTo == "kwintal")
+            else if (unitFrom == "uncja" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.0003);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0003);
+                return Wartosc;
             }
 
             ////funt///////
-            if (MasFrom == "funt" && MasTo == "funt")
+            else if (unitFrom == "funt" && unitTo == "funt")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "mg")
+            else if (unitFrom == "funt" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 0.000045359);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000045359);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "g")
+            else if (unitFrom == "funt" && unitTo == "g")
             {
-                Wynik = (Wartosc * 453.5924);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 453.5924);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "dkg")
+            else if (unitFrom == "funt" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 45.3592);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 45.3592);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "kg")
+            else if (unitFrom == "funt" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.4536);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.4536);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "uncja")
+            else if (unitFrom == "funt" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 16);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 16);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "t")
+            else if (unitFrom == "funt" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.0005);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0005);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "karat")
+            else if (unitFrom == "funt" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 2267.9619);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2267.9619);
+                return Wartosc;
             }
-            if (MasFrom == "funt" && MasTo == "kwintal")
+            else if (unitFrom == "funt" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.0045);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0045);
+                return Wartosc;
             }
             ////karat//////
-            if (MasFrom == "karat" && MasTo == "karat")
+            else if (unitFrom == "karat" && unitTo == "karat")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "g")
+            else if (unitFrom == "karat" && unitTo == "g")
             {
-                Wynik = (Wartosc * 0.2);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.2);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "mg")
+            else if (unitFrom == "karat" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 200);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 200);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "dkg")
+            else if (unitFrom == "karat" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 0.02);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.02);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "kg")
+            else if (unitFrom == "karat" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 0.0002);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0002);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "uncja")
+            else if (unitFrom == "karat" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 0.0071);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0071);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "funt")
+            else if (unitFrom == "karat" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 0.0004);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0004);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "t")
+            else if (unitFrom == "karat" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.0000002);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0000002);
+                return Wartosc;
             }
-            if (MasFrom == "karat" && MasTo == "kwintal")
+            else if (unitFrom == "karat" && unitTo == "kwintal")
             {
-                Wynik = (Wartosc * 0.000002);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000002);
+                return Wartosc;
             }
 
             ////kwintal/////
-            if (MasFrom == "kwintal" && MasTo == "kwintal")
+            else if (unitFrom == "kwintal" && unitTo == "kwintal")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "g")
+            else if (unitFrom == "kwintal" && unitTo == "g")
             {
-                Wynik = (Wartosc * 100000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100000);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "mg")
+            else if (unitFrom == "kwintal" && unitTo == "mg")
             {
-                Wynik = (Wartosc * 100000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100000000);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "dkg")
+            else if (unitFrom == "kwintal" && unitTo == "dkg")
             {
-                Wynik = (Wartosc * 100);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "kg")
+            else if (unitFrom == "kwintal" && unitTo == "kg")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "uncja")
+            else if (unitFrom == "kwintal" && unitTo == "uncja")
             {
-                Wynik = (Wartosc * 3527.3962);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 3527.3962);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "funt")
+            else if (unitFrom == "kwintal" && unitTo == "funt")
             {
-                Wynik = (Wartosc * 220.4623);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 220.4623);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "karat")
+            else if (unitFrom == "kwintal" && unitTo == "karat")
             {
-                Wynik = (Wartosc * 5.00000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5.00000);
+                return Wartosc;
             }
-            if (MasFrom == "kwintal" && MasTo == "t")
+            else if (unitFrom == "kwintal" && unitTo == "t")
             {
-                Wynik = (Wartosc * 0.1);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.1);
+                return Wartosc;
             }
+            else
+                return 0;
         }
-        public string PodajWynik()
-        { return this.WynikString; }
+        //public string PodajWartosc()
+       // { return this.WartoscString; }
 
     }
 }

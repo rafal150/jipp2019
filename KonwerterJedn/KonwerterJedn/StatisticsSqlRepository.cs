@@ -13,7 +13,7 @@ namespace KonwerterJedn
         {
             using (StatystykiSQL context = new StatystykiSQL())
             {
-                context.StatsBaza.Add(new StatsBaza()
+                context.StatsBaza3.Add(new StatsBaza3()
                 {
                     UnitFrom = statistic.UnitFrom,
                     UnitTo = statistic.UnitTo,
@@ -31,7 +31,7 @@ namespace KonwerterJedn
         {
             using (StatystykiSQL context = new StatystykiSQL())
             {
-                return context.StatsBaza.
+                return context.StatsBaza3.
                     Select(obj => new StatisticDTO() { UnitFrom = obj.UnitFrom, UnitTo = obj. UnitTo, ValueFrom = obj. ValueFrom, ValueTo = obj. ValueTo,Type = obj.Type, DateTime = obj.DateTime, }).
                     ToList();
             }

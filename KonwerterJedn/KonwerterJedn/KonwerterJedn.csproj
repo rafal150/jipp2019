@@ -78,6 +78,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="KonwerterJednostek.cs" />
     <Compile Include="Mas.cs" />
     <Compile Include="Model\Statistic.cs" />
     <Compile Include="Model\StatisticsEntity.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="StatisticsAzureStorageRepository.cs" />
     <Compile Include="StatisticsSqlRepository.cs" />
-    <Compile Include="StatsBaza.cs" />
+    <Compile Include="StatsBaza3.cs" />
     <Compile Include="StatystykiSQL.cs" />
     <Compile Include="Temp.cs" />
     <Page Include="MainWindow.xaml">
@@ -127,9 +128,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{91176b85-04a2-4a2c-a27c-bd4015017309}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

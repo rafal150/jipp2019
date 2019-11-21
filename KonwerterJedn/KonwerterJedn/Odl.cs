@@ -6,655 +6,653 @@ using System.Threading.Tasks;
 
 namespace KonwerterJedn
 {
-    class Odl
+    class Odl : IConverter
     {
-        public string OdlFrom;
-        public string OdlTo;
-        public double Wartosc;
-        public double Wynik;
-        public string Type = "Odleglosc";
-        public string WynikString;
+        //public string valueFrom;
+        //public string valueTo;
+       // public double Wartosc; //value
 
-        public Odl(string OdlFrom, string OdlTo, double Wartosc)
+        public string WartoscString;
+        public string Type = "Odleglosc";
+
+
+        public string Nazwa => "Odleglosc";
+
+        public List<string> Jednostki => new List<string>(new[] { "mm", "cm", "dcm", "m", "km", "cal", "stopa", "jard", "mila", "kabel", "mila morska" });
+
+        public double Convert(string unitFrom, string unitTo, double Wartosc)
         {
+
             ////mm////
-            if (OdlFrom == "mm" && OdlTo == "mm")
+            if (unitFrom == "mm" && unitTo == "mm")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
+
             }
-            if (OdlFrom == "mm" && OdlTo == "cm")
+            if (unitFrom == "mm" && unitTo == "cm")
             {
-                Wynik = (Wartosc / 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 10);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "dcm")
+            if (unitFrom == "mm" && unitTo == "dcm")
             {
-                Wynik = (Wartosc / 100);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 100);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "m")
+            if (unitFrom == "mm" && unitTo == "m")
             {
-                Wynik = (Wartosc / 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 1000);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "km")
+            if (unitFrom == "mm" && unitTo == "km")
             {
-                Wynik = (Wartosc / 1000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 1000000);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "cal")
+            if (unitFrom == "mm" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 0.03937);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.03937);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "stopa")
+            if (unitFrom == "mm" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 0.0033);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0033);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "jard")
+            if (unitFrom == "mm" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 0.0033);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0033);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "mila")
+            if (unitFrom == "mm" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.00000062137);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00000062137);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "kabel")
+            if (unitFrom == "mm" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.000053996);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000053996);
+                return Wartosc;
             }
-            if (OdlFrom == "mm" && OdlTo == "mila morska")
+            if (unitFrom == "mm" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.0000053996);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0000053996);
+                return Wartosc;
             }
 
 
             //cm////
-            if (OdlFrom == "cm" && OdlTo == "cm")
+            if (unitFrom == "cm" && unitTo == "cm")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "mm")
+            if (unitFrom == "cm" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "m")
+            if (unitFrom == "cm" && unitTo == "m")
             {
-                Wynik = (Wartosc * 0.01);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.01);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "km")
+            if (unitFrom == "cm" && unitTo == "km")
             {
-                Wynik = (Wartosc / 100000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 100000);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "cal")
+            if (unitFrom == "cm" && unitTo == "cal")
             {
-                Wynik = (Wartosc / 2.54);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 2.54);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "stopa")
+            if (unitFrom == "cm" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 0.0328);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0328);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "jard")
+            if (unitFrom == "cm" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 0.010936);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.010936);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "mila")
+            if (unitFrom == "cm" && unitTo == "mila")
             {
-                Wynik = (Wartosc / 6.214);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 6.214);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "kabel")
+            if (unitFrom == "cm" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.00053996);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00053996);
+                return Wartosc;
             }
-            if (OdlFrom == "cm" && OdlTo == "mila morska")
+            if (unitFrom == "cm" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.000053996);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000053996);
+                return Wartosc;
             }
 
 
             ///dcm////
-            if (OdlFrom == "dcm" && OdlTo == "dcm")
+            if (unitFrom == "dcm" && unitTo == "dcm")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "mm")
+            if (unitFrom == "dcm" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 100);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "m")
+            if (unitFrom == "dcm" && unitTo == "m")
             {
-                Wynik = (Wartosc / 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 10);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "cm")
+            if (unitFrom == "dcm" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "km")
+            if (unitFrom == "dcm" && unitTo == "km")
             {
-                Wynik = (Wartosc / 10000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 10000);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "cal")
+            if (unitFrom == "dcm" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 25.4);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 25.4);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "stopa")
+            if (unitFrom == "dcm" && unitTo == "stopa")
             {
-                Wynik = ((Wartosc / 25) / 12);
-                WynikString = Wynik.ToString();
+                Wartosc = ((Wartosc / 25) / 12);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "jard")
+            if (unitFrom == "dcm" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 914.4);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 914.4);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "mila")
+            if (unitFrom == "dcm" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.00062137);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00062137);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "kabel")
+            if (unitFrom == "dcm" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.0005);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0005);
+                return Wartosc;
             }
-            if (OdlFrom == "dcm" && OdlTo == "mila morska")
+            if (unitFrom == "dcm" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.00005);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00005);
+                return Wartosc;
             }
 
 
 
             ////m////
-            if (OdlFrom == "m" && OdlTo == "m")
+            if (unitFrom == "m" && unitTo == "m")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "cm")
+            if (unitFrom == "m" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 100);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "dcm")
+            if (unitFrom == "m" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 10);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "mm")
+            if (unitFrom == "m" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "km")
+            if (unitFrom == "m" && unitTo == "km")
             {
-                Wynik = (Wartosc * 0.001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.001);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "cal")
+            if (unitFrom == "m" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 39.370079);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 39.370079);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "stopa")
+            if (unitFrom == "m" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 3.28084);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 3.28084);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "jard")
+            if (unitFrom == "m" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 1.093613);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.093613);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "mila")
+            if (unitFrom == "m" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.000621);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000621);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "kabel")
+            if (unitFrom == "m" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.0054);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0054);
+                return Wartosc;
             }
-            if (OdlFrom == "m" && OdlTo == "mila morska")
+            if (unitFrom == "m" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.0054);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0054);
+                return Wartosc;
             }
 
 
             //km///
-            if (OdlFrom == "km" && OdlTo == "km")
+            if (unitFrom == "km" && unitTo == "km")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "mm")
+            if (unitFrom == "km" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 1000000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000000);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "dcm")
+            if (unitFrom == "km" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 10000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 10000);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "cm")
+            if (unitFrom == "km" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 100000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 100000);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "m")
+            if (unitFrom == "km" && unitTo == "m")
             {
-                Wynik = (Wartosc * 1000);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1000);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "cal")
+            if (unitFrom == "km" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 39.37007874);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 39.37007874);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "stopa")
+            if (unitFrom == "km" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 3.280839895);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 3.280839895);
+                WartoscString = Wartosc.ToString();
             }
-            if (OdlFrom == "km" && OdlTo == "jard")
+            if (unitFrom == "km" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 1.093613298);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.093613298);
+                return Wartosc;
             }
 
-            if (OdlFrom == "km" && OdlTo == "mila")
+            if (unitFrom == "km" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.621371);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.621371);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "kabel")
+            if (unitFrom == "km" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 5.3996);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5.3996);
+                return Wartosc;
             }
-            if (OdlFrom == "km" && OdlTo == "mila morska")
+            if (unitFrom == "km" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.54);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.54);
+                return Wartosc;
             }
 
 
             ////cal////
-            if (OdlFrom == "cal" && OdlTo == "cal")
+            if (unitFrom == "cal" && unitTo == "cal")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "mm")
+            if (unitFrom == "cal" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 25.4);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 25.4);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "dcm")
+            if (unitFrom == "cal" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 0.254);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.254);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "cm")
+            if (unitFrom == "cal" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 2.54);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2.54);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "m")
+            if (unitFrom == "cal" && unitTo == "m")
             {
-                Wynik = (Wartosc * 0.0254);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0254);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "km")
+            if (unitFrom == "cal" && unitTo == "km")
             {
-                Wynik = (Wartosc * 0.0000254);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0000254);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "stopa")
+            if (unitFrom == "cal" && unitTo == "stopa")
             {
-                Wynik = (Wartosc / 12);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc / 12);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "jard")
+            if (unitFrom == "cal" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 0.027778);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.027778);
+                return Wartosc;
             }
 
-            if (OdlFrom == "cal" && OdlTo == "mila")
+            if (unitFrom == "cal" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.000015783);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000015783);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "kabel")
+            if (unitFrom == "cal" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.0001);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0001);
+                return Wartosc;
             }
-            if (OdlFrom == "cal" && OdlTo == "mila morska")
+            if (unitFrom == "cal" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.00013715);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00013715);
+                return Wartosc;
             }
 
 
             ///stopa////
-            if (OdlFrom == "stopa" && OdlTo == "stopa")
+            if (unitFrom == "stopa" && unitTo == "stopa")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "mm")
+            if (unitFrom == "stopa" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 304.8);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 304.8);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "dcm")
+            if (unitFrom == "stopa" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 3.048);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 3.048);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "km")
+            if (unitFrom == "stopa" && unitTo == "km")
             {
-                Wynik = (Wartosc * 0.000305);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000305);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "cm")
+            if (unitFrom == "stopa" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 30.48);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 30.48);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "m")
+            if (unitFrom == "stopa" && unitTo == "m")
             {
-                Wynik = (Wartosc * 0.3048);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.3048);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "cal")
+            if (unitFrom == "stopa" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 12);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 12);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "jard")
+            if (unitFrom == "stopa" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 0.333333);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.333333);
+                return Wartosc;
             }
 
-            if (OdlFrom == "stopa" && OdlTo == "mila")
+            if (unitFrom == "stopa" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.000189);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000189);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "kabel")
+            if (unitFrom == "stopa" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.0016);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0016);
+                return Wartosc;
             }
-            if (OdlFrom == "stopa" && OdlTo == "mila morska")
+            if (unitFrom == "stopa" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.0002);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0002);
+                return Wartosc;
             }
 
             ////jard////
-            if (OdlFrom == "jard" && OdlTo == "jard")
+            if (unitFrom == "jard" && unitTo == "jard")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "mm")
+            if (unitFrom == "jard" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 914.4);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 914.4);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "dcm")
+            if (unitFrom == "jard" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 9.144);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 9.144);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "cm")
+            if (unitFrom == "jard" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 91.44);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 91.44);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "m")
+            if (unitFrom == "jard" && unitTo == "m")
             {
-                Wynik = (Wartosc * 0.9144);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.9144);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "km")
+            if (unitFrom == "jard" && unitTo == "km")
             {
-                Wynik = (Wartosc * 0.000914);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000914);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "stopa")
+            if (unitFrom == "jard" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 3);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 3);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "cal")
+            if (unitFrom == "jard" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 0.000568);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000568);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "mila")
+            if (unitFrom == "jard" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.000568);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000568);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "kabel")
+            if (unitFrom == "jard" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 0.0049);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0049);
+                return Wartosc;
             }
-            if (OdlFrom == "jard" && OdlTo == "mila morska")
+            if (unitFrom == "jard" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.0005);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.0005);
+                return Wartosc;
             }
 
 
             ///mila////
-            if (OdlFrom == "mila" && OdlTo == "mila")
+            if (unitFrom == "mila" && unitTo == "mila")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "mm")
+            if (unitFrom == "mila" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 1.609344);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.609344);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "cm")
+            if (unitFrom == "mila" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 160.9344);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 160.9344);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "dcm")
+            if (unitFrom == "mila" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 16093.44);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 16093.44);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "m")
+            if (unitFrom == "mila" && unitTo == "m")
             {
-                Wynik = (Wartosc * 1.609344);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.609344);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "cal")
+            if (unitFrom == "mila" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 63.360);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 63.360);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "stopa")
+            if (unitFrom == "mila" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 5.280);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 5.280);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "jard")
+            if (unitFrom == "mila" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 1.760);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.760);
+                return Wartosc;
             }
 
-            if (OdlFrom == "mila" && OdlTo == "km")
+            if (unitFrom == "mila" && unitTo == "km")
             {
-                Wynik = (Wartosc * 1.609344);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.609344);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "kabel")
+            if (unitFrom == "mila" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 8.6898);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 8.6898);
+                return Wartosc;
             }
-            if (OdlFrom == "mila" && OdlTo == "mila morska")
+            if (unitFrom == "mila" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.869);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.869);
+                return Wartosc;
             }
 
 
             ///kabel///
-            if (OdlFrom == "kabel" && OdlTo == "kabel")
+            if (unitFrom == "kabel" && unitTo == "kabel")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "mm")
+            if (unitFrom == "kabel" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 0.00018520);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00018520);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "cm")
+            if (unitFrom == "kabel" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 1.8520);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.8520);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "dcm")
+            if (unitFrom == "kabel" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 1852);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1852);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "m")
+            if (unitFrom == "kabel" && unitTo == "m")
             {
-                Wynik = (Wartosc * 185.2);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 185.2);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "cal")
+            if (unitFrom == "kabel" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 7291.3386);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 7291.3386);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "stopa")
+            if (unitFrom == "kabel" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 607.6116);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 607.6116);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "jard")
+            if (unitFrom == "kabel" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 202.5372);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 202.5372);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "mila")
+            if (unitFrom == "kabel" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 0.1151);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.1151);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "km")
+            if (unitFrom == "kabel" && unitTo == "km")
             {
-                Wynik = (Wartosc * 0.1852);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.1852);
+                return Wartosc;
             }
-            if (OdlFrom == "kabel" && OdlTo == "mila morska")
+            if (unitFrom == "kabel" && unitTo == "mila morska")
             {
-                Wynik = (Wartosc * 0.1);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.1);
+                return Wartosc;
             }
 
 
             ///milamorska////
-            if (OdlFrom == "mila morska" && OdlTo == "mila morska")
+            if (unitFrom == "mila morska" && unitTo == "mila morska")
             {
-                Wynik = Wartosc;
-                WynikString = Wynik.ToString();
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "mm")
+            if (unitFrom == "mila morska" && unitTo == "mm")
             {
-                Wynik = (Wartosc * 0.000018520);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.000018520);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "dcm")
+            if (unitFrom == "mila morska" && unitTo == "dcm")
             {
-                Wynik = (Wartosc * 18520);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 18520);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "cm")
+            if (unitFrom == "mila morska" && unitTo == "cm")
             {
-                Wynik = (Wartosc * 0.00018520);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 0.00018520);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "m")
+            if (unitFrom == "mila morska" && unitTo == "m")
             {
-                Wynik = (Wartosc * 1852);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1852);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "cal")
+            if (unitFrom == "mila morska" && unitTo == "cal")
             {
-                Wynik = (Wartosc * 72913.3858);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 72913.3858);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "stopa")
+            if (unitFrom == "mila morska" && unitTo == "stopa")
             {
-                Wynik = (Wartosc * 6076.1155);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 6076.1155);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "jard")
+            if (unitFrom == "mila morska" && unitTo == "jard")
             {
-                Wynik = (Wartosc * 2025.3718);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 2025.3718);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "mila")
+            if (unitFrom == "mila morska" && unitTo == "mila")
             {
-                Wynik = (Wartosc * 1.1508);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.1508);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "kabel")
+            if (unitFrom == "mila morska" && unitTo == "kabel")
             {
-                Wynik = (Wartosc * 19);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 19);
+                return Wartosc;
             }
-            if (OdlFrom == "mila morska" && OdlTo == "km")
+            if (unitFrom == "mila morska" && unitTo == "km")
             {
-                Wynik = (Wartosc * 1.852);
-                WynikString = Wynik.ToString();
+                Wartosc = (Wartosc * 1.852);
+                return Wartosc;
             }
+            else
+                return 0;
         }
-        public string PodajWynik()
-        { return this.WynikString; }
+       // public string PodajWartosc()
+       // { return this.WartoscString; }
     }
 
 }

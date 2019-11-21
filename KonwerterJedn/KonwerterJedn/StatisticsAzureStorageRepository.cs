@@ -26,7 +26,7 @@ namespace KonwerterJedn
         public void AddStatistic(StatisticDTO statistic)
         {
             StatisticsEntity entity = new StatisticsEntity();
-            entity.PartitionKey = string.Empty; 
+            entity.PartitionKey = string.Empty; // computer name;
             entity.RowKey = Guid.NewGuid().ToString();
             entity.UnitFrom = statistic.UnitFrom;
             entity.UnitTo = statistic.UnitTo;
