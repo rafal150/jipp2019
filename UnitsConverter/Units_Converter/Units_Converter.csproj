@@ -79,6 +79,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="Services\ConvertersService.cs" />
+    <Compile Include="Services\ExampleConverter.cs" />
+    <Compile Include="Services\LengthConverter.cs" />
+    <Compile Include="Services\WeigthConverter.cs" />
     <Compile Include="Statistics\Statistic.cs" />
     <Compile Include="StatisticsAzureStorageRepository.cs" />
     <Compile Include="StatisticsDTO.cs" />
@@ -124,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{7e94d252-c6f4-4564-a2bc-dcb3231a0432}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
