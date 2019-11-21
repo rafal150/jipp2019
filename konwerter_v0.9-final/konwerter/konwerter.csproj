@@ -99,6 +99,10 @@
       <DependentUpon>ConverterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="IUsageStatistiscRepo.cs" />
+    <Compile Include="services\ConvertersService.cs" />
+    <Compile Include="services\LengthConverter.cs" />
+    <Compile Include="services\TemperatureConverter.cs" />
+    <Compile Include="services\WeightConverter.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="TempUnits.cs" />
     <Compile Include="UsageStatistics.cs" />
@@ -106,6 +110,10 @@
     <Compile Include="UsageStatisticsEntity.cs" />
     <Compile Include="UsageStatisticsSqlRepo.cs" />
     <Compile Include="WieghtUnits.cs" />
+    <Page Include="ConverterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,10 +127,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ConverterWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model1.cs" />
@@ -154,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{65dd65d8-a37f-4a75-960e-5d9ed76fa39b}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
