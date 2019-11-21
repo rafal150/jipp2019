@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Konwerter.SDK;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
-    class Dlugosc
+    public class DlugoscKonwerter : IKonwerter
     {
-        public static double przelicz(string fromType, string toType, double value)
+        public string Typ => "konwerter długości";
+        public List<string> Jednostki => new List<string>(new[] { "mm", "cm", "dcm", "m", "km", "cal", "stopa", "jard", "mila", "kabel", "mila morska" });
+        public double Przelicz(string fromType, string toType, double value)
         {
             double result = 0;
             switch (fromType)

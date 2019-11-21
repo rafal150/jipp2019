@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Konwerter.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
-    class Masa
+    public class MasaKonwerter:IKonwerter
     {
-        public static double przelicz(string fromType, string toType, double value)
+        public string Typ => "konwerter masy";
+        public List<string> Jednostki => new List<string> (new[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" });
+        public double Przelicz(string fromType, string toType, double value)
         {
             double result = 0;
             switch (fromType)

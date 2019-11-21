@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Konwerter.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter
+namespace Konwerter.Services
 {
-    class Temperatura
+    class TemperaturaKonwerter : IKonwerter
     {
-        public static double przelicz(string fromType, string toType, double value)
+        public string Typ => "konwerter temperatury";
+        public List<string> Jednostki => new List<string>(new[] { "C", "F", "K", "R" });
+        public double Przelicz(string fromType, string toType, double value)
         {
             double result = 0;
             switch (fromType)
@@ -55,10 +58,10 @@ namespace Konwerter
                     switch (toType)
                     {
                         case "C":
-                            result = (value - 32) * 5/9;
+                            result = (value - 32) * 5 / 9;
                             break;
                         case "K":
-                            result = (value + 459.67) * 5/9;
+                            result = (value + 459.67) * 5 / 9;
                             break;
                         case "F":
                             result = value;
@@ -74,10 +77,10 @@ namespace Konwerter
                     switch (toType)
                     {
                         case "C":
-                            result = (value - 491.67) * 5/9;
+                            result = (value - 491.67) * 5 / 9;
                             break;
                         case "K":
-                            result = value * 5/9;
+                            result = value * 5 / 9;
                             break;
                         case "F":
                             result = value - 459.67;

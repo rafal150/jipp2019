@@ -77,15 +77,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Dlugosc.cs" />
+    <Compile Include="Services\DlugoscKonwerter.cs" />
     <Compile Include="IRepo.cs" />
-    <Compile Include="Masa.cs" />
+    <Compile Include="Services\MasaKonwerter.cs" />
     <Compile Include="Model\Rekord.cs" />
     <Compile Include="Model\PrzezAzureStorageTable.cs" />
     <Compile Include="RekordDTO.cs" />
     <Compile Include="AzureStorageRepo.cs" />
+    <Compile Include="Services\ConvertersService.cs" />
     <Compile Include="SqlRepo.cs" />
-    <Compile Include="Temperatura.cs" />
+    <Compile Include="Services\TemperaturaKonwerter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Konwerter.SDK\Konwerter.SDK.csproj">
+      <Project>{d2eac520-1345-4288-8568-1258da96c93c}</Project>
+      <Name>Konwerter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
