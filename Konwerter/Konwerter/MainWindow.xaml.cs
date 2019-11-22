@@ -54,7 +54,7 @@ namespace Konwerter
             double.TryParse(valueTextBox.Text, out value);
             RekordDTO rekord = new RekordDTO();
             rekord.DateTime = DateTime.Now;
-            //rekord.Type = typeComboBox.SelectedValue.ToString();
+            rekord.Type = ((IKonwerter) typeComboBox.SelectedItem).Typ;
             rekord.FromUnit = fromComboBox.SelectedValue.ToString();
             rekord.ToUnit = toComboBox.SelectedValue.ToString();
             rekord.RawValue = value.ToString();

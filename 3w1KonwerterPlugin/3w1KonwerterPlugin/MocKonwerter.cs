@@ -23,13 +23,13 @@ namespace KonwerterPlugins
                             result = value;
                             break;
                         case "kW":
-                            result = value / 10;
+                            result = value / 1000;
                             break;
                         case "KM":
-                            result = value / 100;
+                            result = value * 0.0013596;
                             break;
                         case "HP":
-                            result = value / 1000;
+                            result = value * 0.00134102;
                             break;
                         default:
                             break;
@@ -39,16 +39,16 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "W":
-                            result = value;
+                            result = value * 1000;
                             break;
                         case "kW":
-                            result = value / 10;
+                            result = value;
                             break;
                         case "KM":
-                            result = value / 100;
+                            result = value * 1.3596;
                             break;
                         case "HP":
-                            result = value / 1000;
+                            result = value * 1.341;
                             break;
                         default:
                             break;
@@ -58,16 +58,16 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "W":
-                            result = value;
+                            result = value * 735.4988;
                             break;
                         case "kW":
-                            result = value / 10;
+                            result = value * 0.7355;
                             break;
                         case "KM":
-                            result = value / 100;
+                            result = value;
                             break;
                         case "HP":
-                            result = value / 1000;
+                            result = value * 0.9863;
                             break;
                         default:
                             break;
@@ -77,16 +77,16 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "W":
-                            result = value;
+                            result = value * 745.6999;
                             break;
                         case "kW":
-                            result = value / 10;
+                            result = value * 0.7457;
                             break;
                         case "KM":
-                            result = value / 100;
+                            result = value * 1.0139;
                             break;
                         case "HP":
-                            result = value / 1000;
+                            result = value;
                             break;
                         default:
                             break;

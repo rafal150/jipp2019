@@ -23,16 +23,16 @@ namespace KonwerterPlugins
                             result = value;
                             break;
                         case "kB":
-                            result = value / 10;
+                            result = value / 1024;
                             break;
                         case "MB":
-                            result = value / 100;
+                            result = value / 1024 / 1024;
                             break;
                         case "GB":
-                            result = value / 1000;
+                            result = value / 1024 / 1024 / 1024;
                             break;
                         case "TB":
-                            result = value / 1000000;
+                            result = value / 1024 / 1024 / 1024 / 1024;
                             break;
                         default:
                             break;
@@ -42,19 +42,19 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "B":
-                            result = value;
+                            result = value * 1024;
                             break;
                         case "kB":
-                            result = value / 10;
+                            result = value;
                             break;
                         case "MB":
-                            result = value / 100;
+                            result = value / 1024;
                             break;
                         case "GB":
-                            result = value / 1000;
+                            result = value / 1024 / 1024;
                             break;
                         case "TB":
-                            result = value / 1000000;
+                            result = value / 1024 / 1024 / 1024;
                             break;
                         default:
                             break;
@@ -64,19 +64,19 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "B":
-                            result = value;
+                            result = value * 1024 * 1024;
                             break;
                         case "kB":
-                            result = value / 10;
+                            result = value * 1024;
                             break;
                         case "MB":
-                            result = value / 100;
+                            result = value;
                             break;
                         case "GB":
-                            result = value / 1000;
+                            result = value / 1024;
                             break;
                         case "TB":
-                            result = value / 1000000;
+                            result = value / 1024 / 1024;
                             break;
                         default:
                             break;
@@ -86,19 +86,19 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "B":
-                            result = value;
+                            result = value * 1024 * 1024 * 1024;
                             break;
                         case "kB":
-                            result = value / 10;
+                            result = value * 1024 * 1024;
                             break;
                         case "MB":
-                            result = value / 100;
+                            result = value * 1024;
                             break;
                         case "GB":
-                            result = value / 1000;
+                            result = value;
                             break;
                         case "TB":
-                            result = value / 1000000;
+                            result = value / 1024;
                             break;
                         default:
                             break;
@@ -108,19 +108,19 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "B":
-                            result = value;
+                            result = value * 1024 * 1024 * 1024 * 1024;
                             break;
                         case "kB":
-                            result = value / 10;
+                            result = value * 1024 * 1024 * 1024;
                             break;
                         case "MB":
-                            result = value / 100;
+                            result = value * 1024 * 1024;
                             break;
                         case "GB":
-                            result = value / 1000;
+                            result = value * 1024;
                             break;
                         case "TB":
-                            result = value / 1000000;
+                            result = value;
                             break;
                         default:
                             break;

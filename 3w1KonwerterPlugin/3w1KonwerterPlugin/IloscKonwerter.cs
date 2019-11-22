@@ -23,19 +23,19 @@ namespace KonwerterPlugins
                             result = value;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value / 12;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value / 15;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value / 16;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value / 60;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value / 144;
                             break;
                         default:
                             break;
@@ -45,22 +45,22 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "sztuka":
-                            result = value;
+                            result = value * 12;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value * 0.8;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value * 0.75;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value / 5;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value / 12;
                             break;
                         default:
                             break;
@@ -70,22 +70,22 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "sztuka":
-                            result = value;
+                            result = value * 15;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value * 1.25;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value * 0.9375;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value / 4;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value * 0.1042;
                             break;
                         default:
                             break;
@@ -95,22 +95,22 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "sztuka":
-                            result = value;
+                            result = value * 16;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value * 1.3333;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value * 1.0666;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value * 1.0666;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value * 0.1111;
                             break;
                         default:
                             break;
@@ -120,22 +120,22 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "sztuka":
-                            result = value;
+                            result = value * 60;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value * 5;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value * 4;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value * 3.75;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value * 0.4167;
                             break;
                         default:
                             break;
@@ -145,22 +145,22 @@ namespace KonwerterPlugins
                     switch (toType)
                     {
                         case "sztuka":
-                            result = value;
+                            result = value * 144;
                             break;
                         case "tuzin":
-                            result = value / 10;
+                            result = value * 12;
                             break;
                         case "mendel":
-                            result = value / 100;
+                            result = value * 9.6;
                             break;
                         case "mendel chłopski":
-                            result = value / 1000;
+                            result = value * 9;
                             break;
                         case "kopa":
-                            result = value / 1000000;
+                            result = value * 2.4;
                             break;
                         case "gros":
-                            result = value * 0.0393700787;
+                            result = value;
                             break;
                         default:
                             break;
