@@ -14,11 +14,24 @@
         <WrapPanel Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="792">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Unit group" Width="100" VerticalAlignment="Top"/>
-                <ComboBox Name="UnitTypeComboBox" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="UnitTypeComboBox_SelectionChanged"/>
+                <ComboBox Name="UnitTypeComboBox" SelectedItem="{Binding Path=UnitsContainers}" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="UnitTypeComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
             </Grid>
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Base Type" Width="100" VerticalAlignment="Top"/>
-                <ComboBox Name="BaseValueTypeComboBox"  HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100"/>
+                <ComboBox Name="BaseValueTypeComboBox"  HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Base Value" Width="100" VerticalAlignment="Top"/>
@@ -26,7 +39,13 @@
             </Grid>
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Converted Type" Width="100" VerticalAlignment="Top"/>
-                <ComboBox Name="ConvertedValueTypeComboBox" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100"/>
+                <ComboBox Name="ConvertedValueTypeComboBox" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </Grid>
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Converted Value" Width="100" VerticalAlignment="Top"/>

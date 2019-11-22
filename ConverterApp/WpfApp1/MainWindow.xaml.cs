@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Units;
 
 namespace WpfApp1
 {
@@ -20,26 +21,27 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        UnitsContainer currentContainer;
         string unitType = null;
         string baseType = null;
         double baseVal = 0;
         string convertedType = null;
         double convertedVal = 0;
 
+
         private IStatisticsRepository repo;
 
-        UnitManager unitManager = new UnitManager();
+        List<UnitsContainer> unitsContainers;
 
 
-        public MainWindow(IStatisticsRepository repo)
+        public MainWindow(IStatisticsRepository repo, UnitManager manager)
         {
             InitializeComponent();
-
             this.repo = repo;
-            this.UnitTypeComboBox.ItemsSource = unitManager.GetTypes();
+            this.unitsContainers = manager.GetContainers();
+            this.UnitTypeComboBox.ItemsSource = this.unitsContainers;
             UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
         }
-
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -53,12 +55,11 @@ namespace WpfApp1
 
         private void CountButtonClicked(object sender, RoutedEventArgs e)
         {
-            Converter converter = new Converter();
             double score;
 
             getProperties();
 
-            if (converter.convert(baseType, baseVal, convertedType, out score))
+            if (currentContainer.convert(baseType, baseVal, convertedType, out score))
             {
                 this.convertedValTextBox.Text = score.ToString();
             }
@@ -77,8 +78,11 @@ namespace WpfApp1
 
         private void getProperties()
         {
-            baseType = BaseValueTypeComboBox.Text;
-            convertedType = ConvertedValueTypeComboBox.Text;
+            var baseUnit = (Unit)BaseValueTypeComboBox.SelectedItem;
+            baseType = baseUnit.name;
+
+            var convertedUnit = (Unit)ConvertedValueTypeComboBox.SelectedItem;
+            convertedType = convertedUnit.name;
 
             Double.TryParse(baseValTextBox.Text, out baseVal);
         }
@@ -86,10 +90,12 @@ namespace WpfApp1
         private void UnitTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            unitType = UnitTypeComboBox.SelectedValue.ToString();
-            List<string> units = unitManager.GetUnitsNamesByType(unitType);
-            this.BaseValueTypeComboBox.ItemsSource = units;
+            currentContainer = (UnitsContainer)UnitTypeComboBox.SelectedValue;
+            unitType = currentContainer.Name;
+
+            List<Unit> units = currentContainer._unitList;
             this.ConvertedValueTypeComboBox.ItemsSource = units;
+            this.BaseValueTypeComboBox.ItemsSource = units;
         }
 
 
