@@ -22,18 +22,16 @@ namespace Konwenter
     public partial class MainWindow : Window
     {
         private IBazyDanych repozytorium;
-        private BazaNazw bn = new BazaNazw();
-        private ObliczeniaTemp ot = new ObliczeniaTemp();
-        private ObliczeniaMasa om = new ObliczeniaMasa();
-        private ObliczeniaDlug od = new ObliczeniaDlug();
+        private ListaTypowKonwersji konwersja;
 
-        public MainWindow(IBazyDanych repo)
+        public MainWindow(IBazyDanych repo, ListaTypowKonwersji konw)
         {
             InitializeComponent();
 
             this.repozytorium = repo;
+            this.konwersja = konw;
             this.WyswietlDane.ItemsSource = repozytorium.wyswietlStatystyki();
-            this.typKonwersji.ItemsSource = bn.getKategoria();          
+            this.typKonwersji.ItemsSource = konwersja.DajKonwenter();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -42,8 +40,11 @@ namespace Konwenter
         }
         private void typKonwersji_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {           
-            this.JednostkaWejsc.ItemsSource = bn.wypelnienieJednostek(this.typKonwersji.SelectedItem.ToString());
-            this.JednostkaWyjsc.ItemsSource = bn.wypelnienieJednostek(this.typKonwersji.SelectedItem.ToString());
+            if(this.typKonwersji != null)
+            {
+                this.JednostkaWejsc.ItemsSource = ((IKonwersja)this.typKonwersji.SelectedItem).jednostki;
+                this.JednostkaWyjsc.ItemsSource = ((IKonwersja)this.typKonwersji.SelectedItem).jednostki;
+            }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -56,19 +57,12 @@ namespace Konwenter
             int jednostkaWejsc = this.JednostkaWejsc.SelectedIndex;
             int jednostkaWyjsc = this.JednostkaWyjsc.SelectedIndex;
             double wartoscWej = double.Parse(this.wartoscWej.Text);
-            if (typKonwersji==bn.getKategoria().First())
-            {              
-                this.Wynik.Text = (ot.zCelcjusza(wartoscWej, jednostkaWejsc, jednostkaWyjsc)).ToString(); 
-            }
-            else if(typKonwersji==bn.getKategoria().ElementAt(1))
+            if(this.typKonwersji.SelectedItem != null)
             {
-                this.Wynik.Text = (od.zMilimetry(wartoscWej, jednostkaWejsc, jednostkaWyjsc)).ToString();
+                IKonwersja wybranyKonwenter = (IKonwersja)this.typKonwersji.SelectedItem;
+                this.Wynik.Text = (wybranyKonwenter.obliczenia(double.Parse(this.wartoscWej.Text), this.JednostkaWejsc.SelectedIndex, this.JednostkaWyjsc.SelectedIndex)).ToString();
             }
-            else if(typKonwersji==bn.getKategoria().ElementAt(2))
-            {
-                this.Wynik.Text = (om.zMiligramy(wartoscWej, jednostkaWejsc, jednostkaWyjsc)).ToString();
-            }
-            ZapisBazaPosrednik zbp = new ZapisBazaPosrednik()
+            ZapisBazaDTO zbp = new ZapisBazaDTO()
             {
                 dataZapisu = DateTime.Now,
                 typKonwersji = this.typKonwersji.SelectedItem.ToString(),

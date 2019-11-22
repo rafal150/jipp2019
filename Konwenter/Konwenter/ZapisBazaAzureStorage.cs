@@ -22,34 +22,34 @@ namespace Konwenter
             
         }   
             
-        public void zapisDoBazy(ZapisBazaPosrednik statystyki)
+        public void zapisDoBazy(ZapisBazaDTO stat)
         {
             StatystykiEntity entity = new StatystykiEntity();
             entity.PartitionKey = "ADRIAN";
             entity.RowKey = Guid.NewGuid().ToString();
-            entity.id = statystyki.id;
-            entity.dataZapisu = statystyki.dataZapisu;
-            entity.typKonwersji = statystyki.typKonwersji;
-            entity.zJednostki = statystyki.zJednostki;
-            entity.naJednostke = statystyki.naJednostke;
-            entity.daneWejsc = statystyki.daneWejsc;
-            entity.daneWyjsc = statystyki.daneWyjsc;
+            entity.id = stat.id;
+            entity.dataZapisu = stat.dataZapisu;
+            entity.typKonwersji = stat.typKonwersji;
+            entity.zJednostki = stat.zJednostki;
+            entity.naJednostke = stat.naJednostke;
+            entity.daneWejsc = stat.daneWejsc.ToString();
+            entity.daneWyjsc = stat.daneWyjsc.ToString();
 
             TableOperation insertOperation = TableOperation.Insert(entity);
             tabela.Execute(insertOperation);
         }
-        public IEnumerable<ZapisBazaPosrednik> wyswietlStatystyki()
+        public IEnumerable<ZapisBazaDTO> wyswietlStatystyki()
         {
             TableQuery<StatystykiEntity> zapytanie = new TableQuery<StatystykiEntity>();
-            return tabela.ExecuteQuery(zapytanie).Select(x => new ZapisBazaPosrednik()
+            return tabela.ExecuteQuery(zapytanie).Select(x => new ZapisBazaDTO()
             {
                 id = x.id,
                 dataZapisu = x.dataZapisu,
                 typKonwersji = x.typKonwersji,
                 zJednostki = x.zJednostki,
                 naJednostke = x.naJednostke,
-                daneWejsc = x.daneWejsc,
-                daneWyjsc = x.daneWyjsc,
+                daneWejsc = string.IsNullOrEmpty(x.daneWejsc) ? null : (decimal?) decimal.Parse(x.daneWejsc),
+                daneWyjsc = string.IsNullOrEmpty(x.daneWyjsc) ? null : (decimal?)decimal.Parse(x.daneWyjsc),
             }).ToList();
 
         }

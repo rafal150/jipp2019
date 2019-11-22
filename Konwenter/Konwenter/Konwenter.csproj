@@ -105,6 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListaTypowKonwersji.cs" />
     <Compile Include="ZapisBazaAzureStorage.cs" />
     <Compile Include="BazaNazw.cs" />
     <Compile Include="IBazyDanych.cs" />
@@ -123,16 +124,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ObliczeniaDlug.cs" />
-    <Compile Include="ObliczeniaMasa.cs" />
-    <Compile Include="ObliczeniaTemp.cs" />
+    <Compile Include="DlugoscKonwersja.cs" />
+    <Compile Include="MasaKonwersja.cs" />
+    <Compile Include="TemperaturaKonwersja.cs" />
     <Compile Include="StatisticsModel.cs" />
     <Compile Include="Statystyki.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="StatystykiEntity.cs" />
     <Compile Include="ZapisBazaSQL.cs" />
-    <Compile Include="ZapisBazaPosrednik.cs" />
+    <Compile Include="ZapisBazaDTO.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -196,6 +197,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Konwenter2.SDK\Konwenter2.SDK.csproj">
+      <Project>{da7f000e-a31e-46c4-8be6-c30b8c642b70}</Project>
+      <Name>Konwenter2.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -24,29 +24,29 @@ namespace Konwenter
         //    db.Statystyki.Add(st);
         //    db.SaveChanges();
         //}
-        public void zapisDoBazy(ZapisBazaPosrednik statystyki)
+        public void zapisDoBazy(ZapisBazaDTO stat)
         {
             using (BazaKonwerter bk = new BazaKonwerter())
             {
                 bk.Statystyki.Add(new Statystyki()
                 {
-                    id_statystyki = statystyki.id,
-                    DataZapisu = statystyki.dataZapisu,
-                    TypKonwersji = statystyki.typKonwersji,
-                    ZJednostki = statystyki.zJednostki,
-                    NaJednostke = statystyki.naJednostke,
-                    DaneWejsc = statystyki.daneWejsc,
-                    DaneWyjsc = statystyki.daneWyjsc
+                    id_statystyki = stat.id,
+                    DataZapisu = stat.dataZapisu,
+                    TypKonwersji = stat.typKonwersji,
+                    ZJednostki = stat.zJednostki,
+                    NaJednostke = stat.naJednostke,
+                    DaneWejsc = stat.daneWejsc,
+                    DaneWyjsc = stat.daneWyjsc
                 });
                 bk.SaveChanges();
             }
         }
-        public IEnumerable<ZapisBazaPosrednik> wyswietlStatystyki()
+        public IEnumerable<ZapisBazaDTO> wyswietlStatystyki()
         {           
             using (BazaKonwerter bk = new BazaKonwerter())
             {
                 return bk.Statystyki.
-                    Select(x => new ZapisBazaPosrednik()
+                    Select(x => new ZapisBazaDTO()
                     {
                         id = x.id_statystyki,
                         dataZapisu = x.DataZapisu,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Konwenter
 {
-    public class ZapisBazaPosrednik
+    public class ZapisBazaDTO
     {
         public int id { get; set; }
         public DateTime? dataZapisu {get;set;}

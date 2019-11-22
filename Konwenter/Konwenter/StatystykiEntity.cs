@@ -14,7 +14,7 @@ namespace Konwenter
         public string typKonwersji { get; set; }
         public string zJednostki { get; set; }
         public string naJednostke { get; set; }
-        public decimal? daneWejsc { get; set; }
-        public decimal? daneWyjsc { get; set; }
+        public string daneWejsc { get; set; }
+        public string daneWyjsc { get; set; }
     }
 }

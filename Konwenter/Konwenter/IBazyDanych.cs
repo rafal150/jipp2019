@@ -8,7 +8,7 @@ namespace Konwenter
 {
     public interface IBazyDanych
     {
-        void zapisDoBazy(ZapisBazaPosrednik statystyki);
-        IEnumerable<ZapisBazaPosrednik> wyswietlStatystyki();
+        void zapisDoBazy(ZapisBazaDTO stat);
+        IEnumerable<ZapisBazaDTO> wyswietlStatystyki();
     }
 }

@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwenter", "Konwenter\Konwenter.csproj", "{84D3F8C8-5DB4-4D23-B702-2FFCED0805C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{A01FF8C3-8521-4D9D-B090-60603C2B4C71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZapisDoBazy", "ZapisDoBazy", "{32708F5F-7196-4761-A374-E113F3B93899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LogikaKonwersji", "LogikaKonwersji", "{E58A8899-46EC-407E-BE29-D7CF82F45B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwenter2.SDK", "Konwenter2.SDK\Konwenter2.SDK.csproj", "{DA7F000E-A31E-46C4-8BE6-C30B8C642B70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,10 @@ Global
 		{84D3F8C8-5DB4-4D23-B702-2FFCED0805C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84D3F8C8-5DB4-4D23-B702-2FFCED0805C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84D3F8C8-5DB4-4D23-B702-2FFCED0805C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7F000E-A31E-46C4-8BE6-C30B8C642B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7F000E-A31E-46C4-8BE6-C30B8C642B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7F000E-A31E-46C4-8BE6-C30B8C642B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7F000E-A31E-46C4-8BE6-C30B8C642B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
