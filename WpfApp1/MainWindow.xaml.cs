@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Commons;
+using ConverterSDK;
 
 namespace WpfApp1
 {
@@ -15,6 +16,8 @@ namespace WpfApp1
     {
         Type classType;
         private IStatisticsRepository repository;
+        private ConverterService converterService;
+        private List<ConverterInterface> converterInterfaces;
         public List<string> GetListOfTypes()
         {
             List<string> listOfClasses = new List<string>();
@@ -26,11 +29,18 @@ namespace WpfApp1
                     listOfClasses.Add(type.Name);
                 }
             }
+            foreach (ConverterInterface converterInterface in converterInterfaces)
+            {
+                listOfClasses.Add(converterInterface.GetType().Name);
+            }
+
             return listOfClasses;
         }
-        public MainWindow(IStatisticsRepository repo)
+        public MainWindow(IStatisticsRepository repo, ConverterService converterService)
         {
             this.repository = repo;
+            this.converterService = converterService;
+            converterInterfaces = converterService.GetConverters();
             InitializeComponent();
             List<string> listOfTypes = GetListOfTypes();
             TypeSelector.ItemsSource = listOfTypes;
@@ -50,13 +60,22 @@ namespace WpfApp1
             try
             {
                 classType = Type.GetType("WpfApp1.Convert." + className);
-                if (classType != null)
+                if (classType == null)
+                
                 {
-                    MethodInfo method = classType.GetMethod("GetListOfProperties");
-                    List<string> propertiesList = (List<string>)method.Invoke(null, null);
-                    FillComboBox(FromUnitSelector, propertiesList);
-                    FillComboBox(ToUnitSelector, propertiesList);
+                    foreach(ConverterInterface converterInterface in converterInterfaces)
+                    {
+                        if(converterInterface.GetType().Name == className)
+                        {
+                            classType = converterInterface.GetType();
+                            break;
+                        }
+                    }
                 }
+                MethodInfo method = classType.GetMethod("GetListOfProperties");
+                List<string> propertiesList = (List<string>)method.Invoke(null, null);
+                FillComboBox(FromUnitSelector, propertiesList);
+                FillComboBox(ToUnitSelector, propertiesList);
             }
             catch (Exception e){
                 Console.WriteLine(e.StackTrace);

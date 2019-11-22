@@ -1,5 +1,9 @@
 ﻿using Autofac;
+using System;
 using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Windows;
 using WpfApp1.Commons;
 
@@ -34,8 +38,27 @@ namespace WpfApp1
             }
 
             containerBuilder.RegisterType<MainWindow>();
+            containerBuilder.RegisterType<ConverterService>();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            containerBuilder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
+
+            RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
+        }
+
+        private static void RegisterPlugins(ContainerBuilder containerBuilder)
+        {
+            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            var assemblies = Directory.GetFiles(pluginDirectory, "*.dll").Select(Assembly.LoadFrom).ToList();
+
+            foreach (Assembly assembly in assemblies)
+            {
+                containerBuilder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces();
+            }
         }
 
     }

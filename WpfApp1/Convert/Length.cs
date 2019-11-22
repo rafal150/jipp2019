@@ -2,7 +2,7 @@
 
 namespace WpfApp1.Convert
 {
-    class Length
+    class Length : ConverterSDK.ConverterAbstract
     {
         public double meter;
         public double Meter {
@@ -56,16 +56,11 @@ namespace WpfApp1.Convert
             get { return this.meter * 0.005399; }
             set { this.meter = value / 0.005399; }
         }
-        
+
 
         public static List<string> GetListOfProperties()
         {
-            List<string> array = new List<string>();
-            foreach(var prop in typeof(Length).GetProperties())
-            {
-                array.Add(prop.Name);
-            }
-            return array;
+            return GetListOfProperties(typeof(Length));
         }
     }
 }
