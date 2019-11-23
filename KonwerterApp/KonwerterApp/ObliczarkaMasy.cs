@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KonwerterApp
+namespace KonwerterApp.Services
 {
-    class ObliczarkaMasy
+    class ObliczarkaMasy:IConverter
     {
-        public static string Masa = "Masa";
+        public string Nazwa => "Masa";
 
-        public float KonwertujMase(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
+        public List<string> Jednostki => new List<string>(new[] { "Miligramy", "Gramy", "Dekagramy", "Kilogramy", "Tony", "Uncje", "Funty", "Karaty", "Kwintale" });
+
+        public float Konwertuj(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
         {
             //  string[] Metryczne = { "Miligramy", "Gramy", "Dekagramy", "Kilogramy", "Tony" };
             //  string[] Anglosaskie = { "Uncje", "Funty" };

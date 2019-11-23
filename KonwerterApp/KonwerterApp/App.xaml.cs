@@ -6,7 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using KonwerterApp.Services;
+using System.Reflection;
+using System.IO;
 
 namespace KonwerterApp
 {
@@ -39,8 +41,28 @@ namespace KonwerterApp
             }
 
             containerBuilder.RegisterType<MainWindow>();
+            containerBuilder.RegisterType<ConvertersService>();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            containerBuilder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.StartsWith("Obliczarka")).AsImplementedInterfaces();
+
+            RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
+        }
+
+        private static void RegisterPlugins(ContainerBuilder containerBuilder)
+        {
+            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+
+            var assemblies = Directory.GetFiles(pluginDirectory, "Obliczarka*.dll").Select(Assembly.LoadFrom).ToList();
+
+            foreach (Assembly assembly in assemblies)
+            {
+                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.StartsWith("Obliczarka")).AsImplementedInterfaces();
+            }
         }
     }
 }

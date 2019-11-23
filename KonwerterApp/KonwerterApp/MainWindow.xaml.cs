@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KonwerterApp.Services;
 
 namespace KonwerterApp
 {
@@ -22,22 +23,14 @@ namespace KonwerterApp
     {
 
         private IStatisticsRepository repository;
-
-        ObliczarkaMasy KonwerterMasy = new ObliczarkaMasy();
-        ObliczarkaTemperatury KonwerterTemperatury = new ObliczarkaTemperatury();
-        ObliczarkaDlugosci KonwerterDlugosci = new ObliczarkaDlugosci();
+        
         Model1 BazaDanych = new Model1();
-
-        //Określam zawartość listy rozwijalnej kategorii jednostek
-        string Temperatura = ObliczarkaTemperatury.Temperatura;
-        string Dlugosc = ObliczarkaDlugosci.Dlugosc;
-        string Masa = ObliczarkaMasy.Masa;
-        public MainWindow(IStatisticsRepository repozytorium)
+        
+        public MainWindow(IStatisticsRepository repozytorium, ConvertersService converters)
         {
             InitializeComponent();
             //Podaje zawartość listy rozwijalnej Kategoria
-            string[] Kategorie = { Temperatura, Dlugosc, Masa};
-            ComboBox_Kategoria.ItemsSource=Kategorie;
+            ComboBox_Kategoria.ItemsSource=converters.GetConverters();
 
             DataGridWynikowy.ItemsSource = BazaDanych.TabelaKonwerteras.ToList();
 
@@ -49,64 +42,28 @@ namespace KonwerterApp
 
         private void ComboBox_Kategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Jeśli wybrano kategorię Temperatura
-            if (ComboBox_Kategoria.SelectedItem.ToString()==Temperatura)
+            if (this.ComboBox_Kategoria.SelectedItem != null)
             {
-                string[] Temperatura = { "Celcjusz", "Farenheit", "Kelvin","Rankine"};
-                ComboBox_Jednostka.ItemsSource = Temperatura;
-                ComboBox_JednostkaDocelowa.ItemsSource = Temperatura;
-            }
-            //Jeśli wybrano kategorię Długość
-            else if (ComboBox_Kategoria.SelectedItem.ToString() == Dlugosc)
-            {
-                //Miary metryczne (mm, cm, dcm, m km)
-                //Anglosaskie(cal, stop, jard, mila)
-                //morskie(kabel, mila morska)
-                string[] Metryczne = { "Milimetry", "Centymetry", "Decymetry", "Metry","Kilometry"};
-                string[] Anglosaskie = { "Cale", "Stopy", "Jardy", "Mile"};
-                string[] Morskie = { "Kable", "Mile morskie"};
-                ComboBox_Jednostka.ItemsSource = Metryczne.Concat(Anglosaskie).Concat(Morskie);
-                ComboBox_JednostkaDocelowa.ItemsSource= Metryczne.Concat(Anglosaskie).Concat(Morskie);
-            }
-            //Jeśli wybrano kategorię Masa
-            else if (ComboBox_Kategoria.SelectedItem.ToString() == Masa)
-            {
-                //metryczny (mg, g, dkg, kg, T)
-                //miary anglosaskie(uncja, funt)
-                //inne(karat, kwintal)
-                //zawartosc listy rozwijalnej
-                string[] Metryczne = { "Miligramy", "Gramy", "Dekagramy", "Kilogramy", "Tony" };
-                string[] Anglosaskie = { "Uncje", "Funty"};
-                string[] Inne = { "Karaty", "Kwintale" };
-                ComboBox_Jednostka.ItemsSource = Metryczne.Concat(Anglosaskie).Concat(Inne);
-                ComboBox_JednostkaDocelowa.ItemsSource = Metryczne.Concat(Anglosaskie).Concat(Inne);
+                this.ComboBox_Jednostka.ItemsSource = ((IConverter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
+                this.ComboBox_JednostkaDocelowa.ItemsSource = ((IConverter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
             }
         }
 
         private void Button_Zamien_Click(object sender, RoutedEventArgs e)
         {
-            TextBlock_WartoscPrzedKonwersjaWynik.Text = TextBox_WartoscDoKonwersji.Text;
-           float.TryParse(TextBox_WartoscDoKonwersji.Text, out float WartoscDoKonwersji);
-           
 
-            string WybranaKategoria = ComboBox_Kategoria.SelectedItem.ToString();
+            IConverter converter = (IConverter)this.ComboBox_Kategoria.SelectedItem;
+
+            TextBlock_WartoscPrzedKonwersjaWynik.Text = TextBox_WartoscDoKonwersji.Text;
+            float.TryParse(TextBox_WartoscDoKonwersji.Text, out float WartoscDoKonwersji);
+
+
+            string WybranaKategoria = converter.Nazwa;
             string JednostkaPocz = ComboBox_Jednostka.SelectedItem.ToString();
             string JednostkaDocelowa = ComboBox_JednostkaDocelowa.SelectedItem.ToString();
             float WartoscPoKonwersji=0;
             /*Przerobic tak, zeby z automatu wiedzial ktora klase uzyc do konwersji */
-            if (WybranaKategoria == Temperatura)
-            {
-                WartoscPoKonwersji= KonwerterTemperatury.KonwertujTemperature(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
-
-            }
-            else if (WybranaKategoria == Dlugosc)
-            {
-                WartoscPoKonwersji = KonwerterDlugosci.KonwertujDlugosc(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
-            }
-            else if (WybranaKategoria == Masa)
-            {
-                WartoscPoKonwersji = KonwerterMasy.KonwertujMase(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
-            }
+            WartoscPoKonwersji = converter.Konwertuj(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
 
             TextBlock_WartoscPoKonwersji_Wynik.Text = WartoscPoKonwersji.ToString();
 

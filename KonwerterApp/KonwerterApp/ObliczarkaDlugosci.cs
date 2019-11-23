@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KonwerterApp
+namespace KonwerterApp.Services
 {
-    class ObliczarkaDlugosci
+    class ObliczarkaDlugosci:IConverter
     {
-        public static string Dlugosc = "Długość";
+        public string Nazwa => "Długość";
 
-        public float KonwertujDlugosc(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
+        public List<string> Jednostki => new List<string>(new[] { "Milimetry", "Centymetry", "Decymetry", "Metry", "Kilometry", "Cale", "Stopy", "Jardy", "Mile", "Kable", "Mile morskie" });
+
+        public float Konwertuj(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
         {
             //zamiana na double
             double WartoscDouble = Convert.ToDouble(wartosc);

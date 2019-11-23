@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KonwerterApp
+namespace KonwerterApp.Services
 {
-    class ObliczarkaTemperatury
+    class ObliczarkaTemperatury:IConverter
     {
         //Nazwa na liście rozwijalnej
-        public static string Temperatura = "Temperatura";
+        public  string Nazwa => "Temperatura";
+
+        public List <string> Jednostki => new List<string> (new [] { "Celcjusz", "Farenheit", "Kelvin", "Rankine" });
 
         //Konwerter temperatury
 
-        public float KonwertujTemperature(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
+        public float Konwertuj(string JednostkaPoczatkowa, string JednostkaKoncowa, float wartosc)
         {
             //"Celcjusz", "Farenheit", "Kelvin"
             //zamiana wartosci na double
