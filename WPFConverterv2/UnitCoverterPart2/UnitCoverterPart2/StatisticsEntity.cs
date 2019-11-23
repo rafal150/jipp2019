@@ -1,14 +1,11 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Spatial;
 
-namespace WPFConverterv2
+namespace UnitCoverterPart2
 {
     internal class StatisticsEntity : TableEntity
     {
@@ -19,14 +16,14 @@ namespace WPFConverterv2
 
         public string UnitFrom { get; set; }
 
-        
+
         public string UnitTo { get; set; }
 
         public double? RawValue { get; set; }
 
         public double? ConvertedValue { get; set; }
 
-        
+
         public string Type { get; set; }
 
         internal static object Where(Func<object, bool> p)
@@ -34,8 +31,8 @@ namespace WPFConverterv2
             throw new NotImplementedException();
         }
 
-     
 
-      
+
+
     }
 }

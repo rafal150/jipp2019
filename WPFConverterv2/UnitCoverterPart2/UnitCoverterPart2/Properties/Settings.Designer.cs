@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WPFConverterv2.Properties
+namespace UnitCoverterPart2.Properties
 {
 
 

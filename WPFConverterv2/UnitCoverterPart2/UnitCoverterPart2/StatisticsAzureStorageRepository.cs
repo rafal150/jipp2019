@@ -3,17 +3,20 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnitCoverterPart2.Model;
 
-namespace WPFConverterv2
+
+namespace UnitCoverterPart2
 {
-    class StatisticsAzureStorage : IStatisticsRepository
+    public class StatisticsAzureStorageRepository : IStatisticsRepository
     {
         private CloudTable table;
 
-        public StatisticsAzureStorage()
+        public StatisticsAzureStorageRepository()
         {
             CloudStorageAccount storageAccount = new CloudStorageAccount
               (new StorageCredentials("unitsconverter", "sgZyF6sZ/aSKL/flDY/Bidxrxb5/W0itnkfmRwguLggQu420CEiuzDTkM4hS/W2+KSc9+zoKURYetR1Mv1J8yg=="), true);
@@ -22,7 +25,7 @@ namespace WPFConverterv2
             this.table.CreateIfNotExists();
         }
 
-        public void AddStatistic(Statistic statistic)
+        public void AddStatistic(StatisticDTO statistic)
         {
             StatisticsEntity entity = new StatisticsEntity();
             entity.PartitionKey = string.Empty;
@@ -39,16 +42,11 @@ namespace WPFConverterv2
             table.Execute(insertOperation);
         }
 
-        public IEnumerable<Statistic> GetStatistics()
+        public IEnumerable<StatisticDTO> GetStatistics()
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new Statistic() {id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).ToList();
         }
-
-        
-
-
-
     }
 }

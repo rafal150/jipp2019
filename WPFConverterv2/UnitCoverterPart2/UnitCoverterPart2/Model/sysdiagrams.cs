@@ -1,4 +1,4 @@
-namespace WPFConverterv2.Model
+namespace UnitCoverterPart2.Model
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@ namespace WPFConverterv2.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sysdiagram
+    public partial class sysdiagrams
     {
         [Required]
         [StringLength(128)]

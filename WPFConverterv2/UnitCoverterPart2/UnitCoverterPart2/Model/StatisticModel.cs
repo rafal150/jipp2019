@@ -1,14 +1,14 @@
-namespace WPFConverterv2.Model
+namespace UnitCoverterPart2.Model
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class StatisticsModel : DbContext
+    public partial class StatisticModel : DbContext
     {
-        public StatisticsModel()
-            : base("name=StatisticsModel")
+        public StatisticModel()
+            : base("name=StatisticModel")
         {
         }
 

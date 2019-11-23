@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFConverterv2.Model;
+using UnitCoverterPart2.Model;
 
-namespace WPFConverterv2
+namespace UnitCoverterPart2
 {
     public class StatisticsSqlRepository : IStatisticsRepository
     {
-        public void AddStatistic(Statistic statistic)
+        public void AddStatistic(StatisticDTO statistic)
         {
-            using (StatisticsModel context = new StatisticsModel())
+            using (EntityModel context = new EntityModel())
             {
                 context.MyStatistics2.Add(new MyStatistics2()
                 {
@@ -28,23 +28,16 @@ namespace WPFConverterv2
             }
         }
 
-        public IEnumerable<Statistic> GetStatistics()
+        public IEnumerable<StatisticDTO> GetStatistics()
         {
-            using (StatisticsModel context = new StatisticsModel())
+            using (EntityModel context = new EntityModel())
             {
                 return context.MyStatistics2.
-                    Select(obj => new Statistic() { id = obj.id , DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
+                    Select(obj => new StatisticDTO() { id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
                     ToList();
             }
         }
 
-        public void DeleteStatistic(Statistic statistic)
-        {
-            using (StatisticsModel context = new StatisticsModel())
-            {
 
-
-            }
-        }
     }
 }

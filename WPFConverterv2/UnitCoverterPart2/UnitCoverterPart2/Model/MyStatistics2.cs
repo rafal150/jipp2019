@@ -1,4 +1,4 @@
-namespace WPFConverterv2.Model
+namespace UnitCoverterPart2.Model
 {
     using System;
     using System.Collections.Generic;
