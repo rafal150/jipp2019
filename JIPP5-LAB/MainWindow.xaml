@@ -1,0 +1,44 @@
+﻿<Window x:Class="JIPP5_LAB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JIPP5_LAB"
+        mc:Ignorable="d"
+        Title="Converter" Height="733.328" Width="1200" ResizeMode="NoResize" Topmost="True">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid Margin="10,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="115*"/>
+        </Grid.ColumnDefinitions>
+             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Temperatura" VerticalAlignment="Top" Margin="10,223,0,0" Grid.Column="1" Height="169" Width="450" FontSize="72" FontFamily="Comic Sans MS" FontWeight="Bold"/>
+        <TextBox x:Name="FromInputT" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" Margin="196,58,0,0" Grid.Column="1"/>
+        <ComboBox x:Name="FromUnitT" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="71,59,0,0" Grid.Column="1" Height="22"/>
+        <ComboBox x:Name="ToUnitT" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="255,59,0,0" Grid.Column="1" Height="22"/>
+        <TextBlock x:Name="ResultT" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" Panel.ZIndex="-1" Padding="5" Background="#FFD0ECFF" Width="406" Margin="44,133,0,0" Grid.Column="1" Height="85"/>
+        <Button x:Name="ConvertButtonT" Content="Convert" HorizontalAlignment="Left" Margin="356,62,0,0" VerticalAlignment="Top" Width="75" Click="Temp_click" Grid.Column="1" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="74,37,0,0" TextWrapping="Wrap" Text="Wartość wejściowa" VerticalAlignment="Top" Grid.Column="1" Height="17" Width="117"/>
+        <TextBlock HorizontalAlignment="Left" Margin="271,38,0,0" TextWrapping="Wrap" Text="Do" VerticalAlignment="Top" Grid.Column="1" Height="16" Width="45"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Długość" VerticalAlignment="Top" Margin="407,223,0,0" Grid.ColumnSpan="2" Height="169" Width="356" FontSize="72" FontFamily="Comic Sans MS" FontWeight="Bold" RenderTransformOrigin="0.83,1.492"/>
+        <TextBox x:Name="FromInputD" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60" Margin="527,59,0,0"/>
+        <ComboBox x:Name="FromUnitD" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="407,59,0,0" Height="22"/>
+        <ComboBox x:Name="ToUnitD" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="587,60,0,0" Height="22"/>
+        <TextBlock x:Name="ResultD" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" Panel.ZIndex="-1" Padding="5" Background="#FFD0ECFF" Width="373" Margin="390,133,0,0" Height="85" Grid.ColumnSpan="2"/>
+        <Button x:Name="ConvertButtonD" Content="Convert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Length_click" Margin="688,60,0,0" Grid.ColumnSpan="2" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wartość wejściowa" VerticalAlignment="Top" Margin="407,40,0,0" Height="16" Width="127"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Do" VerticalAlignment="Top" Margin="601,41,0,0" Height="16" Width="45"/>
+        <TextBlock TextWrapping="Wrap" Text="Waga" VerticalAlignment="Top" HorizontalAlignment="Left" Width="399" Margin="-14,223,0,0" RenderTransformOrigin="0.788,0.315" Height="169" FontSize="72" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+        <TextBox x:Name="FromInputW" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" Margin="110,60,0,0"/>
+        <ComboBox x:Name="FromUnitW" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="-10,61,0,0" Height="22"/>
+        <ComboBox x:Name="ToUnitW" DisplayMemberPath="Nazwa" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Margin="209,58,0,0" Height="22"/>
+        <TextBlock x:Name="ResultW" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" Panel.ZIndex="-1" Padding="5" Background="#FFD0ECFF" Width="395" Margin="-10,133,0,0" Height="85"/>
+        <Button x:Name="ConvertButtonW" Content="Convert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Weight_click" Margin="310,60,0,0" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wartość wejściowa" VerticalAlignment="Top" Margin="-10,40,0,0" Height="18" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Do" VerticalAlignment="Top" Margin="223,42,0,0" Height="16" Width="45"/>
+        <DataGrid x:Name="datagird" HorizontalAlignment="Left" Height="288" Margin="-14,416,0,0" VerticalAlignment="Top" Width="1198" Grid.ColumnSpan="2"/>
+        <Button x:Name="refreshbutton" Content="" HorizontalAlignment="Left" Margin="-14,392,0,0" VerticalAlignment="Top" Width="1198" Click="Refresh_click" Height="24" Background="#FF00FFA2" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
