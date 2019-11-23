@@ -1,0 +1,40 @@
+﻿<Window x:Class="YourUnits.YourUnitsLength"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourUnits"
+        mc:Ignorable="d"
+        Title="YourUnitsLength" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="YULL1" Content="Konwerter jednostek długości" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="YULL2" Content="Wpisz wartość w domyślnej jednostce długości, aby się dowiedzieć ile wynosi ona w jednostce lub jednostkach docelowych " HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="YULL3" Content="Miary metryczne" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="YULL4" Content="Milimetry" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT1" HorizontalAlignment="Left" Height="23" Margin="20,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" TextChanged="YULT1_TextChanged" KeyDown="YULT1_KeyDown"/>
+        <Label x:Name="YULL5" Content="Centymetry" HorizontalAlignment="Left" Margin="20,180,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT2" HorizontalAlignment="Left" Height="23" Margin="20,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT2_KeyDown"/>
+        <Label x:Name="YULL6" Content="Decymetry" HorizontalAlignment="Left" Margin="20,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT3" HorizontalAlignment="Left" Height="23" Margin="20,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT3_KeyDown"/>
+        <Label x:Name="YULL7" Content="Metry" HorizontalAlignment="Left" Margin="20,300,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT4" HorizontalAlignment="Left" Height="23" Margin="20,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT4_KeyDown"/>
+        <Label x:Name="YULL8" Content="Kilometry" HorizontalAlignment="Left" Margin="20,360,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT5" HorizontalAlignment="Left" Height="23" Margin="20,390,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT5_KeyDown"/>
+        <Label x:Name="YULL9" Content="Miary anglosaskie" HorizontalAlignment="Left" Margin="283,90,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <Label x:Name="YULL10" Content="Cal" HorizontalAlignment="Left" Margin="283,120,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <TextBox x:Name="YULT6" HorizontalAlignment="Left" Height="23" Margin="283,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT6_KeyDown"/>
+        <Label x:Name="YULL11" Content="Stopa" HorizontalAlignment="Left" Margin="283,180,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT7" HorizontalAlignment="Left" Height="23" Margin="283,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT7_KeyDown"/>
+        <Label x:Name="YULL12" Content="Jard" HorizontalAlignment="Left" Margin="283,240,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT8" HorizontalAlignment="Left" Height="23" Margin="283,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT8_KeyDown"/>
+        <Label x:Name="YULL13" Content="Mila" HorizontalAlignment="Left" Margin="283,300,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT9" HorizontalAlignment="Left" Height="23" Margin="283,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT9_KeyDown"/>
+        <Label x:Name="YULL14" Content="Miary morskie" HorizontalAlignment="Left" Margin="546,90,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="YULL15" Content="Kabel" HorizontalAlignment="Left" Margin="546,120,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT10" HorizontalAlignment="Left" Height="23" Margin="546,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT10_KeyDown"/>
+        <Label x:Name="YULL16" Content="Mila morska" HorizontalAlignment="Left" Margin="546,180,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="YULT11" HorizontalAlignment="Left" Height="23" Margin="546,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" KeyDown="YULT11_KeyDown"/>
+
+
+    </Grid>
+</Window>

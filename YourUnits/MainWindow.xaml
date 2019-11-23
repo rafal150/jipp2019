@@ -1,0 +1,18 @@
+﻿<Window x:Name="YourUnitsMain" x:Class="YourUnits.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourUnits"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="YUML1" Content="YourUnits: Jednostki zawsze takie jakie chcesz" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Bold"/>
+        <Label x:Name="YUML2" Content="Aby rozpocząć pracę w programię wybierz interesującą cię wielkość fizyczną, której jednostki chcesz przekonwertować" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="YUMB1" Content="Konwerter jednostek temperatury" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top" Width="200" Height="40" Click="YUMB1_Click"/>
+        <Button x:Name="YUMB2" Content="Konwerter jednostek długości" HorizontalAlignment="Left" Margin="20,170,0,0" VerticalAlignment="Top" Width="200" Height="40" Click="YUMB2_Click"/>
+        <Button x:Name="YUMB3" Content="Konwerter jednostek masy" HorizontalAlignment="Left" Margin="20,230,0,0" VerticalAlignment="Top" Width="200" Height="40" Click="YUMB3_Click"/>
+        <Button x:Name="YUMB4" Content="Konwerter jednostek obiętości" HorizontalAlignment="Left" Margin="20,290,0,0" VerticalAlignment="Top" Width="200" Height="40" Click="YUMB4_Click"/>
+
+    </Grid>
+</Window>

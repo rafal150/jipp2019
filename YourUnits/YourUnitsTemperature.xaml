@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourUnits"
+        xmlns:YourUnitsVolumeLibrary="clr-namespace:YourUnitsVolumeLibrary;assembly=YourUnitsVolumeLibrary" x:Class="YourUnits.YourUnitsTemperature"
+        mc:Ignorable="d"
+        Title="YourUnitsTemperature" Height="450" Width="800">
+    <Grid>
+        <Label      x:Name="YUTL1"   Content="Konwerter jednostek temperatur" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.998,0.604" FontWeight="Bold"/>
+        <Label      x:Name="YUTL2"   Content="Wpisz wartość w domyślnej jednostce temperatury, aby się dowiedzieć ile wynosi ona w jednostce lub jednostkach docelowych" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <Label      x:Name="YUTL3"   Content="Skala Celsjusza" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox    x:Name="YUTT1" HorizontalAlignment="Left" Height="23" Margin="20,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="YUTT1_KeyDown"/>
+        <Label      x:Name="YUTL4"   Content="Skala Fahrenheita" HorizontalAlignment="Left" Margin="20,170,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox    x:Name="YUTT2" HorizontalAlignment="Left" Height="23" Margin="20,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="YUTT2_KeyDown"/>
+        <Label      x:Name="YUTL5"   Content="Skala Kelvina" HorizontalAlignment="Left" Margin="20,230,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox    x:Name="YUTT3" HorizontalAlignment="Left" Height="23" Margin="20,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="YUTT3_KeyDown"/>
+        <Label      x:Name="YUTL6"   Content="Skala Rankine'a" HorizontalAlignment="Left" Margin="20,290,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox    x:Name="YUTT4" HorizontalAlignment="Left" Height="23" Margin="20,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="YUTT4_KeyDown"/>
+
+    </Grid>
+</Window>
