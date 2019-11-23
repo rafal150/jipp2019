@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Plugins
 {
-    class Temperature
+    public class Temperature
     {
         public static string C = "C";
         public static string F = "F";

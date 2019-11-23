@@ -13,9 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Converter.Dictionary;
+using Plugins;
 using Converter.Model;
-using Converter.Program;
 using Converter.WindowHandler;
 
 
@@ -66,10 +65,19 @@ namespace Converter
                 masterConnection.Add(converter);
                 //connection.Converters.Add(converter);
             }
+            if (ComboBoxProperty.Text.Equals(General.voltage))
+            {
+                //TemperatureConverter converter = new TemperatureConverter(ComboBoxFromUnit.Text, ComboBoxToUnit.Text, WindowProperties.StringToDouble(TextBoxInput.Text));
+                converter = new VoltageConverter(ComboBoxFromUnit.Text, ComboBoxToUnit.Text, WindowProperties.StringToDouble(TextBoxInput.Text), DateTime.Now, ComboBoxProperty.Text);
+                converter.Convert();
+                TextBoxOutput.Text = WindowProperties.DoubleToString(converter.Result);
+                masterConnection.Add(converter);
+                //connection.Converters.Add(converter);
+            }
             //connection.SaveChanges();
-            
+
             //var allRows = masterConnection.GetLocal()// connection.Converters;
-            if(ConfigurationManager.AppSettings["StatisticsRepository"].Equals("AzureStorage"))
+            if (ConfigurationManager.AppSettings["StatisticsRepository"].Equals("AzureStorage"))
             {
                 DataBaseOutput.ItemsSource = masterConnection.GetAzure();
             }
@@ -100,6 +108,11 @@ namespace Converter
             {
                 ComboBoxFromUnit.ItemsSource = WindowProperties.listOfWeightUnits;
                 ComboBoxToUnit.ItemsSource = WindowProperties.listOfWeightUnits;
+            }
+            if (ComboBoxProperty.Text.Equals(General.voltage))
+            {
+                ComboBoxFromUnit.ItemsSource = WindowProperties.listOfVoltageUnits;
+                ComboBoxToUnit.ItemsSource = WindowProperties.listOfVoltageUnits;
             }
         }
 

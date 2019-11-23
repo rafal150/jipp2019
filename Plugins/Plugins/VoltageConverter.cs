@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Plugins
 {
-    class VoltageConverter : BaseConverter
+    public class VoltageConverter : BaseConverter
     {
         public VoltageConverter(string fromUnit, string toUnit, double value, DateTime convertingTime, string physicalProperty) : base(fromUnit, toUnit, value, convertingTime, physicalProperty)
         {

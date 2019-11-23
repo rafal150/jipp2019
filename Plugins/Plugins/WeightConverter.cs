@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Plugins
 {
-    class WeightConverter : BaseConverter
+    public class WeightConverter : BaseConverter
     {
         public WeightConverter(string fromUnit, string toUnit, double value, DateTime convertingTime, string physicalProperty) : base(fromUnit, toUnit, value, convertingTime, physicalProperty)
         {

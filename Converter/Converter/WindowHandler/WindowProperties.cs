@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Converter.Dictionary;
+using Plugins;
 
 namespace Converter.WindowHandler
 {
     class WindowProperties
     {
         public static List<string> listOfProperty = 
-            new List<string> {General.distance,General.temperature,General.weight};
+            new List<string> {General.distance,General.temperature,General.weight,General.voltage};
         /*public List<string> ListOfProperty
         {
             get
@@ -50,6 +50,10 @@ namespace Converter.WindowHandler
                 return this.listOfDistanceUnits;
             }
         }*/
+
+        public static List<string> listOfVoltageUnits =
+        new List<string> { Voltage.v,Voltage.mv,Voltage.kv};
+
 
         public static double StringToDouble(string value)
         {
