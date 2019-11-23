@@ -29,12 +29,13 @@ namespace Unitconverter
         Masy masy = new Masy();
         private IStatisticsRepository repository;
         //private StatisticsSQLRepo repository = new StatisticsSQLRepo();
-        public MainWindow(IStatisticsRepository rep)
+        public MainWindow(IStatisticsRepository rep, Unitconverter.Services.ConvServices converters)
         {
             InitializeComponent();
             this.repository = rep;
-            this.ChoosecomboBox.ItemsSource = new string[3] { "Temperatury", "Długości", "Masy" }; ;
+            //this.ChoosecomboBox.ItemsSource = new string[3] { "Temperatury", "Długości", "Masy" }; ;
             //LoadBaza();
+            this.ChoosecomboBox.ItemsSource = converters.GetConverters();
             this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
             //this.RodzajBazylabel.Content = this.repository.ToString();
             this.RodzajBazylabel.Content = ConfigurationManager.AppSettings["StatRepo"];
@@ -54,15 +55,22 @@ namespace Unitconverter
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            oblicz();
+            if(ChoosecomboBox.SelectedItem != null)
+            {
+                Unitconverter.Services.IConverter converter = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem);
+                this.OutputtextBlock.Text = converter.Convert(this.InputCombobox.SelectedItem.ToString(),this.OutputcomboBox.SelectedItem.ToString(),int.Parse(this.InputtextBox.Text)).ToString();
+            }
+
+            //oblicz();
+
             //koniec obliczanie
             //Zapamietanie danych
             StatDTO przech = new StatDTO()
             {
                 DateTime = DateTime.Now,
-                Type = this.ChoosecomboBox.Text,
-                FromUnit = this.InputCombobox.Text,
-                ToUnit = this.OutputcomboBox.Text,
+                Type = this.ChoosecomboBox.SelectedItem.ToString(),
+                FromUnit = this.InputCombobox.SelectedItem.ToString(),
+                ToUnit = this.OutputcomboBox.SelectedItem.ToString(),
                 RawValue = int.Parse(this.InputtextBox.Text),
                 ConvertedValue = int.Parse(this.OutputtextBlock.Text)
 
@@ -118,6 +126,13 @@ namespace Unitconverter
             InputtextBox.Text = "";
             OutputcomboBox.Text = "";
             OutputtextBlock.Text = "";
+            if(ChoosecomboBox.SelectedItem != null)
+            {
+                this.InputCombobox.ItemsSource = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem).Units;
+                this.OutputcomboBox.ItemsSource = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem).Units;
+
+            }
+            /*
             if (ChoosecomboBox.SelectedItem.ToString() == "Temperatury")
             {
                 this.InputCombobox.ItemsSource = temp.temp;
@@ -133,6 +148,7 @@ namespace Unitconverter
                 this.InputCombobox.ItemsSource = masy.masy;
                 this.OutputcomboBox.ItemsSource = masy.masy;
             }
+            */
         }
 
         private void ChangeBaza_Click(object sender, RoutedEventArgs e)

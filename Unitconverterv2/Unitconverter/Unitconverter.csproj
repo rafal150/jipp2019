@@ -84,6 +84,9 @@
     <Compile Include="Obliczenia\Temperatury.cs" />
     <Compile Include="Bazy\StatAzureModel.cs" />
     <Compile Include="Bazy\StatDTO.cs" />
+    <Compile Include="Services\ConvServices.cs" />
+    <Compile Include="Services\DlugosciKonwerter.cs" />
+    <Compile Include="Services\MasyKonwerter.cs" />
     <Compile Include="StatisticsAzureRepo.cs" />
     <Compile Include="StatisticsSQLRepo.cs" />
     <Compile Include="Bazy\UnitConverter.cs" />
@@ -126,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertSDK\ConvertSDK.csproj">
+      <Project>{65c185b5-a3d5-46dd-8895-df0624de5712}</Project>
+      <Name>ConvertSDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
