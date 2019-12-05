@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins", "Plugins\Plugins.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageConverterPlugin", "..\..\..\..\Desktop\repos\StorageConverterPlugin\StorageConverterPlugin\StorageConverterPlugin.csproj", "{22AB85FB-B455-47B5-A29D-B5BFCB3255E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvLogic", "ConvLogic\ConvLogic.csproj", "{6537BE9D-2BFF-4BEE-945C-9F6842FC48D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvLogicWeb", "ConvLogicWeb\ConvLogicWeb.csproj", "{4AE26424-763F-4B16-8377-9864E59EC1B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{22AB85FB-B455-47B5-A29D-B5BFCB3255E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22AB85FB-B455-47B5-A29D-B5BFCB3255E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22AB85FB-B455-47B5-A29D-B5BFCB3255E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6537BE9D-2BFF-4BEE-945C-9F6842FC48D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6537BE9D-2BFF-4BEE-945C-9F6842FC48D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6537BE9D-2BFF-4BEE-945C-9F6842FC48D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6537BE9D-2BFF-4BEE-945C-9F6842FC48D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE26424-763F-4B16-8377-9864E59EC1B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE26424-763F-4B16-8377-9864E59EC1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE26424-763F-4B16-8377-9864E59EC1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE26424-763F-4B16-8377-9864E59EC1B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
