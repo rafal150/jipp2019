@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Konwerter.SDK.IKonwerter>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (Konwerter.SDK.IKonwerter konwerter in Model)
+{
+    using (Ajax.BeginForm("Przelicz",
+        new { converterType = konwerter.GetType().AssemblyQualifiedName },
+        new AjaxOptions() { UpdateTargetId = konwerter.Typ + "wynik" }))
+    {
+        <div> @konwerter.Typ </div>
+        @Html.DropDownList("fromType", new SelectList(konwerter.Jednostki))
+        @Html.TextBox("value")
+        @Html.DropDownList("toType", new SelectList(konwerter.Jednostki))
+        <button type="submit"> Konwertuj </button>
+        <label id="@(konwerter.Typ + "wynik")"></label>
+    }
+}

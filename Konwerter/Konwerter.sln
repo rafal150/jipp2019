@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.SDK", "Konwerter.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.Logika", "Konwerter.Logika\Konwerter.Logika.csproj", "{7BA4D102-AD86-4034-B000-E41575894983}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.Web", "Konwerter.Web\Konwerter.Web.csproj", "{2714D007-528E-4E1B-8B87-2CBC8D599FE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7BA4D102-AD86-4034-B000-E41575894983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA4D102-AD86-4034-B000-E41575894983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA4D102-AD86-4034-B000-E41575894983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2714D007-528E-4E1B-8B87-2CBC8D599FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2714D007-528E-4E1B-8B87-2CBC8D599FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2714D007-528E-4E1B-8B87-2CBC8D599FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2714D007-528E-4E1B-8B87-2CBC8D599FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
