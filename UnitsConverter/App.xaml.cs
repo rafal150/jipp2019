@@ -37,7 +37,7 @@ namespace UnitsConverter
             }
             else
             {
-                containerBuilder.RegisterType<StatisticAzureStorageRep>().As<IStatisticsRepository>();
+                containerBuilder.RegisterType<StatisticsSqlRepository>().As<IStatisticsRepository>();
             }
 
             containerBuilder.RegisterType<MainWindow>();

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using UnitsConverter.Model;
 namespace UnitsConverter
 {
-    class StatisticSqlRepository
-    {
-        public class StatisticsSqlRepository : IStatisticsRepository
+
+         public class StatisticsSqlRepository : IStatisticsRepository
         {
             public void AddStatistic(StatisticDTO statistic)
             {
@@ -43,4 +42,3 @@ namespace UnitsConverter
             }
         }
     }
-}

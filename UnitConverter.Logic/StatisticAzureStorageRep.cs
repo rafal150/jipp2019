@@ -11,7 +11,7 @@ using UnitsConverter.Model;
 
 namespace UnitsConverter
 {
-    class StatisticAzureStorageRep : IStatisticsRepository
+    public class StatisticAzureStorageRep : IStatisticsRepository
 
     {
         private CloudTable table;
