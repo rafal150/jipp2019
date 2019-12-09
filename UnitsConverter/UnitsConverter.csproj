@@ -126,13 +126,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Services\ConverterService.cs" />
-    <Compile Include="Model\StatisticsEntity.cs" />
-    <Compile Include="Model\StatisticsModel.cs" />
-    <Compile Include="Services\TempConverter.cs" />
-    <Compile Include="Services\lenghtConverter.cs" />
-    <Compile Include="Services\weightConverter.cs" />
-    <Compile Include="Model\Statistic.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

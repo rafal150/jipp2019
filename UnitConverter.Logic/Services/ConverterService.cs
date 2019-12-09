@@ -22,8 +22,6 @@ namespace UnitsConverter.Services
 
             List<IConverter> converters = new List<IConverter>();
            converters.AddRange(this.scope.Resolve<IEnumerable<IConverter>>());
-           // converters.Add(new TempConverter()) ;
-           //converters.Add(new weightConverter());
             return converters;
         }
     }
