@@ -43,7 +43,7 @@ namespace UnitsConverter
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<ConverterService>();
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(ConverterService).Assembly;
            containerBuilder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
 
