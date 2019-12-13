@@ -20,7 +20,7 @@ namespace Labs
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
-        {
+        { 
             base.OnStartup(e);
 
             IContainer container = BuildContainer();
@@ -58,7 +58,7 @@ namespace Labs
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<SConverters>();
 
-            var searchConv = Assembly.GetExecutingAssembly();
+            var searchConv = typeof(SConverters).Assembly; //Assembly.GetExecutingAssembly(); <--- old 
             containerBuilder.RegisterAssemblyTypes(searchConv).Where(conv => conv.Name.EndsWith("Conv")).AsImplementedInterfaces();
 
             SearchPlugin(containerBuilder);

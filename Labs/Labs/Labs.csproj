@@ -86,18 +86,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\SConverters.cs" />
-    <Compile Include="Converters\LenghtConv.cs" />
-    <Compile Include="Converters\TempConv.cs" />
-    <Compile Include="Converters\WeightConv.cs" />
-    <Compile Include="Databases\AzureRepo.cs" />
-    <Compile Include="Databases\Entity.cs" />
-    <Compile Include="Unused\SQLModel%28old%29.cs" />
-    <Compile Include="Databases\SQLRepo.cs" />
-    <Compile Include="Unused\SQLValues%28old%29.cs" />
-    <Compile Include="Databases\SQLValues.cs" />
-    <Compile Include="Databases\SQLModel.cs" />
-    <Compile Include="Values.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,7 +94,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InterfaceRepository.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -140,6 +127,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Labs.logic\Labs.logic.csproj">
+      <Project>{6a082052-e980-4ac0-af49-a16dc11c2080}</Project>
+      <Name>Labs.logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LabsSDK\LabsSDK.csproj">
       <Project>{2e2f6e6b-bc08-4047-a4b6-ea5b1cd757ec}</Project>
       <Name>LabsSDK</Name>
