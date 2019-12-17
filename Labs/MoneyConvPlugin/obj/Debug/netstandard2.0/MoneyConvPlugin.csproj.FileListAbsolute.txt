@@ -1,0 +1,11 @@
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\bin\Debug\netstandard2.0\MoneyConvPlugin.deps.json
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\bin\Debug\netstandard2.0\MoneyConvPlugin.dll
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\bin\Debug\netstandard2.0\LabsSDK.dll
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\bin\Debug\netstandard2.0\LabsSDK.pdb
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.csprojAssemblyReference.cache
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.AssemblyInfoInputs.cache
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.AssemblyInfo.cs
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.csproj.CopyComplete
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\bin\Debug\netstandard2.0\MoneyConvPlugin.pdb
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.dll
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\MoneyConvPlugin\obj\Debug\netstandard2.0\MoneyConvPlugin.pdb

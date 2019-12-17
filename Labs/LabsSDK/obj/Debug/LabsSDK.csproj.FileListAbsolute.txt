@@ -5,6 +5,6 @@ C:\Users\Kosiara\Desktop\new\Labs\LabsSDK\obj\Debug\LabsSDK.pdb
 C:\Users\Kosiara\Desktop\new\Labs\LabsSDK\obj\Debug\LabsSDK.csprojAssemblyReference.cache
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\bin\Debug\LabsSDK.dll
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\bin\Debug\LabsSDK.pdb
-C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\obj\Debug\LabsSDK.csprojAssemblyReference.cache
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\obj\Debug\LabsSDK.dll
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\obj\Debug\LabsSDK.pdb
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\LabsSDK\obj\Debug\LabsSDK.csprojAssemblyReference.cache

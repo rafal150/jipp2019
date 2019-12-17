@@ -1,4 +1,3 @@
-C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\obj\Debug\Labs.logic.csprojAssemblyReference.cache
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\bin\Debug\Labs.logic.dll.config
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\bin\Debug\Labs.logic.dll
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\bin\Debug\Labs.logic.pdb
@@ -21,3 +20,4 @@ C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\bin\Debug\Newton
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\obj\Debug\Labs.logic.csproj.CopyComplete
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\obj\Debug\Labs.logic.dll
 C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\obj\Debug\Labs.logic.pdb
+C:\Users\Kosiara\Desktop\studia\JIPP\lab\laborkijipp\Labs.logic\obj\Debug\Labs.logic.csprojAssemblyReference.cache

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kosiara\\Desktop\\new\\SpeedConvPlugin\\SpeedConvPlugin.csproj": {}
+    "C:\\Users\\Kosiara\\Desktop\\studia\\JIPP\\lab\\laborkijipp\\SpeedConvPlugin\\SpeedConvPlugin.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kosiara\\Desktop\\new\\SpeedConvPlugin\\SpeedConvPlugin.csproj": {
+    "C:\\Users\\Kosiara\\Desktop\\studia\\JIPP\\lab\\laborkijipp\\SpeedConvPlugin\\SpeedConvPlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kosiara\\Desktop\\new\\SpeedConvPlugin\\SpeedConvPlugin.csproj",
+        "projectUniqueName": "C:\\Users\\Kosiara\\Desktop\\studia\\JIPP\\lab\\laborkijipp\\SpeedConvPlugin\\SpeedConvPlugin.csproj",
         "projectName": "SpeedConvPlugin",
-        "projectPath": "C:\\Users\\Kosiara\\Desktop\\new\\SpeedConvPlugin\\SpeedConvPlugin.csproj",
+        "projectPath": "C:\\Users\\Kosiara\\Desktop\\studia\\JIPP\\lab\\laborkijipp\\SpeedConvPlugin\\SpeedConvPlugin.csproj",
         "packagesPath": "C:\\Users\\Kosiara\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kosiara\\Desktop\\new\\SpeedConvPlugin\\obj\\",
+        "outputPath": "C:\\Users\\Kosiara\\Desktop\\studia\\JIPP\\lab\\laborkijipp\\SpeedConvPlugin\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

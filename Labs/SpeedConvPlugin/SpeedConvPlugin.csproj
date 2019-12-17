@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Reference Include="LabsSDK">
-      <HintPath>..\Labs\LabsSDK\bin\Debug\LabsSDK.dll</HintPath>
+      <HintPath>..\LabsSDK\bin\Debug\LabsSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
 
