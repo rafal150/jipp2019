@@ -56,8 +56,8 @@
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -100,14 +100,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\KonwContext.cs" />
-    <Compile Include="Model\Konwerter_stat.cs" />
-    <Compile Include="Model\Staty2.cs" />
-    <Compile Include="Services\ConvertersService.cs" />
-    <Compile Include="StatystykiAzureStorageRepo.cs" />
-    <Compile Include="StatystykiObiekt.cs" />
-    <Compile Include="IStatystykiRepo.cs" />
-    <Compile Include="StatystykiSqlRepo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,9 +114,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\DlugoscConverter.cs" />
-    <Compile Include="Services\MasaConverter.cs" />
-    <Compile Include="Services\TempConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -155,6 +144,10 @@
     <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
       <Project>{97c12d78-e58c-42a1-8e14-e639053f8c02}</Project>
       <Name>Converter.SDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnitConverter.Logic\UnitConverter.Logic.csproj">
+      <Project>{0613964a-ea75-43cc-ac8e-cbfec83ce9d5}</Project>
+      <Name>UnitConverter.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
