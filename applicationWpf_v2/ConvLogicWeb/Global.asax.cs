@@ -46,7 +46,7 @@ namespace ConvLogicWeb
 
             var assembly = typeof(ConverterService).Assembly; // Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces().AsSelf();
+                .Where(t => t.Name.Contains("Converter")).AsImplementedInterfaces().AsSelf();
             RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
@@ -60,7 +60,7 @@ namespace ConvLogicWeb
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
             foreach (Assembly assembly in assemblies)
             {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.Contains("Converter")).AsImplementedInterfaces();
+                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.Contains("Converter")).AsImplementedInterfaces().AsSelf();
             }
         }
     }

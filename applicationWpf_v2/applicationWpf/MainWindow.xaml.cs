@@ -51,6 +51,9 @@ namespace applicationWpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             statisticgrid.Items.Clear();
             var stats = repo.GetStatistics();
 
