@@ -13,9 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UnitConverter.Converters;
-using UnitConverter.Statistics;
 using UnitConverter.DataBase;
-
+using UnitConverter.Statistics;
 
 namespace UnitConverter
 {
@@ -57,6 +56,7 @@ namespace UnitConverter
                 FromUnit.ItemsSource = m.GetConverter().GetConverter(mUnit).Units;
                 ToUnit.ItemsSource = m.GetConverter().GetConverter(mUnit).Units;
             }
+
         }
 
        
@@ -92,7 +92,8 @@ namespace UnitConverter
         private void Btt_Click(object sender, RoutedEventArgs e)
         {
            // MessageBox.Show(m.GetConverter().RegisterPlugins());
-            update();
+            
+             update();
         }
 
         private void Log_btt_Click(object sender, RoutedEventArgs e)

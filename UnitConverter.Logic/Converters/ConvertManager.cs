@@ -20,6 +20,26 @@ namespace UnitConverter.Converters
 
             converters.Add(new UnitConverterLib.TimeConverter());
             converters.Add(new UnitConverterLib.SpeedConverter());
+
+            converters.Add(new CashConverter.CashConverter());
+
+        }
+        public IConverter GetConverter2(string s)
+        {
+            foreach (var item in converters)
+            {
+                foreach (var item2 in item.Units)
+                {
+                    if (item2.ToUpper().Equals(s.ToUpper()))
+                    {
+                        return item;
+                       
+                    }
+
+                }
+
+            }
+            return null;
         }
         public IConverter GetConverter(string mainUnit)
         {

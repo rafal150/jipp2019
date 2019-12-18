@@ -1,0 +1,6 @@
+﻿@model IEnumerable<UnitConverter.Statistics.StatisticDTO>
+@{
+    ViewBag.Title = "Data";
+    WebGrid grid = new WebGrid(Model);
+}
+@grid.GetHtml();

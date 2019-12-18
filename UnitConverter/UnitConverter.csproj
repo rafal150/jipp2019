@@ -56,8 +56,8 @@
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -74,6 +74,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UnitConverter.Logic">
+      <HintPath>..\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.dll</HintPath>
+    </Reference>
     <Reference Include="UnitConverterLib">
       <HintPath>..\UnitConverterLib.dll</HintPath>
     </Reference>
@@ -89,12 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\ConvertManager.cs" />
-    <Compile Include="Converters\MassUnit.cs" />
-    <Compile Include="Converters\TemperatureConverter.cs" />
-    <Compile Include="Converters\LenghtConverter.cs" />
-    <Compile Include="Converters\MassConverter.cs" />
-    <Compile Include="Statistics\StatisticEntity.cs" />
     <Page Include="Logs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,11 +104,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataBase\AzureStorageRepository.cs" />
-    <Compile Include="DataBase\DatabaseContext.cs" />
-    <Compile Include="DataBase\SqlRepository.cs" />
-    <Compile Include="Converters\LenghtUnit.cs" />
-    <Compile Include="Converters\TemperatureUnit.cs" />
     <Compile Include="Logs.xaml.cs">
       <DependentUpon>Logs.xaml</DependentUpon>
     </Compile>
@@ -121,10 +113,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager.cs" />
-    <Compile Include="Statistics\IStatisticsRepository.cs" />
-    <Compile Include="Statistics\StatisticDTO.cs" />
-    <Compile Include="Statistics\Statistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
