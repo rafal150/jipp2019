@@ -1,28 +1,33 @@
 ﻿using JIPP5_LAB.DataProviders;
 using JIPP5_LAB.Interfaces;
 using JIPP5_LAB.SDK;
+using System;
+using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 using Unity;
+using Unity.AspNet.Mvc;
 
-namespace JIPP5_LAB
+namespace JIPP5_LAB.WebApp
 {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
-            IUnityContainer Container = BuildContainer();
+            var conteiner = BuildContainer();
+            DependencyResolver.SetResolver(new UnityDependencyResolver(conteiner));
 
-            this.MainWindow = Container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         private IUnityContainer BuildContainer()
@@ -40,7 +45,7 @@ namespace JIPP5_LAB
             var assembly = typeof(IDataHelper).Assembly;
             var viewsAssembly = Assembly.GetExecutingAssembly();
             RegisterConverters(assembly, container);
-            RegisterViews(viewsAssembly, container);
+
             RegisterPlugins(container);
             return container;
         }
@@ -48,34 +53,23 @@ namespace JIPP5_LAB
         private void RegisterPlugins(IUnityContainer container)
         {
             string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
-            Directory.CreateDirectory(pluginDirectory);
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
+
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
             foreach (var assembly in assemblies)
             {
                 RegisterConverters(assembly, container);
-                RegisterViews(assembly, container);
             }
         }
 
         private void RegisterConverters(Assembly assembly, IUnityContainer container)
         {
             var listOfConverters = assembly.GetTypes().Where(x => x.Name.EndsWith("ConverterHelper") && x.IsClass).ToList();
-            
+
             foreach (var item in listOfConverters)
             {
                 container.RegisterType(typeof(IConverterHelper), item, item.Name);
             }
         }
-
-        private void RegisterViews(Assembly assembly, IUnityContainer container)
-        {
-            var listOfViews = assembly.GetTypes().Where(x => x.Name.EndsWith("View") && x.IsClass).ToList();
-            foreach (var item in listOfViews)
-            {
-                container.RegisterType(typeof(IView), item, item.Name);
-            }
-        }
-
     }
 }

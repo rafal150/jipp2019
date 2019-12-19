@@ -24,7 +24,10 @@ namespace JIPP5_LAB.DataProviders
         public decimal RawData { get; set; }
 
         public decimal Converted { get; set; }
+        public StatisticModel()
+        {
 
+        }
         public StatisticModel(StatisticsDTO dto)
         {
             Date = dto.Date;

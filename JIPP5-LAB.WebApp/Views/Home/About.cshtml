@@ -1,0 +1,35 @@
+﻿@model IEnumerable<JIPP5_LAB.SDK.StatisticsDTO>
+
+<h1>Statystyki</h1>
+<style>
+    th{
+        padding:10px;
+        background-color:cornflowerblue;
+    }
+    td{
+        padding:10px;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<table>
+    <tr>
+        <th>Stempel</th>
+        <th>Oryginalna Wartość</th>
+        <th>Oryginalna Jednostka</th>
+        <th>Po konwesji</th>
+        <th>Jednostka po konwersji</th>
+    </tr>
+
+    @foreach (JIPP5_LAB.SDK.StatisticsDTO statistic in Model)
+    {
+        <tr>
+            <td>@statistic.Date</td>
+            <td>@statistic.RawData</td>
+            <td>@statistic.FromUnit</td>
+            <td>@statistic.Converted</td>
+            <td>@statistic.ToUnit</td>
+        </tr>
+    }
+</table>
