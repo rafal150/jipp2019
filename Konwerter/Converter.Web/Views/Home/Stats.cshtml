@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Konwerter.StatisticsDTO>
+@{
+    ViewBag.Title = "Data";
+    WebGrid dataGrid = new WebGrid(source: Model, defaultSort: "dateTime", rowsPerPage: 20);
+}
+<h2>Statystyki</h2>
+<style type="text/css">
+    .style th, .style td {
+        border: 1px solid black;
+        padding: 3px;
+    }
+</style>
+@dataGrid.GetHtml(tableStyle: "style",
+    columns: new[]
+    {
+        dataGrid.Column("conversionType"),
+        dataGrid.Column("fromUnit"),
+        dataGrid.Column("toUnit"),
+        dataGrid.Column("valueToConvert"),
+        dataGrid.Column("convertedValue"),
+        dataGrid.Column("dateTime"),
+   })

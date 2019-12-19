@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Converter.SDK.IConverter>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (Converter.SDK.IConverter converter in Model)
+{
+    using (Ajax.BeginForm("Convert",
+        new { conversionType = converter.GetType().AssemblyQualifiedName },
+        new AjaxOptions() { UpdateTargetId = converter.Name + "result" }))
+    {
+        <div> @converter.Name </div>
+        <div>
+            @Html.DropDownList("fromUnit", new SelectList(converter.Units))
+            @Html.TextBox("valueToConvert")
+            @Html.DropDownList("toUnit", new SelectList(converter.Units))
+            <button type="submit"> Konwertuj </button>
+            <label id="@(converter.Name + "result")"></label>
+        </div>
+    }
+}

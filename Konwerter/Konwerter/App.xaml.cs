@@ -42,7 +42,7 @@ namespace Konwerter
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<ConvertersService>();
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(ConvertersService).Assembly;
             containerBuilder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Conversion")).AsImplementedInterfaces();
 

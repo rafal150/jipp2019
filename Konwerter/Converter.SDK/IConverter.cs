@@ -10,6 +10,6 @@ namespace Converter.SDK
     {
         string Name { get; }
         List<string> Units { get; }
-        double Convert(string fromUnit, string toUnit, double convertedValue);
+        double Convert(string fromUnit, string toUnit, double valueToConvert);
     }
 }
