@@ -89,7 +89,7 @@ namespace KonwerterCzasuPlugin
             }
             else if (unitFrom == "min" && unitTo == "rok")
             {
-                Wartosc = (Wartosc * 0.00002282);
+                Wartosc = (Wartosc * 0.000001901);
                 return Wartosc;
             }
             else if (unitFrom == "min" && unitTo == "wiek")
@@ -196,43 +196,36 @@ namespace KonwerterCzasuPlugin
             else if (unitFrom == "tydzien" && unitTo == "s")
             {
                 Wartosc = (Wartosc * 604800);
-                //WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "min")
             {
                 Wartosc = (Wartosc * 10080);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "h")
             {
                 Wartosc = (Wartosc * 168);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "dzien")
             {
                 Wartosc = (Wartosc * 7);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "miesiac")
             {
                 Wartosc = (Wartosc * 0.23);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "rok")
             {
                 Wartosc = (Wartosc * 0.01916);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
             else if (unitFrom == "tydzien" && unitTo == "wiek")
             {
                 Wartosc = (Wartosc * 0.0001917);
-                // WartoscString = Wartosc.ToString();
                 return Wartosc;
             }
 
@@ -260,7 +253,7 @@ namespace KonwerterCzasuPlugin
             }
             else if (unitFrom == "miesiac" && unitTo == "dzien")
             {
-                Wartosc = (Wartosc * 730.5);
+                Wartosc = (Wartosc * 30.44);
                 return Wartosc;
             }
             else if (unitFrom == "miesiac" && unitTo == "tydzien")
@@ -275,7 +268,7 @@ namespace KonwerterCzasuPlugin
             }
             else if (unitFrom == "miesiac" && unitTo == "wiek")
             {
-                Wartosc = (Wartosc * 0.08333);
+                Wartosc = (Wartosc * 0.0008333);
                 return Wartosc;
             }
 
@@ -316,7 +309,7 @@ namespace KonwerterCzasuPlugin
             }
             else if (unitFrom == "rok" && unitTo == "wiek")
             {
-                Wartosc = (Wartosc * 365.3);
+                Wartosc = (Wartosc * 0.01);
                 return Wartosc;
             }
 

@@ -44,7 +44,7 @@ namespace KonwerterJedn
             containerBuilder.RegisterType<KonwerterJednostek>();
 
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(KonwerterJednostek).Assembly; //Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces();
 
             RegisterPlugins(containerBuilder);
