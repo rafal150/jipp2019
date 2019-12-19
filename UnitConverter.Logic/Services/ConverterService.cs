@@ -14,7 +14,7 @@ namespace UnitsConverter.Services
         public ConverterService(ILifetimeScope scope)
         {
 
-            this.scope = scope;
+            this.scope =  scope;
         }
 
         public List<IConverter> GetConverters()

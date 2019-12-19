@@ -39,6 +39,9 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Bogus, Version=28.4.4.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.28.4.4\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -82,12 +85,14 @@
     <Compile Include="Model\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConverterService.cs" />
+    <Compile Include="Services\CurrencyConverter.cs" />
     <Compile Include="Services\lenghtConverter.cs" />
     <Compile Include="Services\TempConverter.cs" />
     <Compile Include="Services\weightConverter.cs" />
     <Compile Include="StatisticAzureStorageRep.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="StatisticSqlRepository.cs" />
+    <Compile Include="WebApiConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
