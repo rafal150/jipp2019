@@ -98,18 +98,6 @@
     <Compile Include="ConverterWindow.xaml.cs">
       <DependentUpon>ConverterWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IUsageStatistiscRepo.cs" />
-    <Compile Include="services\ConvertersService.cs" />
-    <Compile Include="services\LengthConverter.cs" />
-    <Compile Include="services\TemperatureConverter.cs" />
-    <Compile Include="services\WeightConverter.cs" />
-    <Compile Include="StatisticDTO.cs" />
-    <Compile Include="TempUnits.cs" />
-    <Compile Include="UsageStatistics.cs" />
-    <Compile Include="UsageStatisticsAzureRepo.cs" />
-    <Compile Include="UsageStatisticsEntity.cs" />
-    <Compile Include="UsageStatisticsSqlRepo.cs" />
-    <Compile Include="WieghtUnits.cs" />
     <Page Include="ConverterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,14 +110,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LenghtUnits.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -160,6 +146,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Converter.logic\Converter.logic.csproj">
+      <Project>{ff975b07-cdee-4ee9-a13f-b376d55ffca2}</Project>
+      <Name>Converter.logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
       <Project>{65dd65d8-a37f-4a75-960e-5d9ed76fa39b}</Project>
       <Name>Converter.SDK</Name>
