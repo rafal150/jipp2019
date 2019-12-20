@@ -1,44 +1,44 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
+using System;
 using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
-namespace UnitConversion
+namespace UnitConversion.Web
 {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
-
             IContainer container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            this.MainWindow = container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
-
-            if(ConfigurationManager.AppSettings["ServiceRepository"] == "AzureStorage")
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            if (ConfigurationManager.AppSettings["ServiceRepository"] == "AzureStorage")
             {
                 containerBuilder.RegisterType<AzureServiceRepository>().As<IServiceRepository>();
             }
-            else if(ConfigurationManager.AppSettings["ServiceRepository"] == "SQL")
+            else 
+            //if (ConfigurationManager.AppSettings["ServiceRepository"] == "SQL")
             {
                 containerBuilder.RegisterType<SqlServiceRepository>().As<IServiceRepository>();
             }
-            containerBuilder.RegisterType<MainWindowViewModel>();
-            containerBuilder.RegisterType<ConverterService>();
 
-            containerBuilder.RegisterType<MainWindow>();
+            containerBuilder.RegisterType<ConverterService>();
 
             var assembly = typeof(ConverterService).Assembly;
             containerBuilder.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
@@ -50,11 +50,11 @@ namespace UnitConversion
 
         private static void RegisterPlugins(ContainerBuilder container)
         {
-            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
             string pluginDirectory = Path.Combine(directory, "plugins");
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            foreach(Assembly assembly in assemblies)
+            foreach (Assembly assembly in assemblies)
             {
                 container.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
             }

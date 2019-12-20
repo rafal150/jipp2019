@@ -10,9 +10,9 @@ namespace UnitConversion
     {
         private readonly IServiceRepository serviceRepository;
         private readonly ILifetimeScope scope;
-        List<UnitConverter> unitConverters;
+        Dictionary<string, UnitConverter> unitConverters;
 
-        public List<UnitConverter> UnitConverters => unitConverters;
+        public Dictionary<string, UnitConverter> UnitConverters => unitConverters;
 
         public ConverterService(IServiceRepository serviceRepository, ILifetimeScope scope)
         {
@@ -21,9 +21,23 @@ namespace UnitConversion
             GetConverters();
         }
 
-        private void GetConverters()
+        public List<UnitConverter> GetConverters()
         {
-            unitConverters = scope.Resolve<IEnumerable<UnitConverter>>().ToList();
+            if(unitConverters == null)
+                unitConverters = scope.Resolve<IEnumerable<UnitConverter>>().ToDictionary(x => x.Name, x => x);
+            return unitConverters.Values.ToList();
+        }
+
+        public bool Convert(string selectedConverter, string unitFrom, string unitTo, decimal value, out decimal convertedValue)
+        {
+            convertedValue = -1;
+            if (unitConverters.ContainsKey(selectedConverter) == false) return false;
+            UnitConverter converter = unitConverters[selectedConverter];
+            if (converter.SetUnits(unitFrom, unitTo))
+            {
+                return Convert(converter, value, out convertedValue);
+            }
+            else return false;
         }
 
         public bool Convert(UnitConverter selectedConverter, decimal value, out decimal convertedValue)
