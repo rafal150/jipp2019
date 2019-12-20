@@ -93,17 +93,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConverterCtx.cs" />
-    <Compile Include="ConvertersService.cs" />
-    <Compile Include="ITelemetryRepository.cs" />
-    <Compile Include="LenghtConverter.cs" />
-    <Compile Include="Telemetry.cs" />
-    <Compile Include="TelemetryAzureRepository.cs" />
-    <Compile Include="TelemetryDTO.cs" />
-    <Compile Include="TelemetryEntity.cs" />
-    <Compile Include="TelemetrySqlRepository.cs" />
-    <Compile Include="TemperatureConverter.cs" />
-    <Compile Include="WeightConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,6 +139,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConverterLogic\ConverterLogic.csproj">
+      <Project>{4680b3b5-4916-4570-b533-a02a373f8e6d}</Project>
+      <Name>ConverterLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConverterSDK\ConverterSDK.csproj">
       <Project>{95ad8ef3-dc52-44eb-af0e-99251c26e73a}</Project>
       <Name>ConverterSDK</Name>

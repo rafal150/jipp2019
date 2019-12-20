@@ -53,11 +53,14 @@ namespace converter
         private static void RegisterPlugins(ContainerBuilder builder)
         {
             string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");            
-            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();            
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            
+            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+            
             foreach (Assembly assembly in assemblies)
             {
                 builder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
-            }        }
+            }
+        }
     }
 }

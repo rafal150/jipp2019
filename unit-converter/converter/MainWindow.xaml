@@ -3,14 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:converter"
         mc:Ignorable="d"
         DataContext="{Binding}" 
         x:Name="Window"
         Title="Unit Converter" Height="450" Width="800">
     <Grid>
         <ComboBox x:Name="UnitsTypeComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="UnitsTypeComboBox_SelectionChanged">
-            <ComboBox.ItemTemplate>                <DataTemplate>                    <TextBlock Text="{Binding Name}"/>                </DataTemplate>            </ComboBox.ItemTemplate>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <ComboBox x:Name="FromUnitComboBox"  HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Source" Text="{Binding Path=From, ElementName=Window}" HorizontalAlignment="Left" Height="23" Margin="135,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

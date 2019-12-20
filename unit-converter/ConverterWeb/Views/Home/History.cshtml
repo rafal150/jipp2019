@@ -1,0 +1,30 @@
+﻿@model IEnumerable<converter.TelemetryDTO>
+
+<h1>History</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Value From</th>
+            <th scope="col">Unit From</th>
+            <th scope="col">Value To</th>
+            <th scope="col">Unit To</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (converter.TelemetryDTO entity in Model)
+        {
+        <tr>
+            <td>@entity.Date</td>
+            <td>@entity.Type</td>
+            <td>@entity.ValueFrom</td>
+            <td>@entity.UnitFrom</td>
+            <td>@entity.ValueTo</td>
+            <td>@entity.UnitTo</td>
+        </tr>
+        }
+    </tbody>
+</table>
