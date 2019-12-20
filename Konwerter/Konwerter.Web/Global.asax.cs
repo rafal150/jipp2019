@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Konwerter;
 using Konwerter.Services;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace Konwerter.Web
         {
             var containerBuilder = new ContainerBuilder();
 
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly); //tego brakowało
+
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
                 containerBuilder.RegisterType<AzureStorageRepo>().As<IRepo>();
@@ -56,7 +59,7 @@ namespace Konwerter.Web
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
             //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");// Path.Combine(assemblyDirectory, "plugins");
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin/plugins");// Path.Combine(assemblyDirectory, "plugins");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
