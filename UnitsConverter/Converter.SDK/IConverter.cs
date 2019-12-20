@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Units_Converter
+namespace Units_Converter.Services
 {
     public interface IConverter
     {
