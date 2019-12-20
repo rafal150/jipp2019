@@ -78,17 +78,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IStatisticsRepository.cs" />
-    <Compile Include="Services\ConvertersService.cs" />
-    <Compile Include="Services\ExampleConverter.cs" />
-    <Compile Include="Services\LengthConverter.cs" />
-    <Compile Include="Services\WeigthConverter.cs" />
-    <Compile Include="Statistics\Statistic.cs" />
-    <Compile Include="StatisticsAzureStorageRepository.cs" />
-    <Compile Include="StatisticsDTO.cs" />
-    <Compile Include="StatisticsSqlRepository.cs" />
-    <Compile Include="Statistics\StatisticsEntity.cs" />
-    <Compile Include="Statistics\StatisticsModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

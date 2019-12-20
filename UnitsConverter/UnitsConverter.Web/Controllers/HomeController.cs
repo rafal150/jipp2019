@@ -4,12 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace UnitsConverter.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController (ConvertersService convertersService)
+        {
+
+        }
         public ActionResult Index()
         {
+            
             return View();
         }
 
