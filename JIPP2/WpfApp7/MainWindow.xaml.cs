@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KonwerterSDK;
+using WpfApp7;
 
 namespace WpfAppJIPP
 {
@@ -21,47 +24,61 @@ namespace WpfAppJIPP
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-    private IStatisticsRepository repository;
-
-        public MainWindow(IStatisticsRepository repo)
+        Type typKlasy;
+        private IStatisticsRepository repository;
+        private List<InterfejsKonwerter> listaInterfejsow;
+        private KonwerterService konwerterService;
+        public MainWindow(IStatisticsRepository repo, KonwerterService konwerterService)
         {
             InitializeComponent();
 
-          this.repository = repo;
-          this.StatisticDataGrid.ItemsSource = repository.GetStatistics();
+            this.repository = repo;
+            this.konwerterService = konwerterService;
+            this.StatisticDataGrid.ItemsSource = repository.GetStatistics();
+            listaInterfejsow = konwerterService.GetConverters();
+            List<string> listaKlas = new List<string>();
+            foreach (InterfejsKonwerter converterInterface in listaInterfejsow)
+            {
+                listaKlas.Add(converterInterface.GetType().Name);
+            }
+            Wybor_typuCombobox.ItemsSource = listaKlas;
         }
-  
-        private Mainlist lista = new Mainlist();
+
 
         private void TypCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int wybrany_typ = Wybor_typuCombobox.SelectedIndex;
-            lista.kolekcja();
-            switch (wybrany_typ)
+            string wybrany_typ = Wybor_typuCombobox.SelectedItem.ToString();
+
+            typKlasy = Type.GetType("WpfAppJIPP.Jednostki." + wybrany_typ);
+            if (typKlasy == null)
+
             {
-                case 0:
-                    lista.Wybor_miary = lista.Jedn_temp;
-                    break;
-                case 1:
-                    lista.Wybor_miary = lista.Jedn_masy;
-                    break;
-                case 2:
-                    lista.Wybor_miary = lista.Jedn_dlugosci;
-                    break;
+                foreach (InterfejsKonwerter interfejsKonwerter in listaInterfejsow)
+                {
+                    if (interfejsKonwerter.GetType().Name == wybrany_typ)
+                    {
+                        typKlasy = interfejsKonwerter.GetType();
+                        break;
+                    }
+                }
             }
-            ZCombobox.ItemsSource = lista.Wybor_miary;
-            NACombobox.ItemsSource = lista.Wybor_miary;
-          
+            MethodInfo metoda = typKlasy.GetMethod("GetJednostki");
+            List<string> listaJednostek = (List<string>)metoda.Invoke(null, null);
+            ZCombobox.ItemsSource = listaJednostek;
+            NACombobox.ItemsSource = listaJednostek;
+
         }
 
         private void CalcButton_click(object sender, RoutedEventArgs e)
         {
-            int wybrany_typ = Wybor_typuCombobox.SelectedIndex;
-            int z_wybor = ZCombobox.SelectedIndex;
-            int na_wybor = NACombobox.SelectedIndex;
+            Object instancjaKlasy = typKlasy.GetConstructor(new Type[] { }).Invoke(new object[] { });
+            string z_wybor = ZCombobox.SelectedItem.ToString();
+            string na_wybor = NACombobox.SelectedItem.ToString();
             double wartosc_z = Convert.ToDouble(this.ZTextBox.Text);
-            double wartosc_na = lista.Wybor_miary[na_wybor].Konwersja_z_bazowej(lista.Wybor_miary[z_wybor].Konwersja_na_bazowa(wartosc_z));
+            PropertyInfo set = typKlasy.GetProperty(z_wybor);
+            PropertyInfo get = typKlasy.GetProperty(na_wybor);
+            set.SetValue(instancjaKlasy, wartosc_z);
+            double wartosc_na = Double.Parse(get.GetValue(instancjaKlasy).ToString());
             this.NATextBox.Text = Convert.ToString(wartosc_na);
             using (Converter context = new Converter())
             {
@@ -71,16 +88,16 @@ namespace WpfAppJIPP
                 {
                     Id = repository.GetStatistics().Count() + 1,
                     Czas = DateTime.Now,
-                    Typ = lista.Wybor_miary[wybrany_typ].Typmiary,
-                    Konwersja_z = lista.Wybor_miary[z_wybor].Nazwa,
-                    Konwersja_na = lista.Wybor_miary[na_wybor].Nazwa,
+                    Typ = typKlasy.Name,
+                    Konwersja_z = z_wybor,
+                    Konwersja_na = na_wybor,
                     Wartosc_wprowadzona = Convert.ToDecimal(wartosc_z),
                     Wynik = Convert.ToDecimal(wartosc_na)
                 };
-                 this.repository.AddStatistic(st);
+                this.repository.AddStatistic(st);
                 this.StatisticDataGrid.ItemsSource = repository.GetStatistics();
             }
-      
+
         }
 
 

@@ -47,6 +47,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="KonwerterSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\KonwerterSDK.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
@@ -88,6 +92,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Jednostki\Dlugosc.cs" />
+    <Compile Include="Jednostki\Masa.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,14 +103,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="Jednostki\Temperatura.cs" />
+    <Compile Include="KonwerterService.cs" />
     <Compile Include="StatModel\StatisticsEntity.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="StatisticsSqlRepository.cs" />
     <Compile Include="StatisticsAzureStorageRepository.cs" />
     <Compile Include="StatModel\StatisticsModel.cs" />
     <Compile Include="StatModel\Statistics.cs" />
-    <Compile Include="Lista.cs" />
-    <Compile Include="Jednostki.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -138,6 +144,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KonwerterSDK.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
