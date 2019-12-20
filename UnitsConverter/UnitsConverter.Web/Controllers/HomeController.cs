@@ -1,22 +1,40 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Units_Converter;
+using Units_Converter.Services;
 
 namespace UnitsConverter.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController (ConvertersService convertersService)
-        {
+        private ConvertersService convertersService;
+        private ILifetimeScope scope;
 
+        public HomeController(ILifetimeScope scope, IStatisticsRepository statisticsRepository, ConvertersService convertersService)
+        {
+            this.convertersService = convertersService;
+            this.scope = scope;
         }
+
         public ActionResult Index()
         {
-            
-            return View();
+            List<IConverter> converters = this.convertersService.GetConverters();
+
+            return View(converters);
+        }
+
+        public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
+            string converterType)
+        {
+            IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
+
+            decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));
+
+            return output;
         }
 
         public ActionResult About()
