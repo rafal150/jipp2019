@@ -22,69 +22,48 @@ namespace JIPP5_LAB.Plugin
 
         public string Convert(string fromUnit, decimal input, string toUnit, out decimal convertedValue)
         {
-            const string url = "http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json";
-
-            switch (fromUnit)
+            NumberFormatInfo setPrecision = new NumberFormatInfo
             {
-                case "EUR":
+                NumberDecimalDigits = 2
+            };
 
-                    if (toUnit == "EUR")
-                    {
-                        convertedValue = 0;
-                        return input.ToString();
-                    }
-                    else if (toUnit == "PLN")
-                    {
-                        using (WebClient client = new WebClient())
-                        {
-                            string json = client.DownloadString(url);
+            const string url = "http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json";
+            decimal euro = 0;
+            using (WebClient client = new WebClient())
+            {
+                string json = client.DownloadString(url);
 
-                            ReadObject[] data = JsonConvert.DeserializeObject<ReadObject[]>(json);
+                ReadObject[] data = JsonConvert.DeserializeObject<ReadObject[]>(json);
 
-                            if (data.Length > 0)
-                            {
-                                EntityObject entity = Array.Find(data[0].Rates, r => r.Code == "EUR");
-
-                                if (entity != null)
-                                {
-                                    convertedValue= Decimal.Parse(entity.Mid, CultureInfo.InvariantCulture) * input;
-                                    return convertedValue.ToString();
-                                }
-                            }
-                        }
-                    }
-                    break;
-
-                case "PLN":
-                    if (toUnit == "PLN")
-                    {
-                        convertedValue = 0;
-                        return input.ToString();
-                    }
-                    else if (toUnit == "EUR")
-                    {
-                        using (WebClient client = new WebClient())
-                        {
-                            string json = client.DownloadString(url);
-
-                            ReadObject[] data = JsonConvert.DeserializeObject<ReadObject[]>(json);
-
-                            if (data.Length > 0)
-                            {
-                                EntityObject entity = Array.Find(data[0].Rates, r => r.Code == "EUR");
-
-                                if (entity != null)
-                                {
-                                    convertedValue= Decimal.Parse(entity.Mid, CultureInfo.InvariantCulture) * input;
-                                    return convertedValue.ToString();
-                                }
-                            }
-                        }
-                    }
-                    break;
+                if (data.Length > 0)
+                {
+                    EntityObject entity = Array.Find(data[0].Rates, r => r.Code == "EUR");
+                    euro = decimal.Parse(entity?.Mid, new CultureInfo("en-US"));
+                }
             }
-            convertedValue = 0;
-            return "err";
+
+            if (fromUnit == "EUR")
+            {
+                if (toUnit == "EUR")
+                {
+                    convertedValue = input;
+                    return input.ToString();
+                }
+                convertedValue = input * euro;
+                return convertedValue.ToString();
+            }
+            else if(fromUnit == "PLN")
+            {
+                if (toUnit == "PLN")
+                {
+                    convertedValue = input;
+                    return input.ToString();
+                }
+                convertedValue = input / euro;
+                return convertedValue.ToString();
+            }
+            convertedValue = -1;
+            return null;
         }
 
     }

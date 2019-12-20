@@ -2,6 +2,7 @@
 using JIPP5_LAB.SDK;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,11 @@ namespace JIPP5_LAB.WebApp.Controllers
 
         public decimal Convert(string unitFrom, string unitTo, string valueToConvert, string converterType)
         {
+            NumberFormatInfo setPrecision = new NumberFormatInfo
+            {
+                NumberDecimalDigits = 2
+            };
+
             IConverterHelper converter = this.unityContainer.Resolve(Type.GetType(converterType)) as IConverterHelper;
             var value = decimal.Parse(valueToConvert);
             string output = converter.Convert(unitFrom, value, unitTo, out decimal convertedValue);
