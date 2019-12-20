@@ -14,23 +14,25 @@
         <TextBlock HorizontalAlignment="Left" Margin="947,127.2,-161.4,-157" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
         <Button x:Name="Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="649,177,0,0" VerticalAlignment="Top" Width="75" Click="Calculate_Click"/>
         <ComboBox x:Name="Choose_measureCombobox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="309,40,0,0" SelectionChanged="Choose_measureCombobox_SelectionChanged">
-            <ComboBoxItem Name="Temp">temperature</ComboBoxItem>
-            <ComboBoxItem Name="Lenght">lenght</ComboBoxItem>
-            <ComboBoxItem Name="Weight">weight</ComboBoxItem>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nam}" VerticalAlignment="Center" Margin="5"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <ComboBox x:Name="FromCombobox" HorizontalAlignment="Left" Margin="84,69,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBox.ItemTemplate>
+            <!--<ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nam}" VerticalAlignment="Center" Margin="5"></TextBlock>
                 </DataTemplate>
-            </ComboBox.ItemTemplate>
+            </ComboBox.ItemTemplate>-->
         </ComboBox>
         <ComboBox x:Name="ToCombobox" HorizontalAlignment="Left" Margin="539,69,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBox.ItemTemplate>
+            <!--<ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nam}" VerticalAlignment="Center" Margin="5"></TextBlock>
                 </DataTemplate>
-            </ComboBox.ItemTemplate>
+            </ComboBox.ItemTemplate>-->
         </ComboBox>
         <Label Content="Choose measure type" HorizontalAlignment="Left" Height="31" Margin="309,4,0,0" VerticalAlignment="Top" Width="129"/>
         <Label Content="To unit" HorizontalAlignment="Left" Margin="565,37,0,0" VerticalAlignment="Top"/>

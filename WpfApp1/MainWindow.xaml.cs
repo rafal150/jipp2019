@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using Newtonsoft.Json;
+using WpfApp1.Logic;
+using WpfApp1.SDK;
 
 namespace WpfApp1
 {
@@ -22,70 +25,42 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private IStatisticsSource repository;
-        public MainWindow()
+        public MainWindow(IStatisticsSource repo, GetMeasuresObj mes)
         {
             InitializeComponent();
-            if (ConfigurationManager.AppSettings["StatisticsRepository"] == "SQL")
-            {
-                repository = new StatisticsSqlRepository();
-            }
-            else
-            {
-                repository = new StatisticsAzureStorageRepository();
-            }
-            menu.Populate();
+            repository = repo;
+            Choose_measureCombobox.ItemsSource = mes.GetMesasures();
             LoadStatistics(repository);
         }
 
-        private readonly MainMenu menu = new MainMenu();
+       
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            int choosen_from_unit_index = FromCombobox.SelectedIndex;
-            int choosen_to_unit_index = ToCombobox.SelectedIndex;
-            double from_value;
-            try
+            string from = "";
+            string to = "";
+            double from_value = 0;
+            double to_value = 0;
+            if (this.Choose_measureCombobox.SelectedItem != null)
             {
-                from_value = Convert.ToDouble(FromTextBox.Text);
-            }
-            catch (FormatException)
-            {
-                _ = MessageBox.Show(string.Format(
-                    "\"From Value\"" + Environment.NewLine + "{0}" + Environment.NewLine + "is in wrong format", arg0: FromTextBox.Text), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            double to_value=0.0;
-            try
-            {
-                double intermediate_base_value = menu.Units_of_choice[choosen_from_unit_index].Con_to_base(from_value);
-                if (intermediate_base_value<0)
+                IGetMeasures converter = (IGetMeasures)this.Choose_measureCombobox.SelectedItem;
+                from = FromCombobox.SelectedItem.ToString();
+                to = ToCombobox.SelectedItem.ToString();
+                from_value = float.Parse(FromTextBox.Text);
+                to_value = converter.Convert(from, to, from_value);
+                ToTextBox.Text = Convert.ToString(to_value);
+
+                StatisticsDTO st = new StatisticsDTO()
                 {
-                    _ = MessageBox.Show(string.Format("From value {0}" + Environment.NewLine + "has no physical meaning", arg0: FromTextBox.Text), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-                to_value = menu.Units_of_choice[choosen_to_unit_index].Con_from_base(intermediate_base_value);
+                    Id = repository.GetStatistics().Count() + 1, //to nie będzie dobrze działac przy większycgh tabelach, no i problem z wieloma użytkownikami
+                    Time = DateTime.Now,
+                    From = from,
+                    To = to,
+                    OryginalValue = Convert.ToDecimal(from_value),
+                    CalculatedValue = Convert.ToDecimal(to_value)
+                };
+                repository.AddStatistic(st);
             }
-
-            catch (ArgumentOutOfRangeException)
-            {
-                _ = MessageBox.Show("\"Choose measure type\", \"From unit\" or \"To unit\" not set", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-               return; 
-            }
-
-
-            this.ToTextBox.Text = Convert.ToString(to_value);
-
-            StatisticsDTO st = new StatisticsDTO()
-            {
-                Id = repository.GetStatistics().Count() + 1, //to nie będzie dobrze działac przy większycgh tabelach, no i problem z wieloma użytkownikami
-                Time = DateTime.Now,
-                From = menu.Units_of_choice[choosen_from_unit_index].Nam,
-                To = menu.Units_of_choice[choosen_to_unit_index].Nam,
-                OryginalValue = Convert.ToDecimal(from_value),
-                CalculatedValue = Convert.ToDecimal(to_value)
-            };
-                    
-                    
-            repository.AddStatistic(st);
+            
            
             LoadStatistics(repository);
         }
@@ -96,21 +71,10 @@ namespace WpfApp1
 
         private void Choose_measureCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int choosen_measure_index = Choose_measureCombobox.SelectedIndex;
-            switch (choosen_measure_index)
-            {
-                case 0:
-                    menu.Units_of_choice = menu.Units_of_temp;
-                        break;
-                case 1:
-                    menu.Units_of_choice = menu.Units_of_lenght;
-                    break;
-                case 2:
-                    menu.Units_of_choice = menu.Unints_of_weight;
-                    break;
-            }
-            FromCombobox.ItemsSource = menu.Units_of_choice;
-            ToCombobox.ItemsSource = menu.Units_of_choice;
+            
+            //string choosen_measure_name = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Nam;
+            FromCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
+            ToCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
         }
     }
 }
