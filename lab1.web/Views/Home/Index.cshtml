@@ -1,0 +1,21 @@
+﻿@model IEnumerable<lab1.IKonwersja>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (lab1.IKonwersja converter in Model)
+{
+    using (Ajax.BeginForm("Konwertuj",
+        new { converterType = converter.GetType().AssemblyQualifiedName },
+        new AjaxOptions() { UpdateTargetId = converter.Nazwa + "wynik" }))
+    {
+        <div> @converter.Nazwa </div>
+        @Html.DropDownList("z", new SelectList(converter.Jednostki))
+        @Html.TextBox("wartosc")
+        @Html.DropDownList("na", new SelectList(converter.Jednostki))
+        <button type="submit"> Konwertuj </button>
+        <label id="@(converter.Nazwa + "wynik")"></label>
+    }
+}

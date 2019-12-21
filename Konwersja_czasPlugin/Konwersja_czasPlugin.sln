@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwersja_czasPlugin", "Konwersja_czasPlugin\Konwersja_czasPlugin.csproj", "{490C7874-9976-4760-BBB0-7E70E859B19F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{490C7874-9976-4760-BBB0-7E70E859B19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490C7874-9976-4760-BBB0-7E70E859B19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490C7874-9976-4760-BBB0-7E70E859B19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490C7874-9976-4760-BBB0-7E70E859B19F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D448F3FA-13E4-4442-A964-1277F8BE0FC8}
+	EndGlobalSection
+EndGlobal
