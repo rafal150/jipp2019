@@ -13,11 +13,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Konwerter.SDK;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Windows.Shapes;
 using SEM5WPF_1.Services;
+using SEM5WPF_1;
 
 namespace SEM5WPF_1
 {
@@ -68,6 +68,7 @@ namespace SEM5WPF_1
                     WartoscPoKonwersji = double.Parse(TboxWynik.Text),
                     WartoscA = CboxListMiary.Text,
                     WartoscB = CboxListMiary.Text,
+                    //JednostkaA = ((IKonwerter)this.CboxListJednowstkaA.SelectedItem).Name,
                     JednostkaA = CboxListJednowstkaA.Text,
                     JednostkaB = CboxListJednostkaB.Text,
                     Data = DateTime.Now

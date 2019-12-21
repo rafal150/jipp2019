@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Konwerter.SDK;
+using SEM5WPF_1.Services;
 
 namespace SEM5WPF_1.Services
 {
@@ -16,7 +16,7 @@ namespace SEM5WPF_1.Services
         public decimal Konwerter(string jednostkaZ, string jednostkaDo, decimal wartosc)
         {
             
-            decimal Z, W, Y = 1.09361M, Ft = 3.28M, Inch = 39.37M;
+            decimal  Y = 1.09361M, Ft = 3.28M, Inch = 39.37M;
             
           
 

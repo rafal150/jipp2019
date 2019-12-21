@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEM5WPF_1", "SEM5WPF_1\SEM5WPF_1.csproj", "{F6191E90-C0FA-446B-8465-89EE28B6B825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.SDK", "Konwerter.SDK\Konwerter.SDK.csproj", "{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.SDK", "Konwerter.SDK\Konwerter.SDK.csproj", "{E77896C4-E45C-46D3-BE71-7126A52F5598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.Logic", "Konwerter.Logic\Konwerter.Logic.csproj", "{111534A8-DCA0-4AFA-8DFC-3A526946EE91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter.WEB", "Konwerter.WEB\Konwerter.WEB.csproj", "{2649F344-18B4-402B-83CB-DFEC0A171E06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,18 @@ Global
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6191E90-C0FA-446B-8465-89EE28B6B825}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFEBFDC2-D3AB-42BA-932D-732FC71466DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E77896C4-E45C-46D3-BE71-7126A52F5598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E77896C4-E45C-46D3-BE71-7126A52F5598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E77896C4-E45C-46D3-BE71-7126A52F5598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E77896C4-E45C-46D3-BE71-7126A52F5598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111534A8-DCA0-4AFA-8DFC-3A526946EE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111534A8-DCA0-4AFA-8DFC-3A526946EE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111534A8-DCA0-4AFA-8DFC-3A526946EE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111534A8-DCA0-4AFA-8DFC-3A526946EE91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2649F344-18B4-402B-83CB-DFEC0A171E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2649F344-18B4-402B-83CB-DFEC0A171E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2649F344-18B4-402B-83CB-DFEC0A171E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2649F344-18B4-402B-83CB-DFEC0A171E06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

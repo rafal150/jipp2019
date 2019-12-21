@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Konwerter.SDK
+namespace SEM5WPF_1.Services
 {
     public interface IKonwerter
     {

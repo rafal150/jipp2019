@@ -8,6 +8,7 @@ using Autofac;
 using SEM5WPF_1.Services;
 using System.Reflection;
 using System.IO;
+using SEM5WPF_1;
 
 namespace SEM5WPF_1
 {

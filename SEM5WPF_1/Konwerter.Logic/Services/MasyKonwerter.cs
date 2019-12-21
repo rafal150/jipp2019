@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Konwerter.SDK;
+using SEM5WPF_1.Services;
 
 namespace SEM5WPF_1.Services
 {
@@ -15,7 +15,7 @@ namespace SEM5WPF_1.Services
 
         public decimal Konwerter(string jednostkaZ, string jednostkaDo, decimal wartosc)
         {
-            double Z, W;
+           // double Z, W;
  
 /*
             if (jednostkaDo == "uncja")

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SEM5WPF_1
 {
-    class StatystykiAzureRepozytorium: IStatystykiRepozytorium
+    public class StatystykiAzureRepozytorium: IStatystykiRepozytorium
     {
         private CloudTable table;
         public StatystykiAzureRepozytorium()

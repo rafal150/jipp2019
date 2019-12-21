@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SEM5WPF_1.Services.IKonwerter>
+
+@{ 
+    ViewBag.Title = "Home Page";
+}
+
+    <h1>Konwerter jednostek</h1>
+
+@foreach(SEM5WPF_1.Services.IKonwerter Konwerter in Model)
+{
+    using (Ajax.BeginForm("Konwerter",
+        new { konwerterType = Konwerter.GetType().AssemblyQualifiedName },
+        new AjaxOptions() { UpdateTargetId = Konwerter.Name + "Wynik" }))
+    {
+        <div>@Konwerter.Name</div>
+        @Html.DropDownList("jednostkaZ", new SelectList(Konwerter.Units))
+        @Html.TextBox("jednostkaDo")
+        @Html.DropDownList("wartosc", new SelectList(Konwerter.Units))
+        <button type ="submit"> Konwertuj </button>
+        <label id ="@(Konwerter.Name + "Wynik")"></label>
+    }
+}
