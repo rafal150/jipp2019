@@ -15,7 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UnitsConverter.Services;
 
 namespace UnitsConverter
 {
@@ -25,17 +24,17 @@ namespace UnitsConverter
     public partial class MainWindow : Window
     {
         //private int value;
-        private IStatisticsRepository repository;
+       // private IStatisticsRepository repository;
 
 
 
-        public MainWindow(IStatisticsRepository repo, ConverterService converters)
+        public MainWindow( ConverterApi converters)
         {
 
             InitializeComponent();
 
-            this.repository = repo;
-            this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
+            //this.repository = repo;
+            //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
             this.converterMain.ItemsSource = converters.GetConverters();
         }
 
@@ -46,23 +45,23 @@ namespace UnitsConverter
         {
             if (this.converterMain.SelectedItem != null)
             {
-                IConverter converter = (IConverter)this.converterMain.SelectedItem;
-                decimal result = converter.Convert(
-                    this.FromCombobox.SelectedItem.ToString(),
-                    this.ToCombobox.SelectedItem.ToString(),
-                    decimal.Parse(this.InputTextBox.Text));
+                Converter converter = (Converter)this.converterMain.SelectedItem;
+                //decimal result = converter.Convert(
+                //    this.FromCombobox.SelectedItem.ToString(),
+                //    this.ToCombobox.SelectedItem.ToString(),
+                //    decimal.Parse(this.InputTextBox.Text));
 
-                this.ResultTextblock.Text = result.ToString();
-                StatisticDTO st = new StatisticDTO()
-                {
-                    DateTime = DateTime.Now,
-                    FromUnit = this.FromCombobox.SelectedItem.ToString(),
-                    Type = this.converterMain.SelectedItem.ToString(),
-                    FromTo = this.ToCombobox.SelectedItem.ToString(),
-                    ConvertedValue = this.ResultTextblock.Text
-                };
-                this.repository.AddStatistic(st);
-                this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
+                //this.ResultTextblock.Text = result.ToString();
+                //StatisticDTO st = new StatisticDTO()
+                //{
+                //    DateTime = DateTime.Now,
+                //    FromUnit = this.FromCombobox.SelectedItem.ToString(),
+                //    Type = this.converterMain.SelectedItem.ToString(),
+                //    FromTo = this.ToCombobox.SelectedItem.ToString(),
+                //    ConvertedValue = this.ResultTextblock.Text
+                //};
+               // this.repository.AddStatistic(st);
+                //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
 
             }
 
@@ -72,8 +71,8 @@ namespace UnitsConverter
             {
                 if (this.converterMain.SelectedItem != null)
                 {
-                    this.FromCombobox.ItemsSource = ((IConverter)this.converterMain.SelectedItem).Units;
-                    this.ToCombobox.ItemsSource = ((IConverter)this.converterMain.SelectedItem).Units;
+                    this.FromCombobox.ItemsSource = ((Converter)this.converterMain.SelectedItem).Units;
+                    this.ToCombobox.ItemsSource = ((Converter)this.converterMain.SelectedItem).Units;
                 }
             }
     }

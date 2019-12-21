@@ -8,7 +8,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Reflection;
-using UnitsConverter.Services;
 
 namespace UnitsConverter
 {
@@ -31,36 +30,13 @@ namespace UnitsConverter
         {
             var containerBuilder = new ContainerBuilder();
 
-            if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
-            {
-                containerBuilder.RegisterType<StatisticAzureStorageRep>().As<IStatisticsRepository>();
-            }
-            else
-            {
-                containerBuilder.RegisterType<StatisticsSqlRepository>().As<IStatisticsRepository>();
-            }
+         
 
             containerBuilder.RegisterType<MainWindow>();
-            containerBuilder.RegisterType<ConverterService>();
-
-            var assembly = typeof(ConverterService).Assembly;
-           containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
-
-            RegisterPlugins(containerBuilder);
+            
+            
             return containerBuilder.Build();
         }
-        private static void RegisterPlugins(ContainerBuilder containerBuilder)
-        {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
-
-            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
-
-            foreach (Assembly assembly in assemblies)
-            {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
-            }
-        }
+       
     }
 }

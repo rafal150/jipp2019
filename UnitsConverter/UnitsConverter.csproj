@@ -126,6 +126,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConvertersApi.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -203,16 +204,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
-      <Project>{ae7ea7f9-41a3-4f04-ac63-2e8f95d6864b}</Project>
-      <Name>Converter.SDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UnitConverter.Logic\UnitConverter.Logic.csproj">
-      <Project>{57d0f3eb-dd8a-4e9a-a048-2eef6da3e359}</Project>
-      <Name>UnitConverter.Logic</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
