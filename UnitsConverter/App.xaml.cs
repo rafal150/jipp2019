@@ -33,8 +33,9 @@ namespace UnitsConverter
          
 
             containerBuilder.RegisterType<MainWindow>();
-            
-            
+            containerBuilder.RegisterType<ConvertersApi>();
+
+
             return containerBuilder.Build();
         }
        

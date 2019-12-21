@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using UnitsConverter;
 using UnitsConverter.Services;
@@ -32,6 +33,7 @@ namespace UnitConverter.Web.Controllers
         public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
          string converterType)
         {
+            converterType = HttpUtility.UrlDecode(converterType);
             IConverter converter = this.convertersService.GetConverters().Where(c=>c.Name==converterType).First();
 
             decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));

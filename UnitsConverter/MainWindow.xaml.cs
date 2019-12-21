@@ -24,12 +24,13 @@ namespace UnitsConverter
     public partial class MainWindow : Window
     {
         //private int value;
-       // private IStatisticsRepository repository;
+        // private IStatisticsRepository repository;
 
+        private ConvertersApi convertersapi;
 
-
-        public MainWindow( ConverterApi converters)
+        public MainWindow( ConvertersApi converters)
         {
+            convertersapi = converters;
 
             InitializeComponent();
 
@@ -45,13 +46,14 @@ namespace UnitsConverter
         {
             if (this.converterMain.SelectedItem != null)
             {
-                Converter converter = (Converter)this.converterMain.SelectedItem;
-                //decimal result = converter.Convert(
-                //    this.FromCombobox.SelectedItem.ToString(),
-                //    this.ToCombobox.SelectedItem.ToString(),
-                //    decimal.Parse(this.InputTextBox.Text));
+                Converter converter  = (Converter)this.converterMain.SelectedItem;
+                decimal result = convertersapi.Convert(
+                    this.FromCombobox.SelectedItem.ToString(),
+                    this.ToCombobox.SelectedItem.ToString(),
+                    this.InputTextBox.Text,
+                    converter.Name);
 
-                //this.ResultTextblock.Text = result.ToString();
+                this.ResultTextblock.Text = result.ToString();
                 //StatisticDTO st = new StatisticDTO()
                 //{
                 //    DateTime = DateTime.Now,
@@ -60,7 +62,7 @@ namespace UnitsConverter
                 //    FromTo = this.ToCombobox.SelectedItem.ToString(),
                 //    ConvertedValue = this.ResultTextblock.Text
                 //};
-               // this.repository.AddStatistic(st);
+                // this.repository.AddStatistic(st);
                 //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
 
             }
