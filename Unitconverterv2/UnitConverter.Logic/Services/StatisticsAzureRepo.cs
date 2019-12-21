@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace Unitconverter
 {
-    class StatisticsAzureRepo : IStatisticsRepository
+    public class StatisticsAzureRepo : IStatisticsRepository
     {
         private CloudTable table;
 

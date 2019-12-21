@@ -7,7 +7,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Unitconverter
 {
-    class StatAzureModel: TableEntity
+    public class StatAzureModel: TableEntity
     {
         public int Id { get; set; }
 

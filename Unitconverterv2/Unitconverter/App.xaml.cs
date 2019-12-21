@@ -42,7 +42,7 @@ namespace Unitconverter
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<Unitconverter.Services.ConvServices>();
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var assembly = typeof(Services.ConvServices).Assembly; //System.Reflection.Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
 
             RegisterPlugin(containerBuilder);
