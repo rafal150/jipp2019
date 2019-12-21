@@ -1,0 +1,24 @@
+﻿@model IEnumerable<JIPP5_LAB.Models.StatisticDTO>
+
+<h1>Statystyki</h1>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Przed</th>
+        <th>Z jednostki</th>
+        <th>Przekonwertowane</th>
+        <th>Do jednostki</th>
+    </tr>
+
+    @foreach (JIPP5_LAB.Models.StatisticDTO statistic in Model)
+    {
+        <tr>
+            <td>@statistic.DateTime</td>
+            <td>@statistic.RawValue</td>
+            <td>@statistic.UnitFrom</td>
+            <td>@statistic.ConvertedValue</td>
+            <td>@statistic.UnitTo</td>
+        </tr>
+    }
+</table>
