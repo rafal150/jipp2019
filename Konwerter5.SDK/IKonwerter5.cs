@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Konwerter5.Uslugi
-{
+namespace Konwerter5
     public interface IKonwerter5
     {
         string NazwaKategorii { get; }

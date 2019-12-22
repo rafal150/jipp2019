@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using Konwerter5.Uslugi;
 
-namespace Konwerter5.Logic
+
+namespace Konwerter5.Logic.Uslugi
 {
     public class Konwerter5Usluga
     {
