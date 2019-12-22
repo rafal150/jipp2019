@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Konwerter5.ModelDanych;
+using Konwerter5.Logic.ModelDanych;
 
-namespace Konwerter5
+namespace Konwerter5.Logic
 {
-    class StatystykiUzyciaRepozytoriumSQL : IRepozytoriumStatystykUzycia
+   public class StatystykiUzyciaRepozytoriumSQL : IRepozytoriumStatystykUzycia
     {
         public void DodajStatystykiUzycia(StatystykiUzyciaDTO StatystykiUzycia)
         {

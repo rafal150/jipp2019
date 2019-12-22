@@ -51,7 +51,7 @@
     <Compile Include="TabeleWymian.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Konwerter5\Konwerter5.SDK\Konwerter5.SDK.csproj">
+    <ProjectReference Include="..\Konwerter5.SDK\Konwerter5.SDK.csproj">
       <Project>{bb129df8-34c8-4f73-b743-6888c264e222}</Project>
       <Name>Konwerter5.SDK</Name>
     </ProjectReference>

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Konwerter5.ModelDanych;
+using Konwerter5.Logic.ModelDanych;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Configuration;
 
-namespace Konwerter5
+namespace Konwerter5.Logic
 {
-    class StatystykiUzyciaRepozytoriumAzureStorageTable : IRepozytoriumStatystykUzycia
+    public class StatystykiUzyciaRepozytoriumAzureStorageTable : IRepozytoriumStatystykUzycia
     {
         CloudTable tabelaWAzure;
         

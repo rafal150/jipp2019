@@ -9,6 +9,8 @@ using Autofac;
 using System.IO;
 using System.Reflection;
 using Konwerter5.Uslugi;
+using Konwerter5.Logic;
+
 
 
 namespace Konwerter5

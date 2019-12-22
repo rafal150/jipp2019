@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
 using Konwerter5.Uslugi;
+using Konwerter5.Logic;
+
+
 
 namespace Konwerter5
 {

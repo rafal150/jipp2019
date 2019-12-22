@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using Konwerter5.Uslugi;
 
-namespace Konwerter5.Uslugi
+namespace Konwerter5OdleglosciPlugin
 {
     class Konwerter5Odleglosci : IKonwerter5
     {
