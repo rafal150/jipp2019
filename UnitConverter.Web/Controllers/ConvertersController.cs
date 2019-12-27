@@ -16,7 +16,7 @@ namespace UnitConverter.Web.Controllers
         private ConverterService convertersService;
         private ILifetimeScope scope;
 
-        public ConvertersController(ILifetimeScope scope, IStatisticsRepository statisticsRepository, ConverterService convertersService)
+        public ConvertersController(ILifetimeScope scope,  ConverterService convertersService)
         {
             this.convertersService = convertersService;
             this.scope = scope;
@@ -28,13 +28,14 @@ namespace UnitConverter.Web.Controllers
 
             return converters;
         }
-        [Route ("Api/Converters/convert")]
+        [Route ("api/converters/convert")]
         [HttpGet]
         public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
          string converterType)
         {
             converterType = HttpUtility.UrlDecode(converterType);
-            IConverter converter = this.convertersService.GetConverters().Where(c=>c.Name==converterType).First();
+            IConverter converter = this.convertersService.GetConverters()
+                .Where(c=>c.Name==converterType).FirstOrDefault();
 
             decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));
 

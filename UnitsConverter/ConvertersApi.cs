@@ -14,7 +14,7 @@ namespace UnitsConverter
     {
         public List<Converter> GetConverters()
         {
-            string url = @"https://localhost:44373/api/converters/";
+            string url = @"http://localhost:33555/api/converters/";
 
             using (WebClient client = new WebClient())
             {
