@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Konwerter5.Logic
+namespace Konwerter5
 
 {
     public class StatystykiUzyciaDTO

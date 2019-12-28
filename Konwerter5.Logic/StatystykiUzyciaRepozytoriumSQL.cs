@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Konwerter5.Logic.ModelDanych;
+using Konwerter5.ModelDanych;
 
-namespace Konwerter5.Logic
+namespace Konwerter5
 {
    public class StatystykiUzyciaRepozytoriumSQL : IRepozytoriumStatystykUzycia
     {

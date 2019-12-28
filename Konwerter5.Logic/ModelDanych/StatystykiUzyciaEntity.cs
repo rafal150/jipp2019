@@ -1,7 +1,7 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 using System;
 
-namespace Konwerter5.Logic.ModelDanych
+namespace Konwerter5.ModelDanych
 {
     public class StatystykiUzyciaEntity : TableEntity
     {

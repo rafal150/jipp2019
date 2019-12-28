@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Konwerter5.Logic
+namespace Konwerter5
 {
     public interface IRepozytoriumStatystykUzycia
     {

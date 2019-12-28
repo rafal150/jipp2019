@@ -13,8 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
-using Konwerter5.Logic;
-using Konwerter5.Logic.Uslugi;
+using Konwerter5;
+using Konwerter5.Uslugi;
 
 namespace Konwerter5
 {

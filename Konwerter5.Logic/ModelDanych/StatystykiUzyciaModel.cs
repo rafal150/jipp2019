@@ -1,4 +1,4 @@
-namespace Konwerter5.Logic.ModelDanych
+namespace Konwerter5.ModelDanych
 {
     using System.Data.Entity;
 

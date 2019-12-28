@@ -2,7 +2,7 @@
 using Autofac;
 
 
-namespace Konwerter5.Logic.Uslugi
+namespace Konwerter5.Uslugi
 {
     public class Konwerter5Usluga
     {

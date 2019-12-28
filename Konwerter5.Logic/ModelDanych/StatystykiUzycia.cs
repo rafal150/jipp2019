@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Konwerter5.Logic.ModelDanych
+namespace Konwerter5.ModelDanych
 {
     public class StatystykiUzycia
     {

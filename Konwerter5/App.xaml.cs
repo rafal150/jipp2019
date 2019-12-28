@@ -8,8 +8,8 @@ using System.Windows;
 using Autofac;
 using System.IO;
 using System.Reflection;
-using Konwerter5.Logic;
-using Konwerter5.Logic.Uslugi;
+using Konwerter5;
+using Konwerter5.Uslugi;
 
 namespace Konwerter5
 {

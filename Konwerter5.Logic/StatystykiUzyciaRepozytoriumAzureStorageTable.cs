@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Konwerter5.Logic.ModelDanych;
+using Konwerter5.ModelDanych;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Configuration;
 
-namespace Konwerter5.Logic
+namespace Konwerter5
 {
     public class StatystykiUzyciaRepozytoriumAzureStorageTable : IRepozytoriumStatystykUzycia
     {

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Konwerter5.IKonwerter5>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Omnikonwerter</h1>
+    <p class="lead">Konwertuj jednostki miar mas odległości i innych, a także walut i co tam jeszcze przyszłość pokaże.</p>
+    
+</div>
+
+<div class="row">
+    @foreach (Konwerter5.IKonwerter5 konwerter in Model)
+    {
+        using (Ajax.BeginForm("Konwersja",
+            new { converterType = konwerter.GetType().AssemblyQualifiedName },
+            new AjaxOptions() { UpdateTargetId = konwerter.NazwaKategorii + "Wynik" }))
+        {
+            <div>@konwerter.NazwaKategorii</div>
+            @Html.DropDownList("Z jednostki", new SelectList(konwerter.Jednostki))
+            @Html.TextBox("wartoscDoPrzeliczenia")
+            @Html.DropDownList("Do jednostki", new SelectList(konwerter.Jednostki))
+            <button type="submit">Konwertuj</button>
+            <label id="@(konwerter.NazwaKategorii + "Wynik")"></label>
+        }
+    }
+</div>
