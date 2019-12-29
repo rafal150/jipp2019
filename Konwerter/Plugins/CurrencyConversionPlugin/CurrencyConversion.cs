@@ -17,7 +17,7 @@ namespace CurrencyConversionPlugin
 
         public double Convert(string fromUnit, string toUnit, double value)
         {
-            string url = @"http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json";
+            string url = @"http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
             double convValue = 0;
 
