@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter", "Konwerter\Konwerter.csproj", "{7CB0E687-5B79-4444-A098-1596B633E3DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterSDK", "ConverterSDK\ConverterSDK.csproj", "{A9784218-7022-49B0-8965-D7B94E1FDA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Web", "Converter.Web\Converter.Web.csproj", "{30F31016-9DBD-478D-9EB4-8D813C4A157E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Logic", "Converter.Logic\Converter.Logic.csproj", "{DBA0C4ED-AF83-45C0-B100-44FD10735186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{A9784218-7022-49B0-8965-D7B94E1FDA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9784218-7022-49B0-8965-D7B94E1FDA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9784218-7022-49B0-8965-D7B94E1FDA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F31016-9DBD-478D-9EB4-8D813C4A157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F31016-9DBD-478D-9EB4-8D813C4A157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F31016-9DBD-478D-9EB4-8D813C4A157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F31016-9DBD-478D-9EB4-8D813C4A157E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA0C4ED-AF83-45C0-B100-44FD10735186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA0C4ED-AF83-45C0-B100-44FD10735186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA0C4ED-AF83-45C0-B100-44FD10735186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA0C4ED-AF83-45C0-B100-44FD10735186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

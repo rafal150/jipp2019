@@ -38,6 +38,12 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Converter.Logic">
+      <HintPath>..\Converter.Logic\bin\Debug\Converter.Logic.dll</HintPath>
+    </Reference>
+    <Reference Include="ConverterSDK">
+      <HintPath>..\ConverterSDK\bin\Debug\ConverterSDK.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -78,20 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converter\ConverterM.cs" />
-    <Compile Include="Converter\ConverterD.cs" />
-    <Compile Include="Converter\ConverterT.cs" />
-    <Compile Include="Repository\IStatisticRepository.cs" />
-    <Compile Include="Model\StatisticDTO.cs" />
-    <Compile Include="Model\StatisticEntity.cs" />
-    <Compile Include="Repository\StatisticsAzureStorageRepository.cs" />
-    <Compile Include="Repository\StatisticContext.cs" />
-    <Compile Include="Repository\StatisticsSqlRepository.cs" />
-    <Compile Include="Windows\StatisticsWindow.xaml.cs">
+    <Compile Include="StatisticsWindow.xaml.cs">
       <DependentUpon>StatisticsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Statystyki.cs" />
-    <Page Include="Windows\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,12 +95,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converter\ConvertersService.cs" />
-    <Compile Include="Windows\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\StatisticsWindow.xaml">
+    <Page Include="StatisticsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,12 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConverterSDK\ConverterSDK.csproj">
-      <Project>{a9784218-7022-49b0-8965-d7b94e1fda74}</Project>
-      <Name>ConverterSDK</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

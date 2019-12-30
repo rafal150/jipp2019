@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Konwerter.Services.IConverting>
+@{
+    ViewBag.Title = "Konwertery";
+}
+
+<h1>Konwerter jednostek</h1>
+
+<body style="background: #dfb2ec">
+</body>
+
+@foreach (Konwerter.Services.IConverting converter in Model)
+{
+    using (Ajax.BeginForm("Convert",
+         new { converterType = converter.GetType().AssemblyQualifiedName },
+         new AjaxOptions() { UpdateTargetId = converter.Nazwa + "result" }))
+    {
+        <div>@converter.Nazwa</div>
+        @Html.DropDownList("unitFrom", new SelectList(converter.ListaJednostek), new { style = "width: 80px;" })
+        <span style="display:inline-block; width: 20px;"></span>
+        @Html.TextBox("valueToConvert")
+        <span style="display:inline-block; width: 20px;"></span>
+        @Html.DropDownList("unitTo", new SelectList(converter.ListaJednostek), new { style = "width: 80px;" })
+        <span style="display:inline-block; width: 20px;"></span>
+        <button type="submit">Konwertuj</button>
+        <span style="display:inline-block; width: 20px;"></span>
+        <label id='@(converter.Nazwa + "result")', style="width: 80px;"></label>
+    }
+}
+
