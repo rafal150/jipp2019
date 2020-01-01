@@ -20,10 +20,12 @@ namespace Konwerter
     public partial class MainWindow : Window
     {
         private IStatisticRepository repository;
+        private ConvertersApi converters;
 
-        public MainWindow(IStatisticRepository repository, ConvertersService converters)
+        public MainWindow(IStatisticRepository repository, ConvertersApi converters)
         {
             this.repository = repository;
+            this.converters = converters;
 
             InitializeComponent();
 
@@ -34,11 +36,11 @@ namespace Konwerter
         {
             if (this.CategoryComboBox.SelectedItem != null)
             {
-                IConverting converter = (IConverting)this.CategoryComboBox.SelectedItem;
+                Converter converter = (Converter)this.CategoryComboBox.SelectedItem;
                 string from = FromComboBox.SelectedItem.ToString();
                 string to = ToComboBox.SelectedItem.ToString();
-                float amount = float.Parse(FromTextBox.Text);
-                float result = converter.Convert(from, to, amount);
+                string amount = FromTextBox.Text;
+                decimal result = converters.Convert(from, to, amount, converter.Nazwa);
                 string resultString = "Wynik: " + result.ToString();
                 ResultTextBlock.Text = resultString;
                 ResultTextBlock.UpdateLayout();
@@ -49,8 +51,8 @@ namespace Konwerter
                     UnitTo = to,
                     DateTime = DateTime.Now,
                     Type = converter.Nazwa,
-                    ValueFrom = amount,
-                    ValueTo = result
+                    ValueFrom = double.Parse(amount),
+                    ValueTo = (double)result
                 };
                 repository.AddStatistic(statystyki);
             }
@@ -60,8 +62,8 @@ namespace Konwerter
         {
             if (this.CategoryComboBox.SelectedItem != null)
             {
-                this.FromComboBox.ItemsSource = ((IConverting)this.CategoryComboBox.SelectedItem).ListaJednostek;
-                this.ToComboBox.ItemsSource = ((IConverting)this.CategoryComboBox.SelectedItem).ListaJednostek;
+                this.FromComboBox.ItemsSource = ((Converter)this.CategoryComboBox.SelectedItem).ListaJednostek;
+                this.ToComboBox.ItemsSource = ((Converter)this.CategoryComboBox.SelectedItem).ListaJednostek;
             }
         }
 

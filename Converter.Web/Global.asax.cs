@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -7,10 +8,11 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http;
 using Konwerter;
 using Konwerter.Services;
 
-namespace Converter.Web
+namespace Konwerter.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -18,6 +20,9 @@ namespace Converter.Web
         {
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -31,6 +36,7 @@ namespace Converter.Web
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -43,7 +49,7 @@ namespace Converter.Web
 
             containerBuilder.RegisterType<ConvertersService>();
 
-            var assembly = typeof(ConvertersService).Assembly; //Assembly.GetExecutingAssembly();
+            var assembly = typeof(ConvertersService).Assembly;
             containerBuilder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.StartsWith("Converter")).AsImplementedInterfaces().AsSelf();
 
@@ -54,7 +60,6 @@ namespace Converter.Web
 
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
-            //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin", "plugins");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();

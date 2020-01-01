@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using Konwerter;
 using Konwerter.Services;
 
-namespace Converter.Web.Controllers
+namespace Konwerter.Web.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Converter.Web
+namespace Konwerter.Web
 {
     public class BundleConfig
     {
