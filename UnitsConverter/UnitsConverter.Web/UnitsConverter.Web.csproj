@@ -197,10 +197,6 @@
       <Project>{c19cfddd-b777-4e40-bb36-c2483d9154ed}</Project>
       <Name>UnitConverter.Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Units_Converter\Units_Converter.csproj">
-      <Project>{6f1f3d1a-183e-45c8-add8-b4c28de555a9}</Project>
-      <Name>Units_Converter</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

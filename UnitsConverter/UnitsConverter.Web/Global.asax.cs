@@ -20,16 +20,20 @@ namespace UnitsConverter.Web
         protected void Application_Start()
         {
             IContainer container = BuildContainer();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver (container));
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -42,25 +46,25 @@ namespace UnitsConverter.Web
 
             containerBuilder.RegisterType<ConvertersService>();
 
-            var assembly = typeof(ConvertersService).Assembly; // GetExecutingAssembly();
+            var assembly = typeof(ConvertersService).Assembly; // Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
+                .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces().AsSelf();
 
-            //RegisterPlugins(containerBuilder);
+            RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
         }
 
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
             foreach (Assembly assembly in assemblies)
             {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
+                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces().AsSelf();
             }
         }
     }

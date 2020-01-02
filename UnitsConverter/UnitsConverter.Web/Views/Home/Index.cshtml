@@ -4,7 +4,7 @@
 }
 
 <h1>Units converter</h1>
-@foreach (UnitConverter.Logic.Services.IConverter converter in Model)
+@foreach (Units_Converter.Services.IConverter converter in Model)
 {
     using (Ajax.BeginForm("Convert",
         new { converterType = converter.GetType().AssemblyQualifiedName },
