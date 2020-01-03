@@ -29,7 +29,6 @@ namespace KonwerterApp
         public MainWindow(IStatisticsRepository repozytorium, ConvertersService converters)
         {
             InitializeComponent();
-            //Podaje zawartość listy rozwijalnej Kategoria
             ComboBox_Kategoria.ItemsSource=converters.GetConverters();
 
             DataGridWynikowy.ItemsSource = BazaDanych.TabelaKonwerteras.ToList();
@@ -37,8 +36,6 @@ namespace KonwerterApp
             this.repository = repozytorium;
             this.DataGridWynikowy.ItemsSource = repository.GetStatistic();
         }
-
-
 
         private void ComboBox_Kategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -62,7 +59,6 @@ namespace KonwerterApp
             string JednostkaPocz = ComboBox_Jednostka.SelectedItem.ToString();
             string JednostkaDocelowa = ComboBox_JednostkaDocelowa.SelectedItem.ToString();
             float WartoscPoKonwersji=0;
-            /*Przerobic tak, zeby z automatu wiedzial ktora klase uzyc do konwersji */
             WartoscPoKonwersji = converter.Konwertuj(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
 
             TextBlock_WartoscPoKonwersji_Wynik.Text = WartoscPoKonwersji.ToString();

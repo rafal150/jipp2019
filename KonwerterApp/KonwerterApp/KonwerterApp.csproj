@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="KonwerterLogic">
+      <HintPath>..\KonwerterLogic\bin\Debug\KonwerterLogic.dll</HintPath>
+    </Reference>
     <Reference Include="KonwerterSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\KonwerterSDK.dll</HintPath>
@@ -81,15 +84,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConvertersService.cs" />
-    <Compile Include="StatisticsAzureTableRepository.cs" />
-    <Compile Include="StatisticsEntity.cs" />
-    <Compile Include="StatisticsSQLRepository.cs" />
-    <Compile Include="IStatisticsRepository.cs" />
-    <Compile Include="StatisticDTO.cs" />
-    <Compile Include="ObliczarkaTemperatury.cs" />
-    <Compile Include="ObliczarkaDlugosci.cs" />
-    <Compile Include="TabelaKonwertera.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,8 +98,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model1.cs" />
-    <Compile Include="ObliczarkaMasy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

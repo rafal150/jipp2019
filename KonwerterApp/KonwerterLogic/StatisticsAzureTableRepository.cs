@@ -12,7 +12,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace KonwerterApp
 {
-    class StatisticsAzureTableRepository : IStatisticsRepository
+   public class StatisticsAzureTableRepository : IStatisticsRepository
     {
         private CloudTable TabelaChmurowa;
 

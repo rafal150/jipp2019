@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KonwerterApp
 {
-    class StatisticsSQLRepository : IStatisticsRepository
+    public class StatisticsSQLRepository : IStatisticsRepository
     {
         public void DodajStatystyke(StatisticDTO statistic)
         {

@@ -34,7 +34,7 @@ namespace ObliczarkaPowierzchni
                 WartoscDouble *= 10000;
             else if (JednostkaKoncowa == "decymetr kwadratowy")
                 WartoscDouble *= 100;
-            else if (JednostkaKoncowa == "metr kwadratowy") ;
+            else if (JednostkaKoncowa        == "metr kwadratowy") ;
 
             wartosc = (float)WartoscDouble;
             return wartosc;

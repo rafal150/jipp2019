@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonwerterApp", "KonwerterAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonwerterSDK", "KonwerterSDK\KonwerterSDK.csproj", "{2942FE7C-C87F-4B3B-AA06-09E33F5F1638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebKonwerter", "WebKonwerter\WebKonwerter.csproj", "{D5FBE740-E82E-485D-AF7E-AEC2BE348926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonwerterLogic", "KonwerterLogic\KonwerterLogic.csproj", "{6C09CFBB-FEB3-4172-982D-E13FD0F347CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2942FE7C-C87F-4B3B-AA06-09E33F5F1638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2942FE7C-C87F-4B3B-AA06-09E33F5F1638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2942FE7C-C87F-4B3B-AA06-09E33F5F1638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FBE740-E82E-485D-AF7E-AEC2BE348926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FBE740-E82E-485D-AF7E-AEC2BE348926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FBE740-E82E-485D-AF7E-AEC2BE348926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FBE740-E82E-485D-AF7E-AEC2BE348926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C09CFBB-FEB3-4172-982D-E13FD0F347CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C09CFBB-FEB3-4172-982D-E13FD0F347CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C09CFBB-FEB3-4172-982D-E13FD0F347CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C09CFBB-FEB3-4172-982D-E13FD0F347CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
