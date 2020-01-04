@@ -1,71 +1,74 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-    using System.Linq;
-using System.Collections.Generic;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace converter
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window 
     {
-        List<IConverter> converters;
-        ITelemetryRepository repository;
+        private static readonly string API_BASE_URL = "http://localhost:49358/api/converters";
+
+        private ConverterObject[] converters;
 
         public double From { set; get; }
         public double To { set; get; }
 
 
-        public MainWindow(ITelemetryRepository repository, ConvertersService convertersService)
+        public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
 
-            this.repository = repository;
-            this.converters = convertersService.GetConverters();
+            LoadConverters();
 
             UnitsTypeComboBox.ItemsSource = this.converters;
 
             LoadTelemetry();
         }
 
+        private void LoadConverters()
+        {
+            using (WebClient client = new WebClient())
+            {
+                var json = client.DownloadString(API_BASE_URL);
+                converters = JsonConvert.DeserializeObject<ConverterObject[]>(json);
+            }
+        }
+
         private void LoadTelemetry()
         {
-            using (var ctx = new ConverterCtx())
+            using (WebClient client = new WebClient())
             {
-                TelemetryGrid.ItemsSource = repository.GetTelemetries();
+                var json = client.DownloadString(API_BASE_URL + "/telemetry");
+                TelemetryGrid.ItemsSource = JsonConvert.DeserializeObject<TelemetryDTO[]>(json);
             }
         }
 
         private void UnitsTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var unitList = ((IConverter)UnitsTypeComboBox.SelectedItem).Units;
+            var unitList = ((ConverterObject)UnitsTypeComboBox.SelectedItem).Units;
             FromUnitComboBox.ItemsSource = unitList;
             ToUnitComboBox.ItemsSource = unitList;
         }
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            To = ((IConverter)UnitsTypeComboBox.SelectedItem).Convert(
-                FromUnitComboBox.SelectedItem.ToString(),
-                ToUnitComboBox.SelectedItem.ToString(),
-                From
-            );
-            Result.Text = To.ToString();
-            
-            var telemetry = new TelemetryDTO()
+            using (WebClient client = new WebClient())
             {
-                Date = DateTime.Now,
-                Type = ((IConverter)UnitsTypeComboBox.SelectedItem).Name,
-                UnitFrom = FromUnitComboBox.SelectedItem.ToString(),
-                UnitTo = ToUnitComboBox.SelectedItem.ToString(),
-                ValueFrom = From,
-                ValueTo = To
-            };
-            repository.AddTelemetry(telemetry);
-            TelemetryGrid.ItemsSource = repository.GetTelemetries();
+                client.QueryString.Add("converterType", ((ConverterObject)UnitsTypeComboBox.SelectedItem).Name);
+                client.QueryString.Add("unitFrom", FromUnitComboBox.SelectedItem.ToString());
+                client.QueryString.Add("unitTo", ToUnitComboBox.SelectedItem.ToString());
+                client.QueryString.Add("valueToConvert", From.ToString());
+                Result.Text = client.DownloadString(API_BASE_URL + "/convert");
+            }
+            LoadTelemetry();
         }
     }
+}
+
+class ConverterObject
+{
+    public string Name { get; set; }
+    public string[] Units { get; set; }
 }

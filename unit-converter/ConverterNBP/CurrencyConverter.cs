@@ -20,7 +20,7 @@ namespace ConverterNBP
 
         private double GetRateFromNBP(string from, string to)
         {
-            string url = @"http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json";            double rate = 1;            
+            string url = @"http://api.nbp.pl/api/exchangerates/tables/A?format=json";            double rate = 1;            
             using (WebClient client = new WebClient())            {                string json = client.DownloadString(url);
                 TableObject[] tables = JsonConvert.DeserializeObject<TableObject[]>(json);                
                 if (tables.Length == 0) {

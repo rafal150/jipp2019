@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using converter;
+using ConverterWeb.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -17,9 +20,10 @@ namespace ConverterWeb
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {
-            IContainer container = BuildContainer();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        {            IContainer container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -29,7 +33,8 @@ namespace ConverterWeb
         private IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();            
-            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);            
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
                 containerBuilder.RegisterType<TelemetryAzureRepository>().As<ITelemetryRepository>();
