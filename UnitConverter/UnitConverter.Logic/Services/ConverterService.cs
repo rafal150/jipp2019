@@ -33,30 +33,46 @@ namespace UnitConversion
             convertedValue = -1;
             if (unitConverters.ContainsKey(selectedConverter) == false) return false;
             UnitConverter converter = unitConverters[selectedConverter];
-            if (converter.SetUnits(unitFrom, unitTo))
+            try
             {
-                return Convert(converter, value, out convertedValue);
+                convertedValue = converter.Convert(unitFrom, unitTo, value);
+
+                ConversionHistoryDTO ch = new ConversionHistoryDTO()
+                {
+                    Created = DateTime.Now,
+                    BaseUnit = unitFrom,
+                    BaseValue = value,
+                    ConversionType = selectedConverter,
+                    TargetUnit = unitTo,
+                    TargetValue = convertedValue
+                };
+                serviceRepository.AddConversionHistory(ch);
+                return true;
             }
-            else return false;
-        }
-
-        public bool Convert(UnitConverter selectedConverter, decimal value, out decimal convertedValue)
-        {
-            convertedValue = -1;
-            if (selectedConverter == null) return false;
-            convertedValue = selectedConverter.Convert(value);
-
-            ConversionHistoryDTO ch = new ConversionHistoryDTO()
+            catch(Exception ex)
             {
-                Created = DateTime.Now,
-                BaseUnit = selectedConverter.BaseUnit.Name,
-                BaseValue = value,
-                ConversionType = selectedConverter.Name,
-                TargetUnit = selectedConverter.TargetUnit.Name,
-                TargetValue = convertedValue
-            };
-            serviceRepository.AddConversionHistory(ch);
-            return true;
+                convertedValue = -1;
+                return false;
+            }
         }
+
+        //public bool Convert(UnitConverter selectedConverter, decimal value, out decimal convertedValue)
+        //{
+        //    convertedValue = -1;
+        //    if (selectedConverter == null) return false;
+        //    convertedValue = selectedConverter.Convert(value);
+
+        //    ConversionHistoryDTO ch = new ConversionHistoryDTO()
+        //    {
+        //        Created = DateTime.Now,
+        //        BaseUnit = selectedConverter.BaseUnit.Name,
+        //        BaseValue = value,
+        //        ConversionType = selectedConverter.Name,
+        //        TargetUnit = selectedConverter.TargetUnit.Name,
+        //        TargetValue = convertedValue
+        //    };
+        //    serviceRepository.AddConversionHistory(ch);
+        //    return true;
+        //}
     }
 }

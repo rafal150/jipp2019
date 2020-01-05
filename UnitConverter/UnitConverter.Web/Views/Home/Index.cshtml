@@ -2,19 +2,24 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<div style="position: fixed">
+    <h1>Konwerter jednostek</h1>
 
-<h1>Konwerter jednostek</h1>
-@foreach(UnitConversion.UnitConverter converter in Model)
-{
-    using (Ajax.BeginForm("Convert",
-        new { converterType = converter.Name },
-        new AjaxOptions() { UpdateTargetId = converter.Name + "result" }))
-    {
-        <div>@converter.Name</div>
-        @Html.DropDownList("unitFrom", new SelectList(converter.Units.Values));
-        @Html.TextBox("valueToConvert")
-        @Html.DropDownList("unitTo", new SelectList(converter.Units.Values))
-        <button type="submit">Konwertuj</button>
-        <label id="@(converter.Name + "result")"></label>
-    }
-}
+    <div style="position:relative; float:left">
+        <ul style="margin-right: 30px">
+            @foreach (UnitConversion.UnitConverter converter in Model)
+            {
+                <li>
+                    @Ajax.ActionLink(converter.Name, "Body", new { converterType = converter.Name }, new AjaxOptions() { UpdateTargetId = "converterBody", InsertionMode = InsertionMode.Replace })
+
+                </li>
+            }
+        </ul>
+    </div>
+    <div id="converterBody" style="position: relative;float: left"></div>
+</div>
+
+
+
+
+

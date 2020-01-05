@@ -5,11 +5,10 @@ namespace PowerConverter
 {
     public class PowerConverter : UnitConverter
     {
-        private Dictionary<string, Unit> units;
 
         public override string Name => "Konwerter mocy";
 
-        public override Dictionary<string, Unit> Units => units;
+        //public override Dictionary<string, Unit> Units => units;
 
         public PowerConverter()
         {

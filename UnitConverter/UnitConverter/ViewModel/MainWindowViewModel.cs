@@ -12,10 +12,10 @@ namespace UnitConversion
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly IServiceRepository serviceRepository;
+        //private readonly IServiceRepository serviceRepository;
 
-        private ConverterService converter;
-        public ConverterService Converter
+        private ConvertersApi converter;
+        public ConvertersApi Converter
         {
             get
             {
@@ -28,7 +28,24 @@ namespace UnitConversion
             }
         }
 
-        public ObservableCollection<ConversionHistoryDTO> ConversionHistory { get; set; }
+        public ObservableCollection<ConversionHistory> ConversionHistory { get; set; }
+        private ObservableCollection<UnitConverter> unitConverters = null;
+        public ObservableCollection<UnitConverter> UnitConverters
+        {
+            get
+            {
+                if (unitConverters == null) ReloadUnitConverters();
+                return unitConverters;
+            }
+
+        }
+
+        private void ReloadUnitConverters()
+        {
+            unitConverters = new ObservableCollection<UnitConverter>();
+            foreach (UnitConverter uc in Converter.GetConverters())
+                unitConverters.Add(uc);
+        }
 
         private UnitConverter selectedUnitConverter;
         public UnitConverter SelectedUnitConverter
@@ -43,13 +60,13 @@ namespace UnitConversion
                 NotifyPropertyChanged(nameof(SelectedUnitConverter));
             }
         }
-        public decimal InputValue { get; set; }
+        public string InputValue { get; set; }
 
         public bool CanExecuteConvert
         {
             get
             {
-                return SelectedUnitConverter != null && SelectedUnitConverter.BaseUnit != null && SelectedUnitConverter.TargetUnit != null;
+                return SelectedUnitConverter != null && SelectedUnitConverter.SourceUnit != null && SelectedUnitConverter.TargetUnit != null;
             }
         }
 
@@ -75,26 +92,28 @@ namespace UnitConversion
 
         private void Convert()
         {
-            decimal result = -1;
-            if(Converter.Convert(SelectedUnitConverter, InputValue, out result))
-            {
-                Result = result;
-                ReloadHistory();
-            }
+            decimal result = Converter.Convert(SelectedUnitConverter.SourceUnit, SelectedUnitConverter.TargetUnit, InputValue, SelectedUnitConverter.Name);
+            Result = result;
+            ReloadHistory();
+            //if(Converter.Convert(SelectedUnitConverter, InputValue, out result))
+            //{
+            //    Result = result;
+            //    ReloadHistory();
+            //}
         }
 
-        public MainWindowViewModel(IServiceRepository serviceRepository, ConverterService service)
+        public MainWindowViewModel(ConvertersApi converters)
         {
-            this.serviceRepository = serviceRepository;
-            Converter = service;
-            ConversionHistory = new ObservableCollection<ConversionHistoryDTO>();
+            //this.serviceRepository = serviceRepository;
+            Converter = converters;
+            ConversionHistory = new ObservableCollection<ConversionHistory>();
             ReloadHistory();
         }
 
         private void ReloadHistory()
         {
             ConversionHistory.Clear();
-            foreach (ConversionHistoryDTO ch in serviceRepository.GetConversionHistory())
+            foreach (ConversionHistory ch in Converter.GetConversionHistory())
             {
                 ConversionHistory.Add(ch);
             }

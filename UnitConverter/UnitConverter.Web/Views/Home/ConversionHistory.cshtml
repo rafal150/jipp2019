@@ -1,0 +1,55 @@
+﻿@model IEnumerable<UnitConversion.ConversionHistoryDTO>
+
+@{
+    ViewBag.Title = "Historia konwersji";
+}
+
+<h2>Historia konwersji</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Wykonano")
+        </th>
+        <th>
+            @Html.DisplayName("Typ konwersji")
+        </th>
+        <th>
+            @Html.DisplayName("Jednostka bazowa")
+        </th>
+        <th>
+            @Html.DisplayName("Wartość bazowa")
+        </th>
+        <th>
+            @Html.DisplayName("Jednostka docelowa")
+        </th>
+        <th>
+            @Html.DisplayName("Wartość docelowa")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConversionType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TargetUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TargetValue)
+        </td>
+    </tr>
+}
+
+</table>

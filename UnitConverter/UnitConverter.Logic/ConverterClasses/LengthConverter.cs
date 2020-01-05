@@ -4,10 +4,7 @@ namespace UnitConversion
 {
     public class LengthConverter : UnitConverter
     {
-        Dictionary<string, Unit> units;
         public override string Name => "Konwerter długości";
-
-        public override Dictionary<string, Unit> Units => units;
 
         public LengthConverter()
         {

@@ -1,30 +1,34 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace UnitConversion
 {
     public abstract class UnitConverter
     {
+        protected Dictionary<string, Unit> units;
         public abstract string Name { get; }
-        public abstract Dictionary<string, Unit> Units { get; }
-        public Unit BaseUnit { get; set; }
-        public Unit TargetUnit { get; set; }
-        public decimal Convert(decimal sourceValue)
+        public List<string> Units => units != null ? units.Keys.ToList() : new List<string>();
+        //protected Unit BaseUnit { get; private set; }
+        //protected Unit TargetUnit { get; private set; }
+        public decimal Convert(string unitFrom, string unitTo, decimal sourceValue)
         {
-            decimal baseValue = BaseUnit.ToBaseValue.Invoke(sourceValue);
-            return TargetUnit.FromBaseValue(baseValue);
+            if (units.ContainsKey(unitFrom) == false || units.ContainsKey(unitTo) == false) throw new System.Exception("Invalid UnitFrom or UnitTo");
+            decimal baseValue = units[unitFrom].ToBaseValue.Invoke(sourceValue);
+            return units[unitTo].FromBaseValue(baseValue);
         }
 
-        public bool SetUnits(string unitFrom, string unitTo)
-        {
-            if (Units.ContainsKey(unitFrom) == false || Units.ContainsKey(unitTo) == false) return false;
-            BaseUnit = Units[unitFrom];
-            TargetUnit = Units[unitTo];
-            return true;
-        }
+        //public bool SetUnits(string unitFrom, string unitTo)
+        //{
+        //    if (units.ContainsKey(unitFrom) == false || units.ContainsKey(unitTo) == false) return false;
+        //    BaseUnit = units[unitFrom];
+        //    TargetUnit = units[unitTo];
+        //    return true;
+        //}
 
         public override string ToString()
         {
             return Name;
         }
     }
+
 }

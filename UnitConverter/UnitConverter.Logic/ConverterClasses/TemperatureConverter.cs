@@ -4,11 +4,7 @@ namespace UnitConversion
 {
     public class TemperatureConverter : UnitConverter
     {
-        Dictionary<string, Unit> units;
-
         public override string Name => "Konwerter temperatur";
-
-        public override Dictionary<string, Unit> Units => units;
 
         public TemperatureConverter()
         {

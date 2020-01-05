@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using UnitConversion;
 
@@ -9,11 +10,7 @@ namespace CurrencyConverter
 {
     public class CurrencyConverter : UnitConverter
     {
-        private Dictionary<string, Unit> units;
-
         public override string Name => "Konwerter walut";
-
-        public override Dictionary<string, Unit> Units => units;
 
         public CurrencyConverter()
         {
@@ -29,7 +26,7 @@ namespace CurrencyConverter
 
         private decimal GetCurrencyRate(string currency)
         {
-            string url = @"http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/today/?format=json";
+            string url = @"http://api.nbp.pl/api/exchangerates/rates/A/" + currency + "/last/1/?format=json";
 
             using (WebClient client = new WebClient())
             {

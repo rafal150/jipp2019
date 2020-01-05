@@ -4,10 +4,7 @@ namespace UnitConversion
 {
     public class WeightConverter : UnitConverter
     {
-        Dictionary<string, Unit> units;
         public override string Name => "Konwerter masy";
-
-        public override Dictionary<string, Unit> Units => units;
 
         public WeightConverter()
         {

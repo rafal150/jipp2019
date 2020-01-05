@@ -27,37 +27,38 @@ namespace UnitConversion
         {
             var containerBuilder = new ContainerBuilder();
 
-            if(ConfigurationManager.AppSettings["ServiceRepository"] == "AzureStorage")
-            {
-                containerBuilder.RegisterType<AzureServiceRepository>().As<IServiceRepository>();
-            }
-            else if(ConfigurationManager.AppSettings["ServiceRepository"] == "SQL")
-            {
-                containerBuilder.RegisterType<SqlServiceRepository>().As<IServiceRepository>();
-            }
+            //if(ConfigurationManager.AppSettings["ServiceRepository"] == "AzureStorage")
+            //{
+            //    containerBuilder.RegisterType<AzureServiceRepository>().As<IServiceRepository>();
+            //}
+            //else if(ConfigurationManager.AppSettings["ServiceRepository"] == "SQL")
+            //{
+            //    containerBuilder.RegisterType<SqlServiceRepository>().As<IServiceRepository>();
+            //}
             containerBuilder.RegisterType<MainWindowViewModel>();
-            containerBuilder.RegisterType<ConverterService>();
+            containerBuilder.RegisterType<ConvertersApi>();
+            //containerBuilder.RegisterType<ConverterService>();
 
             containerBuilder.RegisterType<MainWindow>();
 
-            var assembly = typeof(ConverterService).Assembly;
-            containerBuilder.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
+            //var assembly = typeof(ConverterService).Assembly;
+            //containerBuilder.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
 
-            RegisterPlugins(containerBuilder);
+            //RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
         }
 
-        private static void RegisterPlugins(ContainerBuilder container)
-        {
-            string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(directory, "plugins");
-            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+        //private static void RegisterPlugins(ContainerBuilder container)
+        //{
+        //    string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    string pluginDirectory = Path.Combine(directory, "plugins");
+        //    var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            foreach(Assembly assembly in assemblies)
-            {
-                container.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
-            }
-        }
+        //    foreach(Assembly assembly in assemblies)
+        //    {
+        //        container.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
+        //    }
+        //}
     }
 }

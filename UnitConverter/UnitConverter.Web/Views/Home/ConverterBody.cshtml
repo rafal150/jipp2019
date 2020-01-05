@@ -1,0 +1,38 @@
+﻿@model UnitConversion.UnitConverter
+
+
+@using (Ajax.BeginForm("Convert",
+    new { converterType = Model.Name },
+    new AjaxOptions() { UpdateTargetId = Model.Name.Replace(" ", "") + "result", InsertionMode = InsertionMode.Replace,}))
+{
+<div>
+    <h3>@Model.Name</h3>
+    <br />
+    <label>Jednostka bazowa</label>
+    @Html.DropDownList("unitFrom", new SelectList(Model.Units))
+    <br />
+    <label>Jednostka docelowa</label>
+    @Html.DropDownList("unitTo", new SelectList(Model.Units))
+    <br />
+    <label>Wartość do przeliczenia</label>
+    @Html.TextBox("valueToConvert")
+    <br />
+    <button type="submit">Przelicz</button>
+    <button type="button" onclick="ReplaceUnits()">Zamień</button>
+   
+    <hr />
+    <label>Wynik: </label>
+    <label id="@(Model.Name.Replace(" ", "") + "result")"></label>
+</div>
+
+}
+
+<script>
+    function ReplaceUnits() {
+        var unitFrom = $("#unitFrom").val();
+        var unitTo = $("#unitTo").val();
+
+        $("#unitFrom").val(unitTo);
+        $("#unitTo").val(unitFrom);
+    }
+</script>

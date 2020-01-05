@@ -22,7 +22,7 @@ namespace UnitConversion
     public partial class MainWindow : Window
     {
         private readonly ILifetimeScope scope;
-        public MainWindow(IServiceRepository serviceRepository, ILifetimeScope scope)
+        public MainWindow(ILifetimeScope scope)
         {
             InitializeComponent();
             this.scope = scope;
