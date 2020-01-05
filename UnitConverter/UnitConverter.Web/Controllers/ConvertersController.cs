@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -22,12 +23,12 @@ namespace UnitConversion.Web.Controllers
         [Route("api/converters/convert")]
         [HttpGet]
         public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
-    string converterType)
+            string converterType)
         {
             ValidateConvertData(unitFrom, unitTo, valueToConvert, converterType);
 
             UnitConverter converter = converterService.UnitConverters[converterType];
-            decimal valueToConvertDecimal = decimal.Parse(valueToConvert);
+            decimal valueToConvertDecimal = decimal.Parse(valueToConvert.Replace(',', '.'), CultureInfo.InvariantCulture);
 
             decimal output = 0;
             converterService.Convert(converterType, unitFrom, unitTo, valueToConvertDecimal, out output);
@@ -35,7 +36,7 @@ namespace UnitConversion.Web.Controllers
         }
 
         private void ValidateConvertData(string unitFrom, string unitTo, string valueToConvert,
-    string converterType)
+            string converterType)
         {
             if (converterService.UnitConverters.ContainsKey(converterType) == false)
             {
@@ -43,7 +44,7 @@ namespace UnitConversion.Web.Controllers
             }
             decimal valueToConvertDecimal = 0;
 
-            if (decimal.TryParse(valueToConvert, out valueToConvertDecimal) == false)
+            if (decimal.TryParse(valueToConvert.Replace(',','.'), NumberStyles.Any, CultureInfo.InvariantCulture, out valueToConvertDecimal) == false)
             {
                 throw GetResponseException(System.Net.HttpStatusCode.BadRequest, "Invalid value to convert. Value: " + valueToConvert, "Invalid value");
             }

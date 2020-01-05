@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows.Input;
-using UnitConversion;
 
 namespace UnitConversion
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        //private readonly IServiceRepository serviceRepository;
-
         private ConvertersApi converter;
         public ConvertersApi Converter
         {
@@ -60,13 +52,23 @@ namespace UnitConversion
                 NotifyPropertyChanged(nameof(SelectedUnitConverter));
             }
         }
-        public string InputValue { get; set; }
+
+        private string inputValue;
+        public string InputValue
+        {
+            get { return inputValue; }
+            set
+            {
+                inputValue = value;
+                ConvertCommand.CanExecute(null);
+            }
+        }
 
         public bool CanExecuteConvert
         {
             get
             {
-                return SelectedUnitConverter != null && SelectedUnitConverter.SourceUnit != null && SelectedUnitConverter.TargetUnit != null;
+               return SelectedUnitConverter != null && SelectedUnitConverter.SourceUnit != null && SelectedUnitConverter.TargetUnit != null && decimal.TryParse(InputValue.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal val);
             }
         }
 
@@ -95,16 +97,10 @@ namespace UnitConversion
             decimal result = Converter.Convert(SelectedUnitConverter.SourceUnit, SelectedUnitConverter.TargetUnit, InputValue, SelectedUnitConverter.Name);
             Result = result;
             ReloadHistory();
-            //if(Converter.Convert(SelectedUnitConverter, InputValue, out result))
-            //{
-            //    Result = result;
-            //    ReloadHistory();
-            //}
         }
 
         public MainWindowViewModel(ConvertersApi converters)
         {
-            //this.serviceRepository = serviceRepository;
             Converter = converters;
             ConversionHistory = new ObservableCollection<ConversionHistory>();
             ReloadHistory();
