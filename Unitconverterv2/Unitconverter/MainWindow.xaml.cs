@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using static Unitconverter.ConverterAPIservice;
 
 namespace Unitconverter
 {
@@ -27,16 +28,20 @@ namespace Unitconverter
         Temperatury temp = new Temperatury();
         Dlugosci dlug = new Dlugosci();
         Masy masy = new Masy();
-        private IStatisticsRepository repository;
+        //private IStatisticsRepository repository;
         //private StatisticsSQLRepo repository = new StatisticsSQLRepo();
-        public MainWindow(IStatisticsRepository rep, Unitconverter.Services.ConvServices converters)
+        private ConverterAPIservice converters;
+        public MainWindow(/*IStatisticsRepository rep,*/ ConverterAPIservice converters)
         {
             InitializeComponent();
-            this.repository = rep;
+            this.converters = converters;
+            //this.repository = rep;
             //this.ChoosecomboBox.ItemsSource = new string[3] { "Temperatury", "Długości", "Masy" }; ;
             //LoadBaza();
+            
             this.ChoosecomboBox.ItemsSource = converters.GetConverters();
-            this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
+            //this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
+            
             //this.RodzajBazylabel.Content = this.repository.ToString();
             this.RodzajBazylabel.Content = ConfigurationManager.AppSettings["StatRepo"];
 
@@ -57,14 +62,15 @@ namespace Unitconverter
         {
             if(ChoosecomboBox.SelectedItem != null)
             {
-                Unitconverter.Services.IConverter converter = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem);
-                this.OutputtextBlock.Text = converter.Convert(this.InputCombobox.SelectedItem.ToString(),this.OutputcomboBox.SelectedItem.ToString(),int.Parse(this.InputtextBox.Text)).ToString();
+                Converter converter = ((Converter)ChoosecomboBox.SelectedItem);
+                this.OutputtextBlock.Text = converters.Convert(this.InputCombobox.SelectedItem.ToString(),this.OutputcomboBox.SelectedItem.ToString(),this.InputtextBox.Text.ToString(), converter.Name).ToString();
             }
 
             //oblicz();
 
             //koniec obliczanie
             //Zapamietanie danych
+            /*
             StatDTO przech = new StatDTO()
             {
                 DateTime = DateTime.Now,
@@ -76,7 +82,7 @@ namespace Unitconverter
 
             };
             //wprowadzenie do bazy
-            this.repository.AddStatistic(przech);
+            //this.repository.AddStatistic(przech);
             /*
             using (BazaUnitConverter baza = new BazaUnitConverter())
             {
@@ -97,8 +103,9 @@ namespace Unitconverter
             //koniec wprowadzenie do bazy
             //wczytywanie bazy
             //LoadBaza();
-            this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
+            //this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
             //koniec wczytywanie bazy
+            
         }
 
         private void oblicz()
@@ -128,8 +135,8 @@ namespace Unitconverter
             OutputtextBlock.Text = "";
             if(ChoosecomboBox.SelectedItem != null)
             {
-                this.InputCombobox.ItemsSource = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem).Units;
-                this.OutputcomboBox.ItemsSource = ((Unitconverter.Services.IConverter)ChoosecomboBox.SelectedItem).Units;
+                this.InputCombobox.ItemsSource = ((Converter)ChoosecomboBox.SelectedItem).Units;
+                this.OutputcomboBox.ItemsSource = ((Converter)ChoosecomboBox.SelectedItem).Units;
 
             }
             /*

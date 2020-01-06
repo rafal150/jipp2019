@@ -29,7 +29,7 @@ namespace Unitconverter
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
-
+            /*
             if (ConfigurationManager.AppSettings["StatRepo"] == "Azure")
             {
                 containerBuilder.RegisterType<StatisticsAzureRepo>().As<IStatisticsRepository>();
@@ -38,14 +38,18 @@ namespace Unitconverter
             {
                 containerBuilder.RegisterType<StatisticsSQLRepo>().As<IStatisticsRepository>();
             }
-
+            */
             containerBuilder.RegisterType<MainWindow>();
+
+            containerBuilder.RegisterType<ConverterAPIservice>();
+            /*
             containerBuilder.RegisterType<Unitconverter.Services.ConvServices>();
 
             var assembly = typeof(Services.ConvServices).Assembly; //System.Reflection.Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
 
             RegisterPlugin(containerBuilder);
+            */
             return containerBuilder.Build();
 
         }

@@ -59,6 +59,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConverterAPIservice.cs" />
     <Compile Include="Obliczenia\Dlugosci.cs" />
     <Compile Include="Obliczenia\Masy.cs" />
     <Compile Include="Obliczenia\Temperatury.cs" />
@@ -119,16 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConvertSDK\ConvertSDK.csproj">
-      <Project>{65c185b5-a3d5-46dd-8895-df0624de5712}</Project>
-      <Name>ConvertSDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UnitConverter.Logic\UnitConverter.Logic.csproj">
-      <Project>{1f286cf0-ba8d-41d7-bf58-5e7f7e0db8dd}</Project>
-      <Name>UnitConverter.Logic</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

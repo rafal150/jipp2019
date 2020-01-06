@@ -23,10 +23,10 @@ namespace UnitConverter.Web.Controllers
             return View(converters);
         }
 
-        public decimal Convert(string unitfrom, string unitTo, string valuetoconvert, string converterType)
+        public double Convert(string unitfrom, string unitTo, string valuetoconvert, string converterType)
         {
             IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
-            decimal wynik = (decimal)converter.Convert(unitfrom, unitTo, int.Parse(valuetoconvert));
+           double wynik = converter.Convert(unitfrom, unitTo, int.Parse(valuetoconvert));
             return wynik;
         }
         public ActionResult About()
