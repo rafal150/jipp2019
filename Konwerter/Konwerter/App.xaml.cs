@@ -30,38 +30,12 @@ namespace Konwerter
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
-            if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
-            {
-                containerBuilder.RegisterType<AzureStorageRepository>().As<IStatisticsRepository>();
-            }
-            else
-            {
-                containerBuilder.RegisterType<SqlRepository>().As<IStatisticsRepository>();
-            }
 
             containerBuilder.RegisterType<MainWindow>();
-            containerBuilder.RegisterType<ConvertersService>();
-
-            var assembly = typeof(ConvertersService).Assembly;
-            containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.EndsWith("Conversion")).AsImplementedInterfaces();
-
-            RegisterPlugins(containerBuilder);
+            containerBuilder.RegisterType<ConvertersApi>();
 
             return containerBuilder.Build();
         }
-
-        private static void RegisterPlugins(ContainerBuilder containerBuilder)
-        {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "Plugins");
-
-            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
-
-            foreach (Assembly assembly in assemblies)
-            {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Conversion")).AsImplementedInterfaces();
-            }
-        }
     }
 }
+

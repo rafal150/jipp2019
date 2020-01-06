@@ -22,23 +22,24 @@ namespace Konwerter
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IStatisticsRepository repository;
-        public MainWindow(IStatisticsRepository repo, ConvertersService converters)
+        private ConvertersApi converters;
+        public MainWindow(ConvertersApi converters)
         {
             InitializeComponent();
 
-            this.repository = repo;
-            this.dbGrid.ItemsSource = repository.GetStatistics();
+            this.converters = converters;
 
             this.convenrsionTypeCombo.ItemsSource = converters.GetConverters();
+
+            dbGrid.ItemsSource = converters.GetStatistics();
         }
 
         private void ConvenrsionTypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.convenrsionTypeCombo.SelectedItem != null)
             {
-                this.fromCombo.ItemsSource = ((IConverter)this.convenrsionTypeCombo.SelectedItem).Units;
-                this.toCombo.ItemsSource = ((IConverter)this.convenrsionTypeCombo.SelectedItem).Units;
+                this.fromCombo.ItemsSource = ((Converter)this.convenrsionTypeCombo.SelectedItem).Units;
+                this.toCombo.ItemsSource = ((Converter)this.convenrsionTypeCombo.SelectedItem).Units;
             }
         }
 
@@ -46,8 +47,8 @@ namespace Konwerter
         {
             try
             {
-                IConverter converter = (IConverter)this.convenrsionTypeCombo.SelectedItem;
-                double result = converter.Convert(fromCombo.SelectedItem.ToString(), toCombo.SelectedItem.ToString(),  Convert.ToDouble(this.valueToConvert.Text));
+                Converter converter = (Converter)this.convenrsionTypeCombo.SelectedItem;
+                double result = converters.Convert(fromCombo.SelectedItem.ToString(), toCombo.SelectedItem.ToString(), this.valueToConvert.Text, converter.Name);
 
                 this.convertedValue.Text = result.ToString();
             }
@@ -56,31 +57,7 @@ namespace Konwerter
                 this.convertedValue.Text = "Invalid input value";
             }
 
-            DbLoad();
-        }
-
-        private void DbLoad()
-        {
-            try
-            {
-                IConverter converter = (IConverter)this.convenrsionTypeCombo.SelectedItem;
-                StatisticsDTO stats = new StatisticsDTO()
-                {
-                    conversionType = converter.Name,
-                    fromUnit = fromCombo.SelectedItem.ToString(),
-                    valueToConvert = valueToConvert.Text,
-                    toUnit = toCombo.SelectedItem.ToString(),
-                    convertedValue = convertedValue.Text,
-                    dateTime = DateTime.Now,
-                };
-
-                this.repository.AddStatistics(stats);
-                this.dbGrid.ItemsSource = repository.GetStatistics();
-            }
-            catch
-            {
-                this.convertedValue.Text = "What?";
-            }
+            dbGrid.ItemsSource = converters.GetStatistics();
         }
     }
 }

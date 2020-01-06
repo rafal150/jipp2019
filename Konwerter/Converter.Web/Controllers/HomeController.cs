@@ -46,6 +46,7 @@ namespace Converter.Web.Controllers
             };
 
             repository.AddStatistics(stats);
+
             return output;
         }
 
