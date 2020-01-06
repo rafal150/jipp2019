@@ -77,6 +77,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="Model\Grupy.cs" />
+    <Compile Include="Model\Jednostki.cs" />
+    <Compile Include="Model\StatisticsEntity.cs" />
+    <Compile Include="Model\StatisticsModel.cs" />
+    <Compile Include="Model\Statystyki.cs" />
+    <Compile Include="Model\StatystykiObliczen.cs" />
+    <Compile Include="PrzeliczTemperature.cs" />
+    <Compile Include="StatisticDTO.cs" />
+    <Compile Include="StatisticsAzureStorageRepository.cs" />
+    <Compile Include="StatisticsSqlRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,20 +126,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
-      <Project>{59a8d9e8-2ce7-4f6d-954d-72afd9065ae2}</Project>
-      <Name>Converter.SDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KOnwerterJednostek.Logika\KOnwerterJednostek.Logika.csproj">
-      <Project>{ef85aa24-88aa-4016-8e4f-267909adc23c}</Project>
-      <Name>KOnwerterJednostek.Logika</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

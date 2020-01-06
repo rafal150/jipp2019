@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Konwerter_Azure.Services.IConverter>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>KONWERTER JEDNOSTEK</h1>
+
+<!--dla kazdego konwertera w moim widoku wyswietl comboboxy, label i textox-->
+@foreach (Konwerter_Azure.Services.IConverter converter in Model)
+{
+    <!--<form action="/HOME/CONVERT" method="post"> i tutaj wszystkie obiekty do zapisu </form> -->
+
+    //using (Html.BeginForm("Convert", "Home", new {typKonwertera = converter.GetType().AssemblyQualifiedName }))
+    using (Ajax.BeginForm("Convert", new { typKonwertera = converter.GetType().AssemblyQualifiedName }, new AjaxOptions() { UpdateTargetId = converter.Nazwa + "wynik" }))
+    {
+        <div>@converter.Nazwa</div>
+        <!-- lista jednostek danego konwertera-->
+        @Html.DropDownList("jednostkiZ ", new SelectList(converter.Jednostki))
+        @Html.TextBox("wartosc")
+        @Html.DropDownList("jednostkiNa ", new SelectList(converter.Jednostki))
+        <button>Przelicz</button>
+        <label id="@converter.Nazwa + "wynik")"></label>
+    }
+}

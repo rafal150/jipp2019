@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Konwerter_Azure.Services;
 //using Konwerter_Azure;
 
 namespace Konwerter_Azure
@@ -24,86 +25,75 @@ namespace Konwerter_Azure
     {
         private IStatisticsRepository repository;
 
-        public MainWindow()
+        
+        public MainWindow(IStatisticsRepository repo, ConvertersService converters)
         {
             InitializeComponent();
-        }
-        public MainWindow(IStatisticsRepository repo)
-        {
-            InitializeComponent();
-
-            FillGrupy();
 
             this.repository = repo;
             this.DataGrid_Statystyki.ItemsSource = repository.GetStatistics();
+
+            this.ComboBoxRodzajMiary.ItemsSource = converters.GetConverters(); //new ConvertersService().GetConverters()
         }
 
-        void FillGrupy()
-        {
-            this.ComboBoxRodzajMiary.ItemsSource = new List<string>(new[] { "T", "M", "O" });
-        }
+
 
         private void ComboBoxRodzajMiary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //int idGrupy = Convert.ToInt32(ComboBoxRodzajMiary.SelectedValue);
-
-            //JIPPEntities1 obj = new JIPPEntities1();
-            //List<Jednostki> listaGrup = obj.Jednostki.Where(x => x.idGrupy == idGrupy).ToList();
-            //ComboBoxZCzego.ItemsSource = listaGrup;
-            //ComboBoxNaCo.ItemsSource = listaGrup;
-
-            if (Convert.ToString(ComboBoxRodzajMiary.SelectedValue)=="T")
+            if (this.ComboBoxRodzajMiary.SelectedItem != null)
             {
-                ComboBoxZCzego.ItemsSource = new List<string>(new[] { "C", "K", "F", "R" });
-                ComboBoxNaCo.ItemsSource = new List<string>(new[] { "C", "K", "F", "R" });
+                this.ComboBoxZCzego.ItemsSource = ((IConverter)this.ComboBoxRodzajMiary.SelectedItem).Jednostki; //rzutowanie
+                this.ComboBoxNaCo.ItemsSource = ((IConverter)this.ComboBoxRodzajMiary.SelectedItem).Jednostki;
             }
-
         }
-
-
-
 
 
         private void ButtonOblicz_Click(object sender, RoutedEventArgs e)
         {
-            string idZ = Convert.ToString(ComboBoxZCzego.SelectedValue);
-            string idNa = Convert.ToString(ComboBoxNaCo.SelectedValue);
-            double input = double.Parse(TextBoxPodajWartosc.Text);
+            //string idZ = Convert.ToString(ComboBoxZCzego.SelectedValue);
+            //string idNa = Convert.ToString(ComboBoxNaCo.SelectedValue);
+            //decimal input = decimal.Parse(TextBoxPodajWartosc.Text);
 
-            if (Convert.ToString(ComboBoxRodzajMiary.SelectedValue) == "T")// temperatura
+            if (ComboBoxRodzajMiary.SelectedItem != null)
             {
-                PrzeliczTemperature pt = new PrzeliczTemperature();
-                TextBlockWynik.Text = pt.ObliczTemperature(idZ, idNa, input);
+                IConverter konwerter = (IConverter)this.ComboBoxRodzajMiary.SelectedItem;
+
+                decimal wynikObliczen = konwerter.Przelicz
+                    (
+                        this.ComboBoxZCzego.SelectedItem.ToString(),
+                        this.ComboBoxNaCo.SelectedItem.ToString(),
+                        decimal.Parse(this.TextBoxPodajWartosc.Text)
+                    );
+
+                this.TextBlockWynik.Text = wynikObliczen.ToString(); // przypisanie wyniku obliczen do okienka z wynikiem
+
+                StatisticDTO st = new StatisticDTO() // zapis do bazy
+                {
+                    //czas = DateTime.Now,
+                    //grupa = ComboBoxRodzajMiary.SelectedItem.ToString(),
+                    ////grupa = ConvertersService.GetConverters(),
+                    //przeliczZ = ComboBoxZCzego.SelectedItem.ToString(),
+                    ////dane = decimal.Parse(TextBoxPodajWartosc.Text), stare
+                    //dane = decimal.Parse((TextBoxPodajWartosc.Text).ToString()),//  to bylo
+                    //przeliczNa = ComboBoxNaCo.SelectedItem.ToString(),
+                    //wynik = decimal.Parse(TextBlockWynik.Text)
+                    ////wynik = (TextBlockWynik.Text)
+                    ///
+                    czas = DateTime.Now,
+                    grupa = ComboBoxRodzajMiary.SelectedItem.ToString(),
+                    przeliczZ = ComboBoxZCzego.SelectedItem.ToString(),
+                    //dane = int.Parse(TextBoxPodajWartosc.Text),
+                    //dane = decimal.Parse(TextBoxPodajWartosc.Text),
+                    dane = decimal.Parse((TextBoxPodajWartosc.Text).ToString()),
+                    przeliczNa = ComboBoxNaCo.SelectedItem.ToString(),
+                    //wynik = int.Parse(TextBlockWynik.Text)
+                    wynik = decimal.Parse(TextBlockWynik.Text)
+                    //wynik = (TextBlockWynik.Text)
+                };
+
+                this.repository.AddStatistic(st);
+                this.DataGrid_Statystyki.ItemsSource = repository.GetStatistics();
             }
-
-            //if (ComboBoxRodzajMiary.SelectedIndex == 1)// Masa
-            //{
-            //    PrzeliczMase pm = new PrzeliczMase();
-            //    TextBlockWynik.Text = pm.ObliczMase(idZ, idNa, input);
-            //}
-
-            //if (ComboBoxRodzajMiary.SelectedIndex == 2)// Odleglosc
-            //{
-            //    PrzeliczOdleglosc po = new PrzeliczOdleglosc();
-            //    TextBlockWynik.Text = po.ObliczOdleglosc(idZ, idNa, input);
-            //}
-
-
-
-
-
-            StatisticDTO st = new StatisticDTO()
-            {
-                czas = DateTime.Now,
-                grupa = ComboBoxRodzajMiary.SelectedItem.ToString(),
-                przeliczZ = ComboBoxZCzego.SelectedItem.ToString(),
-                dane = decimal.Parse(TextBoxPodajWartosc.Text),
-                przeliczNa = ComboBoxNaCo.SelectedItem.ToString(),
-                wynik = decimal.Parse(TextBlockWynik.Text)
-            };
-
-            this.repository.AddStatistic(st);
-            this.DataGrid_Statystyki.ItemsSource = repository.GetStatistics();
         }
     }
 }

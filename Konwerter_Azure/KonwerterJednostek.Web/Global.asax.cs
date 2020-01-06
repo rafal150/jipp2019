@@ -1,37 +1,39 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
+using Konwerter_Azure;
+using Konwerter_Azure.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows;
-using Konwerter_Azure.Services;
-//using IContainer = System.ComponentModel.IContainer;
-//using IContainer = Autofac.IContainer;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
-namespace Konwerter_Azure
+namespace KonwerterJednostek.Web
 {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
-            
-            IContainer container = BuildContainer();
+            IContainer container = BuildContainer(); // dodane
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container)); // twórz w tym kontenerze
 
-            this.MainWindow = container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
 
         private static IContainer BuildContainer()
         {
             var myContainerBuilder = new ContainerBuilder();
+
+            myContainerBuilder.RegisterControllers(typeof(MvcApplication).Assembly); //autofac mvc
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -42,12 +44,11 @@ namespace Konwerter_Azure
                 myContainerBuilder.RegisterType<StatisticsSqlRepository>().As<IStatisticsRepository>();
             }
 
-            myContainerBuilder.RegisterType<MainWindow>();
             myContainerBuilder.RegisterType<ConvertersService>();
 
             //var assembly = Assembly.GetExecutingAssembly(); to po staremu przed wyniesieniem logiki do oddzielnej dll
             var assembly = typeof(ConvertersService).Assembly;
-            myContainerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();//rejestracja
+            myContainerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces().AsSelf();//rejestracja
 
             RejestrowaniePluginow(myContainerBuilder);
 
@@ -56,14 +57,16 @@ namespace Konwerter_Azure
 
         private static void RejestrowaniePluginow(ContainerBuilder containerBuilder)
         {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);// sciezka do exe
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");// dodaje podfolder plugins
+            //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);// sciezka do exe
+            //string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");// dodaje podfolder plugins
+
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory,"bin"); // sciezka do pluginow dla web
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList(); // szukaj plikowkonczoncych sie na Plugin.dll D:\WWSI_5\Jezyki_i_paradygmaty_programowania_lab\Konwerter_Azure\Konwerter_Azure\bin\Debug\plugins
 
             foreach (Assembly assembly in assemblies)// na kazdym pliku wywoluje load from- to pobiera te biblioteki
             {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
+                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces().AsSelf();
             }
         }
     }
