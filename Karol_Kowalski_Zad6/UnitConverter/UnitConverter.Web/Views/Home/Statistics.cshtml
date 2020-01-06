@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UnitConverter.Logic.StatisticDTO>
+@section Styles {
+    <link href="@Url.Content("~/Content/Statistics.css")" rel="stylesheet" type="text/css" />
+}
+@{
+    ViewBag.Title = "Statistics";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>DateTime</th>
+        <th>Type</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.Encode(item.Id) </td>
+            <td> @Html.Encode(item.DateTime) </td>
+            <td> @Html.Encode(item.Type) </td>
+        </tr>
+    }
+</table>
