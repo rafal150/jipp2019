@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace applicationWpf
 {
@@ -23,13 +25,13 @@ namespace applicationWpf
     public partial class MainWindow : Window
     {
         public static IStatisticsRepository repo;
-        List<ConverterBase> pluginConverters;
+        ConverterService pluginConverters;
 
         public MainWindow(IStatisticsRepository rep, ConverterService converters)
         {
             InitializeComponent();
-            pluginConverters = converters.GetConverters();
-            unitSelect.ItemsSource = pluginConverters;
+            pluginConverters = converters;
+            unitSelect.ItemsSource = converters.GetConverters();
             repo = rep;
         }
 
@@ -38,24 +40,31 @@ namespace applicationWpf
            bool bValidTemp = double.TryParse(tempboxfrom.Text, out double value);
             if (!bValidTemp)
                 return;
-            ConverterBase tc = (unitSelect.SelectedItem as ConverterBase);
-            int fromIndex = templistfrom.SelectedIndex;
-            int toIndex = templistto.SelectedIndex;
-            double convertedValue = tc.Convert(value, fromIndex, toIndex);
-            ConvSupply.pairData(tc.suffix, fromIndex, toIndex, value, convertedValue, tc.converterName);
+
+            ConverterService.Converter selectedConverter = unitSelect.SelectedItem as ConverterService.Converter;
+            string unitFrom = selectedConverter.suffix[templistfrom.SelectedIndex];
+            string unitTo = selectedConverter.suffix[templistto.SelectedIndex];
+            string convName = selectedConverter.converterName;
+
+            double convertedValue = pluginConverters.Convert(unitFrom, unitTo, tempboxfrom.Text, convName);
+            ConvSupply.pairData(selectedConverter.suffix.ToArray(), templistfrom.SelectedIndex, templistto.SelectedIndex, value, convertedValue, convName);
             string resultString = ConvSupply.GetConvertedString();
-            if (convertedValue != double.NaN)
-                ConvSupply.AddDbEntry();
             tempboxto.Text = resultString;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
+            string url = @"https://localhost:44320/api/converters/getstatistics";
+            string valueString;
+            using (WebClient client = new WebClient())
+            {;
+                client.Encoding = Encoding.UTF8;
+                valueString = client.DownloadString(url);
+            }
+            StatisticsDTO[] statisticsDeserialized = JsonConvert.DeserializeObject<StatisticsDTO[]>(valueString, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore, MissingMemberHandling = MissingMemberHandling.Ignore });
 
             statisticgrid.Items.Clear();
-            var stats = repo.GetStatistics();
+            var stats = statisticsDeserialized;
 
             entrieslabel.Content = $"Total entries: {stats.Count()}"; 
             var tempCount = stats.Where(x => x.Type == "temperature").Count(); 
@@ -72,7 +81,7 @@ namespace applicationWpf
 
         private void unitSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var dupa = (unitSelect.SelectedItem as ConverterBase);
+            var dupa = (unitSelect.SelectedItem as ConverterService.Converter);
             templistfrom.ItemsSource = dupa.indexes;
             templistto.ItemsSource = dupa.indexes;
             templistfrom.SelectedIndex = 0;
