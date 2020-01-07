@@ -9,7 +9,7 @@ namespace Konwerter.Services
 {
     class TemperaturaKonwerter : IKonwerter
     {
-        public string Typ => "konwerter temperatury";
+        public string Typ => "konwerter_temperatury";
         public List<string> Jednostki => new List<string>(new[] { "C", "F", "K", "R" });
         public double Przelicz(string fromType, string toType, double value)
         {

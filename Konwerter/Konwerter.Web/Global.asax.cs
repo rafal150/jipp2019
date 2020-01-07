@@ -59,7 +59,7 @@ namespace Konwerter.Web
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
             //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin/plugins");// Path.Combine(assemblyDirectory, "plugins");
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");// Path.Combine(assemblyDirectory, "plugins");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 

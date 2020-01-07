@@ -9,7 +9,7 @@ namespace Konwerter.Services
 {
     public class MasaKonwerter:IKonwerter
     {
-        public string Typ => "konwerter masy";
+        public string Typ => "konwerter_masy";
         public List<string> Jednostki => new List<string> (new[] { "mg", "g", "dkg", "kg", "t", "uncja", "funt", "karat", "kwintal" });
         public double Przelicz(string fromType, string toType, double value)
         {

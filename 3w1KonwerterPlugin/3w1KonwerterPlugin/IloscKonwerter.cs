@@ -9,7 +9,7 @@ namespace KonwerterPlugins
 {
     public class IloscKonwerter : IKonwerter
     {
-        public string Typ => "konwerter ilości";
+        public string Typ => "konwerter_ilości";
         public List<string> Jednostki => new List<string>(new[] { "sztuka", "tuzin", "mendel", "mendel chłopski", "kopa", "gros"});
         public double Przelicz(string fromType, string toType, double value)
         {

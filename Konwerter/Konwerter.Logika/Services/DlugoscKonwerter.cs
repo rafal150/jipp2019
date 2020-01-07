@@ -9,7 +9,7 @@ namespace Konwerter.Services
 {
     public class DlugoscKonwerter : IKonwerter
     {
-        public string Typ => "konwerter długości";
+        public string Typ => "konwerter_długości";
         public List<string> Jednostki => new List<string>(new[] { "mm", "cm", "dcm", "m", "km", "cal", "stopa", "jard", "mila", "kabel", "mila morska" });
         public double Przelicz(string fromType, string toType, double value)
         {

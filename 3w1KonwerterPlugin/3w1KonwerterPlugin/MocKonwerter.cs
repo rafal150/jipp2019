@@ -9,7 +9,7 @@ namespace KonwerterPlugins
 {
     class MocKonwerter : IKonwerter
     {
-        public string Typ => "konwerter mocy";
+        public string Typ => "konwerter_mocy";
         public List<string> Jednostki => new List<string>(new[] { "W", "kW", "KM", "HP"});
         public double Przelicz(string fromType, string toType, double value)
         {

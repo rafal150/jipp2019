@@ -12,7 +12,7 @@ namespace WalutyKonwerterPlugin
 {
     public class WalutyKonwerter : IKonwerter
     {
-        public string Typ => "konwerter walut";
+        public string Typ => "konwerter_walut";
         public List<string> Jednostki => new List<string>(new[] { "PLN", "EUR" });        
         
         public double Przelicz(string fromType, string toType, double value)
