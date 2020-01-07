@@ -1,37 +1,38 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows;
-using IContainer = Autofac.IContainer;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+using WpfApp1;
 
-namespace WpfApp1
+namespace UnitConverter.WEB
 {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
-
             IContainer container = CreateContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            this.MainWindow = container.Resolve<MainWindow>();
-            container.Resolve<UnitManager>();
-            this.MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
 
         private static IContainer CreateContainer()
         {
             var builder = new ContainerBuilder();
+
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "Azure")
             {
@@ -42,10 +43,11 @@ namespace WpfApp1
                 builder.RegisterType<StatisticsLocalDBRepository>().As<IStatisticsRepository>();
             }
 
-            builder.RegisterType<MainWindow>();
             builder.RegisterType<UnitManager>();
 
+
             var assembly = typeof(UnitManager).Assembly;
+
             builder.RegisterAssemblyTypes(assembly)
                 .Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
 
@@ -56,15 +58,15 @@ namespace WpfApp1
 
         private static void RegisterPlugins(ContainerBuilder builder)
         {
-            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDir = Path.Combine(assemblyDir, "plugins");
+            string pluginDir = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
             var assemblies = Directory.GetFiles(pluginDir, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            foreach (Assembly ass in assemblies) {
+            foreach (Assembly ass in assemblies)
+            {
                 builder.RegisterAssemblyTypes(ass).Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
             }
-            
+
         }
     }
 }
