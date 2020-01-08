@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+    <header>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Converter</title>
+    </header>
+
+    <body>
+        <div>Konwerter jednostek</div>
+
+        <div class="column" id="colLeft">
+            <select id="types"></select>
+            <input type="button" id="buttonType" value="Wybierz"/>
+            <input type="text" id="selType" value="" />
+        </div>
+        
+        <div>
+            <input type="text" id="fromValue" value="" />
+            <select id="from"></select>
+            <label>=</label>
+            <label id="toValue"></label>
+            <select id="to"></select>
+            <input type="button" id="buttonKonw" value="Konwertuj"/>
+        </div>
+
+        <div>Lokaty</div>
+
+        <div>
+            <label>Typ lokaty</label>
+            <select id="typeLokaty"></select>
+            <label>Kwota</label>
+            <input type="text" id="kwota" value="" />
+            <label>Na okres</label>
+            <input type="text" id="okres" value="" />
+            <input type="button" id="buttonPolicz" value="Policz" />
+            <label>Kapitał po tym okresie: </label>
+            <label id="kapital"></label>
+        </div>
+
+    </body>
+
+
+    <script src="./converter.js"></script>
+    <script src="./lokaty.js"></script>
+        
+    
+
+    <script>
+        loadConverters();
+        loadLokaty();
+    </script>
+
+</html>

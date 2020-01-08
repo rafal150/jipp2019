@@ -1,0 +1,1 @@
+{"code":"LENGHT","name":"Długość","type":"C","units":["mm","cm","dm","m","km","cal","stopa","jard","mila","kabel","mila morska"],"coefficients":[1000.0,100.0,10.0,1.0,0.001,39.3700787,3.2808399,1.093613,0.000621371192,0.0054,0.0005399999568000035],"countMethod":null,"apiMethod":null}
