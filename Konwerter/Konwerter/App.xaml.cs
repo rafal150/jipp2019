@@ -31,38 +31,48 @@ namespace Konwerter
         {
             var containerBuilder = new ContainerBuilder();
 
-            if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
-            {
-                containerBuilder.RegisterType<AzureStorageRepo>().As<IRepo>();
-            }
-            else
-            {
-                containerBuilder.RegisterType<SqlRepo>().As<IRepo>();
-            }
-
             containerBuilder.RegisterType<MainWindow>();
-            containerBuilder.RegisterType<ConvertersService>();
-
-            var assembly = typeof(ConvertersService).Assembly;//var assembly = Assembly.GetExecutingAssembly();
-            containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
-
-            RegisterPlugins(containerBuilder);
-
+            containerBuilder.RegisterType<KonwerteryAPI>();
 
             return containerBuilder.Build();
         }
-        private static void RegisterPlugins(ContainerBuilder containerBuilder)
-        {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
 
-            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+        //private static IContainer BuildContainer()
+        //{
+        //    var containerBuilder = new ContainerBuilder();
 
-            foreach (Assembly assembly in assemblies)
-            {
-                containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
-            }
-        }
+        //    if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
+        //    {
+        //        containerBuilder.RegisterType<AzureStorageRepo>().As<IRepo>();
+        //    }
+        //    else
+        //    {
+        //        containerBuilder.RegisterType<SqlRepo>().As<IRepo>();
+        //    }
+
+        //    containerBuilder.RegisterType<MainWindow>();
+        //    containerBuilder.RegisterType<ConvertersService>();
+
+        //    var assembly = typeof(ConvertersService).Assembly;//var assembly = Assembly.GetExecutingAssembly();
+        //    containerBuilder.RegisterAssemblyTypes(assembly)
+        //        .Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
+
+        //    RegisterPlugins(containerBuilder);
+
+
+        //    return containerBuilder.Build();
+        //}
+        //private static void RegisterPlugins(ContainerBuilder containerBuilder)
+        //{
+        //    string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+
+        //    var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+
+        //    foreach (Assembly assembly in assemblies)
+        //    {
+        //        containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
+        //    }
+        //}
     }
 }

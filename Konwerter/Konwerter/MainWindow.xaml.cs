@@ -28,7 +28,8 @@ namespace Konwerter
         double value;//, converted;
 
         private IRepo repository;
-        public MainWindow(IRepo repo, ConvertersService konwertery)
+        private KonwerteryAPI konwertery;
+        public MainWindow(IRepo repo, KonwerteryAPI konwertery) //ConvertersService konwertery)
         {
             InitializeComponent();
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
@@ -42,6 +43,7 @@ namespace Konwerter
                 repositoryComboBox.SelectedIndex = 1;
             }
             this.repository = repo;
+            this.konwertery = konwertery;
             this.typeComboBox.ItemsSource = konwertery.GetConverters();
         }
 

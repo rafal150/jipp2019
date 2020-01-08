@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using Konwerter;
 using Konwerter.Services;
 using System;
@@ -9,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -22,6 +24,9 @@ namespace Konwerter.Web
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -32,6 +37,7 @@ namespace Konwerter.Web
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly); //tego brakowało
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly); // API nie działało zanim to dodałem
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
