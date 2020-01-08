@@ -8,7 +8,7 @@ using UnitsConverter.Services;
 
 namespace UnitConverter.Services
 {
-    class CurrencyConverter :  WebApiConfig,IConverter
+    class CurrencyConverter : CurrencyConverterApi, IConverter
     {  
         public string Name => "Currency";
         public List<string> Units => new List<string> { "EUR", "PLN" };
@@ -18,10 +18,10 @@ namespace UnitConverter.Services
        
         public decimal Convert(string FromCombobox, string ToCombobox, decimal valueFrom)
         {
-            WebApiConfig p = new WebApiConfig();
+            CurrencyConverterApi p = new CurrencyConverterApi();
             decimal currency;
         string code = "EUR";
-            currency = A(code);
+            currency = Currency(code);
 
             decimal PLN2EUR(decimal pln)
             { 

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace UnitConverter.Logic
 {
-    class WebApiConfig
+    class CurrencyConverterApi
     {
 
         string url = @"http://api.nbp.pl/api/exchangerates/tables/A/?format=json";
 
 
-        public decimal A(string a)
+        public decimal Currency(string a)
         {
             using WebClient client = new WebClient();
             string json = client.DownloadString(url);

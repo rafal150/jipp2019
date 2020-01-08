@@ -89,7 +89,7 @@
     <Compile Include="StatisticAzureStorageRep.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="StatisticSqlRepository.cs" />
-    <Compile Include="WebApiConfig.cs" />
+    <Compile Include="CurrencyConverterApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
