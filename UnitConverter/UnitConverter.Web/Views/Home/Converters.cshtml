@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UnitConversion.ConverterDTO>
+
+@{
+    ViewBag.Title = "Konwertery utworzone przez użytkownika";
+}
+
+<h2>Konwertery utworzone przez użytkownika</h2>
+
+<p>
+    @Ajax.ActionLink("Utwórz nowy", "AddEditConverter", new { converterType = string.Empty }, new AjaxOptions() { UpdateTargetId = "converterBody", InsertionMode = InsertionMode.Replace })
+</p>
+<table class="table" style="overflow-y:auto; max-height:200px">
+    <tr>
+        <th>
+            @Html.DisplayName("Utworzono")
+        </th>
+        <th>
+            @Html.DisplayName("Nazwa")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Ajax.ActionLink("Edycja", "AddEditConverter", new { converterType = item.Name }, new AjaxOptions() { UpdateTargetId = "converterBody", InsertionMode = InsertionMode.Replace }) |
+                @Ajax.ActionLink("Edycja jednostek", "ConverterUnits", new { converterType = item.Name }, new AjaxOptions() { UpdateTargetId = "converterBody", InsertionMode = InsertionMode.Replace }) |
+                @Html.ActionLink("Usuń", "DeleteConverter", new { converterType = item.Name })
+            </td>
+        </tr>
+    }
+
+</table>
+<hr />
+<div id="converterBody" style="float: left;max-width:1100px"></div>

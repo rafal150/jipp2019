@@ -47,7 +47,7 @@ namespace UnitConversion.Web
             containerBuilder.RegisterType<ConverterService>();
 
             var assembly = typeof(ConverterService).Assembly;
-            containerBuilder.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x)).As<UnitConverter>();
+            containerBuilder.RegisterAssemblyTypes(assembly).Where(x => typeof(UnitConverter).IsAssignableFrom(x) && x.CustomAttributes.Count() > 0 && x.GetCustomAttribute<ConverterClassTypeAttribute>().ClassType == ClassType.Constant).As<UnitConverter>();
 
             RegisterPlugins(containerBuilder);
 

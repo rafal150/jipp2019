@@ -6,7 +6,7 @@ namespace UnitConversion
     public abstract class UnitConverter
     {
         protected Dictionary<string, Unit> units;
-        public abstract string Name { get; }
+        public abstract string Name { get; set; }
         public List<string> Units => units != null ? units.Keys.ToList() : new List<string>();
         //protected Unit BaseUnit { get; private set; }
         //protected Unit TargetUnit { get; private set; }

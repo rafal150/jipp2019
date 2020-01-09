@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace UnitConversion.Web.Controllers
@@ -16,10 +13,12 @@ namespace UnitConversion.Web.Controllers
     public class HomeController : Controller
     {
         ConverterService converterService;
+        IServiceRepository serviceRepository;
 
-        public HomeController(ConverterService service)
+        public HomeController(ConverterService service, IServiceRepository repository)
         {
             this.converterService = service;
+            this.serviceRepository = repository;
         }
 
         public ActionResult Index()
@@ -39,22 +38,35 @@ namespace UnitConversion.Web.Controllers
         {
                 string url = @"http://localhost:50189/api/conversionhistory";
                 return View(new List<ConversionHistoryDTO>(GetObjectApiResponse<ConversionHistoryDTO[]>(url)));
-    
         }
 
-        private T GetObjectApiResponse<T>(string url)
+        public ActionResult Converters()
         {
-            using (WebClient client = new WebClient())
-            {
-                byte[] jsonData = client.DownloadData(url);
-                string json = Encoding.UTF8.GetString(jsonData);
-
-                return JsonConvert.DeserializeObject<T>(json);
-            }
+            return View(serviceRepository.GetConverters());
         }
 
-    public string Convert(string unitFrom, string unitTo, string valueToConvert,
-    string converterType)
+        public ActionResult AddEditConverter(string converterType)
+        {
+            if (string.IsNullOrEmpty(converterType))
+                return PartialView();
+            else
+                return PartialView(serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType));
+        }
+
+        public ActionResult SaveConverter(string converterType, string Name)
+        {
+            serviceRepository.SaveConverter(converterType, Name);
+            return View("Converters", serviceRepository.GetConverters());
+        }
+
+        public ActionResult DeleteConverter(string converterType)
+        {
+            serviceRepository.DeleteConverter(converterType);
+            return View("Converters", serviceRepository.GetConverters());
+        }
+
+        public string Convert(string unitFrom, string unitTo, string valueToConvert,
+            string converterType)
         {
             string url = @"http://localhost:50189/api/converters/convert?";
 
@@ -78,18 +90,31 @@ namespace UnitConversion.Web.Controllers
             {
                 return ex.ToString();
             }
-            //UnitConverter converter = converterService.UnitConverters[converterType];
-            //decimal output = 0;
-            //try
-            //{
-            //    converterService.Convert(converterType, unitFrom, unitTo, decimal.Parse(valueToConvert), out output);
+        }
 
-            //}
-            //catch
-            //{
-            //    return "Niepoprawny format wartości do przeliczenia"; 
-            //}
-            //return output.ToString();
+        public ActionResult ConverterUnits(string converterType)
+        {
+            return PartialView(serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType));
+        }
+
+        public ActionResult AddEditConverterUnit(string converterType, string unitName)
+        {
+            if (string.IsNullOrEmpty(unitName))
+                return PartialView(new ConverterUnitDTO() { Converter = serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType) });
+            else
+                return PartialView(serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType).Units.FirstOrDefault(y => y.Name == unitName));
+        }
+
+        public ActionResult SaveConverterUnit(string converterType, string converterUnitName, string Name, string ConversionToBaseValueFormula, string ConversionFromBaseValueFormula)
+        {
+            serviceRepository.SaveConverterUnit(converterType, converterUnitName, Name, ConversionToBaseValueFormula, ConversionFromBaseValueFormula);
+            return PartialView("ConverterUnits", serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType));
+        }
+
+        public ActionResult DeleteConverterUnit(string converterType, string unitName)
+        {
+            serviceRepository.DeleteConverterUnit(converterType, unitName);
+            return PartialView("ConverterUnits", serviceRepository.GetConverters().FirstOrDefault(x => x.Name == converterType));
         }
 
         public ActionResult Contact()
@@ -103,6 +128,22 @@ namespace UnitConversion.Web.Controllers
         {
             UnitConverter converter = converterService.UnitConverters[converterType];
             return PartialView("ConverterBody", converter);
+        }
+
+        public ActionResult RemoveMyView()
+        {
+            return Content("");
+        }
+
+        private T GetObjectApiResponse<T>(string url)
+        {
+            using (WebClient client = new WebClient())
+            {
+                byte[] jsonData = client.DownloadData(url);
+                string json = Encoding.UTF8.GetString(jsonData);
+
+                return JsonConvert.DeserializeObject<T>(json);
+            }
         }
     }
 }

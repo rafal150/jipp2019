@@ -1,0 +1,40 @@
+﻿@model UnitConversion.ConverterDTO
+
+<p>
+    @Ajax.ActionLink("Utwórz nową", "AddEditConverterUnit", new { converterType = Model.Name, unitName =string.Empty }, new AjaxOptions() { UpdateTargetId = "converterForm", InsertionMode = InsertionMode.Replace })
+</p>
+<table class="table" style="max-width:500px; float:left">
+    <tr>
+        <th>
+            @Html.DisplayName("Nazwa")
+        </th>
+        <th>
+            @Html.DisplayName("Wzór na konwersję do jednostki bazowej")
+        </th>
+        <th>
+            @Html.DisplayName("Wzór na konwersję z jednostki bazowej")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Units) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConversionToBaseValueFormula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConversionFromBaseValueFormula)
+        </td>
+        <td>
+            @Ajax.ActionLink("Edycja", "AddEditConverterUnit", new { converterType = item.Converter.Name, unitName = item.Name }, new AjaxOptions() { UpdateTargetId = "converterForm", InsertionMode = InsertionMode.Replace}) |
+            @Ajax.ActionLink("Usuń", "DeleteConverterUnit", new { converterType = item.Converter.Name, unitName = item.Name }, new AjaxOptions() { UpdateTargetId = "converterBody", InsertionMode = InsertionMode.Replace })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="converterForm" style="float: left;max-width:500px; margin-left:20px"></div>

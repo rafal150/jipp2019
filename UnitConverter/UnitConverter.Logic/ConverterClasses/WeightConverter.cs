@@ -2,9 +2,15 @@
 
 namespace UnitConversion
 {
+    [ConverterClassType(ClassType.Constant)]
     public class WeightConverter : UnitConverter
     {
-        public override string Name => "Konwerter masy";
+        private string name = "Konwerter masy";
+        public override string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         public WeightConverter()
         {

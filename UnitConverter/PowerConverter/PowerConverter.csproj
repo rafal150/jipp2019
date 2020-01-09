@@ -51,4 +51,8 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(SolutionDir)UnitConverter\bin\Debug\plugins\PowerConverterPlugin.dll $(SolutionDir)\UnitConverter.Web\bin\plugins
+copy $(SolutionDir)UnitConverter\bin\Debug\plugins\PowerConverterPlugin.pdb $(SolutionDir)\UnitConverter.Web\bin\plugins</PostBuildEvent>
+  </PropertyGroup>
 </Project>

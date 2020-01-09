@@ -204,11 +204,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ConverterBody.cshtml" />
     <Content Include="Views\Home\ConversionHistory.cshtml" />
+    <Content Include="Views\Home\Converters.cshtml" />
+    <Content Include="Views\Home\AddEditConverter.cshtml" />
+    <Content Include="Views\Home\AddEditConverterUnit.cshtml" />
+    <Content Include="Views\Home\ConverterUnits.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\ConversionHistory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

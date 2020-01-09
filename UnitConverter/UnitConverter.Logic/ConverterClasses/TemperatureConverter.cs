@@ -2,9 +2,15 @@
 
 namespace UnitConversion
 {
+    [ConverterClassType(ClassType.Constant)]
     public class TemperatureConverter : UnitConverter
     {
-        public override string Name => "Konwerter temperatur";
+        private string name = "Konwerter temperatur";
+        public override string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         public TemperatureConverter()
         {

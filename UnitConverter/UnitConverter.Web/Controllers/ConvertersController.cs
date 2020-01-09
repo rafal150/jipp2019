@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -8,16 +9,28 @@ namespace UnitConversion.Web.Controllers
     public class ConvertersController : ApiController
     {
         private ConverterService converterService;
+        private IServiceRepository serviceRepository;
 
-        public ConvertersController(ConverterService service)
+        public ConvertersController(ConverterService service, IServiceRepository repository)
         {
             converterService = service;
+            serviceRepository = repository;
         }
 
+        [Route("api/converters")]
+        [HttpGet]
         public List<UnitConverter> GetConverters()
         {
             List<UnitConverter> converters = this.converterService.GetConverters();
             return converters;
+        }
+
+
+        [Route("api/converters/userconverters")]
+        [HttpGet]
+        public List<ConverterDTO> GetUserConverters()
+        {
+            return serviceRepository.GetConverters().ToList();
         }
 
         [Route("api/converters/convert")]
@@ -34,6 +47,39 @@ namespace UnitConversion.Web.Controllers
             converterService.Convert(converterType, unitFrom, unitTo, valueToConvertDecimal, out output);
             return output; 
         }
+
+        [Route("api/converters/saveconverter")]
+        [HttpGet]
+        public bool SaveConverter(string converterType, string Name)
+        {
+            serviceRepository.SaveConverter(converterType, Name);
+            return true;
+        }
+
+        [Route("api/converters/deleteconverter")]
+        [HttpGet]
+        public bool DeleteConverter(string converterType)
+        {
+            serviceRepository.DeleteConverter(converterType);
+            return true;
+        }
+
+        [Route("api/converters/saveconverterunit")]
+        [HttpGet]
+        public bool SaveConverterUnit(string converterType, string ConverterUnitName, string Name, string ConversionToBaseValueFormula, string ConversionFromBaseValueFormula)
+        {
+            serviceRepository.SaveConverterUnit(converterType, ConverterUnitName, Name, ConversionToBaseValueFormula, ConversionFromBaseValueFormula);
+            return true;
+        }
+
+        [Route("api/converters/deleteconverterunit")]
+        [HttpGet]
+        public bool DeleteConverterUnit(string converterType, string unitName)
+        {
+            serviceRepository.DeleteConverterUnit(converterType, unitName);
+            return true;
+        }
+
 
         private void ValidateConvertData(string unitFrom, string unitTo, string valueToConvert,
             string converterType)

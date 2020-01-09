@@ -2,10 +2,15 @@
 
 namespace UnitConversion
 {
+    [ConverterClassType(ClassType.Constant)]
     public class LengthConverter : UnitConverter
     {
-        public override string Name => "Konwerter długości";
-
+        private string name = "Konwerter długości";
+        public override string Name
+        {
+            get => name;
+            set => name = value;
+        }
         public LengthConverter()
         {
             FillUnits();

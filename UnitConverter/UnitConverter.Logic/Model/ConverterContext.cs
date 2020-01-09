@@ -10,6 +10,8 @@ namespace UnitConversion
         }
 
         public virtual DbSet<ConversionHistory> ConversionHistories { get; set; }
+        public virtual DbSet<Converter> Converters { get; set; }
+        public virtual DbSet<ConverterUnit> ConverterUnits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

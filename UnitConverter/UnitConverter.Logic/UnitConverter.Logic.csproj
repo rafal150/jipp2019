@@ -65,10 +65,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConverterClasses\LengthConverter.cs" />
+    <Compile Include="ConverterClasses\GenericConverter.cs" />
     <Compile Include="ConverterClasses\TemperatureConverter.cs" />
     <Compile Include="ConverterClasses\WeightConverter.cs" />
+    <Compile Include="Migrations\202001062254102_FullMigration.cs" />
+    <Compile Include="Migrations\202001062254102_FullMigration.designer.cs">
+      <DependentUpon>202001062254102_FullMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001062302219_FullMigration1.cs" />
+    <Compile Include="Migrations\202001062302219_FullMigration1.designer.cs">
+      <DependentUpon>202001062302219_FullMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\ConverterDTO.cs" />
+    <Compile Include="Model\Converter.cs" />
+    <Compile Include="Model\ConverterUnitDTO.cs" />
+    <Compile Include="Model\ConverterUnit.cs" />
     <Compile Include="Model\ConversionHistory.cs" />
     <Compile Include="Model\ConversionHistoryDTO.cs" />
+    <Compile Include="Model\ConverterUnitEntity.cs" />
+    <Compile Include="Model\ConverterEntity.cs" />
     <Compile Include="Model\ConversionHistoryEntity.cs" />
     <Compile Include="Model\ConverterContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +104,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001062254102_FullMigration.resx">
+      <DependentUpon>202001062254102_FullMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001062302219_FullMigration1.resx">
+      <DependentUpon>202001062302219_FullMigration1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

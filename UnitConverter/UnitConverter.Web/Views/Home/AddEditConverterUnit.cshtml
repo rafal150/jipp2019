@@ -1,0 +1,49 @@
+﻿@model UnitConversion.ConverterUnitDTO
+
+
+@using (Ajax.BeginForm("SaveConverterUnit", new { converterType = Model.Converter.Name, converterUnitName = Model.Name != null ? Model.Name : "" }, new AjaxOptions() { UpdateTargetId = "converterBody" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" style="max-width:500px">
+        <h4></h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Nazwa", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Wzór na konwersję do jednostki bazowej", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConversionToBaseValueFormula, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConversionToBaseValueFormula, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Wzór na konwersję z jednostki bazowej", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConversionFromBaseValueFormula, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConversionFromBaseValueFormula, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Ajax.ActionLink("Powrót do listy", "RemoveMyView", new AjaxOptions() { UpdateTargetId = "converterForm", InsertionMode = InsertionMode.Replace })
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

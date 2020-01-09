@@ -3,10 +3,15 @@ using UnitConversion;
 
 namespace PowerConverter
 {
+    [ConverterClassType(ClassType.Constant)]
     public class PowerConverter : UnitConverter
     {
-
-        public override string Name => "Konwerter mocy";
+        private string name = "Konwerter mocy";
+        public override string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         //public override Dictionary<string, Unit> Units => units;
 

@@ -2,15 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net;
 using UnitConversion;
 
 namespace CurrencyConverter
 {
+    [ConverterClassType(ClassType.Constant)]
     public class CurrencyConverter : UnitConverter
     {
-        public override string Name => "Konwerter walut";
+        private string name = "Konwerter walut";
+        public override string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         public CurrencyConverter()
         {
