@@ -10,5 +10,6 @@ namespace Konwerter
     {
         void dodajRekord(RekordDTO rekord);
         IEnumerable<RekordDTO> pobierzRekordy();
+        void wyczyscHistorie();
     }
 }

@@ -51,7 +51,7 @@ namespace Konwerter
         {
             statisticDataGrid.ItemsSource = konwertery.pobierzRekordy(repositoryComboBox.SelectedValue.ToString());
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PrzeliczButton_Click(object sender, RoutedEventArgs e)
         {
             //double.TryParse(valueTextBox.Text, out value);
             //Rekord rekord = new Rekord();
@@ -150,6 +150,12 @@ namespace Konwerter
             //    default:
             //        break;
             //}
+            pokazZapisy();
+        }
+
+        private void WyczyscButton_Click(object sender, RoutedEventArgs e)
+        {
+            konwertery.wyczyscHistorie(repositoryComboBox.SelectedValue.ToString());
             pokazZapisy();
         }
     }

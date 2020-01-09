@@ -36,5 +36,15 @@ namespace Konwerter
                     ToList();
             }
         }
+
+        public void wyczyscHistorie()
+        {
+            using (PrzezSqlServer context = new PrzezSqlServer())
+            {
+                IEnumerable<Rekord> doUsuniecia = context.Rekordy.Where(x => x.Id > 0);
+                context.Rekordy.RemoveRange(doUsuniecia);
+                context.SaveChanges();
+            }
+        }
     }
 }

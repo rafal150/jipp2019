@@ -47,5 +47,17 @@ namespace Konwerter
 
             return table.ExecuteQuery(query).Select(obj => new RekordDTO() { DateTime = obj.DateTime, Type = obj.Type, FromUnit = obj.FromUnit, ToUnit = obj.ToUnit, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue }).ToList();
         }
+
+        public void wyczyscHistorie()
+        {
+            TableQuery<PrzezAzureStorageTable> query = new TableQuery<PrzezAzureStorageTable>();
+
+            IEnumerable<PrzezAzureStorageTable> doUsuniecia = table.ExecuteQuery(query).Where(x => x.RowKey != String.Empty);
+            foreach (PrzezAzureStorageTable encja in doUsuniecia)
+            {
+                TableOperation deleteOperation = TableOperation.Delete(encja);
+                table.Execute(deleteOperation);
+            }            
+        }
     }
 }

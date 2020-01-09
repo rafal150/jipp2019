@@ -66,6 +66,19 @@ namespace Konwerter
                 return new List<Rekord>(rekordy);
             }
         }
+
+        public void wyczyscHistorie(string repo)
+        {
+            string url = @"https://localhost:44309/api/konwerter/wyczysc?";
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+            queryString.Add("Repo", repo);
+
+            using (WebClient client = new WebClient())
+            {
+                string urlwithparameters = url + queryString.ToString();
+                client.DownloadData(urlwithparameters);
+            }
+        }
     }
     public class Rekord
     {

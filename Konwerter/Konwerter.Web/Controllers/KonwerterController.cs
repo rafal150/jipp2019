@@ -65,5 +65,15 @@ namespace Konwerter.Web.Controllers
             IEnumerable<RekordDTO> rekordy = this.repo.pobierzRekordy();
             return rekordy;
         }
+
+        [Route("api/konwerter/wyczysc")]
+        [HttpGet]
+        public void wyczyscHistorie(string repo)
+        {
+            if (repo == "Azure")
+                this.repo = new AzureStorageRepo();
+            else this.repo = new SqlRepo();
+            this.repo.wyczyscHistorie();
+        }
     }
 }
