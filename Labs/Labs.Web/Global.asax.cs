@@ -12,6 +12,9 @@ using System.Configuration;
 using System.IO;
 using System.Reflection;
 using Autofac.Integration.Mvc;
+using System.Web.Http;
+using Autofac.Integration.WebApi;
+
 
 namespace Labs.Web
 {
@@ -21,6 +24,10 @@ namespace Labs.Web
         {
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -44,6 +51,7 @@ namespace Labs.Web
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {

@@ -22,14 +22,17 @@ namespace Labs
     /// </summary>
     public partial class MainWindow : Window
     {
-        private InterfaceRepository repository;
-        public MainWindow(InterfaceRepository repo, SConverters converters)
+        //private InterfaceRepository repository;
+        private ConvertersApi converters;
+
+        public MainWindow(ConvertersApi converters)
         {
             InitializeComponent();
 
-            this.repository = repo;
+            this.converters = converters;
+            //this.repository = repo;
+            this.DataGridData.ItemsSource = converters.GetValues();
             this.ComboBoxCategory.ItemsSource = converters.GetConverters();
-            this.DataGridData.ItemsSource = repository.GetValues();
 
             //MessageBox.Show("asdasd");
         }
@@ -40,8 +43,8 @@ namespace Labs
         {
             if (this.ComboBoxCategory.SelectedItem != null)
             {
-                this.ComboBoxConvertFrom.ItemsSource = ((IConverter)this.ComboBoxCategory.SelectedItem).Units;
-                this.ComboBoxConvertTo.ItemsSource = ((IConverter)this.ComboBoxCategory.SelectedItem).Units;
+                this.ComboBoxConvertFrom.ItemsSource = ((Converter)this.ComboBoxCategory.SelectedItem).Units;
+                this.ComboBoxConvertTo.ItemsSource = ((Converter)this.ComboBoxCategory.SelectedItem).Units;
             }
         }
 
@@ -49,23 +52,15 @@ namespace Labs
         {
             if (this.ComboBoxCategory.SelectedItem != null)
             {
-                IConverter conv = (IConverter)this.ComboBoxCategory.SelectedItem;
-                double result = conv.Convert(this.ComboBoxConvertFrom.SelectedItem.ToString(), this.ComboBoxConvertTo.SelectedItem.ToString(), System.Convert.ToDouble(this.TextBoxFrom.Text));
+                Converter converter = (Converter)this.ComboBoxCategory.SelectedItem;
+                decimal result = converters.Convert(
+                    this.ComboBoxConvertFrom.SelectedItem.ToString(),
+                    this.ComboBoxConvertTo.SelectedItem.ToString(),
+                    this.TextBoxFrom.Text,
+                    converter.Name);
+
                 this.TextBoxResult.Text = result.ToString();
 
-                Values values = new Values()
-                {
-                    DateTime = DateTime.Now,
-                    category = ComboBoxCategory.SelectedItem.ToString(),
-                    from = ComboBoxConvertFrom.SelectedItem.ToString(),
-                    to = ComboBoxConvertTo.SelectedItem.ToString(),
-                    initial = Double.Parse(TextBoxFrom.Text),
-                    converted = Double.Parse(TextBoxResult.Text)
-                };
-
-                this.repository.AddCalcs(values);
-                this.DataGridData.ItemsSource = repository.GetValues();
-                
             }
         }
     }
