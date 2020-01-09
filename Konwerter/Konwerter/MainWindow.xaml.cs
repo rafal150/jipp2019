@@ -1,5 +1,4 @@
-﻿using Konwerter.SDK;
-using Konwerter.Services;
+﻿//using Konwerter.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,11 +24,12 @@ namespace Konwerter
     {
         string[] repo = new string[] { "Azure", "SQL" };
        
-        double value;//, converted;
+        //double value, converted;
 
-        private IRepo repository;
+        //private IRepo repository;
+        
         private KonwerteryAPI konwertery;
-        public MainWindow(IRepo repo, KonwerteryAPI konwertery) //ConvertersService konwertery)
+        public MainWindow(KonwerteryAPI konwertery) //(IRepo repository, ConvertersService konwertery)
         {
             InitializeComponent();
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
@@ -42,31 +42,32 @@ namespace Konwerter
                 //repository = new SqlRepo();
                 repositoryComboBox.SelectedIndex = 1;
             }
-            this.repository = repo;
+            //this.repository = repository;
             this.konwertery = konwertery;
             this.typeComboBox.ItemsSource = konwertery.GetConverters();
         }
 
         private void pokazZapisy()
         {
-            statisticDataGrid.ItemsSource = repository.pobierzRekordy();
+            statisticDataGrid.ItemsSource = konwertery.pobierzRekordy(repositoryComboBox.SelectedValue.ToString());
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double.TryParse(valueTextBox.Text, out value);
-            RekordDTO rekord = new RekordDTO();
-            rekord.DateTime = DateTime.Now;
-            rekord.Type = ((IKonwerter) typeComboBox.SelectedItem).Typ;
-            rekord.FromUnit = fromComboBox.SelectedValue.ToString();
-            rekord.ToUnit = toComboBox.SelectedValue.ToString();
-            rekord.RawValue = value.ToString();
+            //double.TryParse(valueTextBox.Text, out value);
+            //Rekord rekord = new Rekord();
+            //rekord.DateTime = DateTime.Now;
+            //rekord.Type = ((KonwerterCs) typeComboBox.SelectedItem).Typ;
+            //rekord.FromUnit = fromComboBox.SelectedValue.ToString();
+            //rekord.ToUnit = toComboBox.SelectedValue.ToString();
+            //rekord.RawValue = value.ToString();
 
-            IKonwerter konwerter = (IKonwerter)this.typeComboBox.SelectedItem;
-            double wynik = konwerter.Przelicz(fromComboBox.SelectedItem.ToString(), toComboBox.SelectedItem.ToString(), double.Parse(this.valueTextBox.Text));
+            KonwerterCs konwerter = (KonwerterCs)this.typeComboBox.SelectedItem;
+            //double wynik = konwerter.Przelicz(fromComboBox.SelectedItem.ToString(), toComboBox.SelectedItem.ToString(), double.Parse(this.valueTextBox.Text));
+            double wynik = konwertery.Przelicz(this.fromComboBox.SelectedItem.ToString(), this.toComboBox.SelectedItem.ToString(), this.valueTextBox.Text, konwerter.Typ, repositoryComboBox.SelectedValue.ToString());
             resultLabel.Content = "= " + wynik.ToString();
-            rekord.ConvertedValue = wynik.ToString();
+            //rekord.ConvertedValue = wynik.ToString();
 
-            repository.dodajRekord(rekord);
+            //repository.dodajRekord(rekord);
             //switch (typeComboBox.SelectedIndex)
             //{
             //    case 0:
@@ -92,35 +93,42 @@ namespace Konwerter
             //}
             pokazZapisy();
         }
-
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (typeComboBox.SelectedItem !=null)
+            if (typeComboBox.SelectedItem != null)
             {
-                fromComboBox.ItemsSource = ((IKonwerter)this.typeComboBox.SelectedItem).Jednostki;
-                toComboBox.ItemsSource = ((IKonwerter)this.typeComboBox.SelectedItem).Jednostki;
+                fromComboBox.ItemsSource = ((KonwerterCs)this.typeComboBox.SelectedItem).Jednostki;
+                toComboBox.ItemsSource = ((KonwerterCs)this.typeComboBox.SelectedItem).Jednostki;
             }
-            
-            //switch (typeComboBox.SelectedIndex)
-            //{
-            //    case 0:
-            //        fromComboBox.ItemsSource = temperatury;
-            //        toComboBox.ItemsSource = temperatury;
-            //        break;
-            //    case 1:
-            //        fromComboBox.ItemsSource = dlugosci;
-            //        toComboBox.ItemsSource = dlugosci;
-            //        break;
-            //    case 2:
-            //       // fromComboBox.ItemsSource = masy;
-            //      //  toComboBox.ItemsSource = masy;
-            //        break;
-            //    default:
-            //        fromComboBox.ItemsSource = null;
-            //        toComboBox.ItemsSource = null;
-            //        break;
-            //}
         }
+        //private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (typeComboBox.SelectedItem !=null)
+        //    {
+        //        fromComboBox.ItemsSource = ((IKonwerter)this.typeComboBox.SelectedItem).Jednostki;
+        //        toComboBox.ItemsSource = ((IKonwerter)this.typeComboBox.SelectedItem).Jednostki;
+        //    }
+
+        //    //switch (typeComboBox.SelectedIndex)
+        //    //{
+        //    //    case 0:
+        //    //        fromComboBox.ItemsSource = temperatury;
+        //    //        toComboBox.ItemsSource = temperatury;
+        //    //        break;
+        //    //    case 1:
+        //    //        fromComboBox.ItemsSource = dlugosci;
+        //    //        toComboBox.ItemsSource = dlugosci;
+        //    //        break;
+        //    //    case 2:
+        //    //       // fromComboBox.ItemsSource = masy;
+        //    //      //  toComboBox.ItemsSource = masy;
+        //    //        break;
+        //    //    default:
+        //    //        fromComboBox.ItemsSource = null;
+        //    //        toComboBox.ItemsSource = null;
+        //    //        break;
+        //    //}
+        //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -131,17 +139,17 @@ namespace Konwerter
 
         private void RepositoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (repositoryComboBox.SelectedValue)
-            {
-                case "Azure":
-                    repository = new AzureStorageRepo();
-                    break;
-                case "SQL":
-                    repository = new SqlRepo();
-                    break;
-                default:
-                    break;
-            }
+            //switch (repositoryComboBox.SelectedValue)
+            //{
+            //    case "Azure":
+            //        repository = new AzureStorageRepo();
+            //        break;
+            //    case "SQL":
+            //        repository = new SqlRepo();
+            //        break;
+            //    default:
+            //        break;
+            //}
             pokazZapisy();
         }
     }

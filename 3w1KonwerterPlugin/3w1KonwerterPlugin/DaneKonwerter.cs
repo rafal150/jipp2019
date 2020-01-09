@@ -9,7 +9,7 @@ namespace KonwerterPlugins
 {
     class DaneKonwerter : IKonwerter
     {
-        public string Typ => "konwerter_ilości_danych";
+        public string Typ => "konwerter_ilosci_danych";
         public List<string> Jednostki => new List<string>(new[] { "B", "kB", "MB", "GB", "TB"});
         public double Przelicz(string fromType, string toType, double value)
         {

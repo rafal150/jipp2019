@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Konwerter.Services;
+//using Konwerter.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -30,6 +30,14 @@ namespace Konwerter
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
+            //if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
+            //{
+            //    containerBuilder.RegisterType<AzureStorageRepo>().As<IRepo>();
+            //}
+            //else
+            //{
+            //    containerBuilder.RegisterType<SqlRepo>().As<IRepo>();
+            //}
 
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<KonwerteryAPI>();
