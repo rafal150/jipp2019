@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UnitsConverterModelStoreContainer" CdmEntityContainer="UnitsConverterEntities">
+    <EntitySetMapping Name="UnitConverterAZs">
+      <EntityTypeMapping TypeName="UnitsConverterModel.UnitConverterAZ">
+        <MappingFragment StoreEntitySet="UnitConverterAZ">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Calculation_Time" ColumnName="Calculation_Time" />
+          <ScalarProperty Name="UnitFrom" ColumnName="UnitFrom" />
+          <ScalarProperty Name="Value_From" ColumnName="Value_From" />
+          <ScalarProperty Name="Unit_To" ColumnName="Unit_To" />
+          <ScalarProperty Name="Converted_Value" ColumnName="Converted_Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

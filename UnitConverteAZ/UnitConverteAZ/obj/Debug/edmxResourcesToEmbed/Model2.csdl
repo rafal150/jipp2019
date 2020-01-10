@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UnitsConverterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UnitConverterAZ">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Calculation_Time" Type="DateTime" Precision="3" />
+    <Property Name="UnitFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value_From" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Unit_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Converted_Value" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityContainer Name="UnitsConverterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UnitConverterAZs" EntityType="Self.UnitConverterAZ" />
+  </EntityContainer>
+</Schema>

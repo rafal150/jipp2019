@@ -1,0 +1,64 @@
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csproj.CoreCompileInputs.cache
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.pdb
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csprojAssemblyReference.cache
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csproj.CopyComplete
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.pdb
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.dll.config
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Autofac.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\EntityFramework.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.AccessControl.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.Permissions.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Autofac.pdb
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Autofac.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\EntityFramework.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.AccessControl.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.Permissions.xml
+C:\Users\aleks\OneDrive\Pulpit\UnitConverter.Logic\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csprojAssemblyReference.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csproj.CoreCompileInputs.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.dll.config
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\UnitConverter.Logic.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Autofac.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\EntityFramework.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.AccessControl.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.Permissions.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Autofac.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Autofac.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\EntityFramework.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.AccessControl.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.Permissions.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverter.Logic\obj\Debug\UnitConverter.Logic.csproj.CopyComplete

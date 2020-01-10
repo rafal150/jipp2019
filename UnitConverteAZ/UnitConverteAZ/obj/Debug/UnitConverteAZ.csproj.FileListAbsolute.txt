@@ -1,0 +1,115 @@
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe.config
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.pdb
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\App.g.cs
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.cache
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.lref
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.baml
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.g.resources
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.Properties.Resources.resources
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.exe
+C:\Users\Admin\source\repos\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csprojAssemblyReference.cache
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.g.cs
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\App.g.cs
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.cache
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.lref
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.exe
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe.config
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.baml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.g.resources
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.Properties.Resources.resources
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.GenerateResource.cache
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CoreCompileInputs.cache
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_Content.g.cs
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.xml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CopyComplete
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.dll
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.pdb
+C:\Users\aleks\OneDrive\Dokumenty\WWSI\5_JIPP5\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe.config
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.pdb
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csprojAssemblyReference.cache
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.g.cs
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\App.g.cs
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_Content.g.cs
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.cache
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.lref
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.baml
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.g.resources
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.Properties.Resources.resources
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.GenerateResource.cache
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CoreCompileInputs.cache
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CopyComplete
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.exe
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\Source\Repos\jipp2019\UnitConverteAZ\UnitConverteAZ\UnitConverteAZ\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csprojAssemblyReference.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.g.cs
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\App.g.cs
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_Content.g.cs
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ_MarkupCompile.lref
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.exe
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe.config
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.exe
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverteAZ.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Autofac.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\MainWindow.baml
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.g.resources
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.Properties.Resources.resources
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.GenerateResource.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CoreCompileInputs.cache
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\obj\Debug\UnitConverteAZ.csproj.CopyComplete
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverter.Logic.dll
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverter.Logic.pdb
+C:\Users\aleks\OneDrive\Pulpit\xUnitConverteAZ — kopia\UnitConverteAZ\UnitConverteAZ\bin\Debug\UnitConverter.Logic.dll.config

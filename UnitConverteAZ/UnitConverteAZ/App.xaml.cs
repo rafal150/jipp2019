@@ -11,6 +11,7 @@ using Autofac;
 using System.Windows;
 using UnitConverteAZ.Services;
 using System.IO;
+ 
 
 namespace UnitConverteAZ
 {
@@ -43,13 +44,13 @@ namespace UnitConverteAZ
             }
             else
             {
-                containerBuilder.RegisterType<StatisticSqlRepository>().As<IStatisticRepository>();
+                containerBuilder.RegisterType<IStatisticSqlRepository>().As<IStatisticRepository>();
             }
 
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<ConverterService>();
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(ConverterService).Assembly;//Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Converter")).AsImplementedInterfaces();
             RegisterPlugins(containerBuilder);

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Converter.SDK
+namespace UnitConverteAZ.Services
 {
     public interface IConverter
-       
+
     {
         string Name { get; }
         List<string> Units { get; }
