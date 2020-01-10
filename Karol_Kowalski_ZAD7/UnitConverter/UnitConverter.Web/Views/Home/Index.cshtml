@@ -1,0 +1,21 @@
+﻿@model UnitConverter.Logic.UnitConverters.ConvertersService
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (var converter in Model.GetConverters())
+{
+    using (Ajax.BeginForm("Convert",
+            new { converterType = converter.Type },
+            new AjaxOptions() { UpdateTargetId = converter.Type + "result" }))
+        {
+            <div> @converter.Type </div>
+            @Html.DropDownList("unitFrom", converter.Units.Select(u => new SelectListItem() { Text = u, Value = converter.GetUnitConverterForUnit(u).GetType().AssemblyQualifiedName }))
+            @Html.TextBox("valueToConvert")
+            @Html.DropDownList("unitTo", converter.Units.Select(u => new SelectListItem() { Text = u, Value = converter.GetUnitConverterForUnit(u).GetType().AssemblyQualifiedName }))
+            <button type="submit"> Konwertuj </button>
+            <label id="@(converter.Type + "result")"></label>
+        }
+}

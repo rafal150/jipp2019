@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UnitConverter.Logic.HistoryDTO>
+@section Styles {
+    <link href="@Url.Content("~/Content/Statistics.css")" rel="stylesheet" type="text/css" />
+}
+@{
+    ViewBag.Title = "History";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table>
+    <tr>
+        <th>DateTime</th>
+        <th>Type</th>
+        <th>From</th>
+        <th>To</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.Encode(item.DateTime) </td>
+            <td> @Html.Encode(item.ConversionType) </td>
+            <td> @Html.Encode(item.ValueToConvert) @Html.Raw(item.UnitFrom) </td>
+            <td> @Html.Encode(item.ConvertedValue) @Html.Raw(item.UnitTo) </td>
+        </tr>
+    }
+</table>
