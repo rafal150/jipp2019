@@ -1,35 +1,39 @@
-﻿using System;
+using Autofac;
+using Autofac.Integration.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Windows;
-using Autofac;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 using WpfApp7;
+using WpfAppJIPP;
 
-namespace WpfAppJIPP
+namespace Unitconverter.web
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
 
             IContainer container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            this.MainWindow = container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -40,7 +44,7 @@ namespace WpfAppJIPP
                 containerBuilder.RegisterType<StatisticsSqlRepository>().As<IStatisticsRepository>();
             }
 
-            containerBuilder.RegisterType<MainWindow>();
+          
             containerBuilder.RegisterType<KonwerterService>();
 
             var assembly = typeof(KonwerterService).Assembly; // Assembly.GetExecutingAssembly();
@@ -48,17 +52,18 @@ namespace WpfAppJIPP
                 .Where(t => t.Name.EndsWith("")).AsImplementedInterfaces();
 
 
-            RegisterPlugins(containerBuilder);
+            //RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
         }
 
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
-            var assemblies = Directory.GetFiles(pluginDirectory, "*.dll").Select(Assembly.LoadFrom).ToList();
+           string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+           string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+           //string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
+            var assemblies = Directory.GetFiles(pluginDirectory, "*.dll").Select(Assembly.LoadFrom).ToList();
             foreach (Assembly assembly in assemblies)
             {
                 containerBuilder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces();
@@ -66,4 +71,3 @@ namespace WpfAppJIPP
         }
     }
 }
-

@@ -20,7 +20,7 @@ namespace WpfApp7
             List<InterfejsKonwerter> converters = new List<InterfejsKonwerter>();
 
             converters.AddRange(this.scope.Resolve<IEnumerable<InterfejsKonwerter>>());
-
+            converters.Add(new KonwerterWaluty.KonwertujWalute());
 
             return converters;
         }

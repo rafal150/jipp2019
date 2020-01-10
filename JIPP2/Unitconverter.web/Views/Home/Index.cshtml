@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<KonwerterSDK.InterfejsKonwerter>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>ASP.NET</h1>
+@foreach (KonwerterSDK.InterfejsKonwerter converters in Model)
+
+{
+    using (Ajax.BeginForm("Convert",
+            new { converterType = converters.GetType().AssemblyQualifiedName },
+            new AjaxOptions() { UpdateTargetId = converters.GetType().Name + "result"}))
+    {
+        <div> @converters </div>
+        @Html.DropDownList("unitFrom", new SelectList((List<string>)converters.GetType().GetMethod("GetJednostki").Invoke(null, null)))
+        @Html.TextBox("valueToConvert")
+        @Html.DropDownList("unitTo", new SelectList((List<string>)converters.GetType().GetMethod("GetJednostki").Invoke(null, null)))
+        <button type="submit"> Konwertuj </button>
+        <label id="@(converters.GetType().Name + "result")"></label>
+    }
+
+}

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Ogólne informacje o zestawie są kontrolowane poprzez następujący 
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
-[assembly: AssemblyTitle("Unitconverter.logic")]
+[assembly: AssemblyTitle("KonwerterWaluty")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Unitconverter.logic")]
+[assembly: AssemblyProduct("KonwerterWaluty")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
-[assembly: Guid("6213f6f3-1a04-471b-8d5e-6353a0b6ef29")]
+[assembly: Guid("b3bac9d6-ba57-4e6e-a15b-bebe67c967fe")]
 
 // Informacje o wersji zestawu zawierają następujące cztery wartości:
 //

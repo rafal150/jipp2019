@@ -70,7 +70,7 @@ namespace WpfApp7.Jednostki
         }
 
 
-        public static List<string> GetListOfProperties()
+        public static List<string> GetJednostki()
         {
             List<string> array = new List<string>();
             foreach (var prop in typeof(Dlugosc).GetProperties())
