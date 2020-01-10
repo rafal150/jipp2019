@@ -1,0 +1,9 @@
+C:\Users\pkste\source\repos\ConverterSDK\bin\Debug\netstandard2.0\ConverterSDK.deps.json
+C:\Users\pkste\source\repos\ConverterSDK\bin\Debug\netstandard2.0\ConverterSDK.dll
+C:\Users\pkste\source\repos\ConverterSDK\bin\Debug\netstandard2.0\ConverterSDK.pdb
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.csproj.CoreCompileInputs.cache
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.AssemblyInfoInputs.cache
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.AssemblyInfo.cs
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.dll
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.pdb
+C:\Users\pkste\source\repos\ConverterSDK\obj\Debug\netstandard2.0\ConverterSDK.csprojAssemblyReference.cache

@@ -1,0 +1,7 @@
+C:\Users\pkste\source\repos\Time\obj\Debug\Speed.csprojAssemblyReference.cache
+C:\Users\pkste\source\repos\Time\obj\Debug\Speed.csproj.CoreCompileInputs.cache
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.dll
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.pdb
+C:\Users\pkste\source\repos\Time\bin\Debug\Time.dll
+C:\Users\pkste\source\repos\Time\bin\Debug\Time.pdb
+C:\Users\pkste\source\repos\Time\obj\Debug\Speed.csproj.CopyComplete

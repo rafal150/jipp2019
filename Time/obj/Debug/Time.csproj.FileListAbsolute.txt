@@ -1,0 +1,8 @@
+C:\Users\pkste\source\repos\Time\bin\Debug\Time.dll
+C:\Users\pkste\source\repos\Time\bin\Debug\Time.pdb
+C:\Users\pkste\source\repos\Time\bin\Debug\ConverterSDK.dll
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.csprojAssemblyReference.cache
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.csproj.CoreCompileInputs.cache
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.csproj.CopyComplete
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.dll
+C:\Users\pkste\source\repos\Time\obj\Debug\Time.pdb
