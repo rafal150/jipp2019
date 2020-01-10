@@ -46,7 +46,7 @@ namespace JIPP5_LAB.ConverterHelpers
         public Dictionary<string, Dictionary<string, Func<decimal, decimal>>> ConverterLogic => new Dictionary<string, Dictionary<string, Func<decimal, decimal>>>()
         {
             {
-                "Milimeter",
+                "Millimeter",
                 new Dictionary<string, Func<decimal, decimal>>(){
                     ["Millimeter"] = (input)=> input,
                     ["Meter"] = (input)=> input/1000,

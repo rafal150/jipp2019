@@ -1,6 +1,8 @@
 ﻿using JIPP5_LAB.DataProviders;
 using JIPP5_LAB.Interfaces;
 using JIPP5_LAB.SDK;
+using JIPP5_LAB.WebApp.App_Start;
+using JIPP5_LAB.WebApp.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,11 +10,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Unity;
-using Unity.AspNet.Mvc;
 
 namespace JIPP5_LAB.WebApp
 {
@@ -21,8 +23,9 @@ namespace JIPP5_LAB.WebApp
         protected void Application_Start()
         {
             var conteiner = BuildContainer();
-            DependencyResolver.SetResolver(new UnityDependencyResolver(conteiner));
-
+            DependencyResolver.SetResolver(new Unity.AspNet.Mvc.UnityDependencyResolver(conteiner));
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(conteiner);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

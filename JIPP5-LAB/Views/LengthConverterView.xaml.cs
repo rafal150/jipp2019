@@ -36,14 +36,16 @@ namespace JIPP5_LAB.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             decimal.TryParse(FromInput.Text, out decimal result);
-            ToResult.Text = ConverterHelper.Convert(FromUnit.SelectedValue.ToString(), result, ToUnit.SelectedValue.ToString(), out decimal convertedValue);
+            var dec = ConverterApi.Convert(FromUnit.SelectedValue.ToString(), ToUnit.SelectedValue.ToString(), result.ToString(), "LengthConverterHelper");
+            ToResult.Text = dec.ToString();
+            //ToResult.Text = ConverterHelper.Convert(FromUnit.SelectedValue.ToString(), result, ToUnit.SelectedValue.ToString(), out decimal convertedValue);
             var stats = new StatisticsDTO()
             {
                 Date = DateTime.Now,
                 FromUnit = FromUnit.SelectedValue.ToString(),
                 RawData = result,
                 ToUnit = ToUnit.SelectedValue.ToString(),
-                Converted = convertedValue
+                Converted = dec
             };
             ConvertedValueCompleted.Invoke(this, stats);
         }
