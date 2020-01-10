@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "jipp2019\WpfApp1\WpfApp1.csproj", "{675D904F-C428-41F6-A101-15986A3392E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WWW", "jipp2019\WWW\WWW.csproj", "{FE0AE6B5-B36E-42F1-9CD7-DC22BF860804}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{675D904F-C428-41F6-A101-15986A3392E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675D904F-C428-41F6-A101-15986A3392E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675D904F-C428-41F6-A101-15986A3392E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0AE6B5-B36E-42F1-9CD7-DC22BF860804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0AE6B5-B36E-42F1-9CD7-DC22BF860804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0AE6B5-B36E-42F1-9CD7-DC22BF860804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0AE6B5-B36E-42F1-9CD7-DC22BF860804}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

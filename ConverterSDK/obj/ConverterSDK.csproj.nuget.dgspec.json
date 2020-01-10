@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pkste\\source\\repos\\ConverterSDK\\ConverterSDK.csproj": {}
+    "C:\\Users\\pkste\\source\\repos_PROD\\ConverterSDK\\ConverterSDK.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pkste\\source\\repos\\ConverterSDK\\ConverterSDK.csproj": {
+    "C:\\Users\\pkste\\source\\repos_PROD\\ConverterSDK\\ConverterSDK.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pkste\\source\\repos\\ConverterSDK\\ConverterSDK.csproj",
+        "projectUniqueName": "C:\\Users\\pkste\\source\\repos_PROD\\ConverterSDK\\ConverterSDK.csproj",
         "projectName": "ConverterSDK",
-        "projectPath": "C:\\Users\\pkste\\source\\repos\\ConverterSDK\\ConverterSDK.csproj",
+        "projectPath": "C:\\Users\\pkste\\source\\repos_PROD\\ConverterSDK\\ConverterSDK.csproj",
         "packagesPath": "C:\\Users\\pkste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pkste\\source\\repos\\ConverterSDK\\obj\\",
+        "outputPath": "C:\\Users\\pkste\\source\\repos_PROD\\ConverterSDK\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
