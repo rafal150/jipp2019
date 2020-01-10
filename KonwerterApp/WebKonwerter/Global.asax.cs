@@ -12,6 +12,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using KonwerterApp;
 using KonwerterApp.Services;
+using Autofac.Integration.WebApi;
+using System.Web.Http;
 
 namespace WebKonwerter
 {
@@ -21,6 +23,10 @@ namespace WebKonwerter
         {
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -34,6 +40,8 @@ namespace WebKonwerter
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {

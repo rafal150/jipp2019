@@ -41,13 +41,13 @@ namespace KonwerterApp
             }
 
             containerBuilder.RegisterType<MainWindow>();
-            containerBuilder.RegisterType<ConvertersService>();
+            containerBuilder.RegisterType<KonwerterAPI>();
 
-            var assembly = typeof(ConvertersService).Assembly;
-            containerBuilder.RegisterAssemblyTypes(assembly)
-                .Where(t => t.Name.StartsWith("Obliczarka")).AsImplementedInterfaces();
+            //var assembly = typeof(ConvertersService).Assembly;
+            //containerBuilder.RegisterAssemblyTypes(assembly)
+            //    .Where(t => t.Name.StartsWith("Obliczarka")).AsImplementedInterfaces();
 
-            RegisterPlugins(containerBuilder);
+            //RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
         }

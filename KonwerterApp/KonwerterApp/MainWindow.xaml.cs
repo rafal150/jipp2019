@@ -24,17 +24,19 @@ namespace KonwerterApp
     {
 
         private IStatisticsRepository repository;
+        private KonwerterAPI konwerterAPI;
         
         Model1 BazaDanych = new Model1();
         
-        public MainWindow(IStatisticsRepository repozytorium, ConvertersService converters)
+        public MainWindow(IStatisticsRepository repozytorium, KonwerterAPI konwerterAPI)
         {
             InitializeComponent();
-            ComboBox_Kategoria.ItemsSource=converters.GetConverters();
+            ComboBox_Kategoria.ItemsSource=konwerterAPI.GetConverters();
 
             DataGridWynikowy.ItemsSource = BazaDanych.TabelaKonwerteras.ToList();
 
             this.repository = repozytorium;
+            this.konwerterAPI = konwerterAPI;
             this.DataGridWynikowy.ItemsSource = repository.GetStatistic();
         }
 
@@ -42,15 +44,15 @@ namespace KonwerterApp
         {
             if (this.ComboBox_Kategoria.SelectedItem != null)
             {
-                this.ComboBox_Jednostka.ItemsSource = ((IConverter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
-                this.ComboBox_JednostkaDocelowa.ItemsSource = ((IConverter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
+                this.ComboBox_Jednostka.ItemsSource = ((Converter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
+                this.ComboBox_JednostkaDocelowa.ItemsSource = ((Converter)this.ComboBox_Kategoria.SelectedItem).Jednostki;
             }
         }
 
         private void Button_Zamien_Click(object sender, RoutedEventArgs e)
         {
 
-            IConverter converter = (IConverter)this.ComboBox_Kategoria.SelectedItem;
+            Converter converter = (Converter)this.ComboBox_Kategoria.SelectedItem;
 
             TextBlock_WartoscPrzedKonwersjaWynik.Text = TextBox_WartoscDoKonwersji.Text;
             float.TryParse(TextBox_WartoscDoKonwersji.Text, out float WartoscDoKonwersji);
@@ -60,7 +62,7 @@ namespace KonwerterApp
             string JednostkaPocz = ComboBox_Jednostka.SelectedItem.ToString();
             string JednostkaDocelowa = ComboBox_JednostkaDocelowa.SelectedItem.ToString();
             float WartoscPoKonwersji=0;
-            WartoscPoKonwersji = converter.Konwertuj(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji);
+            WartoscPoKonwersji = konwerterAPI.Convert(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji.ToString(), WybranaKategoria);
 
             TextBlock_WartoscPoKonwersji_Wynik.Text = WartoscPoKonwersji.ToString();
 
