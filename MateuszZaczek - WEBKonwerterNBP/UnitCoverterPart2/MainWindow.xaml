@@ -1,0 +1,57 @@
+﻿<Window x:Class="KonwerterZSQLiAZUREiPLUGIN.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KonwerterZSQLiAZUREiPLUGIN"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="709.227" Width="846.958">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,22,-7" Background="#FFCAD4C4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="405*"/>
+            <ColumnDefinition Width="83*"/>
+            <ColumnDefinition Width="261*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.235"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <DataGrid x:Name="statisticsDataGrid" HorizontalAlignment="Left" Height="183" Margin="22,490,-29,0" VerticalAlignment="Top" Width="756" Grid.ColumnSpan="3"/>
+        <Label x:Name="label" Content="Wybierz rodzaj jednostki do konwersji" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="118,14,239,626" RenderTransformOrigin="0.474,0.503" Width="392" Grid.ColumnSpan="3"/>
+        <ComboBox Margin="0,14,32,639" x:Name="ComboOption" DropDownClosed="ComboOption_DropDownClosed" RenderTransformOrigin="0.507,2.154" HorizontalAlignment="Right" Width="190" Grid.Column="2" />
+        <Button x:Name="ButtonConvert" Content="Oblicz" FontSize="16" Click="ButtonConvert_Click" Margin="402,257,253,391" RenderTransformOrigin="0.614,3.59" Background="#FFAFBB8E" Grid.ColumnSpan="3"/>
+        <Label x:Name="label_Copy3" Content="Obliczony wynik" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="229,217,253,419" Width="267" Grid.ColumnSpan="3"/>
+        <TextBox Margin="54.516,217,35,0" IsReadOnly="True" x:Name="TextboxResult" Height="33" VerticalAlignment="Top" Grid.Column="2" />
+        <Button x:Name="button" Content="Wyczyść pola" Margin="41,433,261,214" Background="#FFAFBB8E" FontSize="16" Click="Button_Click"/>
+        <Button x:Name="button1" Content="Zamknij API" Margin="89.516,435,24,214" Background="#FFAFBB8E" FontSize="16" Click="Button1_Click" Grid.Column="2"/>
+        <Label x:Name="label_Copy" Content="Wybierz jednostke z której konwertujesz dane" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="141,91,153,551" Width="455" Grid.ColumnSpan="3"/>
+        <ComboBox Margin="56.516,91,34,560" x:Name="ComboFrom" Grid.Column="2" />
+        <Label x:Name="label_Copy1" Content="Wybierz jednostke na którą konwertujesz dane" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="140,135,88,497" Width="521" Grid.ColumnSpan="3"/>
+        <ComboBox Margin="54.516,135,34,506" x:Name="ComboTo" Grid.Column="2" />
+        <Label x:Name="label_Copy2" Content="Podaj wartość do konwersji " FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="206,177,176,460" Width="367" Grid.ColumnSpan="3"/>
+        <TextBox Margin="54.516,177,32,0" x:Name="TextBoxFrom" VerticalAlignment="Top" Height="30" Grid.Column="2" />
+        <Label x:Name="label_Copy4" Content="Wybierz rodzaj jednostki PLUGIN" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="118,53,239,587" RenderTransformOrigin="0.474,0.503" Width="392" Grid.ColumnSpan="3"/>
+        <ComboBox Margin="0,53,32,600" x:Name="ComboOption_Copy" DropDownClosed="ComboOption_DropDownClosed" RenderTransformOrigin="0.507,2.154" HorizontalAlignment="Right" Width="190" Grid.Column="2" />
+        <Button x:Name="buttonWEB" Content="Strona WEB" Margin="211,435,47,214" Background="#FFAFBB8E" FontSize="16" Click="Button1_Click"/>
+        <Button x:Name="btnOpenFile" Background="#FFAFBB8E" Content="Otwórz plik"  HorizontalAlignment="Left" Margin="104,286,0,0" VerticalAlignment="Top" Width="75" Click="BtnOpenFile_Click" Height="32"/>
+        <TextBox x:Name="txtEditor" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="32" Margin="167,336,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="93"/>
+        <Button x:Name="button2" Background="#FFAFBB8E" Content="Oblicz kurs" HorizontalAlignment="Left" Margin="16,436,0,0" VerticalAlignment="Top" Width="89" Click="Button2_Click_1" Height="26" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBoxPLN" HorizontalAlignment="Left" Height="32" Margin="54.516,293,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <Label x:Name="label_Copy5" Content="Pobrany kurs" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="32,336,243,300" Width="130"/>
+        <Label x:Name="label_Copy6" Content="Wartość PLN
+               " FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="393,293,253,343" Width="171" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="textBoxEUR" HorizontalAlignment="Left" Height="32" Margin="54.516,333,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <Label x:Name="label_Copy7" Content="Wartość EUR                " FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="394,331,235.535,305" Width="188" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="Wynik" HorizontalAlignment="Left" Height="32" Margin="56.516,375,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Column="2"/>
+        <Label x:Name="label_Copy8" Content="Wynik" FontFamily="Times New Roman" FontSize="18" FontStyle="Italic" HorizontalAlignment="Center" Margin="393,373,273,263" Width="151" Grid.ColumnSpan="3"/>
+
+
+
+    </Grid>
+
+
+</Window>
