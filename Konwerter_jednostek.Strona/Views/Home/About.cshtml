@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Konwerter_jednostek.Statystyka>
+@{
+    ViewBag.Title = "Statystyki";
+}
+
+<h1>Statystyki</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Czas</th>
+        <th>Typ</th>
+        <th>Nazwa miary wejściowej</th>
+        <th>Wartość przed konwersją</th>
+        <th>Nazwa miary wyjściowej</th>
+        <th>Wartość po konwersji</th>
+    </tr>
+
+    @foreach (Konwerter_jednostek.Statystyka stat in Model)
+    {
+        <tr>
+            <th>@stat.Czas.ToString()</th>
+            <th>@stat.Nazwa_typu</th>
+            <th>@stat.Nazwa_miary_wejscie</th>
+            <th>@stat.Wartosc_do_konwersji.ToString()</th>
+            <th>@stat.Nazwa_miary_wyjscia</th>
+            <th>@stat.Rezultat_konwersji.ToString()</th>
+        </tr>
+    }
+</table>

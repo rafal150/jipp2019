@@ -1,34 +1,36 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Integration.Mvc;
+using System;
 using System.Collections.Generic;
-using Autofac;
 using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Reflection;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
-namespace Konwerter_jednostek
+namespace Konwerter_jednostek.Strona
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public class MvcApplication : System.Web.HttpApplication
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected void Application_Start()
         {
-            base.OnStartup(e);
-
             IContainer container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            this.MainWindow = container.Resolve<MainWindow>();
-            this.MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -39,10 +41,8 @@ namespace Konwerter_jednostek
                 containerBuilder.RegisterType<PolaczenieDb>().As<IPolaczenie>();
             }
 
-            containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<ConvertersService>();
             containerBuilder.RegisterType<Logic>().As<ILogic>();
-            containerBuilder.RegisterType<ConverterAPI>();
 
             var assembly = Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
@@ -55,8 +55,7 @@ namespace Konwerter_jednostek
 
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "Dodatki");
+            string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 

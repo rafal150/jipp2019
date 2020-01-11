@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Konwerter_jednostek.IKonwertuj>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (Konwerter_jednostek.IKonwertuj converter in Model)
+{
+    foreach (int typ in converter.Lista_Miar.Select(x => x.Typ_ID).Distinct())
+    {
+        using (Ajax.BeginForm("Konwertuj",
+            new { converterType = converter.GetType().AssemblyQualifiedName },
+            new AjaxOptions() { UpdateTargetId = converter.Pobierz_nazwe_typu(typ) + "result" }))
+        {
+        <div> @converter.Pobierz_nazwe_typu(typ) </div>
+        @Html.DropDownList("inputMiaraID", new SelectList(converter.Lista_Miar.Where(x => x.Typ_ID==typ), "Miara_ID", "Nazwa_miary"))
+        @Html.TextBox("value")
+        @Html.DropDownList("outputMiaraID", new SelectList(converter.Lista_Miar.Where(x => x.Typ_ID==typ), "Miara_ID", "Nazwa_miary"))
+        <button type="submit"> Konwertuj </button>
+        <label id="@(converter.Pobierz_nazwe_typu(typ) + "result")"></label>
+        }
+    }
+}
