@@ -10,7 +10,7 @@ namespace JIPP5_LAB.bazydanych
         public int Id { get; set; }
 
         public DateTime DateTime { get; set; }
-        public string UnitFrom { get; set; } 
+        public string UnitFrom { get; set; }
         public string UnitTo { get; set; }
         public decimal RawValue { get; set; }
         public decimal ConvertedValue { get; set; }

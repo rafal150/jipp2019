@@ -11,13 +11,13 @@ namespace JIPP5_LAB
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IPobieranieDanych repository;
+        private ConvertersApi converters;
 
-        public MainWindow(IPobieranieDanych repo, ConvertersService converters)
+        public MainWindow(ConvertersApi converters)
         {
             InitializeComponent();
-            this.repository = repo;
-            this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
+
+            this.converters = converters;
 
             this.catergoriesCombobox.ItemsSource = converters.GetConverters();
         }
@@ -28,24 +28,14 @@ namespace JIPP5_LAB
             {
                 decimal.TryParse(this.inputTextBox.Text, out decimal decimalowe);
 
-                IKonwerter converter = (IKonwerter)this.catergoriesCombobox.SelectedItem;
-                decimal result = converter.Converter(
+                Converter converter = (Converter)this.catergoriesCombobox.SelectedItem;
+                decimal result = converters.Convert(
                     this.unitsFromCombobox.SelectedItem.ToString(),
-                    decimalowe,
-                    this.unitsToCombobox.SelectedItem.ToString());
+                    this.unitsToCombobox.SelectedItem.ToString(),
+                    decimalowe.ToString(),
+                    converter.Nazwa);
 
                 this.outputTextBlock.Text = result.ToString();
-
-                StatisticDTO st = new StatisticDTO()
-                {
-                    DateTime = DateTime.Now,
-                    Type = this.unitsFromCombobox.SelectedItem.ToString(),
-                    ConvertedValue = result,
-                    RawValue = decimalowe,
-                };
-
-                this.repository.AddStatistic(st);
-                this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
             }
         }
 
@@ -53,8 +43,8 @@ namespace JIPP5_LAB
         {
             if (this.catergoriesCombobox.SelectedItem != null)
             {
-                this.unitsFromCombobox.ItemsSource = ((IKonwerter)this.catergoriesCombobox.SelectedItem).JakieJednostki;
-                this.unitsToCombobox.ItemsSource = ((IKonwerter)this.catergoriesCombobox.SelectedItem).JakieJednostki;
+                this.unitsFromCombobox.ItemsSource = ((Converter)this.catergoriesCombobox.SelectedItem).JakieJednostki;
+                this.unitsToCombobox.ItemsSource = ((Converter)this.catergoriesCombobox.SelectedItem).JakieJednostki;
             }
         }
     }

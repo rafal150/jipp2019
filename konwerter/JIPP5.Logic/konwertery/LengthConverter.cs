@@ -5,7 +5,7 @@ namespace JIPP5_LAB
 {
     public class LengthConverter : IKonwerter
     {
-        public string Nazwa => "Długość";
+        public string Nazwa => "Dlugosc";
 
         public List<string> JakieJednostki => new List<string>() {
             "Milimetry",

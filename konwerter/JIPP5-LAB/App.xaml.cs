@@ -39,6 +39,7 @@ namespace JIPP5_LAB
 
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<ConvertersService>();
+            containerBuilder.RegisterType<ConvertersApi>();
 
             var assembly = typeof(ConvertersService).Assembly;
             containerBuilder.RegisterAssemblyTypes(assembly)

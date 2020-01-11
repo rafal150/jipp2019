@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
+using JIPP5.WEB.App_Start;
 using JIPP5_LAB;
 using JIPP5_LAB.bazydanych;
 using System;
@@ -9,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,6 +24,9 @@ namespace JIPP5.WEB
         {
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -33,6 +39,7 @@ namespace JIPP5.WEB
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {

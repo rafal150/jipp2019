@@ -26,6 +26,7 @@ namespace JIPP5.WEB.Controllers
         public ActionResult Index()
         {
             List<IKonwerter> converters = this.convertersService.GetConverters();
+
             return View(converters);
         }
 
