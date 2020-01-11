@@ -5,22 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Konwerter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="307.5" Width="744.007" ResizeMode="CanMinimize">
-    <Grid Background="#FFC5BCD1">
-        <ComboBox x:Name="FromComboBox" HorizontalAlignment="Left" Margin="242,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="ToComboBox" HorizontalAlignment="Left" Margin="407,126,0,0" VerticalAlignment="Top" Width="120"/>
+        Title="MainWindow" Height="307.5" Width="604.807" ResizeMode="CanMinimize">
+    <Grid Background="#dfb2ec">
+        <ComboBox x:Name="FromComboBox" HorizontalAlignment="Left" Margin="242,57,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ToComboBox" HorizontalAlignment="Left" Margin="407,58,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="FromTextBox" HorizontalAlignment="Left" Height="23" Margin="75,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="75,198,0,0" TextWrapping="Wrap" Text="Wynik: " VerticalAlignment="Top" Height="24" Width="287"/>
-        <Button Content="Przelicz" HorizontalAlignment="Left" Margin="580,126,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Margin="242,41,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+        <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="244,174,0,0" TextWrapping="Wrap" Text=" Wynik: " VerticalAlignment="Top" Height="19" Width="285"/>
+        <Button Content="Przelicz" HorizontalAlignment="Left" Margin="75,174,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" FontWeight="Bold" Height="19"/>
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Margin="75,58,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nazwa}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Label Content="Kategoria jednostek:" HorizontalAlignment="Left" Margin="75,37,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="StatystykiButton" Content="Statystyki" HorizontalAlignment="Left" Margin="580,196,0,0" VerticalAlignment="Top" Width="75" Click="StatystykiButton_Click"/>
+        <Label Content="Kategoria jednostek:" HorizontalAlignment="Left" Margin="75,32,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="StatystykiButton" Content="Statystyki" HorizontalAlignment="Left" Margin="75,219,0,0" VerticalAlignment="Top" Width="75" Click="StatystykiButton_Click"/>
+        <Label Content="Wartość:" HorizontalAlignment="Left" Margin="75,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="Z jednostki:" HorizontalAlignment="Left" Margin="242,31,0,0" VerticalAlignment="Top"/>
+        <Label Content="Na jednostkę:" HorizontalAlignment="Left" Margin="407,32,0,0" VerticalAlignment="Top"/>
+        <Label Content="Komentarz:" HorizontalAlignment="Left" Margin="244,99,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CommentTextBox" HorizontalAlignment="Left" Height="23" Margin="244,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283"/>
 
     </Grid>
 </Window>

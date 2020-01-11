@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Konwerter"
         mc:Ignorable="d"
-        Title="StatisticsWindow" Height="450" Width="737" ResizeMode="CanMinimize">
-    <Grid Background="#FFC5BCD1">
-        <DataGrid x:Name="StatisticsDataGrid" HorizontalAlignment="Left" Height="305" Margin="62,49,0,0" VerticalAlignment="Top" Width="605"/>
+        Title="StatisticsWindow" Height="431.546" Width="756.874" ResizeMode="CanMinimize">
+    <Grid Background="#dfb2ec">
+        <DataGrid x:Name="StatisticsDataGrid" HorizontalAlignment="Left" Height="305" Margin="62,49,0,0" VerticalAlignment="Top" Width="625"/>
 
     </Grid>
 </Window>

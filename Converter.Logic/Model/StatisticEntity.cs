@@ -16,5 +16,6 @@ namespace Konwerter
         public double ValueFrom { get; set; }
         public string UnitTo { get; set; }
         public double? ValueTo { get; set; }
+        public string? Comment { get; set; }
     }
 }

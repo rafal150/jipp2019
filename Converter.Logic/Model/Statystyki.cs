@@ -1,10 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace Konwerter
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Statystyki")]
     public partial class Statystyki
@@ -29,5 +30,8 @@ namespace Konwerter
         public string JednostkaDo { get; set; }
 
         public double? WartośćPo { get; set; }
+
+        [StringLength(100)]
+        public string Komentarz { get; set; }
     }
 }

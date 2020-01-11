@@ -11,11 +11,13 @@ namespace Konwerter.Web.Controllers
     {
         private ConvertersService convertersService;
         private ILifetimeScope scope;
+        private IStatisticRepository repository;
 
-        public HomeController(ILifetimeScope scope, IStatisticRepository repoistory, ConvertersService convertersService)
+        public HomeController(ILifetimeScope scope, IStatisticRepository repository, ConvertersService convertersService)
         {
             this.convertersService = convertersService;
             this.scope = scope;
+            this.repository = repository;
         }
 
         public ActionResult Index()
@@ -25,11 +27,24 @@ namespace Konwerter.Web.Controllers
             return View(converters);
         }
 
-        public double Convert(string unitFrom, string unitTo, string valueToConvert, string converterType)
+        public double Convert(string unitFrom, string unitTo, string valueToConvert, string converterType, string comment)
         {
             IConverting converter = this.scope.Resolve(Type.GetType(converterType)) as IConverting;
+            double amount = double.Parse(valueToConvert);
 
-            double output = converter.Convert(unitFrom, unitTo, double.Parse(valueToConvert));
+            double output = converter.Convert(unitFrom, unitTo, amount);
+
+            StatisticDTO statystyki = new StatisticDTO
+            {
+                UnitFrom = unitFrom,
+                UnitTo = unitTo,
+                DateTime = DateTime.Now,
+                Type = converter.Nazwa,
+                ValueFrom = amount,
+                ValueTo = output,
+                Comment = comment
+            };
+            repository.AddStatistic(statystyki);
 
             return output;
         }

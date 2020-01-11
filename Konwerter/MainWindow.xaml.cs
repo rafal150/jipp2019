@@ -40,6 +40,7 @@ namespace Konwerter
                 string from = FromComboBox.SelectedItem.ToString();
                 string to = ToComboBox.SelectedItem.ToString();
                 string amount = FromTextBox.Text;
+                string comment = CommentTextBox.Text;
                 decimal result = converters.Convert(from, to, amount, converter.Nazwa);
                 string resultString = "Wynik: " + result.ToString();
                 ResultTextBlock.Text = resultString;
@@ -52,7 +53,8 @@ namespace Konwerter
                     DateTime = DateTime.Now,
                     Type = converter.Nazwa,
                     ValueFrom = double.Parse(amount),
-                    ValueTo = (double)result
+                    ValueTo = (double)result,
+                    Comment = comment
                 };
                 repository.AddStatistic(statystyki);
             }

@@ -10,37 +10,36 @@ namespace Konwerter
     {
         public void AddStatistic(StatisticDTO statistic)
         {
-            using (StatisticContext context = new StatisticContext())
+            using StatisticContext context = new StatisticContext();
+            context.Statystykis.Add(new Statystyki()
             {
-                context.Statystykis.Add(new Statystyki()
-                {
-                    ID = statistic.Id,
-                    Rodzaj = statistic.Type,
-                    Czas = statistic.DateTime,
-                    JednostkaZ = statistic.UnitFrom,
-                    WartośćPrzed = statistic.ValueFrom,
-                    JednostkaDo = statistic.UnitTo,
-                    WartośćPo = statistic.ValueTo
-                });
+                ID = statistic.Id,
+                Rodzaj = statistic.Type,
+                Czas = statistic.DateTime,
+                JednostkaZ = statistic.UnitFrom,
+                WartośćPrzed = statistic.ValueFrom,
+                JednostkaDo = statistic.UnitTo,
+                WartośćPo = statistic.ValueTo,
+                Komentarz = statistic.Comment
+            });
 
-                context.SaveChanges();
-            }
+            context.SaveChanges();
         }
 
         public IEnumerable<StatisticDTO> GetStatistics()
         {
-            using (StatisticContext context = new StatisticContext())
+            using StatisticContext context = new StatisticContext();
+            return context.Statystykis.Select(obj => new StatisticDTO()
             {
-                return context.Statystykis.Select(obj => new StatisticDTO() {
-                    Id = obj.ID,
-                    DateTime = obj.Czas,
-                    Type = obj.Rodzaj,
-                    ValueFrom = obj.WartośćPrzed,
-                    UnitFrom = obj.JednostkaZ,
-                    UnitTo = obj.JednostkaDo,
-                    ValueTo = obj.WartośćPo
-                }).ToList();
-            }
+                Id = obj.ID,
+                DateTime = obj.Czas,
+                Type = obj.Rodzaj,
+                ValueFrom = obj.WartośćPrzed,
+                UnitFrom = obj.JednostkaZ,
+                UnitTo = obj.JednostkaDo,
+                ValueTo = obj.WartośćPo,
+                Comment = obj.Komentarz
+            }).ToList();
         }
     }
 }

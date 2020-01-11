@@ -24,7 +24,6 @@ namespace Konwerter.Services
                 Converter[] converters = JsonConvert.DeserializeObject<Converter[]>(json);
 
                 return new List<Converter>(converters);
-
             }
         }
 

@@ -25,16 +25,19 @@ namespace Konwerter
 
         public void AddStatistic(StatisticDTO statistic)
         {
-            StatisticEntity entity = new StatisticEntity();
-            entity.PartitionKey = string.Empty;
-            entity.RowKey = Guid.NewGuid().ToString();
-            entity.Id = statistic.Id;
-            entity.DateTime = statistic.DateTime;
-            entity.Type = statistic.Type.ToString();
-            entity.ValueFrom = statistic.ValueFrom;
-            entity.UnitFrom = statistic.UnitFrom;
-            entity.UnitTo = statistic.UnitTo;
-            entity.ValueTo = statistic.ValueTo;
+            StatisticEntity entity = new StatisticEntity
+            {
+                PartitionKey = string.Empty,
+                RowKey = Guid.NewGuid().ToString(),
+                Id = statistic.Id,
+                DateTime = statistic.DateTime,
+                Type = statistic.Type.ToString(),
+                ValueFrom = statistic.ValueFrom,
+                UnitFrom = statistic.UnitFrom,
+                UnitTo = statistic.UnitTo,
+                ValueTo = statistic.ValueTo,
+                Comment = statistic.Comment
+            };
 
             TableOperation insertOperation = TableOperation.Insert(entity);
 
@@ -52,7 +55,8 @@ namespace Konwerter
                 ValueFrom = obj.ValueFrom,
                 UnitFrom = obj.UnitFrom,
                 UnitTo = obj.UnitTo,
-                ValueTo = obj.ValueTo
+                ValueTo = obj.ValueTo,
+                Comment = obj.Comment
             }).ToList();
         }
     }

@@ -21,9 +21,11 @@
         <span style="display:inline-block; width: 20px;"></span>
         @Html.DropDownList("unitTo", new SelectList(converter.ListaJednostek), new { style = "width: 80px;" })
         <span style="display:inline-block; width: 20px;"></span>
+        @Html.TextBox("comment", "", new { placeholder = "add comment" })
+        <span style="display:inline-block; width: 20px;"></span>
         <button type="submit">Konwertuj</button>
         <span style="display:inline-block; width: 20px;"></span>
-        <label id='@(converter.Nazwa + "result")', style="width: 80px;"></label>
+        <label id='@(converter.Nazwa + "result")' , style="width: 80px;"></label>
     }
 }
 
