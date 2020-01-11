@@ -28,8 +28,7 @@ namespace Unitconverter
 
             }
         }
-        public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
-             string converterType)
+        public double Convert(string unitFrom, string unitTo, string valueToConvert, string converterType)
         {
             string url = @"https://localhost:44302/api/converters/convert?";
 
@@ -45,7 +44,7 @@ namespace Unitconverter
 
                 string valueString = client.DownloadString(urlwithparameters);
 
-                return decimal.Parse(valueString, CultureInfo.InvariantCulture);
+                return double.Parse(valueString, CultureInfo.InvariantCulture);
             }
         }
         public class Converter

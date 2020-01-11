@@ -28,20 +28,20 @@ namespace Unitconverter
         Temperatury temp = new Temperatury();
         Dlugosci dlug = new Dlugosci();
         Masy masy = new Masy();
-        //private IStatisticsRepository repository;
+        IStatisticsRepository repository;
         //private StatisticsSQLRepo repository = new StatisticsSQLRepo();
         private ConverterAPIservice converters;
-        public MainWindow(/*IStatisticsRepository rep,*/ ConverterAPIservice converters)
+        public MainWindow(IStatisticsRepository rep, ConverterAPIservice converters)
         {
             InitializeComponent();
             this.converters = converters;
-            //this.repository = rep;
+            this.repository = rep;
             //this.ChoosecomboBox.ItemsSource = new string[3] { "Temperatury", "Długości", "Masy" }; ;
             //LoadBaza();
             
             this.ChoosecomboBox.ItemsSource = converters.GetConverters();
-            //this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
-            
+            this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
+            converters = new ConverterAPIservice();
             //this.RodzajBazylabel.Content = this.repository.ToString();
             this.RodzajBazylabel.Content = ConfigurationManager.AppSettings["StatRepo"];
 
@@ -70,7 +70,7 @@ namespace Unitconverter
 
             //koniec obliczanie
             //Zapamietanie danych
-            /*
+            
             StatDTO przech = new StatDTO()
             {
                 DateTime = DateTime.Now,
@@ -81,8 +81,9 @@ namespace Unitconverter
                 ConvertedValue = int.Parse(this.OutputtextBlock.Text)
 
             };
+            
             //wprowadzenie do bazy
-            //this.repository.AddStatistic(przech);
+            this.repository.AddStatistic(przech);
             /*
             using (BazaUnitConverter baza = new BazaUnitConverter())
             {
@@ -103,7 +104,7 @@ namespace Unitconverter
             //koniec wprowadzenie do bazy
             //wczytywanie bazy
             //LoadBaza();
-            //this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
+            this.ConverterdataGrid.ItemsSource = this.repository.GetStatistics();
             //koniec wczytywanie bazy
             
         }

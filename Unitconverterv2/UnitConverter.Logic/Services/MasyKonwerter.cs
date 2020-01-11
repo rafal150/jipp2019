@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +38,9 @@ namespace Unitconverter.Services
             if (nazwa2 == "kwintal") { wartosc = wartosc * 0.01; }
             wyjscie = (int)wartosc;
             return wyjscie;
+
+
         }
     }
+
 }

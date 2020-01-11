@@ -29,16 +29,18 @@ namespace Unitconverter
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
-            /*
+            
             if (ConfigurationManager.AppSettings["StatRepo"] == "Azure")
             {
                 containerBuilder.RegisterType<StatisticsAzureRepo>().As<IStatisticsRepository>();
             }
             else
             {
+            
                 containerBuilder.RegisterType<StatisticsSQLRepo>().As<IStatisticsRepository>();
+                
             }
-            */
+            
             containerBuilder.RegisterType<MainWindow>();
 
             containerBuilder.RegisterType<ConverterAPIservice>();
@@ -47,23 +49,23 @@ namespace Unitconverter
 
             var assembly = typeof(Services.ConvServices).Assembly; //System.Reflection.Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
-
-            RegisterPlugin(containerBuilder);
             */
+            //RegisterPlugin(containerBuilder);
+            
             return containerBuilder.Build();
 
         }
 
-        private static void RegisterPlugin(ContainerBuilder containerbuilder)
-        {
-            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDir = Path.Combine(assemblyDir, "Plugins");
-            var assemblies = Directory.GetFiles(pluginDir, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+        //private static void RegisterPlugin(ContainerBuilder containerbuilder)
+        //{
+        //    string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    string pluginDir = Path.Combine(assemblyDir, "Plugins");
+        //    var assemblies = Directory.GetFiles(pluginDir, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            foreach(Assembly assembly in assemblies)
-            {
-                containerbuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
-            }
-        }
+        //    foreach(Assembly assembly in assemblies)
+        //    {
+        //        containerbuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
+        //    }
+        //}
     }
 }
