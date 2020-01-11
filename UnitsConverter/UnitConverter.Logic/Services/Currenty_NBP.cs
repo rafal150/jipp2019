@@ -8,11 +8,9 @@ using Newtonsoft.Json;
 
 namespace Units_Converter.Services
 {
-    public class Currency_NBP
-    {
-        static void Main(string[] args)
-        {
-            string url = @"w";
+    public class Currency_NBP {
+        public static decimal getValue(string val){
+            string url = @"http://api.nbp.pl/api/exchangerates/tables/A/today/?format=json";
 
             using (WebClient client = new WebClient())
             {
@@ -22,16 +20,19 @@ namespace Units_Converter.Services
 
                 if (tables.Length > 0)
                 {
-                    RateObject rate = tables[0].Rates.Where(r => r.Code == "EUR").FirstOrDefault();
+                    RateObject rate = tables[0].Rates.Where(r => r.Code == val).FirstOrDefault();
 
                     if (rate != null)
                     {
-                        decimal wartosc = decimal.Parse(rate.Mid);
+                        return decimal.Parse(rate.Mid);
+                
                     }
                 }
-            } 
+            }
+            return 0;
         }
     }
+
     public class TableObject
     {
         public string Table { get; set; }

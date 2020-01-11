@@ -19,7 +19,7 @@ public string Name => "Currency";
             decimal unitFromD = value;
             if (unitFrom == "Euro")
             {
-                if (unitTo == "PLN") value = (unitFromD);
+                if (unitTo == "PLN") value = (unitFromD * Currency_NBP.getValue("EUR"));
             }
             return value;
         }
