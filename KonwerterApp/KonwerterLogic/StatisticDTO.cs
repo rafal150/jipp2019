@@ -15,5 +15,6 @@ namespace KonwerterApp
         public string ToUnit { get; set; }
         public double? RawValue { get; set; }
         public double? Converted { get; set; }
+        public string RequestID { get; set; }
     }
 }

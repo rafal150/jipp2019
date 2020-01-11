@@ -65,6 +65,7 @@ namespace KonwerterApp
             WartoscPoKonwersji = konwerterAPI.Convert(JednostkaPocz, JednostkaDocelowa, WartoscDoKonwersji.ToString(), WybranaKategoria);
 
             TextBlock_WartoscPoKonwersji_Wynik.Text = WartoscPoKonwersji.ToString();
+            string RequestID_Text = RequestID_Textbox.Text;
 
            StatisticDTO log = new StatisticDTO
             {
@@ -73,7 +74,8 @@ namespace KonwerterApp
                 FromUnit = JednostkaPocz,
                 ToUnit = JednostkaDocelowa,
                 RawValue = WartoscDoKonwersji,
-                Converted = WartoscPoKonwersji
+                Converted = WartoscPoKonwersji,
+                RequestID = RequestID_Text
             };
             repository.DodajStatystyke(log);
             

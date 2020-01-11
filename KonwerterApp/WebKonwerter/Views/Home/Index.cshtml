@@ -15,7 +15,8 @@
         @Html.DropDownList("unitFrom", new SelectList(converter.Jednostki))
         @Html.TextBox("valueToConvert")
         @Html.DropDownList("unitTo", new SelectList(converter.Jednostki))
-        <button type="submit"> Konwertuj </button>
+
+        @Html.TextBox("RequestID_Text", "", new { placeholder = "RequestID" })<button type="submit"> Konwertuj </button>
         <label id="@(converter.Nazwa + "result")"></label>
     }
 }

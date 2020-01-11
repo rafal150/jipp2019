@@ -30,6 +30,8 @@ namespace KonwerterApp
             entity.ToUnit = statistic.ToUnit;
             entity.RawValue = statistic.RawValue;
             entity.Converted = statistic.Converted;
+            entity.RequestID = statistic.RequestID;
+            
             /*
              *      ID = statistic.ID,
                     DateTime = statistic.DateTime,
@@ -64,6 +66,7 @@ namespace KonwerterApp
                 ToUnit = obj.ToUnit,
                 RawValue = obj.RawValue,
                 Converted = obj.Converted,
+                RequestID = obj.RequestID,
 
             }).ToList();
         }
