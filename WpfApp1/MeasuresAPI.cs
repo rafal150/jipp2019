@@ -44,7 +44,7 @@ namespace WpfApp1
 
                 string valueString = client.DownloadString(urlwithparameters);
 
-                return double.Parse((valueString), System.Globalization.CultureInfo.InvariantCulture);
+                return double.Parse(valueString, System.Globalization.CultureInfo.InvariantCulture);
             }
         }
     }
