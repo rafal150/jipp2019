@@ -20,5 +20,23 @@ namespace Plugins
         public static string cabel = "kabel";
         public static string nauticalMile= "mila morska";
 
+        public static IEnumerable<string> GetDictionary()
+        {
+            List<string> list = new List<string>();
+            list.Add(Distance.mm);
+            list.Add(Distance.cm);
+            list.Add(Distance.dm);
+            list.Add(Distance.m);
+            list.Add(Distance.km);
+            list.Add(Distance.inch);
+            list.Add(Distance.ft);
+            list.Add(Distance.yard);
+            list.Add(Distance.mile);
+            list.Add(Distance.cabel);
+            list.Add(Distance.nauticalMile);
+
+            return list;
+        }
+
     }
 }

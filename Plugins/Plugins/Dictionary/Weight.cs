@@ -17,5 +17,21 @@ namespace Plugins
         public static string oz = "uncja";
         public static string ct = "karat";
         public static string q = "kwintal";
+
+        public static IEnumerable<string> GetDictionary()
+        {
+            List<string> list = new List<string>();
+            list.Add(Weight.mg);
+            list.Add(Weight.g);
+            list.Add(Weight.dkg);
+            list.Add(Weight.kg);
+            list.Add(Weight.T);
+            list.Add(Weight.lbs);
+            list.Add(Weight.oz);
+            list.Add(Weight.ct);
+            list.Add(Weight.q);
+
+            return list;
+        }
     }
 }
