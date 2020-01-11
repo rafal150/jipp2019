@@ -13,19 +13,23 @@ namespace UnitConverter.WEB.Controllers
     {
         private IStatisticsRepository repo;
 
-        UnitManager manager;
+        //UnitManager manager;
+        List<UnitsContainer> containers;
+        
         private ILifetimeScope scope;
 
-        public ContainersController (ILifetimeScope scope, IStatisticsRepository repo, UnitManager manager)
+        public ContainersController (IStatisticsRepository repo, UnitManager manager)
         {
-            this.manager = manager;
-            this.scope = scope;
+            this.containers = manager.GetContainers();
+            //this.scope = scope;
             this.repo = repo;
         }
 
+        [Route("api/containers")]
+        [HttpGet]
         public List<UnitsContainer> GetContainers()
         {
-            var containers = this.manager.GetContainers();
+            //var containers = this.manager.GetContainers();
             return containers;
         }
 
@@ -34,8 +38,8 @@ namespace UnitConverter.WEB.Controllers
         public double Convert(string baseType, string convertedType, string baseVal,
             string containerType)
         {
-            var containersList = this.manager.GetContainers();
-            UnitsContainer container = containersList.Find(m => m.Name == containerType) as UnitsContainer;
+            //var containersList = this.manager.GetContainers();
+            UnitsContainer container = containers.Find(m => m.Name == containerType) as UnitsContainer;
 
             double score;
             double baseValue = double.Parse(baseVal);
@@ -61,6 +65,16 @@ namespace UnitConverter.WEB.Controllers
         public IEnumerable<StatisticDTO> GetAllStatistics()
         {
             return repo.GetAllStatistics();
+        }
+
+        [Route("api/containers/addUnit")]
+        [HttpGet]
+        public void AddUnit(string containerType, string ratio, string newType)
+        {
+            //var containersList = this.manager.GetContainers();
+            UnitsContainer container = this.containers.Find(m => m.Name == containerType) as UnitsContainer;
+
+            container.AddUnit(ratio, newType);
         }
     }
 }

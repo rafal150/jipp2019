@@ -22,7 +22,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        UnitsContainer currentContainer;
+        //UnitsContainer currentContainer;
         string unitType = null;
         string baseType = null;
         double baseVal = 0;
@@ -46,6 +46,7 @@ namespace WpfApp1
 
             this.containers = containers;
             this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
+            this.AddUnitTypeComboBox.ItemsSource = containers.GetContainers();
             UsageStatisticsGrid.ItemsSource = containers.GetAllStatistics();
         }
 
@@ -65,7 +66,7 @@ namespace WpfApp1
 
             getProperties();
 
-            
+            var currentContainer = (UnitsContainer)UnitTypeComboBox.SelectedValue;
 
             if (currentContainer.Convert(baseType, baseVal, convertedType, out score))
             {
@@ -85,6 +86,22 @@ namespace WpfApp1
 
         }
 
+        private void AddUnitButtonClicked(object sender, RoutedEventArgs e)
+        {
+            //var selected = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
+            //var containersList = this.containers.GetContainers();
+            //var current = containersList.Find(x => x.Name == selected.Name) as UnitsContainer;
+            //if (current != null)
+            //{
+            //    current.AddUnit(RatioTextBox.Text, NewUnitTextBox.Text);
+            //    this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
+            //}
+
+            var selected = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
+            containers.AddUnit(selected.Name, RatioTextBox.Text, NewUnitTextBox.Text);
+            this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
+        }
+
         private void getProperties()
         {
             var baseUnit = (Unit)BaseValueTypeComboBox.SelectedItem;
@@ -98,8 +115,8 @@ namespace WpfApp1
 
         private void UnitTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            currentContainer = (UnitsContainer)UnitTypeComboBox.SelectedValue;
+            var box = UnitTypeComboBox;
+            var currentContainer = box.SelectedValue != null ? (UnitsContainer)box.SelectedValue : (UnitsContainer)box.Items[0];
             unitType = currentContainer.Name;
 
             List<Unit> units = currentContainer._unitList;
@@ -107,6 +124,10 @@ namespace WpfApp1
             this.BaseValueTypeComboBox.ItemsSource = units;
         }
 
-
+        private void AddUnitTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var container = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
+            this.BaseTypeLabel.Content = container._unitList[0].name;
+        }
     }
 }
