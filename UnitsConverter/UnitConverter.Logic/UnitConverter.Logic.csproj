@@ -67,7 +67,9 @@
     <Compile Include="IStatisticsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConvertersService.cs" />
-    <Compile Include="Services\ExampleConverter.cs" />
+    <Compile Include="Services\CurrencyConverter.cs" />
+    <Compile Include="Services\Currenty_NBP.cs" />
+    <Compile Include="Services\TempsConverter.cs" />
     <Compile Include="Services\LengthConverter.cs" />
     <Compile Include="Services\WeigthConverter.cs" />
     <Compile Include="StatisticsAzureStorageRepository.cs" />

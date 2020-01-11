@@ -22,6 +22,7 @@ namespace Units_Converter.Services
 
             converters.AddRange(this.scope.Resolve<IEnumerable<IConverter>>());
 
+            //converters.Add(new TempsConverter());
             //converters.Add(new WeightConverter());
             //converters.Add(new LenghtConverter());
 

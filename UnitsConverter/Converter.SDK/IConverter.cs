@@ -10,6 +10,6 @@ namespace Units_Converter.Services
     {
         string Name { get; }
         List<string> Units { get; }
-        decimal Convert(string unitFrom, string unitTo, decimal value);
+        decimal Convert(string unitFromS, string unitTo, decimal value);
     }
 }
