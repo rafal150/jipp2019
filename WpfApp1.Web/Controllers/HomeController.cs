@@ -14,31 +14,38 @@ namespace WpfApp1.Web.Controllers
     {
         private GetMeasuresObj convertersService;
         private ILifetimeScope scope;
-        private IStatisticsSource repository;
-        public HomeController(ILifetimeScope scope, IStatisticsSource statisticsRepository, GetMeasuresObj convertersService)
+        //private IStatisticsSource repositoryService;
+        public HomeController(ILifetimeScope scope, IStatisticsSource repositoryService, GetMeasuresObj convertersService)
         {
             this.convertersService = convertersService;
+            //this.repositoryService = repositoryService;
             this.scope = scope;
         }
-        public ActionResult Index()
-        {
+        public ActionResult Index() //tak samo dla statystyk
+        {   // lista miar
             List<IGetMeasures> converters = this.convertersService.GetMesasures();
             return View(converters);
         }
-        public double Convert(string unitFrom, string unitTo, string valueToConvert,
+
+        public double Convert(string unitFrom, string unitTo, string valueToConvert, //submit łaczy się z tym
             string converterType)
         {
+            //pobieram dane z widoku
             IGetMeasures converter = this.scope.Resolve(Type.GetType(converterType)) as IGetMeasures;
 
             double output = converter.Convert(unitFrom, unitTo, double.Parse(valueToConvert));
 
+            // przekazuje dane do widoku rezultat
             return output;
         }
 
-        private void LoadStatistics(IStatisticsSource r)
+
+
+        /*private ActionResult Statistics()
         {
-            IEnumerable<StatisticsDTO> data_from_ = r.GetStatistics();
-        }
+            IEnumerable<StatisticsDTO> statistics = this.repositoryService.GetStatistics();
+            return View(statistics);
+        }*/
 
         public ActionResult About()
         {

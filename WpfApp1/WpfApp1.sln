@@ -4,12 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1.csproj", "{8E91677F-43DB-4108-8A10-AD7EED323089}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD386D64-674D-4C41-A56B-33E6243F95B9} = {FD386D64-674D-4C41-A56B-33E6243F95B9}
+		{EA28F3F0-2020-48E1-871C-63AC979F0EC1} = {EA28F3F0-2020-48E1-871C-63AC979F0EC1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1SDK", "..\WpfApp1SDK\WpfApp1SDK.csproj", "{94651ECC-D3DF-4663-8F25-FD77BAA77B64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1Logic", "..\WpfApp1Logic\WpfApp1Logic.csproj", "{EA28F3F0-2020-48E1-871C-63AC979F0EC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitsMeasures", "..\BitsMeasures\BitsMeasures.csproj", "{F97F014F-3F45-42AE-8FEE-792844D98193}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1.Web", "..\WpfApp1.Web\WpfApp1.Web.csproj", "{FD386D64-674D-4C41-A56B-33E6243F95B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EuroCurrencyConverterMeasure", "..\EuroCurrencyConverterMeasure\EuroCurrencyConverterMeasure.csproj", "{ED80FB62-FBE8-4076-B57B-6886703E05CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BytesConverterPlugin", "..\BytesConverterPlugin\BytesConverterPlugin.csproj", "{BBE6C183-81EB-488D-A447-70C5D312A6F5}"
 EndProject
@@ -33,10 +41,18 @@ Global
 		{EA28F3F0-2020-48E1-871C-63AC979F0EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA28F3F0-2020-48E1-871C-63AC979F0EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA28F3F0-2020-48E1-871C-63AC979F0EC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97F014F-3F45-42AE-8FEE-792844D98193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97F014F-3F45-42AE-8FEE-792844D98193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97F014F-3F45-42AE-8FEE-792844D98193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97F014F-3F45-42AE-8FEE-792844D98193}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD386D64-674D-4C41-A56B-33E6243F95B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD386D64-674D-4C41-A56B-33E6243F95B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD386D64-674D-4C41-A56B-33E6243F95B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD386D64-674D-4C41-A56B-33E6243F95B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED80FB62-FBE8-4076-B57B-6886703E05CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED80FB62-FBE8-4076-B57B-6886703E05CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED80FB62-FBE8-4076-B57B-6886703E05CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED80FB62-FBE8-4076-B57B-6886703E05CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BBE6C183-81EB-488D-A447-70C5D312A6F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BBE6C183-81EB-488D-A447-70C5D312A6F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBE6C183-81EB-488D-A447-70C5D312A6F5}.Release|Any CPU.ActiveCfg = Release|Any CPU

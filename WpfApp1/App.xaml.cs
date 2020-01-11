@@ -18,14 +18,22 @@ namespace WpfApp1
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
             IContainer container = BuildContainer();
-
             this.MainWindow = container.Resolve<MainWindow>();
             this.MainWindow.Show();
         }
 
         private static IContainer BuildContainer()
+        {
+            var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterType<MainWindow>();
+            containerBuilder.RegisterType<MeasuresAPI>();
+
+            return containerBuilder.Build();
+        }
+
+        /*private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
 
@@ -62,6 +70,6 @@ namespace WpfApp1
                 containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Measure")).AsImplementedInterfaces();
                 //containerBuilder.RegisterAssemblyTypes(assembly).Where(t => t.Name.EndsWith("Unit")).AsImplementedInterfaces();
             }
-        }
+        }*/
     }
 }

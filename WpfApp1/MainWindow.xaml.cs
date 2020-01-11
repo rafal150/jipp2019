@@ -24,25 +24,35 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IStatisticsSource repository;
-        public MainWindow(IStatisticsSource repo, GetMeasuresObj mes)
+        private MeasuresAPI measures;
+        //private IStatisticsSource repository;
+        public MainWindow(MeasuresAPI measures)
         {
             InitializeComponent();
-            repository = repo;
+            this.measures = measures;
+            this.Choose_measureCombobox.ItemsSource = measures.GetMeasures();
+            /*repository = repo;
             Choose_measureCombobox.ItemsSource = mes.GetMesasures();
-            LoadStatistics(repository);
+            LoadStatistics(repository);*/
         }
 
-       
+
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            string from = "";
+            /*string from = "";
             string to = "";
             double from_value = 0;
-            double to_value = 0;
+            double to_value = 0;*/
             if (this.Choose_measureCombobox.SelectedItem != null)
             {
-                IGetMeasures converter = (IGetMeasures)this.Choose_measureCombobox.SelectedItem;
+                Measure converter = (Measure)this.Choose_measureCombobox.SelectedItem;
+                double result = measures.Convert(
+                this.FromCombobox.SelectedItem.ToString(),
+                this.ToCombobox.SelectedItem.ToString(),
+                this.FromTextBox.Text,
+                converter.Nam);
+                this.ToTextBox.Text = result.ToString();
+                /*IGetMeasures converter = (IGetMeasures)this.Choose_measureCombobox.SelectedItem;
                 from = FromCombobox.SelectedItem.ToString();
                 to = ToCombobox.SelectedItem.ToString();
                 from_value = float.Parse(FromTextBox.Text);
@@ -58,23 +68,25 @@ namespace WpfApp1
                     OryginalValue = Convert.ToDecimal(from_value),
                     CalculatedValue = Convert.ToDecimal(to_value)
                 };
-                repository.AddStatistic(st);
+                repository.AddStatistic(st);*/
             }
             
            
-            LoadStatistics(repository);
+            //LoadStatistics(repository);
         }
-        private void LoadStatistics(IStatisticsSource r)
+        /*private void LoadStatistics(IStatisticsSource r)
         {
             this.StatisticDataGrid.ItemsSource = r.GetStatistics();
-        }
+        }*/
 
         private void Choose_measureCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             //string choosen_measure_name = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Nam;
-            FromCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
-            ToCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
+            //FromCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
+            //ToCombobox.ItemsSource = ((IGetMeasures)this.Choose_measureCombobox.SelectedItem).Units;
+            FromCombobox.ItemsSource = ((Measure)this.Choose_measureCombobox.SelectedItem).Units;
+            ToCombobox.ItemsSource = ((Measure)this.Choose_measureCombobox.SelectedItem).Units;
         }
     }
 }

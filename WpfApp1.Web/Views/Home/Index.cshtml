@@ -11,12 +11,12 @@
         new { converterType = converter.GetType().AssemblyQualifiedName },
         new AjaxOptions() { UpdateTargetId = converter.Nam + "result" }))
     {
-        <div> @converter.Nam </div>
-        @Html.DropDownList("unitFrom", new SelectList(converter.Units), new { style = "width: 100px"})
+        <div> @converter.Nam </div> // nazwy miar
+        @Html.DropDownList("unitFrom", new SelectList(converter.Units), new { style = "width: 160px" })
         @Html.TextBox("valueToConvert")
-        @Html.DropDownList("unitTo", new SelectList(converter.Units), new { style = "width: 160px"})
+        @Html.DropDownList("unitTo", new SelectList(converter.Units), new { style = "width: 160px" })
         <button type="submit"> Konwertuj </button>
         <label id="@(converter.Nam + "result")"></label>
-        
+
     }
 }

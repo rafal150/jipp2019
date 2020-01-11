@@ -8,10 +8,12 @@ using System.Web.Routing;
 using WpfApp1;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using System.IO;
 using System.Reflection;
 using System.Configuration;
 using WpfApp1.Logic;
+using System.Web.Http;
 using WpfApp1.SDK;
 
 namespace WpfApp1.Web
@@ -22,6 +24,9 @@ namespace WpfApp1.Web
         {
             IContainer container = BuildContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+           
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -34,6 +39,7 @@ namespace WpfApp1.Web
             var containerBuilder = new ContainerBuilder();
 
             containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
+            containerBuilder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "AzureStorage")
             {
@@ -57,7 +63,7 @@ namespace WpfApp1.Web
 
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
-            //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            
             string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
