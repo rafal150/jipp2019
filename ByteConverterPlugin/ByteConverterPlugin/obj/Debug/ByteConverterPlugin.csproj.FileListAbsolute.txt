@@ -1,0 +1,9 @@
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\bin\Debug\ByteConverterPlugin.dll
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\bin\Debug\ByteConverterPlugin.pdb
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\obj\Debug\ByteConverterPlugin.csprojAssemblyReference.cache
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\obj\Debug\ByteConverterPlugin.csproj.CoreCompileInputs.cache
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\obj\Debug\ByteConverterPlugin.csproj.CopyComplete
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\obj\Debug\ByteConverterPlugin.dll
+C:\Users\aleks\source\repos\ByteConverterPlugin\ByteConverterPlugin\obj\Debug\ByteConverterPlugin.pdb

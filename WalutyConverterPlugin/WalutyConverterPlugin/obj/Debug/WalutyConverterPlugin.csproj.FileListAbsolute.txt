@@ -1,0 +1,11 @@
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\WalutyConverterPlugin.dll
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\WalutyConverterPlugin.pdb
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\Converter.SDK.dll
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\Newtonsoft.Json.dll
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\Converter.SDK.pdb
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\bin\Debug\Newtonsoft.Json.xml
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\obj\Debug\WalutyConverterPlugin.csproj.CoreCompileInputs.cache
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\obj\Debug\WalutyConverterPlugin.csproj.CopyComplete
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\obj\Debug\WalutyConverterPlugin.dll
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\obj\Debug\WalutyConverterPlugin.pdb
+C:\Users\aleks\source\repos\WalutyConverterPlugin\WalutyConverterPlugin\obj\Debug\WalutyConverterPlugin.csprojAssemblyReference.cache
