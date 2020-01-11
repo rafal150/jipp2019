@@ -8,9 +8,6 @@ using System.Windows;
 
 namespace konwerter
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
     public partial class Owner : Window
     {
         private IUsageStatisticsRepo repository;
