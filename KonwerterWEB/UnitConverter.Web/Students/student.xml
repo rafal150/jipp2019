@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<students>
+  <student>
+    <name>Tarun</name>
+    <class_Section>X-A</class_Section>
+  <roll_no>1234</roll_no>
+  </student>
+<student>
+    <name>Ram</name>
+     <class_Section>X-A</class_Section>
+  <roll_no>1235</roll_no>
+  </student>
+<student>
+    <name>Rajeev</name>
+      <class_Section>X-A</class_Section>
+  <roll_no>1236</roll_no>
+  </student>
+<student>
+    <name>Gopal</name>
+    <class_Section>X-A</class_Section>
+  <roll_no>1237</roll_no>
+  </student>
+</students>
