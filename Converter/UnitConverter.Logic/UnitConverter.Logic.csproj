@@ -80,6 +80,7 @@
     <Compile Include="Model\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConvertersService.cs" />
+    <Compile Include="Services\CurrencyConverter.cs" />
     <Compile Include="Services\VoltageConverter.cs" />
     <Compile Include="Services\TemperatureConverter.cs" />
     <Compile Include="Services\DistanaceConverter.cs" />

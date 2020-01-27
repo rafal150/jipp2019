@@ -45,8 +45,15 @@ namespace UnitCoverterPart2
 
                 string valueString = client.DownloadString(urlwithparameters);
                 valueString = valueString.Replace('.', ',');
-                double temp = Double.Parse(valueString);
-                //return decimal.Parse(valueString);
+                double temp;
+                try
+                {
+                    temp = double.Parse(valueString);
+                }
+                catch(FormatException)
+                {
+                    temp = 0;
+                }
                 return (decimal)(temp);
             }
         }

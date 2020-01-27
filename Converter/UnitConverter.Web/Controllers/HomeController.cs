@@ -31,8 +31,16 @@ namespace UnitConverter.Web.Controllers
             string converterType)
         {
             IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
-
-            decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));
+            valueToConvert = valueToConvert.Replace(".", ",");
+            decimal value;
+            try
+            {
+                value = decimal.Parse(valueToConvert);
+            }catch(FormatException e)
+            {
+                value = 0;
+            }
+            decimal output = converter.Convert(unitFrom, unitTo, value);
 
             return output;
         }
