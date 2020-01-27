@@ -19,24 +19,23 @@ namespace Konwerter
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
 
-                base.OnStartup(e);
+            IContainer container = BuildContainer();
 
-                IContainer container = BuildContainer();
-
-                this.MainWindow = container.Resolve<MainWindow>();
-                this.MainWindow.Show();
-
+            this.MainWindow = container.Resolve<MainWindow>();
+            this.MainWindow.Show();
         }
 
         private static IContainer BuildContainer()
         {
             var containerBuilder = new ContainerBuilder();
 
+
             containerBuilder.RegisterType<MainWindow>();
             containerBuilder.RegisterType<KonwerterServices>();
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(KonwerterServices).Assembly; // Assembly.GetExecutingAssembly();
             containerBuilder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Konwerter")).AsImplementedInterfaces();
 

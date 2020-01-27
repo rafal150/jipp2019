@@ -69,6 +69,8 @@ namespace Konwerter
             }
         }
 
+        
+
         public void loadStat()
         {
             List<STATISTICS> stat;
@@ -78,6 +80,11 @@ namespace Konwerter
             }
             this.statDataGrid.ItemsSource = stat;
         
+        }
+
+        private void WebKonwerterButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://localhost:53488/");
         }
     }
 }

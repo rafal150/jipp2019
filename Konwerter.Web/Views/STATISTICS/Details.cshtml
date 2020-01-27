@@ -1,0 +1,66 @@
+﻿@model Konwerter.STATISTICS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>STATISTICS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CONVERTED_FROM_VAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONVERTED_FROM_VAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONVERTED_TO_VAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONVERTED_TO_VAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONVERTED_FROM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONVERTED_FROM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONVERTED_TO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONVERTED_TO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_STAT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Konwerter.STATISTICS>
+
+@{
+    ViewBag.Title = "STATISTICS";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CONVERTED_FROM_VAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONVERTED_TO_VAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONVERTED_FROM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONVERTED_TO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TYPE)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONVERTED_FROM_VAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONVERTED_TO_VAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONVERTED_FROM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONVERTED_TO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TYPE)
+        </td>
+    </tr>
+}
+
+</table>
