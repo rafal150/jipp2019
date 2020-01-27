@@ -64,6 +64,7 @@
     <Compile Include="Services\MasaKonwerter.cs" />
     <Compile Include="Services\PojemnoscKonwerter.cs" />
     <Compile Include="Services\TemperaturaKonwerter.cs" />
+    <Compile Include="Services\WalutaKonwerter.cs" />
     <Compile Include="STATISTICS.cs" />
   </ItemGroup>
   <ItemGroup>
