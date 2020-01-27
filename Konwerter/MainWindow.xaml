@@ -7,13 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="774" Height="26" SelectionChanged="TypeSelectionChanged"/>
-        <ComboBox x:Name="ValTypeComboBoxFrom" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="115" Height="24"/>
-        <ComboBox x:Name="ValTypeComboBoxTo" HorizontalAlignment="Left" Margin="222,61,0,0" VerticalAlignment="Top" Width="115" Height="24"/>
-        <TextBox x:Name="IntConvertTextBox" HorizontalAlignment="Left" Height="24" Margin="130,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
-        <Button x:Name="CalculateButton" Content="Button" HorizontalAlignment="Left" Margin="342,61,0,0" VerticalAlignment="Top" Width="74" Height="24" Click="CalculateButton_Click"/>
-        <Label x:Name="ResultLabel" Content="" HorizontalAlignment="Left" Margin="421,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.486,0.527" Height="24" Width="363"/>
-        <DataGrid x:Name="statDataGrid" HorizontalAlignment="Left" Height="296" Margin="10,114,0,0" VerticalAlignment="Top" Width="774"/>
+        <ComboBox x:Name="categoryComboBox" HorizontalAlignment="Left" Margin="24,18,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="categoryChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="UnitFromComboBox" HorizontalAlignment="Left" Margin="24,58,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="UnitToComboBox" HorizontalAlignment="Left" Margin="330,58,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="resultLabel" Content="" HorizontalAlignment="Left" Margin="475,58,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="convertButton" Content="Button" HorizontalAlignment="Left" Margin="568,58,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.501,-0.24" Click="ConvertButton_Click"/>
+        <TextBox x:Name="inputTextBox" HorizontalAlignment="Left" Height="23" Margin="165,59,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="statDataGrid" HorizontalAlignment="Left" Height="321" Margin="10,89,0,0" VerticalAlignment="Top" Width="774"/>
 
     </Grid>
 </Window>
