@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnitConverter"
         mc:Ignorable="d"
-        Title="Unit Converter" ResizeMode="NoResize" Height="450" Width="600">
+        Title="Unit Converter" ResizeMode="NoResize" Height="450" Width="900">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="665*"/>
+            <ColumnDefinition Width="229*"/>
+        </Grid.ColumnDefinitions>
         <!-- title label: "Unit Converter" -->
         <Label Content="Bardzo profesjonalny konwerter" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" FontSize="15"/>
         <!-- first combobox: "Convertion type" -->
@@ -41,5 +45,6 @@
 
         <!-- TEST LABEL -->
         <Label x:Name="TestLabel"  Content="Testowy label - zmieniaj treść do woli" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Height="30"/>
+        <DataGrid x:Name="StatisticsDataGrid" HorizontalAlignment="Right" Margin="0,30,30,30" Width="400" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
