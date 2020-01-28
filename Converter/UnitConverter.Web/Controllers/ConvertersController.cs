@@ -51,14 +51,14 @@ namespace UnitConverter.Web.Controllers
             }
             decimal output = converter.Convert(unitFrom, unitTo, value);
 
-            StatisticDTO rekord = new StatisticDTO();
-            rekord.DateTime = DateTime.Now;
-            rekord.Type = converterType;
-            rekord.UnitFrom = unitFrom;
-            rekord.UnitTo = unitTo;
-            rekord.RawValue = value;
-            rekord.ConvertedValue = output;
-            this.repo.AddStatistic(rekord);
+            StatisticDTO record = new StatisticDTO();
+            record.DateTime = DateTime.Now;
+            record.Type = converterType;
+            record.UnitFrom = unitFrom;
+            record.UnitTo = unitTo;
+            record.RawValue = value;
+            record.ConvertedValue = output;
+            this.repo.AddStatistic(record);
 
             //decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));
 

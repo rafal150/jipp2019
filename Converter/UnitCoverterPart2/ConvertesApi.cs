@@ -29,7 +29,7 @@ namespace UnitCoverterPart2
         }
 
         public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
-             string converterType)
+             string converterType, string repo)
         {
             string url = @"https://localhost:44373/api/converters/convert?";
 
@@ -38,6 +38,7 @@ namespace UnitCoverterPart2
             queryString.Add("unitTo", unitTo);
             queryString.Add("valueToConvert", valueToConvert);
             queryString.Add("converterType", converterType);
+            queryString.Add("repo", repo);
 
             using (WebClient client = new WebClient())
             {
@@ -60,7 +61,7 @@ namespace UnitCoverterPart2
 
         public List<Record> getRecords(string repo)
         {
-            string url = @"https://localhost:44373/api/konwerter/show?";
+            string url = @"https://localhost:44373/api/converters/show?";
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
             queryString.Add("Repo", repo);
 

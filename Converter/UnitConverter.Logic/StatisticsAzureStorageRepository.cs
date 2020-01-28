@@ -30,7 +30,11 @@ namespace UnitCoverterPart2
             entity.RowKey = Guid.NewGuid().ToString();
             entity.Type = statistic.Type;
             entity.DateTime = statistic.DateTime;
-            
+            entity.UnitFrom = statistic.UnitFrom;
+            entity.UnitTo = statistic.UnitTo;
+            entity.RawValue = statistic.RawValue;
+            entity.ConvertedValue = statistic.ConvertedValue;
+
 
             TableOperation insertOperation = TableOperation.Insert(entity);
 
@@ -41,7 +45,13 @@ namespace UnitCoverterPart2
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { DateTime = obj.DateTime,
+                                                                                Type = obj.Type,
+                                                                                UnitFrom = obj.UnitFrom,
+                                                                                UnitTo = obj.UnitTo,
+                                                                                RawValue = obj.RawValue,
+                                                                                ConvertedValue = obj.ConvertedValue
+                                                                                }).ToList();
         }
     }
 }

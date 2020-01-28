@@ -6,6 +6,7 @@ namespace UnitCoverterPart2.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Z502_03.Statistics")]
     public partial class Statistic
     {
         public int Id { get; set; }

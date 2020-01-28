@@ -44,10 +44,11 @@ namespace UnitCoverterPart2
                     this.unitsFromCombobox.SelectedItem.ToString(),
                     this.unitsToCombobox.SelectedItem.ToString(),
                     this.inputTextBox.Text,
-                    converter.Name);
+                    converter.Name,
+                    "Azure");
 
                 this.outputTextBlock.Text = result.ToString();
-
+                statisticsDataGrid.ItemsSource = converters.getRecords("Azure");
                 //StatisticDTO st = new StatisticDTO()
                 //{
                 //    DateTime = DateTime.Now,

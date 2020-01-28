@@ -8,7 +8,7 @@ namespace UnitCoverterPart2.Model
     public partial class StatisticsModel : DbContext
     {
         public StatisticsModel()
-            : base("name=StatisticsModel")
+            : base("StatisticsModel")
         {
         }
 
@@ -16,6 +16,15 @@ namespace UnitCoverterPart2.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Statistic>()
+                .Property(e => e.Type)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Statistic>()
+                .Property(e => e.RawValue);
+
+            modelBuilder.Entity<Statistic>()
+                .Property(e => e.ConvertedValue);
         }
     }
 }
