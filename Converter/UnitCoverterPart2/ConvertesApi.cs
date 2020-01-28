@@ -57,11 +57,46 @@ namespace UnitCoverterPart2
                 return (decimal)(temp);
             }
         }
+
+        public List<Record> getRecords(string repo)
+        {
+            string url = @"https://localhost:44373/api/konwerter/show?";
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+            queryString.Add("Repo", repo);
+
+            using (WebClient client = new WebClient())
+            {
+                string urlwithparameters = url + queryString.ToString();
+                byte[] jsonData = client.DownloadData(urlwithparameters);
+                string json = Encoding.UTF8.GetString(jsonData);
+
+                Record[] records = JsonConvert.DeserializeObject<Record[]>(json);
+
+                return new List<Record>(records);
+            }
+        }
     }
 
     public class Converter
     {
         public string Name { get; set; }
         public List<string> Units { get; set; }
+    }
+
+    public class Record
+    {
+        //public int Id { get; set; }
+
+        public DateTime? DateTime { get; set; }
+
+        public string Type { get; set; }
+
+        public string UnitFrom { get; set; }
+
+        public string UnitTo { get; set; }
+
+        public string RawValue { get; set; }
+
+        public string ConvertedValue { get; set; }
     }
 }

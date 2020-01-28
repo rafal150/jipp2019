@@ -57,6 +57,7 @@ namespace UnitCoverterPart2
                 //this.repository.AddStatistic(st);
                 //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
             }
+
         }
 
         private void catergoriesCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

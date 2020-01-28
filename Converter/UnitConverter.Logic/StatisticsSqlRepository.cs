@@ -16,7 +16,11 @@ namespace UnitCoverterPart2
                 context.Statistics.Add(new Statistic()
                 {
                     Type = statistic.Type,
-                    DateTime = statistic.DateTime
+                    DateTime = statistic.DateTime,
+                    UnitFrom = statistic.UnitFrom,
+                    UnitTo = statistic.UnitTo,
+                    ConvertedValue = statistic.ConvertedValue,
+                    RawValue = statistic.RawValue
                 });
 
                 context.SaveChanges();
@@ -28,7 +32,7 @@ namespace UnitCoverterPart2
             using (StatisticsModel context = new StatisticsModel())
             {
                 return context.Statistics.
-                    Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type }).
+                    Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue }).
                     ToList();
             }
         }
