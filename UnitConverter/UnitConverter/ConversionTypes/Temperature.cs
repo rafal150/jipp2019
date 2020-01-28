@@ -13,22 +13,22 @@ namespace UnitConverter.ConversionTypes {
                 "Kelvin",
             };
         }
-        public float ConvertCelsiusToFahrenheit(float value) {
-            return ((9.0f / 5.0f) * value + 32.0f);
+        public double ConvertCelsiusToFahrenheit(double value) {
+            return ((9.0 / 5.0) * value + 32.0);
         }
-        public float ConvertCelsiusToKelvin(float value) {
-            return value + 273.15f;
+        public double ConvertCelsiusToKelvin(double value) {
+            return value + 273.15;
         }
-        public float ConvertFahrenheitToCelsius(float value) {
-            return ((5.0f / 9.0f) * (value - 32.0f));
+        public double ConvertFahrenheitToCelsius(double value) {
+            return ((5.0 / 9.0) * (value - 32.0));
         }
-        public float ConvertFahrenheitToKelvin(float value) {
+        public double ConvertFahrenheitToKelvin(double value) {
             return ConvertCelsiusToKelvin(ConvertFahrenheitToCelsius(value));
         }
-        public float ConvertKelvinToCelsius(float value) {
-            return value - 273.15f;
+        public double ConvertKelvinToCelsius(double value) {
+            return value - 273.15;
         }
-        public float ConvertKelvinToFahrenheit(float value) {
+        public double ConvertKelvinToFahrenheit(double value) {
             return ConvertCelsiusToFahrenheit(ConvertKelvinToCelsius(value));
         }
     }

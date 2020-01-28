@@ -15,64 +15,64 @@ namespace UnitConverter.ConversionTypes {
                 "Ton",
             };
         }
-        public float ConvertGramToMilligram(float value) {
-            return value * 1000.0f;
+        public double ConvertGramToMilligram(double value) {
+            return value * 1000.0;
         }
-        public float ConvertGramToDecagram(float value) {
-            return value * 0.1f;
+        public double ConvertGramToDecagram(double value) {
+            return value * 0.1;
         }
-        public float ConvertGramToKilogram(float value) {
-            return value * 0.001f;
+        public double ConvertGramToKilogram(double value) {
+            return value * 0.001;
         }
-        public float ConvertGramToTon(float value) {
-            return value * 0.000001f;
+        public double ConvertGramToTon(double value) {
+            return value * 0.000001;
         }
-        public float ConvertMilligramToGram(float value) {
-            return value * 0.001f;
+        public double ConvertMilligramToGram(double value) {
+            return value * 0.001;
         }
-        public float ConvertMilligramToDecagram(float value) {
+        public double ConvertMilligramToDecagram(double value) {
             return ConvertGramToDecagram(ConvertMilligramToGram(value));
         }
-        public float ConvertMilligramToKilogram(float value) {
+        public double ConvertMilligramToKilogram(double value) {
             return ConvertGramToKilogram(ConvertMilligramToGram(value));
         }
-        public float ConvertMilligramToTon(float value) {
+        public double ConvertMilligramToTon(double value) {
             return ConvertGramToTon(ConvertMilligramToGram(value));
         }
-        public float ConvertDecagramToGram(float value) {
-            return value * 10.0f;
+        public double ConvertDecagramToGram(double value) {
+            return value * 10.0;
         }
-        public float ConvertDecagramToMilligram(float value) {
+        public double ConvertDecagramToMilligram(double value) {
             return ConvertGramToMilligram(ConvertDecagramToGram(value));
         }
-        public float ConvertDecagramToKilogram(float value) {
+        public double ConvertDecagramToKilogram(double value) {
             return ConvertGramToKilogram(ConvertDecagramToGram(value));
         }
-        public float ConvertDecagramToTon(float value) {
+        public double ConvertDecagramToTon(double value) {
             return ConvertGramToTon(ConvertDecagramToGram(value));
         }
-        public float ConvertKilogramToGram(float value) {
-            return value * 1000.0f;
+        public double ConvertKilogramToGram(double value) {
+            return value * 1000.0;
         }
-        public float ConvertKilogramToMilligram(float value) {
+        public double ConvertKilogramToMilligram(double value) {
             return ConvertGramToMilligram(ConvertKilogramToGram(value));
         }
-        public float ConvertKilogramToDecagram(float value) {
+        public double ConvertKilogramToDecagram(double value) {
             return ConvertGramToDecagram(ConvertKilogramToGram(value));
         }
-        public float ConvertKilogramToTon(float value) {
+        public double ConvertKilogramToTon(double value) {
             return ConvertGramToTon(ConvertKilogramToGram(value));
         }
-        public float ConvertTonToGram(float value) {
-            return value * 1000000.0f;
+        public double ConvertTonToGram(double value) {
+            return value * 1000000.0;
         }
-        public float ConvertTonToMilligram(float value) {
+        public double ConvertTonToMilligram(double value) {
             return ConvertGramToMilligram(ConvertTonToGram(value));
         }
-        public float ConvertTonToDecagram(float value) {
+        public double ConvertTonToDecagram(double value) {
             return ConvertGramToDecagram(ConvertTonToGram(value));
         }
-        public float ConvertTonToKilogram(float value) {
+        public double ConvertTonToKilogram(double value) {
             return ConvertGramToKilogram(ConvertTonToGram(value));
         }
     }

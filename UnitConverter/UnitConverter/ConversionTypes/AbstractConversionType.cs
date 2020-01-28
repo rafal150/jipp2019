@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace UnitConverter.ConversionTypes {
     abstract class AbstractConversionType {
         public string[] ComboboxItems { get; set; }
-
-        public float Convert(int unitFromIndex, int unitToIndex, float value) {
+        public double Convert(int unitFromIndex, int unitToIndex, double value) {
             if (unitFromIndex == unitToIndex) {
                 return value;
             }
@@ -17,7 +16,7 @@ namespace UnitConverter.ConversionTypes {
             // method name: ConvertSomethingToSomething
             string methodName = "Convert" + ComboboxItems[unitFromIndex] + "To" + ComboboxItems[unitToIndex];
             // call method ConvertSomethingToSomething
-            float result = (float) GetType().GetMethod(methodName).Invoke(this, new object[] { value });
+            double result = (double) GetType().GetMethod(methodName).Invoke(this, new object[] { value });
             return result;
         }
     }

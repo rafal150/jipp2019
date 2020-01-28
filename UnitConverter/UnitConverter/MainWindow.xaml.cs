@@ -23,51 +23,52 @@ namespace UnitConverter {
 
         public MainWindow() {
             InitializeComponent();
-            /*
+            // load statistics from database to data grid
             LoadStatistics();
-            */
         }
 
         private void LoadStatistics() {
-            /*
             List<Statistic> statistics = null;
-            using (ConverterContext context = new ConverterContext()) {
+            using (Converter context = new Converter()) {
                 statistics = context.Statistics.ToList();
             }
             StatisticsDataGrid.ItemsSource = statistics;
-            */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
             try {
+                // conversion type has to be selected
                 if (ConversionType.SelectedIndex == 0) {
                     ConversionTypeError.Content = "Wybierz rodzaj konwersji";
                 } else {
+                    // unit from and unit to have to be selected and unit from value has to be fulfilled
                     UnitFromError.Content = (UnitFrom.SelectedIndex == 0) ? "Wybierz jednostkę" : ((ValueFrom.Text == "") ? "Wpisz wartość" : "");
                     UnitToError.Content = (UnitTo.SelectedIndex == 0) ? "Wybierz jednostkę" : "";
                     if (UnitFrom.SelectedIndex != 0 && UnitTo.SelectedIndex != 0 && ValueFrom.Text != "") {
-                        // try to parse string to float
-                        if (!float.TryParse(ValueFrom.Text, out float valueFrom)) {
+                        // try to parse string to double
+                        if (!double.TryParse(ValueFrom.Text, out double valueFrom)) {
                             UnitFromError.Content = "Podaj wartość numeryczną w formacie 000,00";
+                        } else {
+                            double valueTo = conversionType.Convert(UnitFrom.SelectedIndex, UnitTo.SelectedIndex, valueFrom);
+                            // parse double to string and assign to TextBox
+                            ValueTo.Text = valueTo.ToString();
+                            // save to statistics to database
+                            using (Converter context = new Converter()) {
+                                Statistic statistic = new Statistic() {
+                                    DateTime = DateTime.Now,
+                                    ConversionType = ConversionType.Text,
+                                    UnitFrom = UnitFrom.SelectedItem.ToString(),
+                                    UnitTo = UnitTo.SelectedItem.ToString(),
+                                    ValueFrom = valueFrom,
+                                    ValueTo = valueTo
+                                };
+                                context.Statistics.Add(statistic);
+                                // execute query - save changes
+                                context.SaveChanges();
+                                // load statistics to data grid
+                                LoadStatistics();
+                            }
                         }
-                        float valueTo = conversionType.Convert(UnitFrom.SelectedIndex, UnitTo.SelectedIndex, valueFrom);
-                        // parse float to string and assign to TextBox
-                        ValueTo.Text = valueTo.ToString();
-                        // save to statistics
-                        /*
-                        using (ConverterContext context = new ConverterContext()) {
-                            Statistic statistic = new Statistic() {
-                                DateTime = DateTime.Now,
-                                ConversionType = ConversionType.SelectedItem.ToString(),
-                                UnitFrom = UnitFrom.SelectedItem.ToString(),
-                                UnitTo = UnitTo.SelectedItem.ToString(),
-                                ValueFrom = valueFrom,
-                                ValueTo = valueTo
-                            };
-                            context.Statistics.Add(statistic);
-                            context.SaveChanges();
-                        }
-                        */
                     }
                 }
             } catch (Exception ex) {
@@ -90,12 +91,12 @@ namespace UnitConverter {
             }
             if (UnitFrom != null) {
                 UnitFrom.Items.Clear();
-                UnitFrom.Items.Add("wybierz");
+                UnitFrom.Items.Add("select");
                 UnitFrom.SelectedIndex = 0;
             }
             if (UnitTo != null) {
                 UnitTo.Items.Clear();
-                UnitTo.Items.Add("wybierz");
+                UnitTo.Items.Add("select");
                 UnitTo.SelectedIndex = 0;
             }
             if (UnitFromError != null) {

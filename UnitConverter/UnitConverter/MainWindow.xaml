@@ -12,17 +12,17 @@
         <!-- first combobox: "Convertion type" -->
         <Label Content="Wybierz rodzaj konwersji:" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="245" Height="30"/>
         <ComboBox x:Name="ConversionType" SelectedIndex="0" HorizontalAlignment="Left" Margin="340,45,0,0" VerticalAlignment="Top" Width="120" Height="23" SelectionChanged="ConversionType_SelectionChanged">
-            <ComboBoxItem Content="wybierz" HorizontalAlignment="Left" Width="118.4"/>
-            <ComboBoxItem Content="Temperatura" HorizontalAlignment="Left" Width="118.4"/>
-            <ComboBoxItem Content="Odległość" HorizontalAlignment="Left" Width="118.4"/>
-            <ComboBoxItem Content="Masa" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="select" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Temperature" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Length" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Mass" HorizontalAlignment="Left" Width="118.4"/>
         </ComboBox>
         <Label x:Name="ConversionTypeError" Content="" HorizontalAlignment="Left" Margin="277,76,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Red"/>
 
         <!-- second combobox: "Convert from" -->
         <Label Content="Przelicz:" HorizontalAlignment="Left" Height="30" Margin="10,70,0,0" VerticalAlignment="Top" Width="245"/>
         <ComboBox x:Name="UnitFrom" SelectedIndex="0"  HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="120" Height="23" SelectionChanged="UnitFrom_SelectionChanged">
-            <ComboBoxItem Content="wybierz" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="select" HorizontalAlignment="Left" Width="118.4"/>
         </ComboBox>
         <TextBox x:Name="ValueFrom" HorizontalAlignment="Left" Height="23" Margin="135,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="UnitFromError" Content="" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold"/>
@@ -30,7 +30,7 @@
         <!-- third combobox: "Convert to" -->
         <Label Content="Wynik:" HorizontalAlignment="Left" Height="30" Margin="539,70,0,0" VerticalAlignment="Top" Width="245"/>
         <ComboBox x:Name="UnitTo" SelectedIndex="0" HorizontalAlignment="Left" Margin="539,136,0,0" VerticalAlignment="Top" Width="120" Height="23" SelectionChanged="UnitTo_SelectionChanged">
-            <ComboBoxItem Content="wybierz" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="select" HorizontalAlignment="Left" Width="118.4"/>
         </ComboBox>
         <TextBox x:Name="ValueTo" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="664,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="UnitToError" Content="" HorizontalAlignment="Left" Margin="539,105,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Red"/>
