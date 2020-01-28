@@ -23,27 +23,55 @@ namespace UnitConverter {
 
         public MainWindow() {
             InitializeComponent();
+            /*
+            LoadStatistics();
+            */
+        }
+
+        private void LoadStatistics() {
+            /*
+            List<Statistic> statistics = null;
+            using (ConverterContext context = new ConverterContext()) {
+                statistics = context.Statistics.ToList();
+            }
+            StatisticsDataGrid.ItemsSource = statistics;
+            */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-            if (ConversionType.SelectedIndex == 0) {
-                ConversionTypeError.Content = "Wybierz rodzaj konwersji";
-            } else {
-                UnitFromError.Content = (UnitFrom.SelectedIndex == 0) ? "Wybierz jednostkę" : ((ValueFrom.Text == "") ? "Wpisz wartość" : "");
-                UnitToError.Content = (UnitTo.SelectedIndex == 0) ? "Wybierz jednostkę" : "";
-                if (UnitFrom.SelectedIndex != 0 && UnitTo.SelectedIndex != 0 && ValueFrom.Text != "") {
-                    try {
+            try {
+                if (ConversionType.SelectedIndex == 0) {
+                    ConversionTypeError.Content = "Wybierz rodzaj konwersji";
+                } else {
+                    UnitFromError.Content = (UnitFrom.SelectedIndex == 0) ? "Wybierz jednostkę" : ((ValueFrom.Text == "") ? "Wpisz wartość" : "");
+                    UnitToError.Content = (UnitTo.SelectedIndex == 0) ? "Wybierz jednostkę" : "";
+                    if (UnitFrom.SelectedIndex != 0 && UnitTo.SelectedIndex != 0 && ValueFrom.Text != "") {
                         // try to parse string to float
-                        if (!float.TryParse(ValueFrom.Text, out float value)) {
-                            throw new Exception("Podaj wartość numeryczną");
+                        if (!float.TryParse(ValueFrom.Text, out float valueFrom)) {
+                            UnitFromError.Content = "Podaj wartość numeryczną w formacie 000,00";
                         }
-                        float convertedValue = conversionType.Convert(UnitFrom.SelectedIndex, UnitTo.SelectedIndex, value);
+                        float valueTo = conversionType.Convert(UnitFrom.SelectedIndex, UnitTo.SelectedIndex, valueFrom);
                         // parse float to string and assign to TextBox
-                        ValueTo.Text = convertedValue.ToString();
-                    } catch (Exception ex) {
-                        UnitFromError.Content = ex.Message;
+                        ValueTo.Text = valueTo.ToString();
+                        // save to statistics
+                        /*
+                        using (ConverterContext context = new ConverterContext()) {
+                            Statistic statistic = new Statistic() {
+                                DateTime = DateTime.Now,
+                                ConversionType = ConversionType.SelectedItem.ToString(),
+                                UnitFrom = UnitFrom.SelectedItem.ToString(),
+                                UnitTo = UnitTo.SelectedItem.ToString(),
+                                ValueFrom = valueFrom,
+                                ValueTo = valueTo
+                            };
+                            context.Statistics.Add(statistic);
+                            context.SaveChanges();
+                        }
+                        */
                     }
                 }
+            } catch (Exception ex) {
+                ButtonError.Content = ex.Message;
             }
         }
 
