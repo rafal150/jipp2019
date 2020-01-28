@@ -84,7 +84,8 @@ namespace Converter
         private async void CalculateButtonClick(object sender, RoutedEventArgs e)
         {
 
-            bool areInputsSet = this.TypeCombobox.SelectedItem != null && this.ToCombobox.SelectedItem != null && this.FromCombobox.SelectedItem != null;
+            bool areInputsSet = this.TypeCombobox.SelectedItem != null && this.ToCombobox.SelectedItem != null 
+                                 && this.FromCombobox.SelectedItem != null && decimal.TryParse(this.InputTextBox.Text, out _);
             if (areInputsSet)
             {
                 decimal inputValue = decimal.Parse(this.InputTextBox.Text);
