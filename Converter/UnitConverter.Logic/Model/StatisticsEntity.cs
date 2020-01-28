@@ -17,9 +17,9 @@ namespace UnitCoverterPart2.Model
 
         public string UnitTo { get; set; }
 
-        public decimal? RawValue { get; set; }
+        public string RawValue { get; set; }
 
-        public decimal? ConvertedValue { get; set; }
+        public string ConvertedValue { get; set; }
 
         public string Type { get; set; }
     }

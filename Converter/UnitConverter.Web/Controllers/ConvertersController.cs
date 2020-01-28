@@ -56,8 +56,8 @@ namespace UnitConverter.Web.Controllers
             record.Type = converterType;
             record.UnitFrom = unitFrom;
             record.UnitTo = unitTo;
-            record.RawValue = value;
-            record.ConvertedValue = output;
+            record.RawValue = value.ToString();
+            record.ConvertedValue = output.ToString();
             this.repo.AddStatistic(record);
 
             //decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));

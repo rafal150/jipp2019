@@ -55,7 +55,8 @@ namespace UnitCoverterPart2
                 {
                     temp = 0;
                 }
-                return (decimal)(temp);
+                decimal result = (decimal)(temp);
+                return result;
             }
         }
 

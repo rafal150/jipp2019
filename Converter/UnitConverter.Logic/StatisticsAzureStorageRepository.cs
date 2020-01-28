@@ -19,7 +19,7 @@ namespace UnitCoverterPart2
         {
             CloudStorageAccount storageAccount = new CloudStorageAccount(new StorageCredentials(ConfigurationManager.AppSettings["StorageName"], ConfigurationManager.AppSettings["StorageKey"]), true);
             CloudTableClient client = storageAccount.CreateCloudTableClient();
-            this.table = client.GetTableReference("StatisticsZbigniewGawarski");
+            this.table = client.GetTableReference("StatisticsZbigniewGawarski2");
             this.table.CreateIfNotExists();
         }
 

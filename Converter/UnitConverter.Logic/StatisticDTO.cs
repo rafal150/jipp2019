@@ -10,9 +10,9 @@ namespace UnitCoverterPart2
         public string UnitFrom { get; set; }
         public string UnitTo { get; set; }
 
-        public decimal? RawValue { get; set; }
+        public string RawValue { get; set; }
 
-        public decimal? ConvertedValue { get; set; }
+        public string ConvertedValue { get; set; }
         public string Type { get; set; }
     }
 }
