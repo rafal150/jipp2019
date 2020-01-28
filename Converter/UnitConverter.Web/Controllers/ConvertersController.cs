@@ -76,5 +76,20 @@ namespace UnitConverter.Web.Controllers
             IEnumerable<StatisticDTO> records = this.repo.GetStatistics();
             return records;
         }
+
+        [Route("api/converters/clean")]
+        [HttpGet]
+        public void Clean(string repo)
+        {
+            if (repo == "Azure")
+            {
+                this.repo = new StatisticsAzureStorageRepository();
+            }
+            else
+            {
+                this.repo = new StatisticsSqlRepository();
+            }
+            this.repo.Clean();
+        }
     }
 }

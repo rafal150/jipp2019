@@ -77,6 +77,19 @@ namespace UnitCoverterPart2
                 return new List<Record>(records);
             }
         }
+        /*
+        public void Clean()
+        {
+            string url = @"https://localhost:44373/api/converters/clean?";
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+            queryString.Add("Repo", "SQL");
+
+            using (WebClient client = new WebClient())
+            {
+                string urlwithparameters = url + queryString.ToString();
+                client.DownloadData(urlwithparameters);
+            }
+        }*/
     }
 
     public class Converter

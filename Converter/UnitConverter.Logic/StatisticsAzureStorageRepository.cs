@@ -53,5 +53,24 @@ namespace UnitCoverterPart2
                                                                                 ConvertedValue = obj.ConvertedValue
                                                                                 }).ToList();
         }
+
+        public void Clean()
+        {
+            using (StatisticsModel context = new StatisticsModel())
+            {
+                IEnumerable<Statistic> toDelete = context.Statistics.Where(x => x.Id > 0);
+                context.Statistics.RemoveRange(toDelete);
+                context.SaveChanges();
+            }
+
+            TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
+
+            IEnumerable<StatisticsEntity> doUsuniecia = table.ExecuteQuery(query).Where(x => x.RowKey != String.Empty);
+            foreach (var row in doUsuniecia)
+            {
+                TableOperation deleteOperation = TableOperation.Delete(row);
+                table.Execute(deleteOperation);
+            }
+        }
     }
 }

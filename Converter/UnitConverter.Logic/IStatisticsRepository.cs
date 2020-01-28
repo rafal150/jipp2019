@@ -6,5 +6,7 @@ namespace UnitCoverterPart2
     {
         void AddStatistic(StatisticDTO statistic);
         IEnumerable<StatisticDTO> GetStatistics();
+
+        void Clean();
     }
 }

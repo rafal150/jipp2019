@@ -16,6 +16,8 @@ namespace UnitCoverterPart2.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Database.SetInitializer<StatisticsModel>(null);
+            
             modelBuilder.Entity<Statistic>()
                 .Property(e => e.Type)
                 .IsUnicode(false);

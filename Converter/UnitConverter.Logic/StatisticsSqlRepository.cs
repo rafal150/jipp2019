@@ -32,8 +32,22 @@ namespace UnitCoverterPart2
             using (StatisticsModel context = new StatisticsModel())
             {
                 return context.Statistics.
-                    Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue }).
-                    ToList();
+                    Select(obj => new StatisticDTO() { DateTime = obj.DateTime,
+                                                       Type = obj.Type,
+                                                       UnitFrom = obj.UnitFrom,
+                                                       UnitTo = obj.UnitTo/*,
+                                                       RawValue = (obj.RawValue),
+                                                       ConvertedValue = obj.ConvertedValue.ToString()*/}).ToList();
+            }
+        }
+
+        public void Clean()
+        {
+            using (StatisticsModel context = new StatisticsModel())
+            {
+                IEnumerable<Statistic> toDelete = context.Statistics.Where(x => x.Id > 0);
+                context.Statistics.RemoveRange(toDelete);
+                context.SaveChanges();
             }
         }
     }

@@ -37,6 +37,7 @@ namespace UnitCoverterPart2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string repo = "Azure";
             if (this.catergoriesCombobox.SelectedItem != null)
             {
                 Converter converter = (Converter)this.catergoriesCombobox.SelectedItem;
@@ -45,10 +46,11 @@ namespace UnitCoverterPart2
                     this.unitsToCombobox.SelectedItem.ToString(),
                     this.inputTextBox.Text,
                     converter.Name,
-                    "Azure");
+                    repo);
 
                 this.outputTextBlock.Text = result.ToString();
-                statisticsDataGrid.ItemsSource = converters.getRecords("Azure");
+                statisticsDataGrid.ItemsSource = converters.getRecords(repo);
+                //converters.Clean();
                 //StatisticDTO st = new StatisticDTO()
                 //{
                 //    DateTime = DateTime.Now,
