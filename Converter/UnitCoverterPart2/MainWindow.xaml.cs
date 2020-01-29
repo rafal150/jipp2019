@@ -29,9 +29,6 @@ namespace UnitCoverterPart2
             InitializeComponent();
 
             this.converters = converters;
-            //this.repository = repo;
-            //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
-            
             this.catergoriesCombobox.ItemsSource = converters.GetConverters(); //new ConvertersService().GetConverters()
         }
 
@@ -50,15 +47,6 @@ namespace UnitCoverterPart2
 
                 this.outputTextBlock.Text = result.ToString();
                 statisticsDataGrid.ItemsSource = converters.getRecords(repo);
-                //converters.Clean();
-                //StatisticDTO st = new StatisticDTO()
-                //{
-                //    DateTime = DateTime.Now,
-                //    Type = "Masa"
-                //};
-
-                //this.repository.AddStatistic(st);
-                //this.statisticsDataGrid.ItemsSource = repository.GetStatistics();
             }
 
         }

@@ -42,7 +42,6 @@ namespace UnitConverter.Web.Controllers
             {
                 this.repo = new StatisticsSqlRepository();
             }
-            //IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
             IConverter converter = this.convertersService.GetConverters()
                 .Where(c => c.Name == converterType).FirstOrDefault();
 
@@ -67,8 +66,6 @@ namespace UnitConverter.Web.Controllers
             record.ConvertedValue = output.ToString();
             this.repo.AddStatistic(record);
 
-            //decimal output = converter.Convert(unitFrom, unitTo, decimal.Parse(valueToConvert));
-
             return output;
         }
 
@@ -84,7 +81,6 @@ namespace UnitConverter.Web.Controllers
             {
                 this.repo = new StatisticsSqlRepository();
             }
-            //IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
             IEnumerable<StatisticDTO> records = this.repo.GetStatistics();
             return records;
         }

@@ -22,9 +22,6 @@ namespace UnitCoverterPart2.Services
 
             converters.AddRange(this.scope.Resolve<IEnumerable<IConverter>>());
 
-            //converters.Add(new WeightConverter());
-            //converters.Add(new LenghtConverter());
-
             return converters;
         }
     }
