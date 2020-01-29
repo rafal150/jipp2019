@@ -46,26 +46,16 @@ namespace UnitCoverterPart2.Services
                 response = response.Replace("[", "");
                 response = response.Replace("]", "");
                 RateObject rate = JsonConvert.DeserializeObject<RateObject>(response);
-                var temp = rate.cena;
-                //RateObject rate = tables[0].Rates.Where(r => r.Code == "EUR").FirstOrDefault();
-                //var temp = rate.Mid;
+                var temp = rate.Cena;
                 temp = temp.Replace(".", ",");
-                exhangeRate = Decimal.Parse(temp);
+                exhangeRate = decimal.Parse(temp);
             }
             return exhangeRate;
         }
-        /*
-        public class TableObject
-        {
-            public string Table { get; set; }
-            public DateTime? EffectiveDate { get; set; }
-            public string Rate { get; set; }
-        }*/
-        
         public class RateObject
         {
-            public string data { get; set; }
-            public string cena { get; set; }
+            public string Data { get; set; }
+            public string Cena { get; set; }
         }
 
     }
