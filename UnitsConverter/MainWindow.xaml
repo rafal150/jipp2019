@@ -1,0 +1,30 @@
+﻿<Window x:Class="UnitsConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnitsConverter"
+
+        mc:Ignorable="d"
+        Title="MainWindow" Height="568.5" Width="1247">
+    <Grid>
+        <ComboBox x:Name="UnitsComboBox" HorizontalAlignment="Left" Margin="52,22,0,0" VerticalAlignment="Top" Width="1164" RenderTransformOrigin="0,0" SelectionChanged="UnitsComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox x:Name="unitsToConvertComboBox" HorizontalAlignment="Left" Margin="52,64,0,0" VerticalAlignment="Top" Width="348" RenderTransformOrigin="0.511,1.682">
+          
+        </ComboBox>
+        <ComboBox x:Name="unitsConvertedComboBox" HorizontalAlignment="Left" Margin="52,104,0,0" VerticalAlignment="Top" Width="348" RenderTransformOrigin="0.503,0.273">
+          
+        </ComboBox>
+        <TextBlock x:Name="OutputTextBlock" HorizontalAlignment="Left" Margin="441,104,0,0" TextWrapping="Wrap" Text="Przeliczone jednostki" VerticalAlignment="Top" Height="22" Width="128"/>
+        <TextBox x:Name="UnitsTextBox" HorizontalAlignment="Left" Height="23" Margin="441,64,0,0" TextWrapping="Wrap" Text="Podaj Jednostkę" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="ConvertButton" Content="Przelicz" HorizontalAlignment="Left" Margin="882,66,0,0" VerticalAlignment="Top" Width="334" Height="60" Click="ConvertButton_Click"/>
+        <DataGrid x:Name="statisticGrid" HorizontalAlignment="Left" Height="392" Margin="0,145,0,0" VerticalAlignment="Top" Width="1239"/>
+
+    </Grid>
+</Window>
