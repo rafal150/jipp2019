@@ -1,5 +1,4 @@
-namespace UnitConverter
-{
+namespace UnitConverter {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,8 +6,7 @@ namespace UnitConverter
     using System.Data.Entity.Spatial;
 
     [Table("Z502_15.Statistics")]
-    public partial class Statistic
-    {
+    public partial class Statistic {
         public int Id { get; set; }
 
         public DateTime? DateTime { get; set; }

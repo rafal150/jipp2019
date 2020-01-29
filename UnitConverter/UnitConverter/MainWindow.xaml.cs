@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
 
 namespace UnitConverter {
     /// <summary>
@@ -20,19 +21,13 @@ namespace UnitConverter {
     public partial class MainWindow : Window {
 
         private ConversionTypes.AbstractConversionType conversionType;
+        private IStatisticsRepository statisticsRepository;
 
-        public MainWindow() {
+        public MainWindow(IStatisticsRepository statisticsRepository) {
             InitializeComponent();
-            // load statistics from database to data grid
-            LoadStatistics();
-        }
-
-        private void LoadStatistics() {
-            List<Statistic> statistics = null;
-            using (Converter context = new Converter()) {
-                statistics = context.Statistics.ToList();
-            }
-            StatisticsDataGrid.ItemsSource = statistics;
+            this.statisticsRepository = statisticsRepository;
+            // load statistics to data grid
+            StatisticsDataGrid.ItemsSource = this.statisticsRepository.GetStatistics();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -46,28 +41,24 @@ namespace UnitConverter {
                     UnitToError.Content = (UnitTo.SelectedIndex == 0) ? "Wybierz jednostkę" : "";
                     if (UnitFrom.SelectedIndex != 0 && UnitTo.SelectedIndex != 0 && ValueFrom.Text != "") {
                         // try to parse string to double
-                        if (!double.TryParse(ValueFrom.Text, out double valueFrom)) {
-                            UnitFromError.Content = "Podaj wartość numeryczną w formacie 000,00";
+                        if (!double.TryParse(ValueFrom.Text.Replace(".", ","), out double valueFrom)) {
+                            UnitFromError.Content = "Podaj wartość numeryczną";
                         } else {
                             double valueTo = conversionType.Convert(UnitFrom.SelectedIndex, UnitTo.SelectedIndex, valueFrom);
                             // parse double to string and assign to TextBox
                             ValueTo.Text = valueTo.ToString();
                             // save to statistics to database
-                            using (Converter context = new Converter()) {
-                                Statistic statistic = new Statistic() {
-                                    DateTime = DateTime.Now,
-                                    ConversionType = ConversionType.Text,
-                                    UnitFrom = UnitFrom.SelectedItem.ToString(),
-                                    UnitTo = UnitTo.SelectedItem.ToString(),
-                                    ValueFrom = valueFrom,
-                                    ValueTo = valueTo
-                                };
-                                context.Statistics.Add(statistic);
-                                // execute query - save changes
-                                context.SaveChanges();
-                                // load statistics to data grid
-                                LoadStatistics();
-                            }
+                            StatisticDTO statistic = new StatisticDTO() {
+                                DateTime = DateTime.Now,
+                                ConversionType = ConversionType.Text,
+                                UnitFrom = UnitFrom.SelectedItem.ToString(),
+                                UnitTo = UnitTo.SelectedItem.ToString(),
+                                ValueFrom = valueFrom,
+                                ValueTo = valueTo
+                            };
+                            statisticsRepository.AddStatistic(statistic);
+                            // load statistics to data grid
+                            StatisticsDataGrid.ItemsSource = statisticsRepository.GetStatistics();
                         }
                     }
                 }
