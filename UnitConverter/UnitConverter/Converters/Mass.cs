@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitConverter.ConversionTypes {
-    class Mass : AbstractConversionType {
-        public Mass() {
-            ComboboxItems = new string[] {
-                "Milligram",
-                "Decagram",
-                "Gram",
-                "Kilogram",
-                "Ton",
-            };
-        }
+namespace UnitConverter.Converters {
+    class Mass : AbstractConverter, IConverter {
+        public List<string> Units => new List<string> {
+            "Milligram",
+            "Gram",
+            "Decagram",
+            "Kilogram",
+            "Ton",
+        };
+
         public double ConvertGramToMilligram(double value) {
             return value * 1000.0;
         }

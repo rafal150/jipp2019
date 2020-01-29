@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
-namespace UnitConverter.ConversionTypes {
-    class Temperature : AbstractConversionType {
-        public Temperature() {
-            ComboboxItems = new string[] {
-                "Celsius",
-                "Fahrenheit",
-                "Kelvin",
-            };
-        }
+namespace UnitConverter.Converters {
+    class Temperature : AbstractConverter, IConverter {
+        public List<string> Units => new List<string> {
+            "Celsius",
+            "Fahrenheit",
+            "Kelvin",
+        };
+
         public double ConvertCelsiusToFahrenheit(double value) {
             return ((9.0 / 5.0) * value + 32.0);
         }

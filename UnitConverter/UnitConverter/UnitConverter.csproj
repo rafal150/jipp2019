@@ -105,11 +105,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConversionTypes\AbstractConversionType.cs" />
-    <Compile Include="ConversionTypes\Mass.cs" />
-    <Compile Include="ConversionTypes\Length.cs" />
-    <Compile Include="ConversionTypes\Temperature.cs" />
+    <Compile Include="Converters\AbstractConverter.cs" />
+    <Compile Include="Converters\Mass.cs" />
+    <Compile Include="Converters\Length.cs" />
+    <Compile Include="Converters\Temperature.cs" />
     <Compile Include="IStatisticsRepository.cs" />
+    <Compile Include="Converters\Converters.cs" />
+    <Compile Include="Converters\IConverter.cs" />
+    <Compile Include="Converters\Time.cs" />
+    <Compile Include="Converters\Volume.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="StatisticDTO.cs" />
     <Compile Include="StatisticsAzureStorageRepository.cs" />

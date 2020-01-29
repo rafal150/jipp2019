@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Autofac;
+using System.Reflection;
 
 namespace UnitConverter {
     /// <summary>
@@ -34,6 +35,16 @@ namespace UnitConverter {
             }
 
             containerBuilder.RegisterType<MainWindow>();
+
+            containerBuilder.RegisterType<Converters.Converters>();
+
+            // register all converters (UnitConverter.Converters)
+            var assembly = Assembly.GetExecutingAssembly();
+            // register all classes...
+            containerBuilder.RegisterAssemblyTypes(assembly)
+                // ... that implement Converters.IConverter
+                .Where(t => typeof(Converters.IConverter).IsAssignableFrom(t))
+                .AsImplementedInterfaces();
 
             return containerBuilder.Build();
         }
