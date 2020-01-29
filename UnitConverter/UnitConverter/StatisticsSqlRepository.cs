@@ -22,6 +22,7 @@ namespace UnitConverter {
         public IEnumerable<StatisticDTO> GetStatistics() {
             using (Converter context = new Converter()) {
                 return context.Statistics.Select(obj => new StatisticDTO() {
+                    Id = obj.Id,
                     DateTime = obj.DateTime,
                     ConversionType = obj.ConversionType,
                     UnitFrom = obj.UnitFrom,
