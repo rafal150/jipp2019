@@ -23,10 +23,15 @@ namespace UnitCoverterPart2.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<Statistic>()
-                .Property(e => e.RawValue);
+                .Property(e => e.RawValue)
+                .IsUnicode(false); ;
 
             modelBuilder.Entity<Statistic>()
-                .Property(e => e.ConvertedValue);
+                .Property(e => e.ConvertedValue)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Statistic>()
+                        .Property(e => e.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

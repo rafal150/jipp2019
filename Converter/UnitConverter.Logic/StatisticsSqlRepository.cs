@@ -35,9 +35,9 @@ namespace UnitCoverterPart2
                     Select(obj => new StatisticDTO() { DateTime = obj.DateTime,
                                                        Type = obj.Type,
                                                        UnitFrom = obj.UnitFrom,
-                                                       UnitTo = obj.UnitTo/*,
+                                                       UnitTo = obj.UnitTo,
                                                        RawValue = (obj.RawValue),
-                                                       ConvertedValue = obj.ConvertedValue.ToString()*/}).ToList();
+                                                       ConvertedValue = obj.ConvertedValue.ToString()}).ToList();
             }
         }
 
@@ -49,6 +49,13 @@ namespace UnitCoverterPart2
                 context.Statistics.RemoveRange(toDelete);
                 context.SaveChanges();
             }
+        }
+
+        private int getDateInt()
+        {
+            var x = DateTime.Now;
+            var temp = x.ToString("mmss");
+            return int.Parse(temp);
         }
     }
 }

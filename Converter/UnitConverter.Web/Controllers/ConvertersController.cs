@@ -32,9 +32,16 @@ namespace UnitConverter.Web.Controllers
 
         [Route("api/converters/convert")]
         [HttpGet]
-        public decimal Convert(string unitFrom, string unitTo, string valueToConvert,
-            string converterType)
+        public decimal Convert(string unitFrom, string unitTo, string valueToConvert,string converterType, string repo)
         {
+            if (repo == "Azure")
+            {
+                this.repo = new StatisticsAzureStorageRepository();
+            }
+            else
+            {
+                this.repo = new StatisticsSqlRepository();
+            }
             //IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
             IConverter converter = this.convertersService.GetConverters()
                 .Where(c => c.Name == converterType).FirstOrDefault();
@@ -70,8 +77,13 @@ namespace UnitConverter.Web.Controllers
         public IEnumerable<StatisticDTO> getRecords(string repo)
         {
             if (repo == "Azure")
+            {
                 this.repo = new StatisticsAzureStorageRepository();
-            else this.repo = new StatisticsSqlRepository();
+            }
+            else
+            {
+                this.repo = new StatisticsSqlRepository();
+            }
             //IConverter converter = this.scope.Resolve(Type.GetType(converterType)) as IConverter;
             IEnumerable<StatisticDTO> records = this.repo.GetStatistics();
             return records;
