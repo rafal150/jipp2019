@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter5MasPlugin", "Konw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter5OdleglosciPlugin", "Konwerter5OdleglosciPlugin\Konwerter5OdleglosciPlugin.csproj", "{28232444-ED7B-4CED-B14C-F212CA2B39B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter5.Web", "Konwerter5.Web\Konwerter5.Web.csproj", "{BF151991-6C22-4410-A808-22333F7B866C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konwerter5ZlotoPlugin", "Konwerter5ZlotoPlugin\Konwerter5ZlotoPlugin.csproj", "{91712036-4816-4A92-BE00-5B098E229B61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{28232444-ED7B-4CED-B14C-F212CA2B39B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28232444-ED7B-4CED-B14C-F212CA2B39B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28232444-ED7B-4CED-B14C-F212CA2B39B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF151991-6C22-4410-A808-22333F7B866C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF151991-6C22-4410-A808-22333F7B866C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF151991-6C22-4410-A808-22333F7B866C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF151991-6C22-4410-A808-22333F7B866C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91712036-4816-4A92-BE00-5B098E229B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91712036-4816-4A92-BE00-5B098E229B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91712036-4816-4A92-BE00-5B098E229B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91712036-4816-4A92-BE00-5B098E229B61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
