@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using System.Reflection;
 using Konwerter8000.Konwersje;
 
-namespace Konwerter8000MocyPlugin
+namespace Konwerter8000Temperatury
 {
-    public class Konwerter8000MocyPlugin : IKonwerter8000
+   public class Konwerter8000Temperatury : IKonwerter8000
     {
         double DoObliczen;
-        public string NazwaKategorii => "Moc";
+        public string NazwaKategorii => "Temperatury";
 
-        public List<string> Jednostki => new List<string>(new[] { "hp", "W", "BTU" });
+        public List<string> Jednostki => new List<string>(new[] { "Celsjusz", "Kelvin", "Farenheit" });
 
         public double Konwertuj(string zJednostki, string doJednostki, double wartosc)
         {
-            Konwerter8000MocyPlugin konwersja = new Konwerter8000MocyPlugin
+            Konwerter8000Temperatury konwersja = new Konwerter8000Temperatury
             {
                 DoObliczen = wartosc
             };
@@ -27,19 +27,18 @@ namespace Konwerter8000MocyPlugin
             {
                 return wartosc;
             }
-
             MethodInfo metoda = konwersja.GetType().GetMethod(ZJ + DJ, BindingFlags.NonPublic | BindingFlags.Instance); 
 
             return (double)metoda.Invoke(konwersja, null);
         }
 
-        double hpW() => DoObliczen * 745.699872;
-        double Whp() => DoObliczen / 745.699872;
-        double BTUW() => DoObliczen * 0.293071;
-        double WBTU() => DoObliczen / 0.293071;
-
-        double BTUhp() => DoObliczen * 0.000393014779;
-        double hpBTU() => DoObliczen / 0.000393014779;
+        double CelsjuszKelvin() => DoObliczen + 273.15;
+        double CelsjuszFarenheit() => DoObliczen * 1.8 + 32;
+        double KelvinCelsjusz() => DoObliczen - 273.15;
+        double FarenheitCelsjusz() => (DoObliczen -32) /1.8;
+        double KelvinFarenheit() => DoObliczen *9/5 - 459.67;
+        double FarenheitKelvin() => (DoObliczen + 459.67) * 5 /9;
 
     }
+    
 }
