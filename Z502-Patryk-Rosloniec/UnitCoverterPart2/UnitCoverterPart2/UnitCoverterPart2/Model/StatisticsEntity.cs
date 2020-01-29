@@ -11,13 +11,6 @@ namespace UnitCoverterPart2.Model
     {
         public string Type { get; set; }
 
-        public string UnitTo { get; set; }
-        public string UnitFrom { get; set; }
-
-        public int? RawValue { get; set; }
-
-        public int? ConvertedValue { get; set; }
-
         public DateTime? DateTime { get; set; }
     }
 }

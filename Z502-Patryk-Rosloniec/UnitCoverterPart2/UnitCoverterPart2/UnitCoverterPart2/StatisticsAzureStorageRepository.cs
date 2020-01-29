@@ -29,10 +29,6 @@ namespace UnitCoverterPart2
             entity.PartitionKey = string.Empty; // computer name;
             entity.RowKey = Guid.NewGuid().ToString();
             entity.Type = statistic.Type;
-            entity.UnitTo = statistic.UnitTo;
-            entity.UnitFrom = statistic.UnitFrom;
-            entity.RawValue = statistic.RawValue;
-            entity.ConvertedValue = statistic.ConvertedValue;
             entity.DateTime = statistic.DateTime;
 
             TableOperation insertOperation = TableOperation.Insert(entity);
@@ -44,7 +40,7 @@ namespace UnitCoverterPart2
         {
             TableQuery<StatisticsEntity> query = new TableQuery<StatisticsEntity>();
 
-            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type, ConvertedValue = obj.ConvertedValue, RawValue = obj.RawValue, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo }).ToList();
+            return table.ExecuteQuery(query).Select(obj => new StatisticDTO() { DateTime = obj.DateTime, Type = obj.Type }).ToList();
         }
     }
 }

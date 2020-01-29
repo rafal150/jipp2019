@@ -21,6 +21,7 @@ namespace UnitCoverterPart2
                     RawValue = statistic.RawValue,
                     ConvertedValue = statistic.ConvertedValue,
                     DateTime = statistic.DateTime
+
                 });
 
                 context.SaveChanges();
