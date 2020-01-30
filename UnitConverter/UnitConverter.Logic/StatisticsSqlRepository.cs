@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace UnitConverter {
-    class StatisticsSqlRepository : IStatisticsRepository {
+    public class StatisticsSqlRepository : IStatisticsRepository {
         public void AddStatistic(StatisticDTO statistic) {
             using (Converter context = new Converter()) {
                 context.Statistics.Add(new Statistic() {

@@ -9,7 +9,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 using System.Configuration;
 
 namespace UnitConverter {
-    class StatisticsAzureStorageRepository : IStatisticsRepository {
+    public class StatisticsAzureStorageRepository : IStatisticsRepository {
         private CloudTable table;
         public StatisticsAzureStorageRepository() {
             // Azure Storage credentials

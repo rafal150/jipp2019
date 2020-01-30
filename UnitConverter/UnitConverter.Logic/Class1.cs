@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Converter.SDK
+namespace UnitConverter.Logic
 {
     public class Class1
     {

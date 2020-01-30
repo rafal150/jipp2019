@@ -1,29 +1,33 @@
-ï»¿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 using Autofac;
-using System.Reflection;
+using Autofac.Integration.Mvc;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
 
-namespace UnitConverter {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    public partial class App : Application {
-        protected override void OnStartup(StartupEventArgs e) {
-            base.OnStartup(e);
+namespace UnitConverter.Web {
+    public class MvcApplication : System.Web.HttpApplication {
+        protected void Application_Start() {
+            Autofac.IContainer container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            IContainer container = BuildContainer();
-            // IStatisticsRepository repository = container.Resolve<IStatisticsRepository>();
-            MainWindow = container.Resolve<MainWindow>();
-            MainWindow.Show();
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-        private static IContainer BuildContainer() {
+        private static Autofac.IContainer BuildContainer() {
             var containerBuilder = new ContainerBuilder();
+
+            // register all controllers (UnitConverter.Web/Controllers/*.cs)
+            containerBuilder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             // set statistics repository class using app config
             string statisticsRepositoryConfig = ConfigurationManager.AppSettings["StatisticsRepository"].ToLower();
@@ -32,18 +36,16 @@ namespace UnitConverter {
             } else if (statisticsRepositoryConfig == "azurestorage") {
                 containerBuilder.RegisterType<StatisticsAzureStorageRepository>().As<IStatisticsRepository>();
             } else {
-                throw new Exception("BÅ‚Ä™dna konfiguracja StatisticsRepository");
+                throw new Exception("B³êdna konfiguracja StatisticsRepository");
             }
-
-            containerBuilder.RegisterType<MainWindow>();
 
             containerBuilder.RegisterType<Converters.Converters>();
 
-            // register all converters in this project (UnitConverter/Converters/*.cs)
+            // register all converters in this project (UnitConverter.web/Converters/*.cs)
             // edit: register all converters in all projects including UnitConverter.Logic (UnitConverter.Logic/Converters/*cs)
             RegisterConverters(containerBuilder);
 
-            // register all converters in plugins folder (UnitConverter/bin/Debug/plugins/*.dll)
+            // register all converters in plugins folder (UnitConverter.web/bin/Debug/plugins/*.dll)
             RegisterPlugins(containerBuilder);
 
             return containerBuilder.Build();
@@ -54,13 +56,11 @@ namespace UnitConverter {
             containerBuilder.RegisterAssemblyTypes(assembly)
                 // ... that implement Converters.IConverter
                 .Where(t => typeof(Converters.IConverter).IsAssignableFrom(t))
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces().AsSelf();
         }
         private static void RegisterPlugins(ContainerBuilder containerBuilder) {
-            // exe file directory
-            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            // plugins folder
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            // plugins directory
+            string pluginDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", "plugins");
             // .dll's list
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
