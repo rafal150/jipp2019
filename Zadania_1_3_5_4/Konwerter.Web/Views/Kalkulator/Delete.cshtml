@@ -1,0 +1,72 @@
+﻿@model Konwerter.Kalkulator
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kalkulator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rodzaj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rodzaj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JednostkaWyjsciowa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JednostkaWyjsciowa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wartosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wartosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JednostkaDocelowa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JednostkaDocelowa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przekonwertowane)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przekonwertowane)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

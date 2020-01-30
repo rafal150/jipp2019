@@ -1,0 +1,66 @@
+﻿@model Konwerter.Kalkulator
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kalkulator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rodzaj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rodzaj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JednostkaWyjsciowa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JednostkaWyjsciowa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wartosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wartosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JednostkaDocelowa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JednostkaDocelowa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przekonwertowane)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przekonwertowane)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
