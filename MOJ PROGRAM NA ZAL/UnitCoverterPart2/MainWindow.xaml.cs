@@ -31,7 +31,7 @@ namespace KonwerterZSQLiAZUREiPLUGIN
 
             this.ComboOption.ItemsSource = new List<string>(new[]
        {
-                "Temperatura", "Długość", "Masa" ,  "Moc plugin"
+                "Temperatura", "Długość", "Masa" ,  "Moc plugin","zaliczenie czas_dzien_wiek(100lat)"
             });
 
             this.repository = repo;
@@ -61,7 +61,18 @@ namespace KonwerterZSQLiAZUREiPLUGIN
                 });
             }
 
+            if (ComboOption.Text == "zaliczenie czas_dzien_wiek(100lat)")
+            {
+                this.ComboFrom.ItemsSource = new List<string>(new[]
+                  {
+                "dni","wiek(100lat)"
+                });
 
+                this.ComboTo.ItemsSource = new List<string>(new[]
+                {
+                "dni","wiek(100lat)"
+                });
+            }
             if (ComboOption.Text == "Temperatura")
             {
                 this.ComboFrom.ItemsSource = new List<string>(new[]
@@ -122,6 +133,23 @@ namespace KonwerterZSQLiAZUREiPLUGIN
                     double unitFrom = double.Parse(TextBoxFrom.Text);
                     if (ComboTo.Text == "HP") TextboxResult.Text = ((unitFrom * 0.99)).ToString();
                     if (ComboTo.Text == "kW") TextboxResult.Text = (unitFrom * 0.74).ToString();
+                }
+            }
+
+            if (ComboOption.Text == "zaliczenie czas_dzien_wiek(100lat)")
+            {
+                if (ComboFrom.Text == "dni")
+                {
+                    double unitFrom = double.Parse(TextBoxFrom.Text);
+                    if (ComboTo.Text == "wiek(100lat)") TextboxResult.Text = ((unitFrom/(365*100))).ToString();
+                    if (ComboTo.Text == "dni") TextboxResult.Text = (unitFrom).ToString();
+                }
+
+                if (ComboFrom.Text == "wiek(100lat)")
+                {
+                    double unitFrom = double.Parse(TextBoxFrom.Text);
+                    if (ComboTo.Text == "wiek(100lat)") TextboxResult.Text = (unitFrom).ToString();
+                    if (ComboTo.Text == "dni") TextboxResult.Text = (unitFrom*36500).ToString();
                 }
             }
 
