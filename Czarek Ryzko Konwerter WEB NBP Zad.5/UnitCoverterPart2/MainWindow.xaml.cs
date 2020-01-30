@@ -62,6 +62,7 @@ namespace KonwerterZSQLiAZUREiPLUGIN
                 "HP", "kW", "KM"
                 });
             }
+        
 
 
             if (ComboOption.Text == "Temperatura")
@@ -126,7 +127,7 @@ namespace KonwerterZSQLiAZUREiPLUGIN
                     if (ComboTo.Text == "kW") TextboxResult.Text = (unitFrom * 0.74).ToString();
                 }
             }
-
+          
 
             if (ComboOption.Text == "Temperatura")
             {
@@ -286,7 +287,7 @@ namespace KonwerterZSQLiAZUREiPLUGIN
         private void Button1_Click_1(object sender, RoutedEventArgs e)
         {
             Process p = new Process();
-            p.StartInfo = new ProcessStartInfo(@"C:\Users\Czarek\Desktop\Czarek Ryzko Konwerter WEB NBP\NBPConsoleApp\NBPConsoleApp\bin\Debug\NBPConsoleApp.exe");
+            p.StartInfo = new ProcessStartInfo(@"C:\Users\Czarek\source\repos\jipp2019\Czarek Ryzko Konwerter WEB NBP Zad.5\NBPConsoleApp\NBPConsoleApp\bin\Debug\NBPConsoleApp.exe");
 
             p.Start();
                                  

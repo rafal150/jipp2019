@@ -25,7 +25,7 @@ namespace WpfApp1
             InitializeComponent();
             this.ComboOption.ItemsSource = new List<string>(new[]
             {
-                "Temperatura", "Długość", "Waga"
+                "Temperatura", "Długość", "Waga", "Czas"
             });
         }
 
@@ -151,6 +151,25 @@ namespace WpfApp1
                 }
             }
 
+            if (ComboOption.Text == "Czas")
+            {
+                if (ComboFrom.Text == "dzien")
+                {
+                    double unitFrom = double.Parse(TextBoxFrom.Text);
+                    if (ComboTo.Text == "miesiac") TextboxResult.Text = (unitFrom / 31).ToString();
+                    else if (ComboTo.Text == "dzien") TextboxResult.Text = (unitFrom * 1).ToString();
+                    
+                }
+                if (ComboFrom.Text == "miesiac")
+                {
+                    double unitFrom = double.Parse(TextBoxFrom.Text);
+                    if (ComboTo.Text == "dzien") TextboxResult.Text = (unitFrom * 31).ToString();
+                    else if (ComboTo.Text == "miesiac") TextboxResult.Text = (unitFrom * 1).ToString();
+           
+                }
+                
+            }
+
 
         }
 
@@ -191,6 +210,18 @@ namespace WpfApp1
                 this.ComboTo.ItemsSource = new List<string>(new[]
                 {
                 "mg", "g", "dkg", "kg", "T"
+                });
+            }
+            if (ComboOption.Text == "Czas")
+            {
+                this.ComboFrom.ItemsSource = new List<string>(new[]
+                {
+                "dzien", "miesiac"
+                });
+
+                this.ComboTo.ItemsSource = new List<string>(new[]
+                {
+                 "dzien", "miesiac"
                 });
             }
         }

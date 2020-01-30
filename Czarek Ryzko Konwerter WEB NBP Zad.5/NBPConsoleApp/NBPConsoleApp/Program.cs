@@ -35,9 +35,9 @@ namespace NBPConsoleApp
                             // Set a variable to the Documents path.
                             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                            File.Delete(Path.Combine(docPath, "KursyWalut.txt"));
+                            File.Delete(Path.Combine(docPath, "KursikWalutek.txt"));
                             // Append text to an existing file named "WriteLines.txt".
-                            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "KursyWalut.txt"), true))
+                            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "KursikWalutek.txt"), true))
                             {
                                 outputFile.WriteLine(modified);
                             }
