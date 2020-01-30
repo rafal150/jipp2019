@@ -23,7 +23,8 @@ namespace UnitConverter.Web.Controllers {
 
         public double Convert(string unitFrom, string unitTo, string valueFrom, string conversionType) {
             if (!double.TryParse(valueFrom.Replace(".", ","), out double value)) {
-                throw new Exception("An error occured while trying to parse string to double");
+                return 0;
+                // throw new Exception("An error occured while trying to parse string to double");
             }
             IConverter converter = scope.Resolve(Type.GetType(conversionType)) as IConverter;
             return converter.Convert(unitFrom, unitTo, value);
