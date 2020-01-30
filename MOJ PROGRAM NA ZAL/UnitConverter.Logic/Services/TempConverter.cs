@@ -8,31 +8,25 @@ namespace KonwerterZSQLiAZUREiPLUGIN.Services
 {
     public class TempConverter : IKonwerter
     {
-        public string Name => "Temperatura";
+        public string Name => "Czas";
 
-        public List<string> Units => new List<string>(new[] { "Celsjusz", "Fahrenheit", "Kelvin", "Rankine" });
+        public List<string> Units => new List<string>(new[] { "Dni", "Wiek(100lat)" });
 
         public decimal Convert(string unitFrom, string unitTo, decimal value)
         {
 
-            if (unitFrom == "Celsjusz" )
+            if (unitFrom == "Dni" && unitTo == "Wiek(100lat)")
             {
-
+                value= value/(365 * 100);
                 return value;
             }
 
-            else if (unitFrom == "Fahrenheit" )
+            else if (unitFrom == "Wiek(100lat)")
             {
+                value = value * 36500;
                 return value;
             }
-            else if (unitFrom == "Kelvin" )
-            {
-                return value;
-            }
-            else if (unitFrom == "Rankine" )
-            {
-                return value;
-            }
+           
 
             else
                 return value; 
