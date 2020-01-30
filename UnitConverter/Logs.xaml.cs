@@ -33,7 +33,6 @@ namespace UnitConverter
 
                 LogsGrid.ItemsSource = m.GetRepository().GetStatistics();
             }
-           // LogsGrid.ItemsSource = m.GetDataBaseManager().GetDatabaseContext().Logs.ToList();
             
 
         }

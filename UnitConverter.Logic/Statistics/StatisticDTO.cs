@@ -10,8 +10,6 @@ namespace UnitConverter.Statistics
 {
     public class StatisticDTO
     {
- 
-
         public int Id { get; set; }
         public string type { get; set; }
         public string fromUnit { get; set; }

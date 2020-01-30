@@ -4,7 +4,7 @@
 }
 
 
-<h1>Konwerter jednostek</h1>
+<ul><h1>Konwerter jednostek</h1></ul>
 
 @foreach (UnitConverter.Converters.IConverter converter in Model)
 {
@@ -12,11 +12,13 @@
     using (Ajax.BeginForm("Convert",
         new AjaxOptions() { UpdateTargetId = converter.Name + "result" }))
     {
-        <div> @converter.Name </div>
-        @Html.DropDownList("unitFrom", new SelectList(converter.Units))
-        @Html.TextBox("valueToConvert")
-        @Html.DropDownList("unitTo", new SelectList(converter.Units))
-        <button type="submit"> Konwertuj </button>
-        <label id="@(converter.Name + "result")"></label>
+<ul>
+    <div><b> @converter.Name </b></div>
+    @Html.DropDownList("unitFrom", new SelectList(converter.Units))
+    @Html.TextBox("valueToConvert")
+    @Html.DropDownList("unitTo", new SelectList(converter.Units))
+    <button type="submit"> Konwertuj </button>
+    <label id="@(converter.Name + "result")"></label>
+</ul>
     }
 }

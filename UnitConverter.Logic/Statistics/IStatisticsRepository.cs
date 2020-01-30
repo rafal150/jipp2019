@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace UnitConverter.Statistics
 {
    public interface IStatisticsRepository
-    {
+   {
         void AddStatistic(StatisticDTO statistic);
         IEnumerable<StatisticDTO> GetStatistics();
-    }
+   }
 }

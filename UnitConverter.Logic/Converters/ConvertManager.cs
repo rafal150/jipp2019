@@ -17,12 +17,6 @@ namespace UnitConverter.Converters
             converters.Add(new LenghtConverter());
             converters.Add(new MassConverter());
             converters.Add(new TemperatureConverter());
-
-            converters.Add(new UnitConverterLib.TimeConverter());
-            converters.Add(new UnitConverterLib.SpeedConverter());
-
-            converters.Add(new CashConverter.CashConverter());
-
         }
         public IConverter GetConverter2(string s)
         {

@@ -37,7 +37,6 @@ namespace UnitConverter
             m = new Manager();
 
             ComboOption.ItemsSource = m.GetConverter().getMainUnits();
-           
 
             this.DataContext = this;
         }

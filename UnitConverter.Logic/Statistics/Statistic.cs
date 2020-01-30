@@ -11,7 +11,6 @@ namespace UnitConverter.Statistics
     [Table("Statistics")]
     public class Statistic
     {
-        //     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
 
