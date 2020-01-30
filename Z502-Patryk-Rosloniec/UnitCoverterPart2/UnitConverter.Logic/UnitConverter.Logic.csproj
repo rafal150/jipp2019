@@ -74,6 +74,7 @@
     <Compile Include="Model\StatisticsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConvertersService.cs" />
+    <Compile Include="Services\Dodatkowe30stycznia.cs" />
     <Compile Include="Services\LenghtConverter.cs" />
     <Compile Include="Services\TemperatureConverter.cs" />
     <Compile Include="Services\WeightConverter.cs" />

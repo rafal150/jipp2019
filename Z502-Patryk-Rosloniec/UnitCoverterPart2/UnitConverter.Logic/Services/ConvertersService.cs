@@ -22,7 +22,7 @@ namespace UnitCoverterPart2.Services
 
             converters.AddRange(this.scope.Resolve<IEnumerable<IConverter>>());
 
-            
+            converters.Add(new Dodatkowe30stycznia());
 
             return converters;
         }
