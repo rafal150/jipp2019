@@ -111,8 +111,6 @@
     <Compile Include="Converters\Temperature.cs" />
     <Compile Include="IStatisticsRepository.cs" />
     <Compile Include="Converters\Converters.cs" />
-    <Compile Include="Converters\IConverter.cs" />
-    <Compile Include="Converters\Time.cs" />
     <Compile Include="Converters\Volume.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="StatisticDTO.cs" />
@@ -174,6 +172,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Converter.SDK\Converter.SDK.csproj">
+      <Project>{2a0fd25e-0d00-459a-afb5-97ed8c656e40}</Project>
+      <Name>Converter.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

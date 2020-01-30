@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Autofac;
 using System.Reflection;
+using System.IO;
 
 namespace UnitConverter {
     /// <summary>
@@ -38,15 +39,35 @@ namespace UnitConverter {
 
             containerBuilder.RegisterType<Converters.Converters>();
 
-            // register all converters (UnitConverter.Converters)
+            // register all converters in this project (UnitConverter/Converters/*.cs)
+            RegisterConverters(containerBuilder);
+
+            // register all converters in plugins folder (UnitConverter/bin/Debug/plugins/*.dll)
+            RegisterPlugins(containerBuilder);
+
+            return containerBuilder.Build();
+        }
+        private static void RegisterConverters(ContainerBuilder containerBuilder) {
             var assembly = Assembly.GetExecutingAssembly();
             // register all classes...
             containerBuilder.RegisterAssemblyTypes(assembly)
                 // ... that implement Converters.IConverter
                 .Where(t => typeof(Converters.IConverter).IsAssignableFrom(t))
                 .AsImplementedInterfaces();
+        }
+        private static void RegisterPlugins(ContainerBuilder containerBuilder) {
+            // exe file directory
+            string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            // plugins folder
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            // .dll's list
+            var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            return containerBuilder.Build();
+            foreach (Assembly assembly in assemblies) {
+                containerBuilder.RegisterAssemblyTypes(assembly)
+                    .Where(t => typeof(Converters.IConverter).IsAssignableFrom(t))
+                    .AsImplementedInterfaces();
+            }
         }
     }
 }
