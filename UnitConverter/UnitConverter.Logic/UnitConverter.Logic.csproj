@@ -80,6 +80,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Converters\AbstractConverter.cs" />
     <Compile Include="Converters\Converters.cs" />
+    <Compile Include="Converters\DataCapacity.cs" />
     <Compile Include="Converters\Length.cs" />
     <Compile Include="Converters\Mass.cs" />
     <Compile Include="Converters\Temperature.cs" />
