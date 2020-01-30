@@ -6,7 +6,7 @@ namespace Converter
 {
     public class CalculationResultDTO : BaseEntity
     {
-        public UnitType UnitType { get; set; }
+        public string UnitType { get; set; }
 
         public string FromUnit { get; set; }
 

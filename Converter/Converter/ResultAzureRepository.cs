@@ -29,7 +29,7 @@ namespace Converter
             entity.PartitionKey = string.Empty; // computer name;
             entity.RowKey = Guid.NewGuid().ToString();
             entity.DateTime = result.CreatedAt;
-            entity.UnitType = result.UnitType.ToString();
+            entity.UnitType = result.UnitType;
             entity.ToUnit = result.ToUnit;
             entity.FromValue = (double)result.FromValue;
             entity.FromUnit = result.FromUnit;
@@ -51,6 +51,7 @@ namespace Converter
                 FromUnit = obj.FromUnit,
                 ToUnit = obj.ToUnit,
                 CreatedAt = obj.DateTime,
+                UnitType = obj.UnitType,
                 Id = Guid.Parse(obj.RowKey)
             }).ToList();
         }

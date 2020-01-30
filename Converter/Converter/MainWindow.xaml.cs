@@ -13,7 +13,6 @@ namespace Converter
 {
     public partial class MainWindow : INotifyPropertyChanged
     {
-        private IList<UnitType> _types ;
 
         private IList<string> _units;
 
@@ -31,17 +30,6 @@ namespace Converter
             InitializeComponent();
             this.repository = repository;
             this.TypeCombobox.ItemsSource = converters.GetConverters();
-            Types = Enum.GetValues(typeof(UnitType)).Cast<UnitType>().ToList<UnitType>();
-        }
-
-        public IList<UnitType> Types
-        {
-            get { return _types; }
-            set
-            {
-                _types= value;
-                RaisePropertyChanged(nameof(Types));
-            }
         }
 
         public IList<string> Units
@@ -100,10 +88,12 @@ namespace Converter
 
                 CalculationResultDTO result = new CalculationResultDTO()
                 {
+                    UnitType = ((ICalculator)TypeCombobox.SelectionBoxItem).Name,
                     FromValue = inputValue,
                     ToValue = value,
                     ToUnit = this.ToCombobox.Text,
                     FromUnit = this.FromCombobox.Text,
+                    
                 };
 
                 await this.Save(result);

@@ -11,7 +11,7 @@ namespace Converter
             
         }
 
-        public UnitType UnitType { get; set; }
+        public string UnitType { get; set; }
 
         public string FromUnit { get; set; }
 
