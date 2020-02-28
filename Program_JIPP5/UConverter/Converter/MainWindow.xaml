@@ -1,0 +1,39 @@
+﻿<Window x:Class="Converter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Converter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox SelectedIndex="0" x:Name="catergoriesCombobox" HorizontalAlignment="Left" Margin="190,53,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="10,53,0,0" TextWrapping="Wrap" Text="TYP JEDNOSTEK:" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="20" Width="180">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.037"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform><Run Text="Wybierz jednostkę"/><Run Text=" początkową"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="10,147,0,0" TextWrapping="Wrap" Text="Wybierz jednostkę docelową" VerticalAlignment="Top" Width="164"/>
+        <TextBlock HorizontalAlignment="Left" Margin="400,59,0,0" TextWrapping="Wrap" Text="Wpisz wartość jednostki początkowej" VerticalAlignment="Top" Width="205"/>
+        <TextBox x:Name="input" HorizontalAlignment="Left" Height="23" Margin="630,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"/>
+        <TextBox x:Name="output"  HorizontalAlignment="Left" Margin="630,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="19"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="400,92,0,0" TextWrapping="Wrap" Text="Wartość koncowa:" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="statisticsDataGrid" HorizontalAlignment="Left" Height="191" Margin="103,204,0,0" VerticalAlignment="Top" Width="599"/>
+        <ComboBox x:Name="FromCombobox" HorizontalAlignment="Left" Margin="190,106,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ToCombobox" HorizontalAlignment="Left" Margin="190,152,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Przelicz" HorizontalAlignment="Left" Margin="504,122,0,0" VerticalAlignment="Top" Width="101" Click="Button_Click" Height="41"/>
+        <Grid HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+</Window>
