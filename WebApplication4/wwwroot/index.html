@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row content">
+
+            <div class="col-md-9">
+                <div class="row">
+                    <span>From:</span>
+                    <select id="fromSelect" class="browser-default custom-select">
+                        <option selected>From:</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <span>To:</span>
+                    <select id="toSelect" class="browser-default custom-select">
+                        <option selected>To:</option>
+                    </select>
+                </div>
+                <div class="row" id="calculations">
+                    Value: <input id="inputNum" type="number" min="0" />
+                    <button id="run" onclick="runCalc()"/>
+                </div>
+
+                <span id="result" style="font-size: 200px"/>
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        $.get("/api/values/from").done(function (data) {
+            $("#fromSelect").empty();
+            $("#toSelect").empty();
+            $("#fromSelect").append(new Option("wybierz", -1, true));
+            data.forEach(function (item) {
+                $("#fromSelect").append(new Option(item, item));
+            });
+        });
+
+        $("#fromSelect").on('change', function () {
+            var from = this.value;
+            $.get("/api/values/" + from + "/to").done(function (data) {
+                $("#toSelect").empty();
+                $("#toSelect").append(new Option("wybierz", -1, true));
+                data.forEach(function (item) {
+                    $("#toSelect").append(new Option(item, item));
+                });
+            });
+        });
+
+        runCalc = function () {
+            var from = $("#fromSelect").val();
+            var to = $("#toSelect").val();
+            var value = $("#inputNum").val();
+            var request = {};
+                request.from = from;
+                request.to = to;
+                request.value = value;
+
+            $.ajax("/api/values", {
+                'type': 'POST',
+                'data': JSON.stringify(request),
+                'contentType': 'application/json'
+            }).done(function (data) {
+                $("#result").text(data);
+            });
+        }
+    </script>
+</body>
+</html>
