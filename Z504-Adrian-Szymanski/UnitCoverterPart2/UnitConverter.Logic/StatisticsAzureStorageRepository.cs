@@ -16,13 +16,13 @@ namespace UnitCoverterPart2
     {
         private CloudTable table;
 
-        public StatisticsAzureStorageRepository()
+        public StatisticsAzureStorageRepository()  //info o azure - bazie
         {
             CloudStorageAccount storageAccount = new CloudStorageAccount
               (new StorageCredentials("wwsi", "mVDN4VYhoG2olhNa4bBiR2Im46RAn1C23pgvXZBQ3Wh/ebmOfOOp0L9LORGYzJLg80XpkqrVxp4f4TBSRZICKg=="), true);
             CloudTableClient client = storageAccount.CreateCloudTableClient();
             this.table = client.GetTableReference("ASzymanski");
-            this.table.CreateIfNotExists();
+            this.table.CreateIfNotExists();  
         }
 
         public void AddStatistic(StatisticDTO statistic)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnitConverter.Logic.Model;
 using UnitCoverterPart2.Model;
 
 namespace UnitCoverterPart2
@@ -13,27 +14,27 @@ namespace UnitCoverterPart2
         {
             using (EntityModel context = new EntityModel())
             {
-                context.MyStatistics2.Add(new MyStatistics2()
+                context.MyStatistics2.Add(new MyStatistics2()  //dodanei do bazy sql
                 {
                     id = statistic.id,
                     DateTime = statistic.DateTime,
                     UnitFrom = statistic.UnitFrom,
                     UnitTo = statistic.UnitTo,
                     RawValue = statistic.RawValue,
-                    ConvertedValue = statistic.ConvertedValue,
+                    ConverterValue = statistic.ConvertedValue,
                     Type = statistic.Type
                 });
 
-                context.SaveChanges();
+                context.SaveChanges();  //zapisanei w sql
             }
         }
 
         public IEnumerable<StatisticDTO> GetStatistics()
         {
-            using (EntityModel context = new EntityModel())
+            using (EntityModel context = new EntityModel())  //pokazanie tabeli
             {
                 return context.MyStatistics2.
-                    Select(obj => new StatisticDTO() { id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConvertedValue, Type = obj.Type }).
+                    Select(obj => new StatisticDTO() { id = obj.id, DateTime = obj.DateTime, UnitFrom = obj.UnitFrom, UnitTo = obj.UnitTo, RawValue = obj.RawValue, ConvertedValue = obj.ConverterValue, Type = obj.Type }).
                     ToList();
             }
         }

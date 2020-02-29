@@ -1,10 +1,10 @@
-using System;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-
-namespace UnitCoverterPart2.Model
+namespace UnitConverter.Logic.Model
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
     public partial class EntityModel : DbContext
     {
         public EntityModel()
@@ -13,7 +13,6 @@ namespace UnitCoverterPart2.Model
         }
 
         public virtual DbSet<MyStatistics2> MyStatistics2 { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

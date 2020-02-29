@@ -1,4 +1,4 @@
-namespace UnitCoverterPart2.Model
+namespace UnitConverter.Logic.Model
 {
     using System;
     using System.Collections.Generic;
@@ -12,17 +12,17 @@ namespace UnitCoverterPart2.Model
 
         public DateTime? DateTime { get; set; }
 
-        [StringLength(50)]
+        [StringLength(70)]
         public string UnitFrom { get; set; }
 
-        [StringLength(50)]
+        [StringLength(70)]
         public string UnitTo { get; set; }
 
         public double? RawValue { get; set; }
 
-        public double? ConvertedValue { get; set; }
+        public double? ConverterValue { get; set; }
 
-        [StringLength(50)]
+        [StringLength(70)]
         public string Type { get; set; }
     }
 }

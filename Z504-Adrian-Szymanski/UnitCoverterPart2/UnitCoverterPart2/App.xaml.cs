@@ -55,7 +55,7 @@ namespace UnitCoverterPart2
         private static void RegisterPlugins(ContainerBuilder containerBuilder)
         {
             string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");
+            string pluginDirectory = Path.Combine(assemblyDirectory, "plugins");        //ładowanie pluginów
 
             var assemblies = Directory.GetFiles(pluginDirectory, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 

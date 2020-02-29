@@ -55,7 +55,7 @@ namespace SzymanskiWebConverter
             return containerBuilder.Build();
         }
 
-        private static void RegisterPlugins(ContainerBuilder containerBuilder)
+        private static void RegisterPlugins(ContainerBuilder containerBuilder)  //wyszukanie plugin i load plugin
         {
             //string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pluginDirectory = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
