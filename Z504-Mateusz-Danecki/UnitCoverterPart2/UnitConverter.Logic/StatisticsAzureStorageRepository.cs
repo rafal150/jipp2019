@@ -21,7 +21,7 @@ namespace UnitCoverterPart2
             CloudStorageAccount storageAccount = new CloudStorageAccount
               (new StorageCredentials("wwsi", "mVDN4VYhoG2olhNa4bBiR2Im46RAn1C23pgvXZBQ3Wh/ebmOfOOp0L9LORGYzJLg80XpkqrVxp4f4TBSRZICKg=="), true);
             CloudTableClient client = storageAccount.CreateCloudTableClient();
-            this.table = client.GetTableReference("MateuszDaniecki");
+            this.table = client.GetTableReference("MateuszDanecki");
             this.table.CreateIfNotExists();
         }
 
